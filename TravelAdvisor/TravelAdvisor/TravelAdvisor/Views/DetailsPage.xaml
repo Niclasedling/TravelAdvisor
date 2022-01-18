@@ -2,23 +2,23 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TravelAdvisor.Views.DetailsPage">
-    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="myGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="1.2*"></RowDefinition>
             <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <Image Aspect="AspectFill" Source="{Binding Property.Image}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Image>
-        <!--<ImageButton 
+        <ImageButton 
             BackgroundColor="Transparent" 
-            Aspect="Fill" Source="apt1.jpg" 
+            Aspect="Fill" Source="noun-arrow-back-2352160.png" 
             Margin="25" 
             WidthRequest="20" 
             HeightRequest="13"
             HorizontalOptions="Start"
             VerticalOptions="Start"
-            Clicked="GoBack">
-        </ImageButton>-->
+            Command="{Binding GoBack}">
+        </ImageButton>
         <Frame
             x:Name="DetailsView" 
             Grid.Row="1" 

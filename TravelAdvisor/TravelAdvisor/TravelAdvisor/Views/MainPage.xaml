@@ -78,7 +78,7 @@
                                     <RowDefinition Height="*"></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="PropertySelected"></TapGestureRecognizer>
+                                    <TapGestureRecognizer Command="{Binding ViewDetails}"/>
                                 </Grid.GestureRecognizers>
                                 <Image HeightRequest="115" Aspect="AspectFill" Source="{Binding Image}"></Image>
                                 <Frame CornerRadius="30" BackgroundColor="White" WidthRequest="5" HeightRequest="5" HorizontalOptions="End" VerticalOptions="Start" Margin="5">

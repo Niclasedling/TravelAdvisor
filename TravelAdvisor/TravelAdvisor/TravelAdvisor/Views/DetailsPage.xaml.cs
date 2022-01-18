@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using TravelAdvisor.Models;
+using TravelAdvisor.Services;
+using TravelAdvisor.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,17 +14,19 @@ namespace TravelAdvisor.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailsPage : ContentPage
     {
-        public DetailsPage(Property property)
+        DetailsPageViewModel ViewModel => BindingContext as DetailsPageViewModel;
+        public DetailsPage(Attraction attraction)
         {
             InitializeComponent();
-            this.Property = property;
-            this.BindingContext = this;
+            BindingContext = new DetailsPageViewModel(DependencyService.Get<INavService>());
         }
 
-        public Property Property { get; set; }
-        private void GoBack(object sender, EventArgs e)
+        protected override void OnAppearing()
         {
-            this.Navigation.PopAsync();
+            base.OnAppearing();
+           
+            // Initialize ViewModel
+            ViewModel?.Init();
         }
     }
 }
