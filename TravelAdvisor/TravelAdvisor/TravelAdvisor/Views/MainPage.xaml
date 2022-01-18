@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TravelAdvisor.Views.MainPage">
+
+    <Grid BackgroundColor="#F9F9F9" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Frame HasShadow="True" Margin="0, 20" Padding="0" HeightRequest="40" HorizontalOptions="FillAndExpand">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Image HeightRequest="20" WidthRequest="20" Margin="20,0" Source="phone.png"></Image>
+                <Entry Grid.Column="1" Placeholder="Search" TextColor="Black" FontSize="15" FontFamily="ThemeFontRegular" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Entry>
+                <Image Grid.Column="2" HeightRequest="20" WidthRequest="20" Margin="20,0" Source="noun-hamburger-2685146.png"></Image>
+            </Grid>
+        </Frame>
+        <StackLayout Grid.Row="1">
+            <Label Text="Property Type" TextColor="#515151" FontSize="15" FontFamily="ThemeFontBold"></Label>
+            <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                <StackLayout Orientation="Horizontal" Spacing="10" BindableLayout.ItemsSource="{Binding PropertyTypeList}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Frame CornerRadius="15" Margin="5,10,0,10">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="SelectType"></TapGestureRecognizer>
+                                </Frame.GestureRecognizers>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Normal">
+                                            <VisualState.Setters>
+                                                <Setter Property="Background" Value="{x:Null}"></Setter>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                        <VisualState x:Name="Selected">
+                                            <VisualState.Setters>
+                                                <Setter Property="Background">
+                                                    <Setter.Value>
+                                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                                            <GradientStop Color="#FF4157" Offset="0"/>
+                                                            <GradientStop Color="#FF4359" Offset="0.1"/>
+                                                            <GradientStop Color="#FE93C5" Offset="1"/>
+                                                        </LinearGradientBrush>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+
+                                <Label 
+                                    x:Name="PropertyTypeName" 
+                                    Padding="20, 5" Text="{Binding TypeName}" 
+                                    TextColor="White" 
+                                    FontSize="15"
+                                    FontFamily="ThemeFontRegular">
+                                </Label>
+                            </Frame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+        <ScrollView Grid.Row="2" Margin="0,10" VerticalScrollBarVisibility="Never">
+            <StackLayout BackgroundColor="Transparent" BindableLayout.ItemsSource="{Binding PropertyList}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Frame HeightRequest="190" Margin="5,5" CornerRadius="15" BackgroundColor="#C1C1C1">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="PropertySelected"></TapGestureRecognizer>
+                                </Grid.GestureRecognizers>
+                                <Image HeightRequest="115" Aspect="AspectFill" Source="{Binding Image}"></Image>
+                                <Frame CornerRadius="30" BackgroundColor="White" WidthRequest="5" HeightRequest="5" HorizontalOptions="End" VerticalOptions="Start" Margin="5">
+                                    <Image Source="noun-favourite-1077408.png" HeightRequest="50" WidthRequest="50" VerticalOptions="Center" HorizontalOptions="Center" Margin="-10,-10"></Image>
+                                </Frame>
+                                <Grid VerticalOptions="End" Margin="15">
+                                    <Frame 
+                                        CornerRadius="13"
+                                        Padding="15,5"
+                                        BackgroundColor="Black"
+                                        Opacity="0.8"
+                                        HorizontalOptions="Start"
+                                        VerticalOptions="Start">
+                                        <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Start">
+                                            <Image HeightRequest="12" WidthRequest="12" Source="phone.png" VerticalOptions="Center" HorizontalOptions="Start"></Image>
+                                            <Label Text="{Binding Location}" FontSize="12" TextColor="White" FontFamily="ThemeFontRegular" VerticalOptions="Center" Opacity="1"></Label>
+                                        </StackLayout>
+                                    </Frame>
+                                </Grid>
+                                <StackLayout Grid.Row="1" Spacing="5" Margin="20,5">
+                                    <Label Text="{Binding Price}" FontSize="15" FontFamily="ThemeFontBold" TextColor="#515151"></Label>
+                                    <StackLayout Orientation="Horizontal" Spacing="15">
+                                        <StackLayout Orientation="Horizontal" Spacing="10">
+                                            <Image WidthRequest="16" Source="bed.png"></Image>
+                                            <Label Text="{Binding Bed}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" Spacing="10">
+                                            <Image WidthRequest="16" Source="bed.png"></Image>
+                                            <Label Text="{Binding Bath}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" Spacing="10">
+                                            <Image WidthRequest="16" Source="bed.png"></Image>
+                                            <Label Text="{Binding Space}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
+                                        </StackLayout>
+                                    </StackLayout>
+
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>

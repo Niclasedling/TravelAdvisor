@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TravelAdvisor.Views.DetailsPage">
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.2*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Image Aspect="AspectFill" Source="{Binding Property.Image}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Image>
+        <!--<ImageButton 
+            BackgroundColor="Transparent" 
+            Aspect="Fill" Source="apt1.jpg" 
+            Margin="25" 
+            WidthRequest="20" 
+            HeightRequest="13"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            Clicked="GoBack">
+        </ImageButton>-->
+        <Frame
+            x:Name="DetailsView" 
+            Grid.Row="1" 
+            CornerRadius="30" 
+            Padding="35,35,35,0" 
+            Margin="0,-40,0,0"
+            BackgroundColor="White"
+            VerticalOptions="FillAndExpand"
+            >
+            <ScrollView 
+                HorizontalOptions="FillAndExpand" 
+                VerticalOptions="FillAndExpand" 
+                VerticalScrollBarVisibility="Never">
+                <StackLayout 
+                    Spacing="15" 
+                    HorizontalOptions="FillAndExpand">
+                    <Grid HorizontalOptions="FillAndExpand">
+                        <StackLayout 
+                            Orientation="Horizontal" 
+                            Spacing="5" 
+                            HorizontalOptions="FillAndExpand">
+                            <Image 
+                                HeightRequest="12" 
+                                WidthRequest="8" 
+                                Source="location.png" 
+                                VerticalOptions="Center" 
+                                HorizontalOptions="Start"></Image>
+                            <Label 
+                                Text="{Binding Property.Adress}" 
+                                FontSize="15" TextColor="Black" 
+                                FontFamily="ThemeFontRegular" 
+                                HorizontalOptions="Start" 
+                                VerticalOptions="Center"></Label>
+                        </StackLayout>
+                        <ImageButton
+                            BackgroundColor="Transparent"
+                            Aspect="Fill"
+                            HeightRequest="30"
+                            WidthRequest="30"
+                            Source="bed.png"
+                            VerticalOptions="Center"
+                            HorizontalOptions="End"></ImageButton>
+                    </Grid>
+                    <StackLayout Grid.Row="1" Spacing="15">
+                        <Label Text="{Binding Property.Price}" FontSize="20" FontFamily="ThemeFontBold" TextColor="#515151"></Label>
+                        <StackLayout Orientation="Horizontal" Spacing="15">
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Image WidthRequest="16" Source="bed.png"></Image>
+                                <Label Text="{Binding Property.Bed}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Image WidthRequest="16" Source="bed.png"></Image>
+                                <Label Text="{Binding Property.Bath}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Image WidthRequest="16" Source="bed.png"></Image>
+                                <Label Text="{Binding Property.Space}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                    <BoxView HeightRequest="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#E4E4E4"></BoxView>
+                    <StackLayout Orientation="Horizontal" Spacing="30" HorizontalOptions="Center">
+                        <StackLayout>
+                            <Frame HeightRequest="25" WidthRequest="25" CornerRadius="30" HorizontalOptions="Center">
+                                <Frame.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#FF4157" Offset="0"/>
+                                        <GradientStop Color="#FF4359" Offset="0.1"/>
+                                        <GradientStop Color="#FE93C5" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Frame.Background>
+                                <Image WidthRequest="30" HeightRequest="30" Source="phone.png" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                            </Frame>
+                            <Label Text="Call" TextColor="#101010" FontSize="14" FontFamily="ThemeFontSemiBold" HorizontalTextAlignment="Center"></Label>
+                        </StackLayout>
+                        <StackLayout>
+                            <Frame HeightRequest="25" WidthRequest="25" CornerRadius="30" HorizontalOptions="Center">
+                                <Frame.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#FF4157" Offset="0"/>
+                                        <GradientStop Color="#FF4359" Offset="0.1"/>
+                                        <GradientStop Color="#FE93C5" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Frame.Background>
+                                <Image WidthRequest="30" HeightRequest="30" Source="phone.png" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                            </Frame>
+                            <Label Text="Email" TextColor="#101010" FontSize="14" FontFamily="ThemeFontSemiBold" HorizontalTextAlignment="Center"></Label>
+                        </StackLayout>
+                        <StackLayout>
+                            <Frame HeightRequest="25" WidthRequest="25" CornerRadius="30" HorizontalOptions="Center">
+                                <Frame.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#FF4157" Offset="0"/>
+                                        <GradientStop Color="#FF4359" Offset="0.1"/>
+                                        <GradientStop Color="#FE93C5" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Frame.Background>
+                                <Image WidthRequest="30" HeightRequest="30" Source="phone.png" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                            </Frame>
+                            <Label Text="Map View" TextColor="#101010" FontSize="14" FontFamily="ThemeFontSemiBold" HorizontalTextAlignment="Center"></Label>
+                        </StackLayout>
+                        <StackLayout>
+                            <Frame HeightRequest="25" WidthRequest="25" CornerRadius="30" HorizontalOptions="Center">
+                                <Frame.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#FF4157" Offset="0"/>
+                                        <GradientStop Color="#FF4359" Offset="0.1"/>
+                                        <GradientStop Color="#FE93C5" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Frame.Background>
+                                <Image WidthRequest="30" HeightRequest="30" Source="phone.png" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                            </Frame>
+                            <Label Text="More" TextColor="#101010" FontSize="14" FontFamily="ThemeFontSemiBold" HorizontalTextAlignment="Center"></Label>
+                        </StackLayout>
+                    </StackLayout>
+                    <BoxView HeightRequest="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#E4E4E4"></BoxView>
+                    <Label Text="Details" FontSize="15" FontFamily="ThemeFontBold" TextColor="#515151"></Label>
+                    <Label Text="{Binding Property.Details}" FontSize="15" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
+                </StackLayout>
+            </ScrollView>
+        </Frame>
+        <Frame Grid.Row="2" HeightRequest="30" CornerRadius="0">
+            <Frame.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FF4157" Offset="0"/>
+                    <GradientStop Color="#FF4359" Offset="0.5"/>
+                    <GradientStop Color="#FE93C5" Offset="1"/>
+                </LinearGradientBrush>
+            </Frame.Background>
+            <Label Text="Book Now" TextColor="White" FontSize="15" FontFamily="ThemeFontBold" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+        </Frame>
+    </Grid>
+</ContentPage>
