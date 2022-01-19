@@ -8,8 +8,26 @@ namespace TravelAdvisor.Infrastructure.Models
 {
     public abstract class UserBase
     {
+      
+        public Guid Id { get; set; }
 
-  
+    
+        public string FirstName { get; set; }
+
+      
+        public string LastName { get; set; }
+
+      
+        public string Email { get; set; }
+
+       
+        public string Password { get; set; }
+
+       
+        public DateTime Created { get; set; } = DateTime.Now;
+
+        public DateTime Modify { get; set; }
+
     }
 
     public class UserDto : UserBase
@@ -38,7 +56,7 @@ namespace TravelAdvisor.Infrastructure.Models
     public class UserDeleteDto
     {
 
-    
+        public Guid Id { get; set; }
 
 
 
@@ -57,10 +75,7 @@ namespace TravelAdvisor.Infrastructure.Models
 
     public class UserCreateDto
     {
-
-
-
-
+        public object Password { get; internal set; }
     }
 
 }
