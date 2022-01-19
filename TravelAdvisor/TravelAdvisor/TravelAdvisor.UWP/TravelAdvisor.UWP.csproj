@@ -138,6 +138,7 @@
     <Content Include="noun-arrow-back-2352160.png" />
     <Content Include="noun-favourite-1077408.png" />
     <Content Include="noun-search-2727631.png" />
+    <Content Include="noun-user-839017.png" />
     <Content Include="phone.png" />
     <Content Include="Properties\Default.rd.xml" />
   </ItemGroup>

@@ -49,17 +49,7 @@ namespace TravelAdvisor.ViewModels
                     Adress = "2162 Patricia Ave, LA",
                     Location = "California",
                     Price = "$1500/month",
-                    Bed = "1 Bed",
-                    Bath = "1 Bath",
-                    Space = "1600 sqft",
-                    Details = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,"
+                    
                 },
                 new Attraction
                 {
@@ -67,17 +57,7 @@ namespace TravelAdvisor.ViewModels
                     Adress = "2112 Cushions Dr, LA",
                     Location = "California",
                     Price = "$1500/month",
-                    Bed = "1 Bed",
-                    Bath = "2 Baths",
-                    Space = "1600 sqft",
-                    Details = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,"
+                  
                 },
                 new Attraction
                 {
@@ -85,9 +65,6 @@ namespace TravelAdvisor.ViewModels
                     Adress = "2167 Anthony Way, LA",
                     Location = "California",
                     Price = "$1500/month",
-                    Bed = "1 Bed",
-                    Bath = "3 Baths",
-                    Space = "1600 sqft",
                     Details = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
@@ -103,9 +80,6 @@ namespace TravelAdvisor.ViewModels
                     Adress = "2167 Anthony Way, LA",
                     Location = "California",
                     Price = "$1500/month",
-                    Bed = "1 Bed",
-                    Bath = "3 Baths",
-                    Space = "1600 sqft",
                     Details = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
@@ -121,9 +95,6 @@ namespace TravelAdvisor.ViewModels
                     Adress = "2167 Anthony Way, LA",
                     Location = "California",
                     Price = "$1500/month",
-                    Bed = "1 Bed",
-                    Bath = "3 Baths",
-                    Space = "1600 sqft",
                     Details = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
@@ -139,9 +110,6 @@ namespace TravelAdvisor.ViewModels
                     Adress = "2167 Anthony Way, LA",
                     Location = "California",
                     Price = "$1500/month",
-                    Bed = "1 Bed",
-                    Bath = "3 Baths",
-                    Space = "1600 sqft",
                     Details = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +

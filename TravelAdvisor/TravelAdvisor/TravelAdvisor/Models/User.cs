@@ -4,7 +4,9 @@ using System.Text;
 
 namespace TravelAdvisor.Models
 {
-    internal class User
+    public class User
     {
+        public string Comment { get; set; }
+
     }
 }

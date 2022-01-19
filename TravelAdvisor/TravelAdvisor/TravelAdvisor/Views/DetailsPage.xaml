@@ -150,5 +150,6 @@
             </Frame.Background>
             <Label Text="Book Now" TextColor="White" FontSize="15" FontFamily="ThemeFontBold" VerticalOptions="Center" HorizontalOptions="Center"></Label>
         </Frame>
+       
     </Grid>
 </ContentPage>

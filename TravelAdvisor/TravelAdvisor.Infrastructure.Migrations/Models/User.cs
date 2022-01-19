@@ -29,5 +29,7 @@ namespace TravelAdvisor.Infrastructure.Migrations.Models
 
         [Required]
         public DateTime Modify { get; set; }
+
+       
     }
 }

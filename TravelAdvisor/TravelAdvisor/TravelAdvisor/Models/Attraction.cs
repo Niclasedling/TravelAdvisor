@@ -12,9 +12,6 @@ namespace TravelAdvisor.Models
         public string Adress { get; set; }
         public string Location { get; set; }
         public string Price { get; set; }
-        public string Bed { get; set; }
-        public string Bath { get; set; }
-        public string Space { get; set; }
         public string Details { get; set; }
     }
 }
