@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,12 +14,12 @@ namespace TravelAdvisor.Infrastructure.Services
     {
 
         private readonly IUnitOfWork _unitOfWork;
-        //private readonly IMapper _mapper;
+        private readonly IMapper _mapper;
 
-        public UserService(IUnitOfWork unitOfWork )
+        public UserService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
-            //_mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
         public Task<UserCreateDto> Create(UserCreateDto newUser)
