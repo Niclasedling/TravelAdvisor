@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -16,6 +17,7 @@ using TravelAdvisor.Infrastructure.Interfaces;
 using TravelAdvisor.Infrastructure.Migrations.Data;
 using TravelAdvisor.Infrastructure.Migrations.Interfaces;
 using TravelAdvisor.Infrastructure.Migrations.Repository;
+using TravelAdvisor.Infrastructure.Models.Mapping;
 using TravelAdvisor.Infrastructure.Services;
 
 namespace TravelAdvisor.Web
@@ -40,6 +42,13 @@ namespace TravelAdvisor.Web
 
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<DbApplicationContext>(options => options.UseSqlServer(connection));
+
+            var mapperConfig = new MapperConfiguration(mc => {
+                mc.AddProfile(new AutoMapping());
+            });
+
+            IMapper _mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(_mapper);
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
