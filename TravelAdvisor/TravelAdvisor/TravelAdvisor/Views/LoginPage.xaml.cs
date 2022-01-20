@@ -14,10 +14,11 @@ namespace TravelAdvisor.Views
     public partial class LoginPage : ContentPage
     {
         LoginPageViewModel ViewModel => BindingContext as LoginPageViewModel;
+
         public LoginPage()
         {
             InitializeComponent();
-            BindingContext = new LoginPageViewModel(DependencyService.Get<INavService>());
+            //BindingContext = new LoginPageViewModel(DependencyService.Get<INavService>());
         }
 
         protected override void OnAppearing()

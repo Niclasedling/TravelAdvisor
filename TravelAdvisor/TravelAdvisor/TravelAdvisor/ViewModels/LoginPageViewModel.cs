@@ -9,7 +9,7 @@ namespace TravelAdvisor.ViewModels
 {
     public class LoginPageViewModel : BaseViewModel
     {
-        readonly LoginPage loginPage = new LoginPage();
+       
         //public Command ViewDetails => new Command(async () => await NavigationService.NavigateTo<DetailsPageViewModel>());
         public Command BackPage => new Command(async () => await NavigationService.GoBack());
         

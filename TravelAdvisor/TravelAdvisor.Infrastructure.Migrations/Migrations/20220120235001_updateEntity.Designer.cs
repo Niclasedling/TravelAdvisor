@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TravelAdvisor.Infrastructure.Migrations.Data;
 
 namespace TravelAdvisor.Infrastructure.Migrations.Migrations
 {
     [DbContext(typeof(DbApplicationContext))]
-    partial class DbApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20220120235001_updateEntity")]
+    partial class updateEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
