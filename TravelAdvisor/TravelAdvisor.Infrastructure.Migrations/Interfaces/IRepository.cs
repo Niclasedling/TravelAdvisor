@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using TravelAdvisor.Infrastructure.Migrations.Models;
 
 namespace TravelAdvisor.Infrastructure.Migrations.Interfaces
 {
@@ -19,6 +21,16 @@ namespace TravelAdvisor.Infrastructure.Migrations.Interfaces
             Task<TEntity> GetByGuidAsync(Guid id);
             Task<IEnumerable<TEntity>> GetAllAsync();
             Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate);
+
+
+
+            //Merran
+            void Add(User user);
+            User GetByEmail(string email); //User istället för void efetrsom methoden returnerar User istället för ingenting 
+            User GetByEmailAndPassword(string email, string password);
+
+            //method som sparar cookie
+            ClaimsIdentity Authenticate(string userName);
 
         }
     }

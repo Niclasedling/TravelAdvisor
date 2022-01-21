@@ -2,10 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using TravelAdvisor.Infrastructure.Interfaces;
 using TravelAdvisor.Infrastructure.Migrations.Interfaces;
+using TravelAdvisor.Infrastructure.Migrations.Models;
 using TravelAdvisor.Infrastructure.Models;
 
 namespace TravelAdvisor.Infrastructure.Services
@@ -52,6 +54,33 @@ namespace TravelAdvisor.Infrastructure.Services
         public Task<UserUpdateDto> Update()
         {
             throw new NotImplementedException();
+        }
+
+
+
+        //Denna method letar efetr en user via inmatade email //Merran
+        public User GetByEmail(string email)
+        {
+            User user = _db.Users.FirstOrDefault(u => u.Email == email);
+            return user;
+        }
+
+        //Denna method letar efetr en user via inmatade email och password //Merran
+        public User GetByEmailAndPassword(string email, string password)
+        {
+            User user = _db.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
+            return user;
+        }
+
+        public IEnumerable<ClaimsIdentity> Authenticate(string email)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Add(User user)
+        {
+            _db.Users.Add(user);
+            _db.SaveChanges();
         }
     }
 }
