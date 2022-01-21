@@ -18,7 +18,10 @@
                 </Grid.ColumnDefinitions>
                 <Image HeightRequest="20" WidthRequest="20" Margin="20,0" Source="phone.png"></Image>
                 <Entry Grid.Column="1" Placeholder="Search" TextColor="Black" FontSize="15" FontFamily="ThemeFontRegular" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Entry>
-                
+                <ImageButton Grid.Column="2" HeightRequest="20" WidthRequest="20" Margin="20,0" Source="noun-user-839017.png">
+                    
+                </ImageButton>
+
             </Grid>
         </Frame>
         <StackLayout Grid.Row="1">
@@ -56,7 +59,7 @@
 
                                 <Label 
                                     x:Name="PropertyTypeName" 
-                                    Padding="20, 5" Text="{Binding TypeName}" 
+                                    Padding="20, 5" Text="{Binding Name}" 
                                     TextColor="White" 
                                     FontSize="15"
                                     FontFamily="ThemeFontRegular">
