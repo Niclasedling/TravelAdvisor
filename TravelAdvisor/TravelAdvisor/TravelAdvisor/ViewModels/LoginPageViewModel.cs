@@ -12,7 +12,8 @@ namespace TravelAdvisor.ViewModels
        
         //public Command ViewDetails => new Command(async () => await NavigationService.NavigateTo<DetailsPageViewModel>());
         public Command BackPage => new Command(async () => await NavigationService.GoBack());
-        
+        public Command SignUpPage => new Command(async () => await NavigationService.NavigateTo<SignUpPageViewModel>());
+
         public LoginPageViewModel(INavService naviService) : base(naviService)
         {
             //Code for creating the ViewModel

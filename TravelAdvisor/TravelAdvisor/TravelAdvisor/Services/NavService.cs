@@ -18,6 +18,7 @@ namespace TravelAdvisor.Services
         {
            
             _map.Add(typeof(LoginPageViewModel), typeof(LoginPage));
+            _map.Add(typeof(SignUpPageViewModel), typeof(SignUpPage));
             //mappa alla här!
 
         }

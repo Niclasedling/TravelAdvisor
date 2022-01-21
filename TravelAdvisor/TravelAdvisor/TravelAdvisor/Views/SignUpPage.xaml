@@ -1,30 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TravelAdvisor.Views.LoginPage">
+             x:Class="TravelAdvisor.Views.SignUpPage">
     <StackLayout Padding="0">
-       
-            <Grid>
-                <StackLayout Padding="0" Margin="0">
-                <Frame BackgroundColor="DarkGreen" HeightRequest="130" HorizontalOptions="FillAndExpand" CornerRadius="0">
-                    
-                </Frame>
-                </StackLayout>
 
-                <StackLayout Margin="15,110,15,0">
+        <Grid>
+            <StackLayout Padding="0" Margin="0">
+                <Frame BackgroundColor="DarkGreen" HeightRequest="130" HorizontalOptions="FillAndExpand" CornerRadius="0">
+
+                </Frame>
+            </StackLayout>
+
+            <StackLayout Margin="15,110,15,0">
 
                 <Frame BackgroundColor="White" HasShadow="True" HeightRequest="320" HorizontalOptions="FillAndExpand" BorderColor="Gray">
                     <StackLayout>
                         <StackLayout HorizontalOptions="CenterAndExpand">
-                            <Label Text="Sign In" TextColor="Black" FontSize="Medium" FontAttributes="Bold" />
+                            <Label Text="Register" TextColor="Black" FontSize="Medium" FontAttributes="Bold" />
                         </StackLayout>
-                        
+
                         <StackLayout Margin="0,25,0,0">
-                            <!--EmailBox-->
+                            <!--UserNamelBox-->
                             <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" Margin="0" CornerRadius="20" HorizontalOptions="FillAndExpand">
                                 <StackLayout Orientation="Horizontal">
                                     <Frame BackgroundColor="AliceBlue" CornerRadius="20" HeightRequest="35" WidthRequest="35" Padding="0" HorizontalOptions="Start" Margin="7">
-                                        
+
+                                    </Frame>
+                                    <Entry Placeholder="Username" TextColor="Green" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" />
+                                </StackLayout>
+                            </Frame>
+                            <!--EmailwordBox-->
+                            <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" Margin="0,20,0,0" CornerRadius="20" HorizontalOptions="FillAndExpand">
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame BackgroundColor="AliceBlue" CornerRadius="20" HeightRequest="35" WidthRequest="35" Padding="0" HorizontalOptions="Start" Margin="7">
+
                                     </Frame>
                                     <Entry Placeholder="Email" TextColor="Green" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" />
                                 </StackLayout>
@@ -38,36 +47,19 @@
                                     <Entry Placeholder="Password" IsPassword="True" TextColor="Green" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" />
                                 </StackLayout>
                             </Frame>
-                            
-                        </StackLayout>
-
-                        <StackLayout Orientation="Horizontal">
-                            <!--Remebmer Me Checkbox-->
-                            <CheckBox IsChecked="False" Color="Green"/>
-                            <Label Text="Remember me" HorizontalOptions="Start" VerticalTextAlignment="Center" />
-                            
-                            <Label Text="Forgot Password" HorizontalTextAlignment="End" TextColor="Green" HorizontalOptions="EndAndExpand" FontAttributes="Bold" VerticalTextAlignment="Center" />
 
                         </StackLayout>
+
                         <!--SignInButton-->
-                        <Button Text="Sign in" BackgroundColor="DarkGreen" TextColor="White" FontAttributes="Bold" CornerRadius="20"/>
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                            <Label Text="Still not connected?" HorizontalOptions="Start" VerticalTextAlignment="Center" />
-
-                            <Label Text="Sign Up" HorizontalTextAlignment="End" TextColor="Green" FontAttributes="Bold" VerticalTextAlignment="Center">
-                                <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding SignUpPage}"/>
-                                </Label.GestureRecognizers>
-                            </Label>
-
-                        </StackLayout>
+                        <Button Text="Register" BackgroundColor="DarkGreen" TextColor="White" FontAttributes="Bold" CornerRadius="20" HeightRequest="45"/>
+                        
 
                     </StackLayout>
-                     
+
                 </Frame>
-                    
-                </StackLayout>
-            </Grid>
-       
+
+            </StackLayout>
+        </Grid>
+
     </StackLayout>
 </ContentPage>

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TravelAdvisor.Services;
 using TravelAdvisor.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,15 +10,14 @@ using Xamarin.Forms.Xaml;
 namespace TravelAdvisor.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class SignUpPage : ContentPage
     {
-        LoginPageViewModel ViewModel => BindingContext as LoginPageViewModel;
 
-        public LoginPage()
+        SignUpPageViewModel ViewModel => BindingContext as SignUpPageViewModel;
+
+        public SignUpPage()
         {
             InitializeComponent();
-            var navService = DependencyService.Get<INavService>();
-            BindingContext = new LoginPageViewModel(DependencyService.Get<INavService>());
         }
 
         protected override void OnAppearing()
