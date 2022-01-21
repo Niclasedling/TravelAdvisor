@@ -17,11 +17,17 @@
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Image HeightRequest="20" WidthRequest="20" Margin="20,0" Source="phone.png"></Image>
+                <!--Login Button -->
                 <Entry Grid.Column="1" Placeholder="Search" TextColor="Black" FontSize="15" FontFamily="ThemeFontRegular" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Entry>
-                <ImageButton Grid.Column="2" HeightRequest="20" WidthRequest="20" Margin="20,0" Source="noun-user-839017.png">
-                    
-                </ImageButton>
-
+                <Button Grid.Column="2" 
+                        Text="Login" 
+                        BackgroundColor="Black" 
+                        TextColor="White" 
+                        CornerRadius="15" 
+                        FontAttributes="Bold"
+                        Command="{Binding LoginPage}">
+                </Button>
+                
             </Grid>
         </Frame>
         <StackLayout Grid.Row="1">

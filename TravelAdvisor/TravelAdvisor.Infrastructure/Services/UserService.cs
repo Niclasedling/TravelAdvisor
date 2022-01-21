@@ -24,6 +24,7 @@ namespace TravelAdvisor.Infrastructure.Services
 
         public Task<UserCreateDto> Create(UserCreateDto newUser)
         {
+      
             throw new NotImplementedException();
         
         }

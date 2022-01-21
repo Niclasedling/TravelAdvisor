@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using TravelAdvisor.ViewModels;
+using TravelAdvisor.Views;
 using Xamarin.Forms;
 
 namespace TravelAdvisor.Services
@@ -13,6 +14,14 @@ namespace TravelAdvisor.Services
     public class NavService : INavService
     {
         readonly IDictionary<Type, Type> _map = new Dictionary<Type, Type>();
+        public NavService()
+        {
+           
+            _map.Add(typeof(LoginPageViewModel), typeof(LoginPage));
+            _map.Add(typeof(SignUpPageViewModel), typeof(SignUpPage));
+            //mappa alla här!
+
+        }
 
         public event PropertyChangedEventHandler CanGoBackChanged;
 
@@ -87,7 +96,7 @@ namespace TravelAdvisor.Services
                                       .DeclaredConstructors
                                       .FirstOrDefault(dc => !dc.GetParameters().Any());
             var view = constructor.Invoke(null) as Page;
-
+            
             await Navigation.PushAsync(view, true);
         }
 
@@ -97,6 +106,11 @@ namespace TravelAdvisor.Services
         }
 
         void OnCanGoBackChanged() => CanGoBackChanged?.Invoke(this, new PropertyChangedEventArgs("CanGoBack"));
+
+        public void SetNavigation(INavigation navigation)
+        {
+            Navigation = navigation;
+        }
     }
 }
 

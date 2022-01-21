@@ -7,20 +7,15 @@ using System.Threading.Tasks;
 
 namespace TravelAdvisor.Infrastructure.Migrations.Models
 {
-    public class User: Entity
+   public abstract class Entity
     {
+        [Key]
+        public Guid Id { get; set; }
 
         [Required]
-        public string FirstName { get; set; }
+        public DateTime Created { get; set; }
 
         [Required]
-        public string LastName { get; set; }
-
-        [Required]
-        public string Email { get; set; }
-
-        [Required]
-        public string Password { get; set; }
-
+        public DateTime Modified { get; set; }
     }
 }

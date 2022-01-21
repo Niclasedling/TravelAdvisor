@@ -35,9 +35,7 @@ namespace TravelAdvisor.Web
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
-           
-            services.AddScoped<IUserRepository, UserRepository>();
+             services.AddScoped<IUnitOfWork, UnitOfWork>();
              services.AddScoped<IUserService, UserService>();
 
             string connection = Configuration.GetConnectionString("DefaultConnection");

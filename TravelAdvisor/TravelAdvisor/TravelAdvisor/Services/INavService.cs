@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Text;
 using TravelAdvisor.ViewModels;
 using System.ComponentModel;
+using Xamarin.Forms;
 
 namespace TravelAdvisor.Services
 {
@@ -22,6 +23,8 @@ namespace TravelAdvisor.Services
         void RemoveLastView();
 
         void ClearBackStack();
+
+        void SetNavigation(INavigation navigation);
 
         event PropertyChangedEventHandler CanGoBackChanged;
     }

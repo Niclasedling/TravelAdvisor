@@ -17,6 +17,7 @@ namespace TravelAdvisor.Views
         public MainPage()
         {
             InitializeComponent();
+            var navService = DependencyService.Get<INavService>();
             BindingContext = new MainPageViewModel(DependencyService.Get<INavService>());
         }
 
