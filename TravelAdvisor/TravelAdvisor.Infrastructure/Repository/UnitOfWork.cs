@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TravelAdvisor.Infrastructure.Interfaces;
 using TravelAdvisor.Infrastructure.Migrations.Data;
-using TravelAdvisor.Infrastructure.Migrations.Interfaces;
 using TravelAdvisor.Infrastructure.Migrations.Models;
 
-namespace TravelAdvisor.Infrastructure.Migrations.Repository
+namespace TravelAdvisor.Infrastructure.Repository
 {
     public class UnitOfWork : IUnitOfWork
     {
@@ -20,7 +20,7 @@ namespace TravelAdvisor.Infrastructure.Migrations.Repository
         private readonly DbApplicationContext context;
 
         private Repository<User> userRepository;
-      
+
 
         Repository<User> IUnitOfWork.UserRepository
         {
@@ -36,7 +36,7 @@ namespace TravelAdvisor.Infrastructure.Migrations.Repository
             }
         }
 
-  
+
 
         public Task<int> SaveChanges()
         {

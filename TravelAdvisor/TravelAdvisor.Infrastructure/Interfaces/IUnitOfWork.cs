@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TravelAdvisor.Infrastructure.Migrations.Models;
-using TravelAdvisor.Infrastructure.Migrations.Repository;
+using TravelAdvisor.Infrastructure.Repository;
 
-namespace TravelAdvisor.Infrastructure.Migrations.Interfaces
+namespace TravelAdvisor.Infrastructure.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
@@ -17,5 +17,4 @@ namespace TravelAdvisor.Infrastructure.Migrations.Interfaces
 
         }
     }
-
 }
