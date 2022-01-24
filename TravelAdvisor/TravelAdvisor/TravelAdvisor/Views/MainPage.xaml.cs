@@ -8,16 +8,17 @@ using TravelAdvisor.Models;
 using TravelAdvisor.Services;
 using TravelAdvisor.ViewModels;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace TravelAdvisor.Views
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
         MainPageViewModel ViewModel => BindingContext as MainPageViewModel;
         public MainPage()
         {
             InitializeComponent();
-            var navService = DependencyService.Get<INavService>();
             BindingContext = new MainPageViewModel(DependencyService.Get<INavService>());
         }
 

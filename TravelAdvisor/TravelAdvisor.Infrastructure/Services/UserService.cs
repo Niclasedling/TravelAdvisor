@@ -59,28 +59,28 @@ namespace TravelAdvisor.Infrastructure.Services
 
 
         //Denna method letar efetr en user via inmatade email //Merran
-        public User GetByEmail(string email)
-        {
-            User user = _db.Users.FirstOrDefault(u => u.Email == email);
-            return user;
-        }
+        //public User GetByEmail(string email)
+        //{
+        //    User user = _db.Users.FirstOrDefault(u => u.Email == email);
+        //    return user;
+        //}
 
         //Denna method letar efetr en user via inmatade email och password //Merran
-        public User GetByEmailAndPassword(string email, string password)
-        {
-            User user = _db.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
-            return user;
-        }
+        //public User GetByEmailAndPassword(string email, string password)
+        //{
+        //    User user = _db.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
+        //    return user;
+        //}
 
         public IEnumerable<ClaimsIdentity> Authenticate(string email)
         {
             throw new NotImplementedException();
         }
 
-        public void Add(User user)
-        {
-            _db.Users.Add(user);
-            _db.SaveChanges();
-        }
+        //public void Add(User user)
+        //{
+        //    _db.Users.Add(user);
+        //    _db.SaveChanges();
+        //}
     }
 }

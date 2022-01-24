@@ -13,5 +13,7 @@ namespace TravelAdvisor.Models
         public string Location { get; set; }
         public string Price { get; set; }
         public string Details { get; set; }
+
+
     }
 }

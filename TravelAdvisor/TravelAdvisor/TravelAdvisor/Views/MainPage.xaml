@@ -77,22 +77,34 @@
             </ScrollView>
         </StackLayout>
         <ScrollView Grid.Row="2" Margin="0,10" VerticalScrollBarVisibility="Never">
-            <StackLayout BackgroundColor="Transparent" BindableLayout.ItemsSource="{Binding PropertyList}">
+            
+            <StackLayout BackgroundColor="Transparent" BindableLayout.ItemsSource="{Binding PropertyList}"> 
+                              
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <Frame HeightRequest="190" Margin="5,5" CornerRadius="15" BackgroundColor="#C1C1C1">
+                        <Frame HeightRequest="190" Margin="5,5" CornerRadius="15" BackgroundColor="#C1C1C1"> 
+                            
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"></RowDefinition>
                                     <RowDefinition Height="*"></RowDefinition>
                                 </Grid.RowDefinitions>
-                                <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding ViewDetails}"/>
-                                </Grid.GestureRecognizers>
+                                
+                                 
                                 <Image HeightRequest="115" Aspect="AspectFill" Source="{Binding Image}"></Image>
+                                
                                 <Frame CornerRadius="30" BackgroundColor="White" WidthRequest="5" HeightRequest="5" HorizontalOptions="End" VerticalOptions="Start" Margin="5">
                                     <Image Source="noun-favourite-1077408.png" HeightRequest="50" WidthRequest="50" VerticalOptions="Center" HorizontalOptions="Center" Margin="-10,-10"></Image>
                                 </Frame>
+                                <StackLayout>
+                                    <Label HeightRequest="120" Text="Hej" BackgroundColor="HotPink">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding ViewDetails}"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </StackLayout>
+                                
+
                                 <Grid VerticalOptions="End" Margin="15">
                                     <Frame 
                                         CornerRadius="13"
@@ -112,25 +124,30 @@
                                     <StackLayout Orientation="Horizontal" Spacing="15">
                                         <StackLayout Orientation="Horizontal" Spacing="10">
                                             <Image WidthRequest="16" Source="bed.png"></Image>
-                                            <Label Text="{Binding Bed}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
+                                            <Label Text="{Binding Location}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal" Spacing="10">
                                             <Image WidthRequest="16" Source="bed.png"></Image>
-                                            <Label Text="{Binding Bath}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
+                                            <Label Text="{Binding Location}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal" Spacing="10">
                                             <Image WidthRequest="16" Source="bed.png"></Image>
-                                            <Label Text="{Binding Space}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
+                                            <Label Text="{Binding Location}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
                                         </StackLayout>
                                     </StackLayout>
-
+                                    
                                 </StackLayout>
+                                
                             </Grid>
+                            
                         </Frame>
+                        
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </StackLayout>
+            
         </ScrollView>
+        
     </Grid>
 
 </ContentPage>
