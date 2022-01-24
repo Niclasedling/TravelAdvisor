@@ -50,6 +50,16 @@ namespace TravelAdvisor.Services
             }
         }
 
+        public async Task NavigateTo<TVM>(Models.Attraction attraction) where TVM : BaseViewModel
+        {
+            await NavigateToView(typeof(TVM));
+
+            if (Navigation.NavigationStack.Last().BindingContext is BaseViewModel)
+            {
+                ((BaseViewModel)Navigation.NavigationStack.Last().BindingContext).Init();
+            }
+        }
+
         public async Task NavigateTo<TVM, TParameter>(TParameter parameter)
             where TVM : BaseViewModel
         {

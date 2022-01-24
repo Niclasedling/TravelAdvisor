@@ -15,7 +15,7 @@ namespace TravelAdvisor.Views
     public partial class DetailsPage : ContentPage
     {
         DetailsPageViewModel ViewModel => BindingContext as DetailsPageViewModel;
-        public DetailsPage(Attraction attraction)
+        public DetailsPage()
         {
             InitializeComponent();
             BindingContext = new DetailsPageViewModel(DependencyService.Get<INavService>());

@@ -15,9 +15,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using TravelAdvisor.Infrastructure.Interfaces;
 using TravelAdvisor.Infrastructure.Migrations.Data;
-using TravelAdvisor.Infrastructure.Migrations.Interfaces;
-using TravelAdvisor.Infrastructure.Migrations.Repository;
 using TravelAdvisor.Infrastructure.Models.Mapping;
+using TravelAdvisor.Infrastructure.Repository;
 using TravelAdvisor.Infrastructure.Services;
 
 namespace TravelAdvisor.Web

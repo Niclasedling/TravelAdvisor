@@ -78,51 +78,51 @@ namespace TravelAdvisor.Web.Controllers
         }
 
         [HttpPost("Login")]
-        public async Task<IActionResult> Login(Login model)
-        {
-            if (ModelState.IsValid)
-            {
+        //public async Task<IActionResult> Login(Login model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
 
-                if (_userRepository.GetByEmailAndPassword(model.Email, model.Password) != null)
-                {
-                    await HttpContext.SignInAsync(
-                     CookieAuthenticationDefaults.AuthenticationScheme,
-                     new ClaimsPrincipal(_userRepository.Authenticate(model.Email)));
+        //        //if (_userRepository.GetByEmailAndPassword(model.Email, model.Password) != null)
+        //        //{
+        //        //    await HttpContext.SignInAsync(
+        //        //     CookieAuthenticationDefaults.AuthenticationScheme,
+        //        //     new ClaimsPrincipal(_userRepository.Authenticate(model.Email)));
 
-                    return new JsonResult(model.Email);
-                }
-                else
-                {
-                    return new JsonResult("Wrong Email or password");
+        //        //    return new JsonResult(model.Email);
+        //        //}
+        //        //else
+        //        //{
+        //        //    return new JsonResult("Wrong Email or password");
 
-                }
+        //        //}
 
-            }
-            return new JsonResult(model);
-        }
+        //    }
+        //    return new JsonResult(model);
+        //}
 
         //!!!!!!!!!!!!!!!!!!!!!Registrering!!!!!!!!!!!!!!!!!!!
 
         [HttpPost("Register")]
-        public async Task<IActionResult> Register(Register model)
-        {
+        //public async Task<IActionResult> Register(Register model)
+        //{
 
-            if (_userRepository.GetByEmail(model.Email) == null)
-            {
-                _userRepository.Add(new User { FirstName = model.FirstName, LastName = model.LastName, Email = model.Email, Password = model.Password });
+        //    if (_userRepository.GetByEmail(model.Email) == null)
+        //    {
+        //        _userRepository.Add(new User { FirstName = model.FirstName, LastName = model.LastName, Email = model.Email, Password = model.Password });
 
-                return Ok($"{ model.Email } is success");
+        //        return Ok($"{ model.Email } is success");
 
-                //return new JsonResult($"{ model.Email } is success");
-            }
-            else
-            {
-                return Ok("User with this email already exists ");
+        //        //return new JsonResult($"{ model.Email } is success");
+        //    }
+        //    else
+        //    {
+        //        return Ok("User with this email already exists ");
 
-                //return new JsonResult("User with this email already exists ");
-            }
+        //        //return new JsonResult("User with this email already exists ");
+        //    }
 
-        }
+        //}
         [HttpPost("Logout")]
         public async Task<IActionResult> Logout()
         {

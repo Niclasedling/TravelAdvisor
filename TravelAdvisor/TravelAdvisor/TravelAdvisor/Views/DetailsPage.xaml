@@ -8,7 +8,7 @@
             <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <Image Aspect="AspectFill" Source="{Binding Property.Image}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Image>
+        <Image Aspect="AspectFill" Source="{Binding Attraction.Image}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Image>
         <ImageButton 
             BackgroundColor="Transparent" 
             Aspect="Fill" Source="noun-arrow-back-2352160.png" 
@@ -67,15 +67,15 @@
                         <StackLayout Orientation="Horizontal" Spacing="15">
                             <StackLayout Orientation="Horizontal" Spacing="10">
                                 <Image WidthRequest="16" Source="bed.png"></Image>
-                                <Label Text="{Binding Property.Bed}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
+                                <Label Text="{Binding Property.Location}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" Spacing="10">
                                 <Image WidthRequest="16" Source="bed.png"></Image>
-                                <Label Text="{Binding Property.Bath}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
+                                <Label Text="{Binding Property.Location}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" Spacing="10">
                                 <Image WidthRequest="16" Source="bed.png"></Image>
-                                <Label Text="{Binding Property.Space}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
+                                <Label Text="{Binding Property.Location}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
                             </StackLayout>
                         </StackLayout>
                     </StackLayout>
