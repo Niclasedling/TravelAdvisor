@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
+using TravelAdvisor.Models;
 using TravelAdvisor.Services;
 using Xamarin.Forms;
 
@@ -14,6 +15,7 @@ namespace TravelAdvisor.ViewModels
         public DetailsPageViewModel(INavService naviService) : base(naviService)
         {
             //Code for creating the ViewModel
+            
             
 
         }

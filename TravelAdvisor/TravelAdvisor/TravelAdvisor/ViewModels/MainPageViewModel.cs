@@ -1,36 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using TravelAdvisor.Models;
 using TravelAdvisor.Services;
+using TravelAdvisor.Views;
+using Xamarin.CommunityToolkit.ObjectModel;
 using Xamarin.Forms;
 
 namespace TravelAdvisor.ViewModels
 {
     public class MainPageViewModel : BaseViewModel
     {
-
-      
-
-
-        public Command ViewDetails => new Command(async () => await NavigationService.NavigateTo<DetailsPageViewModel>());
+        public MainPage MainPageProperty { get; set; }
+        public AsyncCommand<object> ViewDetails { get; }
         public Command LoginPage => new Command(async () => await NavigationService.NavigateTo<LoginPageViewModel>());
         public Command BackPage => new Command(async () => await NavigationService.GoBack());
         public MainPageViewModel(INavService naviService) : base(naviService)
         {
-           
             //Code for creating the ViewModel
+            ViewDetails = new AsyncCommand<object>(AttractionSelected);
         }
 
         public override void Init()
         {
             //Code for initialize the ViewModel
         }
-        private void AttractionSelected(object sender, EventArgs e)
-        {
-            var attraction = (sender as View).BindingContext as Attraction;
+        //private void AttractionSelected(object sender, EventArgs e)
+        //{
+        //    var attraction = (sender as View).BindingContext as Attraction;
             
+        //}
+
+        async Task AttractionSelected(object sender)
+        {
+            var attraction = sender as Attraction;
+            if (attraction == null) return;
+
+            await NavigationService.NavigateTo<DetailsPageViewModel>();
+
         }
         public List<Filter> PropertyTypeList => GetFilters();
         public List<Attraction> PropertyList => GetAttractions();

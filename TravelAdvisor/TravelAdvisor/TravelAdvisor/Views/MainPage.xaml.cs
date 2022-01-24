@@ -15,6 +15,7 @@ namespace TravelAdvisor.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
+        public Attraction Attraction { get; set; }
         MainPageViewModel ViewModel => BindingContext as MainPageViewModel;
         public MainPage()
         {
@@ -29,14 +30,6 @@ namespace TravelAdvisor.Views
             // Initialize ViewModel
             ViewModel?.Init();
         }
-
-       
-
-        //private async void AttractionSelected(object sender, EventArgs e)
-        //{
-        //    var attraction = (sender as View).BindingContext as Attraction;
-        //    await this.Navigation.PushAsync(new DetailsPage(attraction));
-        //}
 
         private void SelectType(object sender, EventArgs e)
         {

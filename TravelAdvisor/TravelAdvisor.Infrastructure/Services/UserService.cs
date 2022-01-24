@@ -6,7 +6,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using TravelAdvisor.Infrastructure.Interfaces;
-using TravelAdvisor.Infrastructure.Migrations.Interfaces;
+
 using TravelAdvisor.Infrastructure.Migrations.Models;
 using TravelAdvisor.Infrastructure.Models;
 
