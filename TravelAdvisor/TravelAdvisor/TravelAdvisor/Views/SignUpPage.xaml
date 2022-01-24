@@ -20,18 +20,21 @@
                         </StackLayout>
 
                         <StackLayout Margin="0,25,0,0">
+                            <StackLayout Orientation="Horizontal">
+                                <Label>Firstname</Label>
+                                <Label Margin="150,0,0,0">Lastname</Label>
+                            </StackLayout>
                             <!--FirstNameBox and LastNameBox-->
                             <Frame BackgroundColor="Transparent" BorderColor="Transparent" Padding="0" Margin="0" CornerRadius="0" HorizontalOptions="FillAndExpand">
                                 <StackLayout Orientation="Horizontal">
-
-
                                     <Entry Placeholder="Firstname" TextColor="Green" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" />
                                     <Entry Placeholder="Lastname" TextColor="Green" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" />
                                 </StackLayout>
                             </Frame>
                             
                             <!--EmailwordBox-->
-                            <Frame BackgroundColor="Transparent" BorderColor="Transparent" Padding="0" Margin="0,10,0,0" CornerRadius="0" HorizontalOptions="FillAndExpand">
+                            <Label Margin="0,10,0,0">Email</Label>
+                            <Frame BackgroundColor="Transparent" BorderColor="Transparent" Padding="0" CornerRadius="0" HorizontalOptions="FillAndExpand">
                                 <StackLayout Orientation="Horizontal">
                                     
                                     <Entry Placeholder="Email" TextColor="Green" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" />
@@ -39,7 +42,8 @@
                             </Frame>
                             
                             <!--PasswordBox-->
-                            <Frame BackgroundColor="Transparent" BorderColor="Transparent" Padding="0" Margin="0,10,0,15" CornerRadius="0" HorizontalOptions="FillAndExpand">
+                            <Label Margin="0,10,0,0">Password</Label>
+                            <Frame BackgroundColor="Transparent" BorderColor="Transparent" Padding="0" CornerRadius="0" HorizontalOptions="FillAndExpand">
                                 <StackLayout Orientation="Horizontal">
                                     
                                     <Entry Placeholder="Password" IsPassword="True" TextColor="Green" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" />

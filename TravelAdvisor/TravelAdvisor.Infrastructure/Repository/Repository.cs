@@ -4,10 +4,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using TravelAdvisor.Infrastructure.Interfaces;
 using TravelAdvisor.Infrastructure.Migrations.Data;
-using static TravelAdvisor.Infrastructure.Migrations.Interfaces.IRepository;
 
-namespace TravelAdvisor.Infrastructure.Migrations.Repository
+namespace TravelAdvisor.Infrastructure.Repository
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
@@ -26,7 +26,7 @@ namespace TravelAdvisor.Infrastructure.Migrations.Repository
         public async Task RemoveAsync(TEntity entity) => await Task.Run(() => { context.Set<TEntity>().Remove(entity); });
 
 
-        public async Task UpdateAsync(TEntity entity) => await Task.Run(() => { context.Set<TEntity>().Update(entity); }); 
+        public async Task UpdateAsync(TEntity entity) => await Task.Run(() => { context.Set<TEntity>().Update(entity); });
 
 
 
@@ -38,6 +38,6 @@ namespace TravelAdvisor.Infrastructure.Migrations.Repository
 
         public async Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate) => await Task.Run(() => { return context.Set<TEntity>().Where(predicate); });
 
-      
+
     }
 }
