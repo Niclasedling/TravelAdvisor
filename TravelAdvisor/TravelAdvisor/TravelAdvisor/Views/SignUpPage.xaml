@@ -52,8 +52,8 @@
 
                         </StackLayout>
 
-                        <!--SignInButton-->
-                        <Button Text="Register" BackgroundColor="DarkGreen" TextColor="White" FontAttributes="Bold" CornerRadius="15" HeightRequest="40" Margin="70,0,70,0"/>
+                        <!--Register-->
+                        <Button Text="Register" BackgroundColor="DarkGreen" TextColor="White" FontAttributes="Bold" CornerRadius="15" HeightRequest="40" Margin="70,0,70,0" Clicked="Button_Clicked"/>
                         
 
                     </StackLayout>
