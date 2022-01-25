@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 using TravelAdvisor.Services;
 using TravelAdvisor.Views;
 using Xamarin.Forms;
@@ -12,20 +13,34 @@ namespace TravelAdvisor
         {
             InitializeComponent();
             
+            //---------------------------------------------------------Lägg till service
             DependencyService.Register<INavService,NavService>();
-            //Registerar service
-         
-            MainPage = new NavigationPage(new MainPage());
-            //MainPage är av typen NavigationPage
-            
 
+
+         
+
+            //-------------------------------------------------------Lägg till ApiService
+            var Client = new HttpClient();
+            var userService = new UserService(Client);
+            DependencyService.RegisterSingleton<IUserService>(userService);
+
+
+
+
+
+            //-------------------------------------------------------MainPage är av typen NavigationPage
+            
+            MainPage = new NavigationPage(new MainPage());
+
+
+
+            //-----------------------------------------------------------------Sätter navigation
             var navService = DependencyService.Get<INavService>();
             navService.SetNavigation(MainPage.Navigation);
-            //Sätter navigation
 
 
 
-            //MainPage = new NavigationPage(new LoginPage());
+
         }
 
         protected override void OnStart()

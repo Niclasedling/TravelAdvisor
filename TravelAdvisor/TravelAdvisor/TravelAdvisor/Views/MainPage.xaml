@@ -32,7 +32,7 @@
                         TextColor="White" 
                         CornerRadius="15" 
                         FontAttributes="Bold"
-                        Command="{Binding LoginPage}">
+                       Clicked="Button_Clicked">
                 </Button>
                 
             </Grid>

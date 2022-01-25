@@ -17,15 +17,19 @@ namespace TravelAdvisor.Views
     {
         public Attraction Attraction { get; set; }
         MainPageViewModel ViewModel => BindingContext as MainPageViewModel;
+        private readonly IUserService _userService;
         public MainPage()
         {
             InitializeComponent();
             BindingContext = new MainPageViewModel(DependencyService.Get<INavService>());
+            _userService = DependencyService.Get<IUserService>();
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+
 
             // Initialize ViewModel
             ViewModel?.Init();
@@ -53,6 +57,17 @@ namespace TravelAdvisor.Views
             {
                 txtCtrl.TextColor = Color.FromHex(hexColor);
             }
+        }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            var item = await _userService.GetAllUsers();
+
+            if (item != null)
+            {
+                var h = item;
+            }
+            else { }  
         }
     }
 
