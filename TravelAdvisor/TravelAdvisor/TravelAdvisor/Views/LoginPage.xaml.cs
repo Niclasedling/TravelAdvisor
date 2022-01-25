@@ -29,5 +29,12 @@ namespace TravelAdvisor.Views
             // Initialize ViewModel
             ViewModel?.Init();
         }
+
+       
+
+        private void Login_Button_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }
