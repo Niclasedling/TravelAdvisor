@@ -5,6 +5,7 @@ using System.Text;
 using TravelAdvisor.ViewModels;
 using System.ComponentModel;
 using Xamarin.Forms;
+using TravelAdvisor.Models;
 
 namespace TravelAdvisor.Services
 {
@@ -20,7 +21,7 @@ namespace TravelAdvisor.Services
 
         Task NavigateTo<TVM, TParameter>(TParameter parameter) where TVM : BaseViewModel;
 
-        Task NavigateToView(Type viewModelType);
+        Task NavigateToView(Type viewModelType, Attraction attraction);
 
         void RemoveLastView();
 
