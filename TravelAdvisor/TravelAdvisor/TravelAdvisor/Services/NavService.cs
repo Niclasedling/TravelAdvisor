@@ -20,6 +20,7 @@ namespace TravelAdvisor.Services
             _map.Add(typeof(LoginPageViewModel), typeof(LoginPage));
             _map.Add(typeof(SignUpPageViewModel), typeof(SignUpPage));
             _map.Add(typeof(DetailsPageViewModel), typeof(DetailsPage));
+            _map.Add(typeof(MainPageViewModel), typeof(MainPage));
 
             //mappa alla här!
 
@@ -51,6 +52,15 @@ namespace TravelAdvisor.Services
         }
 
         public async Task NavigateTo<TVM>(Models.Attraction attraction) where TVM : BaseViewModel
+        {
+            await NavigateToView(typeof(TVM));
+
+            if (Navigation.NavigationStack.Last().BindingContext is BaseViewModel)
+            {
+                ((BaseViewModel)Navigation.NavigationStack.Last().BindingContext).Init();
+            }
+        }
+        public async Task NavigateTo<TVM>(Models.User user) where TVM : BaseViewModel
         {
             await NavigateToView(typeof(TVM));
 

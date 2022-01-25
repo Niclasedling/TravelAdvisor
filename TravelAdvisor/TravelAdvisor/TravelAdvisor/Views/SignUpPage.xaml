@@ -27,8 +27,8 @@
                             <!--FirstNameBox and LastNameBox-->
                             <Frame BackgroundColor="Transparent" BorderColor="Transparent" Padding="0" Margin="0" CornerRadius="0" HorizontalOptions="FillAndExpand">
                                 <StackLayout Orientation="Horizontal">
-                                    <Entry Placeholder="Firstname" TextColor="Green" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" />
-                                    <Entry Placeholder="Lastname" TextColor="Green" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" />
+                                    <Entry Text="{Binding Firstname}" Placeholder="Firstname" TextColor="Green" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" />
+                                    <Entry Text="{Binding Lastname}" Placeholder="Lastname" TextColor="Green" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" />
                                 </StackLayout>
                             </Frame>
                             
@@ -37,7 +37,7 @@
                             <Frame BackgroundColor="Transparent" BorderColor="Transparent" Padding="0" CornerRadius="0" HorizontalOptions="FillAndExpand">
                                 <StackLayout Orientation="Horizontal">
                                     
-                                    <Entry Placeholder="Email" TextColor="Green" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" />
+                                    <Entry Text="{Binding Email}" Placeholder="Email" TextColor="Green" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" />
                                 </StackLayout>
                             </Frame>
                             
@@ -46,7 +46,7 @@
                             <Frame BackgroundColor="Transparent" BorderColor="Transparent" Padding="0" CornerRadius="0" HorizontalOptions="FillAndExpand">
                                 <StackLayout Orientation="Horizontal">
                                     
-                                    <Entry Placeholder="Password" IsPassword="True" TextColor="Green" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" />
+                                    <Entry Text="{Binding Password}" Placeholder="Password" IsPassword="True" TextColor="Green" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" />
                                 </StackLayout>
                             </Frame>
 
