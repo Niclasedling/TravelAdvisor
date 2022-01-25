@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using TravelAdvisor.Models;
 using TravelAdvisor.ViewModels;
 using TravelAdvisor.Views;
 using Xamarin.Forms;
@@ -20,6 +21,7 @@ namespace TravelAdvisor.Services
             _map.Add(typeof(LoginPageViewModel), typeof(LoginPage));
             _map.Add(typeof(SignUpPageViewModel), typeof(SignUpPage));
             _map.Add(typeof(DetailsPageViewModel), typeof(DetailsPage));
+            _map.Add(typeof(MainPageViewModel), typeof(MainPage));
 
             //mappa alla här!
 
@@ -50,7 +52,16 @@ namespace TravelAdvisor.Services
             }
         }
 
-        public async Task NavigateTo<TVM>(Models.Attraction attraction) where TVM : BaseViewModel
+        public async Task NavigateTo<TVM>(Attraction attraction) where TVM : BaseViewModel
+        {
+            await NavigateToView(typeof(TVM));
+
+            if (Navigation.NavigationStack.Last().BindingContext is BaseViewModel)
+            {
+                ((BaseViewModel)Navigation.NavigationStack.Last().BindingContext).Init();
+            }
+        }
+        public async Task NavigateTo<TVM>(User user) where TVM : BaseViewModel
         {
             await NavigateToView(typeof(TVM));
 
@@ -96,20 +107,29 @@ namespace TravelAdvisor.Services
             }
         }
 
-        public async Task NavigateToView(Type viewModelType)
+        public async Task NavigateToView(Type viewModelType, Attraction attraction = null)
         {
+
+
             if (!_map.TryGetValue(viewModelType, out Type viewType))
             {
                 throw new ArgumentException("No view found in view mapping for " + viewModelType.FullName + ".");
             }
 
+            Page page;
+            if (attraction == null)
+
+                page = (Page)Activator.CreateInstance(viewType);
+            else
+                page = (Page)Activator.CreateInstance(viewType, attraction);
+
             // Use reflection to get the View's constructor and create an instance of the View
-            var constructor = viewType.GetTypeInfo()
-                                      .DeclaredConstructors
-                                      .FirstOrDefault(dc => !dc.GetParameters().Any());
-            var view = constructor.Invoke(null) as Page;
+            //var constructor = viewType.GetTypeInfo()
+            //                          .DeclaredConstructors
+            //                          .FirstOrDefault(dc => !dc.GetParameters().Any());
+            //var view = constructor.Invoke(null) as Page;
             
-            await Navigation.PushAsync(view, true);
+            await Navigation.PushAsync(page, true);
         }
 
         public void RegisterViewMapping(Type viewModel, Type view)

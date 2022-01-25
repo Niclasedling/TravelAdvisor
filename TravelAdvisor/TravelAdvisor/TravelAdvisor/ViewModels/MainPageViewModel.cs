@@ -33,10 +33,17 @@ namespace TravelAdvisor.ViewModels
         public Command BackPage => new Command(async () => await NavigationService.GoBack());
         public MainPageViewModel(INavService naviService) : base(naviService)
         {
+            if (ViewDetails != null)
+            {
+                ViewDetails = new AsyncCommand<object>(AttractionSelected);
+            }
             //Code for creating the ViewModel
-            ViewDetails = new AsyncCommand<object>(AttractionSelected);
+           
         }
+        public MainPageViewModel(INavService navService, User user) : base(navService)
+        {
 
+        }
         public override void Init()
         {
             //Code for initialize the ViewModel
@@ -53,6 +60,8 @@ namespace TravelAdvisor.ViewModels
             if (attraction == null) return;
 
             SelectedAttraction = null;
+
+
 
             await NavigationService.NavigateTo<DetailsPageViewModel>(attraction);
 

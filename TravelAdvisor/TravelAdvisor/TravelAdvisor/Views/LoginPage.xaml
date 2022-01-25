@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TravelAdvisor.Views.LoginPage">
+    
     <StackLayout Padding="0">
        
             <Grid>
@@ -26,7 +27,9 @@
                                     <Frame BackgroundColor="AliceBlue" CornerRadius="20" HeightRequest="35" WidthRequest="35" Padding="0" HorizontalOptions="Start" Margin="7">
                                         
                                     </Frame>
-                                    <Entry Placeholder="Email" TextColor="DarkOliveGreen" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" />
+                                    <Entry x:Name="Email" Placeholder="Email" TextColor="DarkOliveGreen" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" 
+                                           Text="{Binding Email}"
+                                           Keyboard="Email"/>
                                 </StackLayout>
                             </Frame>
                             <!--PasswordBox-->
@@ -35,7 +38,7 @@
                                     <Frame BackgroundColor="AliceBlue" CornerRadius="20" HeightRequest="35" WidthRequest="35" Padding="0" HorizontalOptions="Start" Margin="7">
 
                                     </Frame>
-                                    <Entry Placeholder="Password" IsPassword="True" TextColor="DarkOliveGreen" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" />
+                                    <Entry x:Name="Password" Text="{Binding Password}" Placeholder="Password" IsPassword="True" TextColor="DarkOliveGreen" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" />
                                 </StackLayout>
                             </Frame>
                             
@@ -49,11 +52,34 @@
                             <Label Text="Forgot Password" HorizontalTextAlignment="End" TextColor="DarkOliveGreen" HorizontalOptions="EndAndExpand" FontAttributes="Bold" VerticalTextAlignment="Center" />
 
                         </StackLayout>
+<<<<<<< HEAD
                         --><!--SignInButton--><!--
                         <Button Text="Sign in" BackgroundColor="DarkOliveGreen" TextColor="White" FontAttributes="Bold" CornerRadius="20" HeightRequest="45" Clicked="Login_Button_Clicked"/>
+=======
+                        
+                        <!--SignInButton-->
+                        <Button x:Name="logibtn"
+                                Text="Sign in"
+                                Command="{Binding LoginCommand}"
+                                BackgroundColor="DarkOliveGreen" 
+                                TextColor="White" 
+                                FontAttributes="Bold" 
+                                CornerRadius="20" 
+                                HeightRequest="45" >
+                            <!--<Button.Behaviors>
+                                <xct:EventToCommandBehavior
+                                    EventName="Clicked"
+                                    Command="{Binding Login}"
+                                    EventArgsConverter="{StaticResource ItemSelectedEventArgsConverter}">
+                                    
+                                </xct:EventToCommandBehavior>
+                            </Button.Behaviors>-->
+                        </Button>
+                        
+>>>>>>> 5d8f71184467e06c2f5137b24bf570e0baab905c
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                             <Label Text="Still not connected?" HorizontalOptions="Start" VerticalTextAlignment="Center" />
-
+                        <!--SignUpText-->
                             <Label Text="Sign Up" HorizontalTextAlignment="End" TextColor="DarkOliveGreen" FontAttributes="Bold" VerticalTextAlignment="Center">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding SignUpPage}"/>
