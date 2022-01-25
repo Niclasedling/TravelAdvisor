@@ -13,6 +13,20 @@ namespace TravelAdvisor.ViewModels
 {
     public class MainPageViewModel : BaseViewModel
     {
+        Attraction selectedAttraction;
+        
+        public Attraction SelectedAttraction 
+        { 
+            get => selectedAttraction;
+            set => SetProperty(ref selectedAttraction, value);
+        }
+
+        private void SetProperty(ref Attraction selectedAttraction, Attraction value)
+        {
+            value = null;
+            selectedAttraction = value;
+        }
+
         public MainPage MainPageProperty { get; set; }
         public AsyncCommand<object> ViewDetails { get; }
         public Command LoginPage => new Command(async () => await NavigationService.NavigateTo<LoginPageViewModel>());
@@ -38,11 +52,13 @@ namespace TravelAdvisor.ViewModels
             var attraction = sender as Attraction;
             if (attraction == null) return;
 
-            await NavigationService.NavigateTo<DetailsPageViewModel>();
+            SelectedAttraction = null;
+
+            await NavigationService.NavigateTo<DetailsPageViewModel>(attraction);
 
         }
         public List<Filter> PropertyTypeList => GetFilters();
-        public List<Attraction> PropertyList => GetAttractions();
+        public List<Attraction> AttractionList => GetAttractions();
 
         private List<Filter> GetFilters()
         {

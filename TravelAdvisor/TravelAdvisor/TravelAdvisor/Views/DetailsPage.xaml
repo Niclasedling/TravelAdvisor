@@ -8,7 +8,7 @@
             <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
-        <Image Aspect="AspectFill" Source="{Binding Attraction.Image}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Image>
+        <Image Aspect="AspectFill" Source="{Binding Image}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Image>
         <ImageButton 
             BackgroundColor="Transparent" 
             Aspect="Fill" Source="noun-arrow-back-2352160.png" 
@@ -47,7 +47,7 @@
                                 VerticalOptions="Center" 
                                 HorizontalOptions="Start"></Image>
                             <Label 
-                                Text="{Binding Property.Adress}" 
+                                Text="{Binding Adress}" 
                                 FontSize="15" TextColor="Black" 
                                 FontFamily="ThemeFontRegular" 
                                 HorizontalOptions="Start" 
@@ -63,19 +63,19 @@
                             HorizontalOptions="End"></ImageButton>
                     </Grid>
                     <StackLayout Grid.Row="1" Spacing="15">
-                        <Label Text="{Binding Property.Price}" FontSize="20" FontFamily="ThemeFontBold" TextColor="#515151"></Label>
+                        <Label Text="{Binding Price}" FontSize="20" FontFamily="ThemeFontBold" TextColor="#515151"></Label>
                         <StackLayout Orientation="Horizontal" Spacing="15">
                             <StackLayout Orientation="Horizontal" Spacing="10">
                                 <Image WidthRequest="16" Source="bed.png"></Image>
-                                <Label Text="{Binding Property.Location}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
+                                <Label Text="{Binding Location}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" Spacing="10">
                                 <Image WidthRequest="16" Source="bed.png"></Image>
-                                <Label Text="{Binding Property.Location}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
+                                <Label Text="{Binding Location}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" Spacing="10">
                                 <Image WidthRequest="16" Source="bed.png"></Image>
-                                <Label Text="{Binding Property.Location}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
+                                <Label Text="{Binding Location}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
                             </StackLayout>
                         </StackLayout>
                     </StackLayout>
@@ -136,7 +136,7 @@
                     </StackLayout>
                     <BoxView HeightRequest="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand" BackgroundColor="#E4E4E4"></BoxView>
                     <Label Text="Details" FontSize="15" FontFamily="ThemeFontBold" TextColor="#515151"></Label>
-                    <Label Text="{Binding Property.Details}" FontSize="15" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
+                    <Label Text="{Binding Details}" FontSize="15" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
                 </StackLayout>
             </ScrollView>
         </Frame>

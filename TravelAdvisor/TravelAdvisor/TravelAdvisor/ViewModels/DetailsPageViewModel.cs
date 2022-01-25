@@ -23,6 +23,7 @@ namespace TravelAdvisor.ViewModels
         public override void Init()
         {
             //Code for initialize the ViewModel
+            
         }
     }
 }
