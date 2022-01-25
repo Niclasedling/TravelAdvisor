@@ -30,11 +30,6 @@ namespace TravelAdvisor.Views
             ViewModel?.Init();
         }
 
-       
-
-        private void Login_Button_Clicked(object sender, EventArgs e)
-        {
-
-        }
+      
     }
 }
