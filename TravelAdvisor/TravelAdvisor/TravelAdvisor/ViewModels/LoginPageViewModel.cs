@@ -64,8 +64,8 @@ namespace TravelAdvisor.ViewModels
         async Task Login(object sender)
         {
             await loginService.Login(Email, Password);
-            
-            
+
+
         }
     }
 }
