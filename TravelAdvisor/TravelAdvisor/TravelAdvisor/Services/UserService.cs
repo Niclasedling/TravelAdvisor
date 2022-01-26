@@ -1,35 +1,57 @@
 ﻿
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using TravelAdvisor.ApiClient;
 using TravelAdvisor.Models;
 
 namespace TravelAdvisor.Services
 {
 
 
-    public class UserService : IUserService
+    public class UserService:IUserService
     {
-        static HttpClient client = new HttpClient();
-        public static string searchword;
-        string uri = $"https://localhost:44361/User/" + $"{searchword}";
-        
-        public async Task<UserDto> GetAllUsers()
-        {
-            searchword = "GetAll";
+        private readonly ApiClient<UserDto> userClient;
 
-            UserDto user = new UserDto();
-            HttpResponseMessage response = await client.GetAsync(uri);
-            if (response.IsSuccessStatusCode)
-            {
-                var result = await response.Content.ReadAsStringAsync();
-                user = JsonSerializer.Deserialize<UserDto>(result);
-            }
-            return user;
+        public UserService(HttpClient httpClient)
+        {
+            userClient = new ApiClient<UserDto>(httpClient, "User");
         }
-        
+
+        public async Task<UserDto> GetUser(Guid id)
+        {
+            return await userClient.GetAsync(id);
+        }
+
+        public async Task<bool> DeleteUser(Guid id)
+        {
+            return await userClient.DeleteAsync(id);
+        }
+
+        public async Task<Guid> CreateUser(UserDto user)
+        {
+            return await userClient.PostAsync(user);
+        }
+
+        public async Task<bool> UpdateUser(UserDto user)
+        {
+            return await userClient.PutAsync( user);
+        }
+
+        public async Task<List<UserDto>> GetAllUsers()
+        {
+            return await userClient.GetListAsync("GetAll");
+        }
     }
+
+
 }
+
+

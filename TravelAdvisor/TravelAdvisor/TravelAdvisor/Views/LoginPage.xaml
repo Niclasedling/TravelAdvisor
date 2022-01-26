@@ -44,14 +44,18 @@
                             
                         </StackLayout>
 
-                        <StackLayout Orientation="Horizontal">
-                            <!--Remebmer Me Checkbox-->
+                        <!--<StackLayout Orientation="Horizontal">
+                            --><!--Remebmer Me Checkbox--><!--
                             <CheckBox IsChecked="False" Color="DarkOliveGreen" Margin="10,0,0,0"/>
                             <Label Text="Remember me" HorizontalOptions="Start" VerticalTextAlignment="Center"/>
 
                             <Label Text="Forgot Password" HorizontalTextAlignment="End" TextColor="DarkOliveGreen" HorizontalOptions="EndAndExpand" FontAttributes="Bold" VerticalTextAlignment="Center" />
 
                         </StackLayout>
+<<<<<<< HEAD
+                        --><!--SignInButton--><!--
+                        <Button Text="Sign in" BackgroundColor="DarkOliveGreen" TextColor="White" FontAttributes="Bold" CornerRadius="20" HeightRequest="45" Clicked="Login_Button_Clicked"/>
+=======
                         
                         <!--SignInButton-->
                         <Button x:Name="logibtn"
@@ -72,6 +76,7 @@
                             </Button.Behaviors>-->
                         </Button>
                         
+
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                             <Label Text="Still not connected?" HorizontalOptions="Start" VerticalTextAlignment="Center" />
                         <!--SignUpText-->
@@ -81,7 +86,7 @@
                                 </Label.GestureRecognizers>
                             </Label>
 
-                        </StackLayout>
+                        </StackLayout>-->
 
                     </StackLayout>
                      
