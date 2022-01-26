@@ -76,7 +76,7 @@
                             </Button.Behaviors>-->
                         </Button>
                         
->>>>>>> 5d8f71184467e06c2f5137b24bf570e0baab905c
+
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                             <Label Text="Still not connected?" HorizontalOptions="Start" VerticalTextAlignment="Center" />
                         <!--SignUpText-->

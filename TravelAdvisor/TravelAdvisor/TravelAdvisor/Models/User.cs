@@ -4,12 +4,7 @@ using System.Text;
 
 namespace TravelAdvisor.Models
 {
-    public class User
-    {
-        //public string Comment { get; set; }
-
-
-    }
+    
 
 
         public abstract class UserBase
