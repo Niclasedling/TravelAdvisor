@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using TravelAdvisor.Interfaces;
 using TravelAdvisor.Models;
 using TravelAdvisor.Services;
 using TravelAdvisor.Views;
@@ -17,7 +18,7 @@ namespace TravelAdvisor
             
             //---------------------------------------------------------Lägg till service
             DependencyService.Register<INavService,NavService>();
-
+            DependencyService.Register<ILoginService, LoginService>();
 
          
 

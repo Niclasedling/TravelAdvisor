@@ -11,7 +11,7 @@ namespace TravelAdvisor.Services
 {
     public class LoginService : ILoginService
     {
-       
+
         private readonly IUserService _userService;
         public LoginService()
         {
