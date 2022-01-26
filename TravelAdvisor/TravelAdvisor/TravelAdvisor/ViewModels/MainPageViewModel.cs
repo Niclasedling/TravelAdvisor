@@ -40,7 +40,7 @@ namespace TravelAdvisor.ViewModels
             //Code for creating the ViewModel
            
         }
-        public MainPageViewModel(INavService navService, User user) : base(navService)
+        public MainPageViewModel(INavService navService, UserBase user) : base(navService)
         {
 
         }

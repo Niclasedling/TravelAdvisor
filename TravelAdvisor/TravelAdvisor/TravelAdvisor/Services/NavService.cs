@@ -61,7 +61,7 @@ namespace TravelAdvisor.Services
                 ((BaseViewModel)Navigation.NavigationStack.Last().BindingContext).Init();
             }
         }
-        public async Task NavigateTo<TVM>(User user) where TVM : BaseViewModel
+        public async Task NavigateTo<TVM>(UserBase user) where TVM : BaseViewModel
         {
             await NavigateToView(typeof(TVM));
 

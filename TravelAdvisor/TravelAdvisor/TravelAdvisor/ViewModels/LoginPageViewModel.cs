@@ -13,14 +13,19 @@ namespace TravelAdvisor.ViewModels
 {
     public class LoginPageViewModel : BaseViewModel
     {
+        readonly LoginService loginService;
 
+        public AsyncCommand<object> LoginCommand { get; }
         public Command BackPage => new Command(async () => await NavigationService.GoBack());
         public Command SignUpPage => new Command(async () => await NavigationService.NavigateTo<SignUpPageViewModel>());
 
         public LoginPageViewModel(INavService naviService) : base(naviService)
         {
 
-
+            if(LoginCommand != null)
+            {
+                LoginCommand = new AsyncCommand<object>(Login);
+            }
         }
 
 
@@ -48,30 +53,19 @@ namespace TravelAdvisor.ViewModels
 
             }
         }
-        public Command LoginCommand
-        {
-            get
-            {
-                return new Command(Login);
-            }
-        }
+        //public AsyncCommand LoginCommand
+        //{
+        //    get
+        //    {
+        //        return new AsyncCommand(await loginService.Login(Email, Password));
+        //    }
+        //}
 
-        private async void Login()
+        async Task Login(object sender)
         {
-            //null or empty field validation, check weather email and password is null or empty  
-            if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password))
-                await App.Current.MainPage.DisplayAlert("Empty Values", "Please enter Email and Password", "OK");
-            else
-            {
-                if (Email == "abc@gmail.com" && Password == "1234")
-                {
-                    await App.Current.MainPage.DisplayAlert("Login Success", "", "Ok");
-                    //Navigate to Main page after successfully login  
-                    await NavigationService.NavigateTo<MainPageViewModel>();
-                }
-                else await App.Current.MainPage.DisplayAlert("Login Fail", "Please enter correct Email and Password", "OK");
-                
-            }
+            await loginService.Login(Email, Password);
+            
+            
         }
     }
 }

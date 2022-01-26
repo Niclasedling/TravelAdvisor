@@ -35,12 +35,12 @@ namespace TravelAdvisor.Services
             return await userClient.DeleteAsync(id);
         }
 
-        public async Task<Guid> CreateUser(UserDto user)
+        public async Task<Guid> CreateUser(UserCreateDto user)
         {
             return await userClient.PostAsync(user);
         }
 
-        public async Task<bool> UpdateUser(UserDto user)
+        public async Task<bool> UpdateUser(UserUpdateDto user)
         {
             return await userClient.PutAsync( user);
         }
