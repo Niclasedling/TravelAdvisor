@@ -47,7 +47,9 @@ namespace TravelAdvisor.Services
 
         public async Task<List<UserDto>> GetAllUsers()
         {
-            return await userClient.GetListAsync("GetAll");
+
+           var item = await userClient.GetListAsync("GetAll");
+            return item;
         }
     }
 

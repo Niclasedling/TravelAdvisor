@@ -34,8 +34,7 @@ namespace TravelAdvisor.Models
         public class UserDto : UserBase
         {
 
-
-
+      
 
 
 

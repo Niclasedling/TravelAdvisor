@@ -20,9 +20,10 @@ namespace TravelAdvisor.Views
         private readonly IUserService _userService;
         public MainPage()
         {
+          
             InitializeComponent();
             BindingContext = new MainPageViewModel(DependencyService.Get<INavService>());
-            //_userService = DependencyService.Get<IUserService>();
+            _userService = DependencyService.Get<IUserService>();
         }
 
         protected override void OnAppearing()
@@ -59,15 +60,19 @@ namespace TravelAdvisor.Views
             }
         }
 
-        private async void Button_Clicked(object sender, EventArgs e)
+     
+
+        private async void Button_Clicked_1(object sender, EventArgs e)
         {
+            //Guid guid = new Guid("d2ff1305-4b26-45f5-9204-006b01c19067");
             var item = await _userService.GetAllUsers();
 
             if (item != null)
             {
                 var h = item;
             }
-            else { }  
+            else { }
+
         }
     }
 

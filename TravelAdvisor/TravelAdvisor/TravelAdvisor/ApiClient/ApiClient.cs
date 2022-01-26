@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
@@ -33,9 +34,9 @@ namespace TravelAdvisor.ApiClient
                 throw new Exception($"Api '{httpClient.BaseAddress}{path}' responded with {response.StatusCode}");
             }
             var responseString = await response.Content.ReadAsStringAsync();
-            
-            return JsonSerializer.Deserialize<T>(responseString);
-            
+
+            return JsonConvert.DeserializeObject<T>(responseString);
+
 
         }
 
@@ -52,7 +53,7 @@ namespace TravelAdvisor.ApiClient
             return true;
         }
 
-        public async Task<Guid> PostAsync( UserCreateDto user)
+        public async Task<Guid> PostAsync(UserCreateDto user)
         {
             string path = "Create";
             var response = await httpClient.PostAsync(path, JsonContent.Create(user));
@@ -64,10 +65,10 @@ namespace TravelAdvisor.ApiClient
 
             var responseString = await response.Content.ReadAsStringAsync();
 
-            return JsonSerializer.Deserialize<Guid>(responseString);
+            return JsonConvert.DeserializeObject<Guid>(responseString);
         }
 
-        public async Task<bool> PutAsync( UserUpdateDto user)
+        public async Task<bool> PutAsync(UserUpdateDto user)
         {
             string path = "Update";
             var response = await httpClient.PostAsync(path, JsonContent.Create(user));
@@ -91,7 +92,8 @@ namespace TravelAdvisor.ApiClient
 
             var responseString = await response.Content.ReadAsStringAsync();
 
-            return JsonSerializer.Deserialize<List<T>>(responseString);
+            
+            return JsonConvert.DeserializeObject<List<T>>(responseString);
         }
 
     }
