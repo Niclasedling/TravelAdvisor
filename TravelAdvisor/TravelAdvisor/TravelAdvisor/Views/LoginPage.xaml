@@ -6,7 +6,7 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <xct:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter"></xct:ItemTappedEventArgsConverter>
+            <xct:ItemSelectedEventArgsConverter x:Key="ItemSelectedEventArgsConverter"></xct:ItemSelectedEventArgsConverter>
         </ResourceDictionary>
     </ContentPage.Resources>
     <StackLayout Padding="0">
@@ -76,7 +76,7 @@
                                 <xct:EventToCommandBehavior
                                     EventName="Clicked"
                                     Command="{Binding LoginCommand}"
-                                    EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}">
+                                    EventArgsConverter="{StaticResource ItemSelectedEventArgsConverter}">
                                     
                                 </xct:EventToCommandBehavior>
                             </Button.Behaviors>

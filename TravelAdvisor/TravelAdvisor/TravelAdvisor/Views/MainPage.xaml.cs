@@ -22,7 +22,7 @@ namespace TravelAdvisor.Views
         {
             InitializeComponent();
             BindingContext = new MainPageViewModel(DependencyService.Get<INavService>());
-            _userService = DependencyService.Get<IUserService>();
+            //_userService = DependencyService.Get<IUserService>();
         }
 
         protected override void OnAppearing()

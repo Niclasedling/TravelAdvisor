@@ -83,11 +83,13 @@
                 </StackLayout>
             </ScrollView>
         </StackLayout>
-       
-            <ListView 
+
+        <ListView 
                 Grid.Row="2" Margin="0,10" VerticalScrollBarVisibility="Never"
-                ItemsSource="{Binding AttractionList}" 
-                SelectedItem="{Binding SelectedAttraction}">
+                ItemsSource="{Binding AttractionList}"
+                
+                >
+
             <ListView.Behaviors>
                 <xct:EventToCommandBehavior
                                             EventName="ItemSelected"

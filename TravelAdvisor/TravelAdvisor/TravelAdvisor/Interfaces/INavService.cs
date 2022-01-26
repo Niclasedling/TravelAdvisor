@@ -21,7 +21,7 @@ namespace TravelAdvisor.Services
 
         Task NavigateTo<TVM, TParameter>(TParameter parameter) where TVM : BaseViewModel;
 
-        Task NavigateToView(Type viewModelType, Attraction attraction);
+        Task NavigateToView(Type viewModelType);
 
         void RemoveLastView();
 

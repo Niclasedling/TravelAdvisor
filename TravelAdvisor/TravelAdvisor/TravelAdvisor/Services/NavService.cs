@@ -107,7 +107,7 @@ namespace TravelAdvisor.Services
             }
         }
 
-        public async Task NavigateToView(Type viewModelType, Attraction attraction = null)
+        public async Task NavigateToView(Type viewModelType)
         {
            
 
@@ -116,20 +116,20 @@ namespace TravelAdvisor.Services
                 throw new ArgumentException("No view found in view mapping for " + viewModelType.FullName + ".");
             }
 
-            Page page;
-            if (attraction == null)
+            //Page page;
+            //if (attraction == null)
 
-                page = (Page)Activator.CreateInstance(viewType);
-            else
-                page = (Page)Activator.CreateInstance(viewType, attraction);
+            //    page = (Page)Activator.CreateInstance(viewType);
+            //else
+            //    page = (Page)Activator.CreateInstance(viewType, attraction);
 
-            // Use reflection to get the View's constructor and create an instance of the View
-            //var constructor = viewType.GetTypeInfo()
-            //                          .DeclaredConstructors
-            //                          .FirstOrDefault(dc => !dc.GetParameters().Any());
-            //var view = constructor.Invoke(null) as Page;
-            
-            await Navigation.PushAsync(page, true);
+            //Use reflection to get the View's constructor and create an instance of the View
+            var constructor = viewType.GetTypeInfo()
+                                      .DeclaredConstructors
+                                      .FirstOrDefault(dc => !dc.GetParameters().Any());
+            var view = constructor.Invoke(null) as Page;
+
+            await Navigation.PushAsync(view, true);
         }
 
         public void RegisterViewMapping(Type viewModel, Type view)

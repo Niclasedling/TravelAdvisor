@@ -13,55 +13,35 @@ namespace TravelAdvisor.ViewModels
 {
     public class MainPageViewModel : BaseViewModel
     {
-        Attraction selectedAttraction;
-        
-        public Attraction SelectedAttraction 
-        { 
-            get => selectedAttraction;
-            set => SetProperty(ref selectedAttraction, value);
-        }
-
-        private void SetProperty(ref Attraction selectedAttraction, Attraction value)
-        {
-            value = null;
-            selectedAttraction = value;
-        }
-
         public MainPage MainPageProperty { get; set; }
-        public AsyncCommand<object> ViewDetails { get; }
+        //public AsyncCommand<object> ViewDetails { get; }
+        public Command<object> ViewDetails
+        {
+            get { return new Command<object>(AttractionSelected); }
+        }
         public Command LoginPage => new Command(async () => await NavigationService.NavigateTo<LoginPageViewModel>());
         public Command BackPage => new Command(async () => await NavigationService.GoBack());
         public MainPageViewModel(INavService naviService) : base(naviService)
         {
-            if (ViewDetails != null)
-            {
-                ViewDetails = new AsyncCommand<object>(AttractionSelected);
-            }
-            //Code for creating the ViewModel
            
-        }
-        public MainPageViewModel(INavService navService, UserBase user) : base(navService)
-        {
+            //Code for creating the ViewModel
 
         }
+        
         public override void Init()
         {
             //Code for initialize the ViewModel
         }
-        //private void AttractionSelected(object sender, EventArgs e)
-        //{
-        //    var attraction = (sender as View).BindingContext as Attraction;
-            
-        //}
+        
+        
 
-        async Task AttractionSelected(object sender)
+        async void AttractionSelected(object sender)
         {
             var attraction = sender as Attraction;
             if (attraction == null) return;
 
-            SelectedAttraction = null;
-
-            await NavigationService.NavigateTo<DetailsPageViewModel>(attraction);
+           
+            await NavigationService.NavigateTo<DetailsPageViewModel>();
 
         }
         public List<Filter> PropertyTypeList => GetFilters();
