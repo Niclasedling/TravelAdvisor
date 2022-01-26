@@ -19,7 +19,7 @@ namespace TravelAdvisor.Services
                 {
                     await App.Current.MainPage.DisplayAlert("Login Success", "", "Ok");
                     //Navigate to Main page after successfully login  
-                    await NavigationService.NavigateTo<MainPageViewModel>();
+                    //await NavigationService.NavigateTo<MainPageViewModel>();
                 }
                 else await App.Current.MainPage.DisplayAlert("Login Fail", "Please enter correct Email and Password", "OK");
 

@@ -18,7 +18,7 @@ namespace TravelAdvisor.Views
         public DetailsPage()
         {
             InitializeComponent();
-            BindingContext = new DetailsPageViewModel(DependencyService.Get<INavService>());
+            BindingContext = new DetailsPageViewModel(DependencyService.Get<INavService>(), App.globalAttraction);
         }
 
         protected override void OnAppearing()

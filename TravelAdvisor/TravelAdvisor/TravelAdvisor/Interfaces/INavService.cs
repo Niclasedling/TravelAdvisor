@@ -16,8 +16,8 @@ namespace TravelAdvisor.Services
         Task GoBack();
 
         Task NavigateTo<TVM>() where TVM : BaseViewModel;
-        Task NavigateTo<TVM>(Models.Attraction attraction) where TVM : BaseViewModel;
-        Task NavigateTo<TVM>(Models.User user) where TVM : BaseViewModel;
+        Task NavigateTo<TVM>(Attraction attraction) where TVM : BaseViewModel;
+        Task NavigateTo<TVM>(User user) where TVM : BaseViewModel;
 
         Task NavigateTo<TVM, TParameter>(TParameter parameter) where TVM : BaseViewModel;
 

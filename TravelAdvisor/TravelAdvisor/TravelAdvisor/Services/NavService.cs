@@ -109,7 +109,7 @@ namespace TravelAdvisor.Services
 
         public async Task NavigateToView(Type viewModelType, Attraction attraction = null)
         {
-
+           
 
             if (!_map.TryGetValue(viewModelType, out Type viewType))
             {

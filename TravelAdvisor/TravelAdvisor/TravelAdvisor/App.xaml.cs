@@ -1,4 +1,5 @@
 ﻿using System;
+using TravelAdvisor.Models;
 using TravelAdvisor.Services;
 using TravelAdvisor.Views;
 using Xamarin.Forms;
@@ -8,6 +9,7 @@ namespace TravelAdvisor
 {
     public partial class App : Application
     {
+        public static Attraction globalAttraction;
         public App()
         {
             InitializeComponent();

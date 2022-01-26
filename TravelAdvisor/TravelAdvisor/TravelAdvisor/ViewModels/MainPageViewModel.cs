@@ -61,8 +61,6 @@ namespace TravelAdvisor.ViewModels
 
             SelectedAttraction = null;
 
-
-
             await NavigationService.NavigateTo<DetailsPageViewModel>(attraction);
 
         }
