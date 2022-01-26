@@ -52,7 +52,7 @@ namespace TravelAdvisor.ApiClient
             return true;
         }
 
-        public async Task<Guid> PostAsync( UserDto user)
+        public async Task<Guid> PostAsync( UserCreateDto user)
         {
             string path = "Create";
             var response = await httpClient.PostAsync(path, JsonContent.Create(user));
@@ -67,7 +67,7 @@ namespace TravelAdvisor.ApiClient
             return JsonSerializer.Deserialize<Guid>(responseString);
         }
 
-        public async Task<bool> PutAsync( UserDto user)
+        public async Task<bool> PutAsync( UserUpdateDto user)
         {
             string path = "Update";
             var response = await httpClient.PostAsync(path, JsonContent.Create(user));

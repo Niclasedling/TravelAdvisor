@@ -44,20 +44,20 @@
                             
                         </StackLayout>
 
-                        <!--<StackLayout Orientation="Horizontal">
-                            --><!--Remebmer Me Checkbox--><!--
+                        <StackLayout Orientation="Horizontal">
+                            <!--Remebmer Me Checkbox-->
                             <CheckBox IsChecked="False" Color="DarkOliveGreen" Margin="10,0,0,0"/>
                             <Label Text="Remember me" HorizontalOptions="Start" VerticalTextAlignment="Center"/>
 
                             <Label Text="Forgot Password" HorizontalTextAlignment="End" TextColor="DarkOliveGreen" HorizontalOptions="EndAndExpand" FontAttributes="Bold" VerticalTextAlignment="Center" />
 
                         </StackLayout>
-<<<<<<< HEAD
-                        --><!--SignInButton--><!--
+<!--<<<<<<< HEAD-->
+                        <!--SignInButton
                         <Button Text="Sign in" BackgroundColor="DarkOliveGreen" TextColor="White" FontAttributes="Bold" CornerRadius="20" HeightRequest="45" Clicked="Login_Button_Clicked"/>
 =======
                         
-                        <!--SignInButton-->
+                        --><!--SignInButton-->
                         <Button x:Name="logibtn"
                                 Text="Sign in"
                                 Command="{Binding LoginCommand}"
@@ -66,27 +66,20 @@
                                 FontAttributes="Bold" 
                                 CornerRadius="20" 
                                 HeightRequest="45" >
-                            <!--<Button.Behaviors>
-                                <xct:EventToCommandBehavior
-                                    EventName="Clicked"
-                                    Command="{Binding Login}"
-                                    EventArgsConverter="{StaticResource ItemSelectedEventArgsConverter}">
-                                    
-                                </xct:EventToCommandBehavior>
-                            </Button.Behaviors>-->
+                            
                         </Button>
-                        
+
 
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                             <Label Text="Still not connected?" HorizontalOptions="Start" VerticalTextAlignment="Center" />
-                        <!--SignUpText-->
+                            <!--SignUpText-->
                             <Label Text="Sign Up" HorizontalTextAlignment="End" TextColor="DarkOliveGreen" FontAttributes="Bold" VerticalTextAlignment="Center">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding SignUpPage}"/>
                                 </Label.GestureRecognizers>
                             </Label>
 
-                        </StackLayout>-->
+                        </StackLayout>
 
                     </StackLayout>
                      
