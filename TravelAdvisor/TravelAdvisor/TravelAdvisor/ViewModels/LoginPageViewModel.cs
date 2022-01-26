@@ -15,17 +15,17 @@ namespace TravelAdvisor.ViewModels
     {
         readonly LoginService loginService;
 
-        public AsyncCommand<object> LoginCommand { get; }
+        //public AsyncCommand<object> LoginCommand { get; }
         public Command BackPage => new Command(async () => await NavigationService.GoBack());
         public Command SignUpPage => new Command(async () => await NavigationService.NavigateTo<SignUpPageViewModel>());
 
         public LoginPageViewModel(INavService naviService) : base(naviService)
         {
 
-            if(LoginCommand != null)
-            {
-                LoginCommand = new AsyncCommand<object>(Login);
-            }
+            //if (LoginCommand != null)
+            //{
+            //    LoginCommand = new AsyncCommand<object>(Login);
+            //}
         }
 
 
@@ -53,19 +53,35 @@ namespace TravelAdvisor.ViewModels
 
             }
         }
-        //public AsyncCommand LoginCommand
-        //{
-        //    get
-        //    {
-        //        return new AsyncCommand(await loginService.Login(Email, Password));
-        //    }
-        //}
-
-        async Task Login(object sender)
+        public Command LoginCommand
         {
-            await loginService.Login(Email, Password);
-
-
+            get
+            {
+                return new Command(Login);
+            }
         }
+        private void Login()
+        {
+            //null or empty field validation, check weather email and password is null or empty  
+            if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password))
+                App.Current.MainPage.DisplayAlert("Empty Values", "Please enter Email and Password", "OK");
+            else
+            {
+                if (Email == "abc@gmail.com" && Password == "1234")
+                {
+                    App.Current.MainPage.DisplayAlert("Login Success", "", "Ok");
+                    //Navigate to Wellcom page after successfully login  
+                    App.Current.MainPage.Navigation.PushAsync(new MainPage());
+                }
+                else
+                    App.Current.MainPage.DisplayAlert("Login Fail", "Please enter correct Email and Password", "OK");
+            }
+        }
+        //async Task Login(object sender)
+        //{
+        //    await loginService.Login(Email, Password);
+
+
+        //}
     }
 }

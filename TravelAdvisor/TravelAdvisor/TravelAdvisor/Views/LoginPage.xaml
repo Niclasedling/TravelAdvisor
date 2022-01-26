@@ -1,14 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="TravelAdvisor.Views.LoginPage">
 
-    <ContentPage.Resources>
+    <!--<ContentPage.Resources>
         <ResourceDictionary>
             <xct:ItemSelectedEventArgsConverter x:Key="ItemSelectedEventArgsConverter"></xct:ItemSelectedEventArgsConverter>
         </ResourceDictionary>
-    </ContentPage.Resources>
+    </ContentPage.Resources>-->
     <StackLayout Padding="0">
        
             <Grid>
@@ -64,22 +63,23 @@
 =======
                         
                         --><!--SignInButton-->
-                        <Button x:Name="logibtn"
+                        <Button x:Name="loginbtn"
                                 Text="Sign in"
                                 BackgroundColor="DarkOliveGreen" 
                                 TextColor="White" 
                                 FontAttributes="Bold" 
                                 CornerRadius="20" 
-                                HeightRequest="45" 
+                                HeightRequest="45"
+                                Command="{Binding LoginCommand}"
                                 >
-                            <Button.Behaviors>
+                            <!--<Button.Behaviors>
                                 <xct:EventToCommandBehavior
                                     EventName="Clicked"
                                     Command="{Binding LoginCommand}"
                                     EventArgsConverter="{StaticResource ItemSelectedEventArgsConverter}">
                                     
                                 </xct:EventToCommandBehavior>
-                            </Button.Behaviors>
+                            </Button.Behaviors>-->
                         </Button>
 
 
