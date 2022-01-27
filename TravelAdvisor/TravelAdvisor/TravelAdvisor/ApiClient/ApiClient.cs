@@ -53,10 +53,10 @@ namespace TravelAdvisor.ApiClient
             return true;
         }
 
-        public async Task<Guid> PostAsync(UserCreateDto user)
+        public async Task<Guid> PostAsync(T Data)
         {
             string path = "Create";
-            var response = await httpClient.PostAsync(path, JsonContent.Create(user));
+            var response = await httpClient.PostAsync(path, JsonContent.Create(Data));
 
             if (!response.IsSuccessStatusCode)
             {
@@ -68,10 +68,10 @@ namespace TravelAdvisor.ApiClient
             return JsonConvert.DeserializeObject<Guid>(responseString);
         }
 
-        public async Task<bool> PutAsync(UserUpdateDto user)
+        public async Task<bool> PutAsync(T Data)
         {
             string path = "Update";
-            var response = await httpClient.PostAsync(path, JsonContent.Create(user));
+            var response = await httpClient.PostAsync(path, JsonContent.Create(Data));
 
             if (!response.IsSuccessStatusCode)
             {

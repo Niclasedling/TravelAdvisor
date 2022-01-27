@@ -28,6 +28,7 @@ namespace TravelAdvisor.Services
         public async Task<UserDto> GetUser(Guid id)
         {
             return await userClient.GetAsync(id);
+      
         }
 
         public async Task<bool> DeleteUser(Guid id)
