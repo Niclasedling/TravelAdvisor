@@ -36,8 +36,6 @@ namespace TravelAdvisor.ApiClient
             var responseString = await response.Content.ReadAsStringAsync();
 
             return JsonConvert.DeserializeObject<T>(responseString);
-
-
         }
 
         public async Task<bool> DeleteAsync(Guid id)
@@ -53,7 +51,7 @@ namespace TravelAdvisor.ApiClient
             return true;
         }
 
-        public async Task<Guid> PostAsync(T Data)
+        public async Task<Guid> PostAsync<T>(T Data)
         {
             string path = "Create";
             var response = await httpClient.PostAsync(path, JsonContent.Create(Data));
@@ -68,7 +66,7 @@ namespace TravelAdvisor.ApiClient
             return JsonConvert.DeserializeObject<Guid>(responseString);
         }
 
-        public async Task<bool> PutAsync(T Data)
+        public async Task<bool> PutAsync<T>(T Data)
         {
             string path = "Update";
             var response = await httpClient.PostAsync(path, JsonContent.Create(Data));

@@ -21,7 +21,8 @@ namespace TravelAdvisor.Services
         {
             var users = await _userService.GetAllUsers();
 
-            var answer = users.Find(x => x.Email == Email && x.Password == Password);
+            var answer = users.Find(x => x.Email == Email && x.Password == null); // Null tillfälligt
+
             //null or empty field validation, check weather email and password is null or empty  
             if (string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password))
                 await App.Current.MainPage.DisplayAlert("Empty Values", "Please enter Email and Password", "OK");

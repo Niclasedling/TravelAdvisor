@@ -43,7 +43,7 @@ namespace TravelAdvisor.Services
 
         public async Task<bool> UpdateUser(UserUpdateDto user)
         {
-            return await userClient.PutAsync( user);
+            return await userClient.PutAsync(user);
         }
 
         public async Task<List<UserDto>> GetAllUsers()

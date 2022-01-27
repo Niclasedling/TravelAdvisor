@@ -52,7 +52,7 @@ namespace TravelAdvisor.Services
             }
         }
 
-        public async Task NavigateTo<TVM>(Attraction attraction) where TVM : BaseViewModel
+        public async Task NavigateTo<TVM>(AttractionDto attraction) where TVM : BaseViewModel
         {
             await NavigateToView(typeof(TVM));
 

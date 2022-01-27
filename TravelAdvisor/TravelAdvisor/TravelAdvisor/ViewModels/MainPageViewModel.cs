@@ -37,7 +37,7 @@ namespace TravelAdvisor.ViewModels
 
         async void AttractionSelected(object sender)
         {
-            var attraction = sender as Attraction;
+            var attraction = sender as AttractionDto;
             if (attraction == null) return;
 
            
@@ -45,7 +45,7 @@ namespace TravelAdvisor.ViewModels
 
         }
         public List<Filter> PropertyTypeList => GetFilters();
-        public List<Attraction> AttractionList => GetAttractions();
+        public List<AttractionDto> AttractionList => GetAttractions();
 
         private List<Filter> GetFilters()
         {
@@ -56,11 +56,11 @@ namespace TravelAdvisor.ViewModels
             };
         }
 
-        private List<Attraction> GetAttractions()
+        private List<AttractionDto> GetAttractions()
         {
-            return new List<Attraction>
+            return new List<AttractionDto>
             {
-                new Attraction
+                new AttractionDto
                 {
                     Image = "apt1.jpg",
                     Adress = "2162 Patricia Ave, LA",
@@ -68,7 +68,7 @@ namespace TravelAdvisor.ViewModels
                     Price = "$1500/month",
                     
                 },
-                new Attraction
+                new AttractionDto
                 {
                     Image = "apt2.jpg",
                     Adress = "2112 Cushions Dr, LA",
@@ -76,7 +76,7 @@ namespace TravelAdvisor.ViewModels
                     Price = "$1500/month",
                   
                 },
-                new Attraction
+                new AttractionDto
                 {
                     Image = "apt3.jpg",
                     Adress = "2167 Anthony Way, LA",
@@ -91,7 +91,7 @@ namespace TravelAdvisor.ViewModels
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,"
                 },
-                 new Attraction
+                 new AttractionDto
                 {
                     Image = "apt3.jpg",
                     Adress = "2167 Anthony Way, LA",
@@ -106,7 +106,7 @@ namespace TravelAdvisor.ViewModels
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,"
                 },
-                  new Attraction
+                  new AttractionDto
                 {
                     Image = "apt3.jpg",
                     Adress = "2167 Anthony Way, LA",
@@ -121,7 +121,7 @@ namespace TravelAdvisor.ViewModels
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,"
                 },
-                   new Attraction
+                   new AttractionDto
                 {
                     Image = "apt3.jpg",
                     Adress = "2167 Anthony Way, LA",
