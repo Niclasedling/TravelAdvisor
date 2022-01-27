@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TravelAdvisor.Services;
 using TravelAdvisor.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -17,20 +18,32 @@ namespace TravelAdvisor.Views
 
         public SignUpPage()
         {
+            
             InitializeComponent();
+            var navService = DependencyService.Get<INavService>();
+            BindingContext = new SignUpPageViewModel(DependencyService.Get<INavService>());
+            
+
+
+
+
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
             // Initialize ViewModel
             ViewModel?.Init();
+            registerButton.IsEnabled = false;
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void entrytextChanged(object sender, TextChangedEventArgs e)
         {
-
+            if (string.IsNullOrEmpty(entryFirstname.Text) ||
+                string.IsNullOrEmpty(entryLastName.Text) ||
+                string.IsNullOrEmpty(entryEmail.Text) ||
+                string.IsNullOrEmpty(entryPassword.Text)) registerButton.IsEnabled = false;
+            else registerButton.IsEnabled = true;
         }
     }
 }

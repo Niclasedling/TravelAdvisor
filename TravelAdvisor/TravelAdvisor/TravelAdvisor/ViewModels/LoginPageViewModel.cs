@@ -16,7 +16,10 @@ namespace TravelAdvisor.ViewModels
     {
 
         private readonly ILoginService _loginService;
-        public Command<object> LoginCommand { get
+        private readonly IUserService _userService;
+        public Command<object> LoginCommand
+        { 
+            get
             {
                 return new Command<object>(Login); 
             }
@@ -27,6 +30,7 @@ namespace TravelAdvisor.ViewModels
         public LoginPageViewModel(INavService naviService) : base(naviService)
         {
             _loginService = DependencyService.Get<ILoginService>();
+            _userService = DependencyService.Get<IUserService>();
             //if (LoginCommand != null)
             //{
             //    LoginCommand = new AsyncCommand<object>(Login);
@@ -42,21 +46,13 @@ namespace TravelAdvisor.ViewModels
         public string Email
         {
             get { return email; }
-            set
-            {
-                email = value;
-
-            }
+            set { email = value; }
         }
         private string password;
         public string Password
         {
             get { return password; }
-            set
-            {
-                password = value;
-
-            }
+            set { password = value; }
         }
 
         //private void Login()
@@ -78,7 +74,12 @@ namespace TravelAdvisor.ViewModels
         //}
         async void Login(object sender)
         {
-            await _loginService.Login(Email, Password);
+            UserLoginDto user = new UserLoginDto
+            {
+                Email = Email,
+                Password = Password
+            };
+            await _userService.Login(user);
 
 
         }

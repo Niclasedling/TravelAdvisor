@@ -27,8 +27,8 @@
                             <!--FirstNameBox and LastNameBox-->
                             <Frame BackgroundColor="Transparent" BorderColor="Transparent" Padding="0" Margin="0" CornerRadius="0" HorizontalOptions="FillAndExpand">
                                 <StackLayout Orientation="Horizontal">
-                                    <Entry Text="{Binding Firstname}" Placeholder="Firstname" TextColor="Green" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" />
-                                    <Entry Text="{Binding Lastname}" Placeholder="Lastname" TextColor="Green" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" />
+                                    <Entry x:Name="entryFirstname" Text="{Binding Firstname}" Placeholder="Firstname" TextColor="Green" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" TextChanged="entrytextChanged"/>
+                                    <Entry x:Name="entryLastName" Text="{Binding Lastname}" Placeholder="Lastname" TextColor="Green" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" TextChanged="entrytextChanged" />
                                 </StackLayout>
                             </Frame>
                             
@@ -36,8 +36,8 @@
                             <Label Margin="0,10,0,0">Email</Label>
                             <Frame BackgroundColor="Transparent" BorderColor="Transparent" Padding="0" CornerRadius="0" HorizontalOptions="FillAndExpand">
                                 <StackLayout Orientation="Horizontal">
-                                    
-                                    <Entry Text="{Binding Email}" Placeholder="Email" TextColor="Green" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" />
+
+                                    <Entry x:Name="entryEmail" Text="{Binding Email}" Placeholder="Email" TextColor="Green" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" TextChanged="entrytextChanged" />
                                 </StackLayout>
                             </Frame>
                             
@@ -45,15 +45,25 @@
                             <Label Margin="0,10,0,0">Password</Label>
                             <Frame BackgroundColor="Transparent" BorderColor="Transparent" Padding="0" CornerRadius="0" HorizontalOptions="FillAndExpand">
                                 <StackLayout Orientation="Horizontal">
-                                    
-                                    <Entry Text="{Binding Password}" Placeholder="Password" IsPassword="True" TextColor="Green" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" />
+
+                                    <Entry x:Name="entryPassword" Text="{Binding Password}" Placeholder="Password" IsPassword="True" TextColor="Green" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" TextChanged="entrytextChanged" />
                                 </StackLayout>
                             </Frame>
 
                         </StackLayout>
 
                         <!--Register-->
-                        <Button Text="Register" BackgroundColor="DarkGreen" TextColor="White" FontAttributes="Bold" CornerRadius="15" HeightRequest="40" Margin="70,0,70,0" Clicked="Button_Clicked"/>
+                        <Button x:Name="registerButton"
+                                Text="Register" 
+                                BackgroundColor="DarkGreen" 
+                                TextColor="White" 
+                                FontAttributes="Bold" 
+                                CornerRadius="15" 
+                                HeightRequest="40" 
+                                Margin="70,0,70,0" 
+                                Command="{Binding RegisterCommand}"
+                                IsEnabled="false"
+                                />
                         
 
                     </StackLayout>

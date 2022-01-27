@@ -13,9 +13,11 @@ namespace TravelAdvisor.Services
     {
 
         private readonly IUserService _userService;
+        private readonly INavService _navService;
         public LoginService()
         {
             _userService = DependencyService.Get<IUserService>();
+            _navService = DependencyService.Get<INavService>();
         }
         public async Task Login(string Email, string Password)
         {
@@ -32,8 +34,8 @@ namespace TravelAdvisor.Services
                 {
                     await App.Current.MainPage.DisplayAlert("Login Success", "", "Ok");
                     //Navigate to Main page after successfully login  
-                    //await NavigationService.NavigateTo<MainPageViewModel>();
-                    //await Navigation.PushAsync(new MainPage());
+                    await _navService.NavigateTo<MainPageViewModel>();
+                    
                    
                 }
                 else await App.Current.MainPage.DisplayAlert("Login Fail", "Please enter correct Email and Password", "OK");
@@ -41,10 +43,7 @@ namespace TravelAdvisor.Services
             }
             
         }
+        
 
-        public Task Register(string Email, string Password, string Firstname, string Lastname)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

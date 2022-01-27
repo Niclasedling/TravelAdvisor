@@ -10,24 +10,17 @@ namespace TravelAdvisor.Services
     public interface IUserService
     { 
         
-      
+        Task<UserDto> GetUser(Guid id);
 
-          Task<UserDto> GetUser(Guid id);
+        Task<bool> DeleteUser(Guid id);
 
+        Task<Guid> CreateUser(UserCreateDto user);
 
-          Task<bool> DeleteUser(Guid id);
+        Task<bool> UpdateUser(UserUpdateDto user);
 
+        Task<List<UserDto>> GetAllUsers();
 
-
-          Task<Guid> CreateUser(UserCreateDto user);
-
-
-
-           Task<bool> UpdateUser(UserUpdateDto user);
-
-
-
-           Task<List<UserDto>> GetAllUsers();
+        Task<bool> Login(UserLoginDto userLogin);
         
 
     }

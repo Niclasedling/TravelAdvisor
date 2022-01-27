@@ -92,6 +92,7 @@ namespace TravelAdvisor.ApiClient
             
             return JsonConvert.DeserializeObject<List<T>>(responseString);
         }
+        
 
     }
 
