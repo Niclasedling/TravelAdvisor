@@ -21,7 +21,6 @@ namespace TravelAdvisor.ApiClient
             this.httpClient = httpClient;
             this.controller = controller;
             this.httpClient.BaseAddress = new Uri($"http://localhost:41418/{controller}/");
-
         }
 
         public async Task<T> GetAsync(Guid id)

@@ -63,18 +63,20 @@ namespace TravelAdvisor.Views
 
 
 
-        //private async void Button_Clicked_1(object sender, EventArgs e)
-        //{
-        //    //Guid guid = new Guid("d2ff1305-4b26-45f5-9204-006b01c19067");
-        //    var item = await _userService.GetAllUsers();
+        private async void Button_Clicked_1(object sender, EventArgs e)
+        {
+            UserCreateDto user = new UserCreateDto { FirstName = "Alexander" };
+            var item = await _userService.CreateUser(user);
+            //Guid guid = new Guid("d2ff1305-4b26-45f5-9204-006b01c19067");
+            //var item = await _userService.GetAllUsers();
 
-        //    if (item != null)
-        //    {
-        //        var h = item;
-        //    }
-        //    else { }
+            if (item != null)
+            {
+                var h = item;
+            }
+            else { }
 
-        //}
+        }
     }
 
     

@@ -75,7 +75,10 @@ namespace TravelAdvisor.Models
 
         public class UserCreateDto
         {
-            public object Password { get; internal set; }
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public string Email { get; set; }
+            public string Password { get; set; }
         }
 
     }
