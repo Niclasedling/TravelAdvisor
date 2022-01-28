@@ -4,18 +4,6 @@ using System.Text;
 
 namespace TravelAdvisor.Models
 {
-    //public class Attraction
-    //{
-    //    public Guid Id { get; set; }
-    //    public string Name { get; set; }
-    //    public string Image { get; set; }
-    //    public string Adress { get; set; }
-    //    public string Location { get; set; }
-    //    public string Price { get; set; }
-    //    public string Details { get; set; }
-
-
-    //}
     public abstract class AttractionBase
     {
         public Guid Id { get; set; }
