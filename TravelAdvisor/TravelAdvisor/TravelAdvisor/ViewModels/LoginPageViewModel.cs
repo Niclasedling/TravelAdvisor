@@ -81,9 +81,13 @@ namespace TravelAdvisor.ViewModels
                 Email = Email,
                 Password = Password
             };
-           var answer =  await _userService.Login(user);
-            if (answer) await _navService.NavigateTo<MainPageViewModel>();
-
+           
+            if (await _userService.Login(user))
+            {
+                await App.Current.MainPage.DisplayAlert("Login Success", $"Welcome {user.Email}", "Ok");
+                await _navService.NavigateTo<MainPageViewModel>();
+            }
+            else await App.Current.MainPage.DisplayAlert("Login Failed","Email or Password incorrect", "Ok");
         }
     }
 }
