@@ -85,7 +85,7 @@ namespace TravelAdvisor.ViewModels
             if (await _userService.Login(user))
             {
                 await App.Current.MainPage.DisplayAlert("Login Success", $"Welcome {user.Email}", "Ok");
-                await _navService.NavigateTo<MainPageViewModel>();
+                await _navService.NavigateTo<UserPageViewModel>();
             }
             else await App.Current.MainPage.DisplayAlert("Login Failed","Email or Password incorrect", "Ok");
         }

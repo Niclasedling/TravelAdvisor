@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="TravelAdvisor.Views.UserPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <xct:ItemSelectedEventArgsConverter x:Key="ItemSelectedEventArgsConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid BackgroundColor="#F9F9F9" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Frame Grid.Row="3" HasShadow="True" Margin="0, 20" Padding="0" HeightRequest="40" HorizontalOptions="FillAndExpand">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="2"
+                        Grid.Row="0"
+                        Text="Logout" 
+                        BackgroundColor="Black" 
+                        TextColor="White" 
+                        CornerRadius="15" 
+                        FontAttributes="Bold"
+                        Command="{Binding LogOut}"
+                     
+                      >
+                </Button>
+                <Image HeightRequest="20" WidthRequest="20" Margin="20,0" Source="phone.png"></Image>
+                <Entry Grid.Column="1" Placeholder="Search" TextColor="Black" FontSize="15" FontFamily="ThemeFontRegular" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Entry>
+                <!--Login Button -->
+                <Button Grid.Column="2" 
+                        Text="Serach" 
+                        BackgroundColor="Black" 
+                        TextColor="White" 
+                        CornerRadius="15" 
+                        FontAttributes="Bold"
+                        Command="{Binding LogOut}"
+                     
+                      >
+                </Button>
+
+            </Grid>
+        </Frame>
+        
+
+    </Grid>
+</ContentPage>
