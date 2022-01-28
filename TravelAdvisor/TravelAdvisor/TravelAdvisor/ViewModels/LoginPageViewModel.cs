@@ -17,6 +17,7 @@ namespace TravelAdvisor.ViewModels
 
         private readonly ILoginService _loginService;
         private readonly IUserService _userService;
+        private readonly INavService _navService;
         public Command<object> LoginCommand
         { 
             get
@@ -31,6 +32,7 @@ namespace TravelAdvisor.ViewModels
         {
             _loginService = DependencyService.Get<ILoginService>();
             _userService = DependencyService.Get<IUserService>();
+            _navService = DependencyService.Get<INavService>();
             //if (LoginCommand != null)
             //{
             //    LoginCommand = new AsyncCommand<object>(Login);
@@ -79,8 +81,8 @@ namespace TravelAdvisor.ViewModels
                 Email = Email,
                 Password = Password
             };
-            await _userService.Login(user);
-
+           var answer =  await _userService.Login(user);
+            if (answer) await _navService.NavigateTo<MainPageViewModel>();
 
         }
     }
