@@ -8,11 +8,12 @@ using TravelAdvisor.Models;
 using TravelAdvisor.Services;
 using TravelAdvisor.ViewModels;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
 
 namespace TravelAdvisor.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+    //[XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
         public AttractionDto Attraction { get; set; }
@@ -21,45 +22,83 @@ namespace TravelAdvisor.Views
 
         public MainPage()
         {
-          
+            
+
             InitializeComponent();
             BindingContext = new MainPageViewModel(DependencyService.Get<INavService>());
             _userService = DependencyService.Get<IUserService>();
         }
-
+        
+        
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-
+            
 
             // Initialize ViewModel
             ViewModel?.Init();
         }
 
-        private void SelectType(object sender, EventArgs e)
+        void OnButtonClicked(object sender, EventArgs e)
         {
-            var view = sender as View;
-            var parent = view.Parent as StackLayout;
-
-            foreach (var child in parent.Children)
+            Pin boardwalkPin = new Pin
             {
-                VisualStateManager.GoToState(child, "Normal");
-                ChangeTextColor(child, "#707070");
-            }
+                Position = new Position(36.9641949, -122.0177232),
+                Label = "Boardwalk",
+                Address = "Santa Cruz",
+                Type = PinType.Place
+            };
+            boardwalkPin.MarkerClicked += OnMarkerClickedAsync;
 
-            VisualStateManager.GoToState(view, "Selected");
-            ChangeTextColor(view, "#FFFFFF");
+            Pin wharfPin = new Pin
+            {
+                Position = new Position(36.9571571, -122.0173544),
+                Label = "Wharf",
+                Address = "Santa Cruz",
+                Type = PinType.Place
+            };
+            wharfPin.MarkerClicked += OnMarkerClickedAsync;
+
+            map.Pins.Add(boardwalkPin);
+            map.Pins.Add(wharfPin);
+
         }
 
-        private void ChangeTextColor(View child, string hexColor)
+
+        async void OnMarkerClickedAsync(object sender, PinClickedEventArgs e)
         {
-            var txtCtrl = child.FindByName<Label>("PropertyTypeName");
-            if (txtCtrl != null)
-            {
-                txtCtrl.TextColor = Color.FromHex(hexColor);
-            }
+            //e.HideInfoWindow = true;
+            string pinName = ((Pin)sender).Label;
+            await DisplayAlert("Pin Clicked", $"{pinName} was clicked.", "Ok");
         }
+
+
+
+
+        //private void SelectType(object sender, EventArgs e)
+        //{
+        //    var view = sender as View;
+        //    var parent = view.Parent as StackLayout;
+
+        //    foreach (var child in parent.Children)
+        //    {
+        //        VisualStateManager.GoToState(child, "Normal");
+        //        ChangeTextColor(child, "#707070");
+        //    }
+
+        //    VisualStateManager.GoToState(view, "Selected");
+        //    ChangeTextColor(view, "#FFFFFF");
+        //}
+
+        //private void ChangeTextColor(View child, string hexColor)
+        //{
+        //    var txtCtrl = child.FindByName<Label>("PropertyTypeName");
+        //    if (txtCtrl != null)
+        //    {
+        //        txtCtrl.TextColor = Color.FromHex(hexColor);
+        //    }
+        //}
 
 
 

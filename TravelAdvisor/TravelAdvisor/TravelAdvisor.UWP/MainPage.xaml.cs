@@ -20,7 +20,8 @@ namespace TravelAdvisor.UWP
         public MainPage()
         {
             this.InitializeComponent();
-
+            Xamarin.FormsMaps.Init("INSERT_AUTH_TOKEN_HERE");
+            Windows.Services.Maps.MapService.ServiceToken = "INSERT_AUTH_TOKEN_HERE";
             LoadApplication(new TravelAdvisor.App());
         }
     }

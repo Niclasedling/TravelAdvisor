@@ -15,12 +15,12 @@ namespace TravelAdvisor
         public App()
         {
             InitializeComponent();
-            
+
             //---------------------------------------------------------Lägg till service
-            DependencyService.Register<INavService,NavService>();
+            DependencyService.Register<INavService, NavService>();
             DependencyService.Register<ILoginService, LoginService>();
 
-         
+
 
             //-------------------------------------------------------Lägg till ApiService
             var Client = new HttpClient();
@@ -32,7 +32,7 @@ namespace TravelAdvisor
 
 
             //-------------------------------------------------------MainPage är av typen NavigationPage
-            
+
             MainPage = new NavigationPage(new MainPage());
 
 
