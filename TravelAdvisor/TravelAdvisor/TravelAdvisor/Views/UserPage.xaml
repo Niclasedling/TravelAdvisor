@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              x:Class="TravelAdvisor.Views.UserPage">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -32,16 +32,44 @@
           <!--4--><RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <!--SearchBar-->
-        <StackLayout Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="5" Margin="0,15,0,0">
+        <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Margin="15,15,0,0">
             <Entry Placeholder="Searchbar"></Entry>
         </StackLayout>
+        
+        <!--FilterButton1-->
+        <StackLayout Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" Margin="0,15,0,0">
+            <Button Text="My Attractions" CornerRadius="15"></Button>
+        </StackLayout>
+        
+        <!--FilterButton2-->
+        <StackLayout Grid.Row="0" Grid.Column="7" Grid.ColumnSpan="3" Margin="0,15,0,0">
+            <Button Text="Recommended" CornerRadius="15"></Button>
+        </StackLayout>
+        
         <!--Logout Button-->
         <StackLayout Margin="0,15,5,0" Grid.Row="0" Grid.Column="10" Grid.ColumnSpan="2">
-            <Button Text="Logout"></Button>
+            <Button Text="Logout" CornerRadius="15"></Button>
         </StackLayout>
         <!--Map-->
-        <StackLayout Grid.Row="1" Background="Blue" Grid.ColumnSpan="12" Margin="5,15,5,0">
-         
+        <StackLayout Grid.Row="1" Grid.ColumnSpan="12" Margin="5,15,5,0">
+            <maps:Map x:Name="map">
+                <x:Arguments>
+                    <maps:MapSpan>
+                        <x:Arguments>
+                            <maps:Position>
+                                <x:Arguments>
+                                    <x:Double>36.9628066</x:Double>
+                                    <x:Double>-122.0194722</x:Double>
+                                </x:Arguments>
+                            </maps:Position>
+                            <x:Double>0.01</x:Double>
+                            <x:Double>0.01</x:Double>
+                        </x:Arguments>
+                    </maps:MapSpan>
+                </x:Arguments>
+            </maps:Map>
+            <!--Add more pins button-->
+            <Button Text="Add more pins" Clicked="OnButtonClicked" CornerRadius="15" Margin="70,0,70,0"/>
         </StackLayout>
         <!--Attactions-->
         
