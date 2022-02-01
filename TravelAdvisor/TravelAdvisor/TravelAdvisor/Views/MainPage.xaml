@@ -54,9 +54,9 @@
             </Grid>
         </Frame>
         <StackLayout Grid.Row="1" HeightRequest="300">
-            <maps:Map x:Name="map">
+            <maps:Map x:Name="map" MapClicked="map_MapClicked">
             <x:Arguments>
-                <maps:MapSpan>
+                    <maps:MapSpan >
                     <x:Arguments>
                         <maps:Position>
                             <x:Arguments>

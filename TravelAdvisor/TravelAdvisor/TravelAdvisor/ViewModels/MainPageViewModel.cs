@@ -13,6 +13,7 @@ namespace TravelAdvisor.ViewModels
 {
     public class MainPageViewModel : BaseViewModel
     {
+       
         public MainPage MainPageProperty { get; set; }
         //public AsyncCommand<object> ViewDetails { get; }
         public Command<object> ViewDetails
@@ -27,6 +28,8 @@ namespace TravelAdvisor.ViewModels
             //Code for creating the ViewModel
 
         }
+
+        
         
         public override void Init()
         {
