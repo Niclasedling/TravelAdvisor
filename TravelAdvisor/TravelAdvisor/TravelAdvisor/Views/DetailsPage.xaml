@@ -92,11 +92,7 @@
                                     </Grid.ColumnDefinitions>
 
 
-                                    <!--<Image HeightRequest="115" Aspect="AspectFill" Source="{Binding Image}"></Image>-->
-
-                                    <!--<Frame CornerRadius="30" BackgroundColor="White" WidthRequest="5" HeightRequest="5" HorizontalOptions="End" VerticalOptions="Start" Margin="5">
-                                        <Image Source="noun-favourite-1077408.png" HeightRequest="50" WidthRequest="50" VerticalOptions="Center" HorizontalOptions="Center" Margin="-10,-10"></Image>
-                                    </Frame>-->
+                                    
 
                                    
                                         <Frame 
@@ -123,24 +119,7 @@
                                     <Image Grid.Row="0" Grid.Column="11" Source="star.png" Margin="-5,0,0,0" HeightRequest="70"></Image>
                                    
                                     
-                                    <!--<StackLayout Grid.Row="1" Spacing="5" Margin="20,5">
-                                        --><!--<Label Text="{Binding Price}" FontSize="15" FontFamily="ThemeFontBold" TextColor="#515151"></Label>--><!--
-                                        <StackLayout Orientation="Horizontal" Spacing="15">
-                                            <StackLayout Orientation="Horizontal" Spacing="10">
-                                                <Image WidthRequest="16" Source="bed.png"></Image>
-                                                <Label Text="{Binding Location}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
-                                            </StackLayout>
-                                            <StackLayout Orientation="Horizontal" Spacing="10">
-                                                <Image WidthRequest="16" Source="bed.png"></Image>
-                                                <Label Text="{Binding Location}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
-                                            </StackLayout>
-                                            <StackLayout Orientation="Horizontal" Spacing="10">
-                                                <Image WidthRequest="16" Source="bed.png"></Image>
-                                                <Label Text="{Binding Location}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
-                                            </StackLayout>
-                                        </StackLayout>
-
-                                    </StackLayout>-->
+                                   
 
                                 </Grid>
 
@@ -154,6 +133,6 @@
         <StackLayout Grid.Row="4"></StackLayout>
         <StackLayout Grid.Row="5"></StackLayout>
        
-        <!--<Image Aspect="AspectFill" Source="apt1.jpg" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Image>-->
+       
     </Grid>
 </ContentPage>
