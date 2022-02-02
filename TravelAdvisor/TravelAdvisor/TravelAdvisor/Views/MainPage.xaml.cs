@@ -75,6 +75,7 @@ namespace TravelAdvisor.Views
         }
 
         private readonly Geocoder _geocoder = new Geocoder();
+        
 
         async void map_MapClicked(object sender, MapClickedEventArgs e)
         {
@@ -82,12 +83,12 @@ namespace TravelAdvisor.Views
             //{
             Position position = new Position(e.Position.Latitude, e.Position.Longitude);
             //};
-            await DisplayAlert("Coordinate", $" Lat {e.Position.Latitude}, Long {e.Position.Longitude}", "Ok");
+            await DisplayAlert("Coordinate", $" Lat : {e.Position.Latitude}\n Long : {e.Position.Longitude}", "Ok");
             var addresses = await _geocoder.GetAddressesForPositionAsync(e.Position);
 
-            
-
-            await DisplayAlert("Addresses", addresses.FirstOrDefault()?.ToString(), "Ok");
+           
+            await DisplayAlert("Address",
+                addresses.FirstOrDefault()?.ToString(), "Ok");
 
             
             
