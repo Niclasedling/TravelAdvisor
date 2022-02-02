@@ -7,37 +7,22 @@
             <!--0--><ColumnDefinition Width="*"/>
             <!--1--><ColumnDefinition Width="*" />
             <!--2--><ColumnDefinition Width="*" />
-            
             <!--3--><ColumnDefinition Width="*" />
-            
             <!--4--><ColumnDefinition Width="*" />
-            
             <!--5--><ColumnDefinition Width="*" />
-            
             <!--6--><ColumnDefinition Width="*" />
-            
             <!--7--><ColumnDefinition Width="*" />
-            
-            <!--8--> <ColumnDefinition Width="*" />
-           
+            <!--8--><ColumnDefinition Width="*" />
             <!--9--><ColumnDefinition Width="*" />
-            
             <!--10--><ColumnDefinition Width="*" />
-            
             <!--11--><ColumnDefinition Width="*" />
-            
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <!--0--><RowDefinition Height="40" />
-            
             <!--1--><RowDefinition Height="100" />
-            
             <!--2--><RowDefinition Height="*" />
-            
             <!--3--><RowDefinition Height="*" />
-            
             <!--4--> <RowDefinition Height="*" />
-           
         </Grid.RowDefinitions>
 
         <!--ATTRACTION NAME-->
@@ -58,23 +43,17 @@
         </StackLayout>
         <!--LISTVIEW-->
         <StackLayout Grid.Row="4" Grid.ColumnSpan="12" Grid.RowSpan="2">
-            <ListView 
-                Grid.Row="2" Margin="0,10" VerticalScrollBarVisibility="Never"
-                ItemsSource="{Binding AttractionList}"
-                BackgroundColor="Blue"
-                >
-
-                
+            <ListView Grid.Row="2" Margin="0,10" VerticalScrollBarVisibility="Never" ItemsSource="{Binding AttractionList}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Frame HeightRequest="100" Margin="5,5" CornerRadius="15" BackgroundColor="#C1C1C1">
-
+                            <Frame HeightRequest="120" Margin="5,5" BackgroundColor="#C1C1C1">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*"></RowDefinition>
                                         <RowDefinition Height="*"></RowDefinition>
                                         <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="20"></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="100"></ColumnDefinition>
@@ -90,33 +69,43 @@
                                         <ColumnDefinition Width="*"></ColumnDefinition>
                                         <ColumnDefinition Width="*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-
-
-                                    
-
-                                   
                                         <Frame 
-                                        CornerRadius="35"
-                                        Padding="0"
-                                        BackgroundColor="Black"
-                                        Opacity="0.8"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Start"
+                                            CornerRadius="35"
+                                            Padding="0"
+                                            BackgroundColor="Black"
+                                            Opacity="0.8"
+                                            HorizontalOptions="Start"
+                                            VerticalOptions="Start"
                                             HeightRequest="70"
                                             WidthRequest="70"
                                             Grid.Row="0" Grid.RowSpan="2" Grid.Column="0">
-                                        <Image Source="apt2.jpg" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></Image>   
+                                        <Image Source="apt2.jpg" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></Image>
                                         </Frame>
-                                        <Label Grid.Row="2" Grid.Column="0" Margin="10,0,0,0" Text="{Binding Location}" FontSize="12" TextColor="Black" FontFamily="ThemeFontRegular" VerticalOptions="Center" Opacity="1"></Label>
-                                    <Label Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="4" Text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, 
-                               Lorem ipsum dolor sit amet consectetur"></Label>
-                                    <Image Grid.Row="0" Grid.Column="5" Source="star.png" HeightRequest="70"></Image>
-                                    <Image Grid.Row="0" Grid.Column="6" Source="star.png" Margin="-30,0,0,0" HeightRequest="70"></Image>
-                                    <Image Grid.Row="0" Grid.Column="7" Source="star.png" Margin="-30,0,0,0" HeightRequest="70"></Image>
-                                    <Image Grid.Row="0" Grid.Column="8" Source="star.png" Margin="-30,0,0,0" HeightRequest="70"></Image>
-                                    <Image Grid.Row="0" Grid.Column="9" Source="star.png" Margin="-30,0,0,0" HeightRequest="70"></Image>
-                                    <Image Grid.Row="0" Grid.Column="10" Source="star.png" Margin="-5,0,0,0" HeightRequest="70"></Image>
-                                    <Image Grid.Row="0" Grid.Column="11" Source="star.png" Margin="-5,0,0,0" HeightRequest="70"></Image>
+                                    <Label Grid.Row="2" Grid.Column="0" Margin="10,0,0,0" Text="{Binding Location}" FontSize="12" TextColor="Black" FontFamily="ThemeFontRegular" VerticalOptions="Center" Opacity="1"></Label>
+                                    <Label Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="6" Text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, Lorem ipsum dolor sit amet consectetur"></Label>
+                                    <!--LIKE-->
+                                    <Image Grid.Row="0" Grid.Column="10" Source="{Binding LikeThumb}" Margin="0,0,0,0" HeightRequest="70">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding ChangeLike}" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Label Grid.Row="1" Grid.Column="10" Text="20" Margin="5,0,0,0"></Label>
+                                    <!--DISLIKE-->
+                                    <Image x:Name="_hollowThumb" Grid.Row="0" Grid.Column="11" Source="{Binding DisLikeThumb}" Margin="0,0,0,0" HeightRequest="70">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command ="{Binding ChangeDislike}" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+
+                                    <Label Text="2" Grid.Row="1" Grid.Column="11" Margin="7,0,0,0"></Label>
+                                    <!--STARS-->
+                                    <Image Grid.Row="2" Grid.Column="7" Source="star.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
+                                    <Image Grid.Row="2" Grid.Column="8" Source="star.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
+                                    <Image Grid.Row="2" Grid.Column="9" Source="star.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
+                                    <Image Grid.Row="2" Grid.Column="10" Source="star.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
+                                    <Image Grid.Row="2" Grid.Column="11" Source="star.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
+                                    <!--RATING TEXT-->
+                                    <Label Text="5/5" Grid.Row="3" Grid.Column="9" Margin="20,0,0,0" Grid.ColumnSpan="2"></Label>
                                    
                                     
                                    

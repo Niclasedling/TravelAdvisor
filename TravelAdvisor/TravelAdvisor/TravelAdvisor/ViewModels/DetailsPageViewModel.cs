@@ -10,13 +10,33 @@ namespace TravelAdvisor.ViewModels
 {
     public class DetailsPageViewModel : BaseViewModel
     {
-        
+        private Image dislikeThumb;
+        public Image DisLikeThumb { get { return dislikeThumb; } }
+        public bool ToggleDisLikeThumb { get; set; }
+        public Image LikeThumb { get; set; }
+        public bool ToggleLikeThumb { get; set; }
+        public string likeimage
+        {
+            get { return string.Format("like.png"); }
+        }
         public Command GoBack => new Command(async () => await NavigationService.GoBack());
+        public Command <object> ChangeDislike
+        {
+            get { return new Command<object>(ToggleDislike);}
+        }
+        public Command<object> Changelike
+        {
+            get { return new Command<object>(Togglelike); }
+        }
+
         public DetailsPageViewModel(INavService naviService, AttractionDto attraction) : base(naviService)
         {
             //Code for creating the ViewModel
-            
-            
+            LikeThumb = new Image { Source = "like.png" };
+            //DisLikeThumb = "C:/Users/Niclas/Google Drive/Newton/Programmering/GitHub/TravelAdvisor/TravelAdvisor/TravelAdvisor/TravelAdvisor.UWP/dislike.png";
+            ToggleDisLikeThumb = false;
+            //LikeThumb = "C:/Users/Niclas/Google Drive/Newton/Programmering/GitHub/TravelAdvisor/TravelAdvisor/TravelAdvisor/TravelAdvisor.UWP/like.png";
+            ToggleLikeThumb = false;
 
         }
 
@@ -24,6 +44,16 @@ namespace TravelAdvisor.ViewModels
         {
             //Code for initialize the ViewModel
             
+        }
+        async void ToggleDislike(object sender)
+        {
+            //if (!ToggleDisLikeThumb) DisLikeThumb = "dislike.png"; // Ifylld Dislike
+            //else DisLikeThumb = "dislike.png";
+        }
+        async void Togglelike(object sender)
+        {
+            //if (!ToggleLikeThumb) LikeThumb = "dislike.png"; // Ifylld Dislike
+            //else LikeThumb = "dislike.png";
         }
 
         public List<Filter> PropertyTypeList => GetFilters();
