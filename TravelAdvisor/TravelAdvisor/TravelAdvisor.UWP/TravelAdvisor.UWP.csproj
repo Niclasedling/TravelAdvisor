@@ -142,6 +142,7 @@
     <Content Include="noun-user-839017.png" />
     <Content Include="phone.png" />
     <Content Include="Properties\Default.rd.xml" />
+    <Content Include="star.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

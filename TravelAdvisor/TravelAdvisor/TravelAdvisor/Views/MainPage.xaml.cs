@@ -83,7 +83,7 @@ namespace TravelAdvisor.Views
             Position position = new Position(e.Position.Latitude, e.Position.Longitude);
             //};
             await DisplayAlert("Coordinate", $" Lat {e.Position.Latitude}, Long {e.Position.Longitude}", "Ok");
-            var addresses = await _geocoder.GetAddressesForPositionAsync(e.Position);
+            var addresses = await _geocoder.GetAddressesForPositionAsync(position);
 
             
 
