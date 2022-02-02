@@ -15,6 +15,7 @@ namespace TravelAdvisor.Views
     public partial class UserPage : ContentPage
     {
         UserPageViewModel ViewModel => BindingContext as UserPageViewModel;
+        private readonly Geocoder _geocoder = new Geocoder();
         public UserPage()
         {
             InitializeComponent();
@@ -58,6 +59,16 @@ namespace TravelAdvisor.Views
             //e.HideInfoWindow = true;
             string pinName = ((Pin)sender).Label;
             await DisplayAlert("Pin Clicked", $"{pinName} was clicked.", "Ok");
+        }
+
+        private async void map_MapClicked(object sender, MapClickedEventArgs e)
+        {
+            Position position = e.Position;
+            await DisplayAlert("Coordiantes", $"Lat: {e.Position.Latitude}, Long {e.Position.Longitude}", "Ok");
+
+            var addresses = await _geocoder.GetAddressesForPositionAsync(e.Position);
+
+            await DisplayAlert("Adress", addresses.FirstOrDefault()?.ToString(), "Ok");
         }
     }
 }

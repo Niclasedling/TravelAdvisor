@@ -142,6 +142,7 @@
     <Content Include="noun-user-839017.png" />
     <Content Include="phone.png" />
     <Content Include="Properties\Default.rd.xml" />
+    <Content Include="star.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -158,7 +159,7 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.13" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.1" />
     <PackageReference Include="Xamarin.Forms.Maps">
-      <Version>5.0.0.1874</Version>
+      <Version>5.0.0.2337</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

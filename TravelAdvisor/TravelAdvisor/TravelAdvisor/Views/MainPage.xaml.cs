@@ -103,52 +103,7 @@ namespace TravelAdvisor.Views
 
 
 
-        //private void SelectType(object sender, EventArgs e)
-        //{
-        //    var view = sender as View;
-        //    var parent = view.Parent as StackLayout;
-
-        //    foreach (var child in parent.Children)
-        //    {
-        //        VisualStateManager.GoToState(child, "Normal");
-        //        ChangeTextColor(child, "#707070");
-        //    }
-
-        //    VisualStateManager.GoToState(view, "Selected");
-        //    ChangeTextColor(view, "#FFFFFF");
-        //}
-
-        //private void ChangeTextColor(View child, string hexColor)
-        //{
-        //    var txtCtrl = child.FindByName<Label>("PropertyTypeName");
-        //    if (txtCtrl != null)
-        //    {
-        //        txtCtrl.TextColor = Color.FromHex(hexColor);
-        //    }
-        //}
-
-
-
-        //private async void Button_Clicked_1(object sender, EventArgs e)
-        //{
-        //    UserCreateDto user = new UserCreateDto
-        //    { 
-        //      FirstName = "Alexander",
-        //      LastName = "Andersson",
-        //      Email = "1234@hotmail.com",
-        //      Password = "1234"
-        //    };
-        //    var item = await _userService.CreateUser(user);
-        //    //Guid guid = new Guid("d2ff1305-4b26-45f5-9204-006b01c19067");
-        //    //var item = await _userService.GetAllUsers();
-
-        //    if (item != null)
-        //    {
-        //        var h = item;
-        //    }
-        //    else { }
-
-        //}
+      
     }
 
     

@@ -31,6 +31,7 @@
           <!--3--><RowDefinition Height="*" />
           <!--4--><RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        
         <!--SearchBar-->
         <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Margin="15,15,0,0">
             <Entry Placeholder="Searchbar"></Entry>
@@ -52,14 +53,14 @@
         </StackLayout>
         <!--Map-->
         <StackLayout Grid.Row="1" Grid.ColumnSpan="12" Margin="5,15,5,0">
-            <maps:Map x:Name="map">
+            <maps:Map x:Name="map" MapClicked="map_MapClicked">
                 <x:Arguments>
                     <maps:MapSpan>
                         <x:Arguments>
                             <maps:Position>
                                 <x:Arguments>
-                                    <x:Double>36.9628066</x:Double>
-                                    <x:Double>-122.0194722</x:Double>
+                                    <x:Double>59.3194903</x:Double>
+                                    <x:Double>18.075060000000007</x:Double>
                                 </x:Arguments>
                             </maps:Position>
                             <x:Double>0.01</x:Double>
@@ -79,8 +80,7 @@
                 ItemsSource="{Binding AttractionList}"
                 Grid.RowSpan="3"
                 Grid.ColumnSpan="12"
-                Margin="5,0,5,5"
-                BackgroundColor="Red">
+                Margin="5,0,5,5">
 
                 <ListView.Behaviors>
                     <xct:EventToCommandBehavior
