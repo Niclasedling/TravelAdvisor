@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace TravelAdvisor.Models
 {
@@ -20,13 +21,17 @@ namespace TravelAdvisor.Models
 
         public string Details { get; set; }
 
+        public ImageSource DislikeThumb { get { return "dislike.png"; } }
+
+        public ImageSource LikeThumb { get { return "like.png"; } } 
+
         //public List<ReviewDto> Reviews { get; set; }
 
     }
 
     public class AttractionDto : AttractionBase
     {
-
+       
     }
 
     public class AttractionUpdateDto : AttractionBase

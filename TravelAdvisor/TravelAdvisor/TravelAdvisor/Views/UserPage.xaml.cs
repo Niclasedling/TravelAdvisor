@@ -9,16 +9,18 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
 
+
 namespace TravelAdvisor.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UserPage : ContentPage
     {
         UserPageViewModel ViewModel => BindingContext as UserPageViewModel;
-        private readonly Geocoder _geocoder = new Geocoder();
+        Geocoder _geocoder;
         public UserPage()
         {
             InitializeComponent();
+            _geocoder = new Geocoder();
             BindingContext = new UserPageViewModel(DependencyService.Get<INavService>());
         }
         protected override void OnAppearing()
@@ -67,6 +69,7 @@ namespace TravelAdvisor.Views
             await DisplayAlert("Coordiantes", $"Lat: {e.Position.Latitude}, Long {e.Position.Longitude}", "Ok");
 
             var addresses = await _geocoder.GetAddressesForPositionAsync(e.Position);
+
 
             await DisplayAlert("Adress", addresses.FirstOrDefault()?.ToString(), "Ok");
         }
