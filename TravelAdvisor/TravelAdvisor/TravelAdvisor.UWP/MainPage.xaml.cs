@@ -20,8 +20,8 @@ namespace TravelAdvisor.UWP
         public MainPage()
         {
             this.InitializeComponent();
-            Xamarin.FormsMaps.Init("");
-            Windows.Services.Maps.MapService.ServiceToken = "";
+            Xamarin.FormsMaps.Init("Aohsy1MqXcu_h41UHuKJ-2-IeWXvcP17tBZ4d5bSwouX5FarhgDbYv741ZxqwiWh");
+            Windows.Services.Maps.MapService.ServiceToken = "Aohsy1MqXcu_h41UHuKJ-2-IeWXvcP17tBZ4d5bSwouX5FarhgDbYv741ZxqwiWh";
             LoadApplication(new TravelAdvisor.App());
         }
     }
