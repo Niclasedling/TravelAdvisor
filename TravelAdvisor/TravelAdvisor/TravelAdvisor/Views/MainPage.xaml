@@ -14,7 +14,7 @@
     <Grid BackgroundColor="#F9F9F9" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20">
         <Grid.RowDefinitions>
             <!--0--><RowDefinition Height="35"></RowDefinition>
-            <!--1--><RowDefinition Height="120"></RowDefinition>
+            <!--1--><RowDefinition Height="160"></RowDefinition>
             <!--2--><RowDefinition Height="350"></RowDefinition>
             <!--3--><RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
@@ -58,8 +58,33 @@
 
 
         <!--VÄDER INFO-->
-        <StackLayout BackgroundColor="Red" Grid.Row="1" Grid.ColumnSpan="12" >
-            <Label Text="Datum"></Label>
+        <StackLayout BackgroundColor="Red" Grid.Row="1" Grid.ColumnSpan="12" Orientation="Horizontal">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <!--0--><RowDefinition Height="*" />
+                    <!--1--><RowDefinition Height="*" />
+                    <!--2--><RowDefinition Height="*" />
+                    <!--3--><RowDefinition Height="*" />
+                    <!--4--><RowDefinition Height="*" />
+                    <!--5--><RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <!--0--><ColumnDefinition Width="*"/>
+                    <!--1--><ColumnDefinition Width="*"/>
+                    <!--2--><ColumnDefinition Width="*"/>
+                    <!--3--><ColumnDefinition Width="*"/>
+                    <!--4--><ColumnDefinition Width="*"/>
+                    <!--5--><ColumnDefinition Width="*"/>
+                    <!--6--><ColumnDefinition Width="*"/>
+                    <!--7--><ColumnDefinition Width="*"/>
+                    <!--8--><ColumnDefinition Width="*"/>
+                    <!--9--><ColumnDefinition Width="*"/>
+                    <!--10--><ColumnDefinition Width="*"/>
+                    <!--11--><ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="3" Text="Dagens Datum" Margin="0,5,0,0"></Label>
+                <Label Grid.Row="0" Grid.Column="8"  Text="Temp" Margin="0,5,0,0"></Label>
+            </Grid>
         </StackLayout>
         <!--KARTA-->
         <StackLayout Grid.Row="2" Grid.ColumnSpan="12" Margin="0,0,0,10">
