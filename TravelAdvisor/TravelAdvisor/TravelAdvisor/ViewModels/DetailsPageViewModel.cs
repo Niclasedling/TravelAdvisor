@@ -11,10 +11,9 @@ namespace TravelAdvisor.ViewModels
     public class DetailsPageViewModel : BaseViewModel
     {
         
-        public Image DislikeThumb { get { return new Image { Source = "dislikelike.png" }; } }
-        public bool ToggleDisLikeThumb { get; set; }
-        public Image LikeThumb { get { return new Image { Source = "like.png" }; } }
+        
         public bool ToggleLikeThumb { get; set; }
+        public bool ToggleDisLikeThumb { get; set; }
         //public string LikeImage
         //{
         //    get { return string.Format("like.png"); }
@@ -24,9 +23,9 @@ namespace TravelAdvisor.ViewModels
         {
             get { return new Command<object>(ToggleDislike);}
         }
-        public Command<object> Changelike
+        public Command<object> ChangeLike
         {
-            get { return new Command<object>(Togglelike); }
+            get { return new Command<object>(ToggleLike); }
         }
 
         public DetailsPageViewModel(INavService naviService, AttractionDto attraction) : base(naviService)
@@ -50,7 +49,7 @@ namespace TravelAdvisor.ViewModels
             //if (!ToggleDisLikeThumb) DisLikeThumb = "dislike.png"; // Ifylld Dislike
             //else DisLikeThumb = "dislike.png";
         }
-        async void Togglelike(object sender)
+        async void ToggleLike(object sender)
         {
             //if (!ToggleLikeThumb) LikeThumb = "dislike.png"; // Ifylld Dislike
             //else LikeThumb = "dislike.png";

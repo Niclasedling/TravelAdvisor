@@ -85,16 +85,16 @@
                                     <Label Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="6" Text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, Lorem ipsum dolor sit amet consectetur"></Label>
                                     <!--LIKE-->
                                     <Image Grid.Row="0" Grid.Column="10" Source="{Binding LikeThumb}" Margin="0,0,0,0" HeightRequest="70">
-                                        <Image.GestureRecognizers>
+                                        <!--<Image.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding ChangeLike}" />
-                                        </Image.GestureRecognizers>
+                                        </Image.GestureRecognizers>-->
                                     </Image>
                                     <Label Grid.Row="1" Grid.Column="10" Text="20" Margin="5,0,0,0"></Label>
                                     <!--DISLIKE-->
                                     <Image Grid.Row="0" Grid.Column="11" Source="{Binding DislikeThumb}" Margin="0,0,0,0" HeightRequest="70">
-                                        <Image.GestureRecognizers>
+                                        <!--<Image.GestureRecognizers>
                                             <TapGestureRecognizer Command ="{Binding ChangeDislike}" />
-                                        </Image.GestureRecognizers>
+                                        </Image.GestureRecognizers>-->
                                     </Image>
 
                                     <Label Text="2" Grid.Row="1" Grid.Column="11" Margin="7,0,0,0"></Label>
