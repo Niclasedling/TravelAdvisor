@@ -10,15 +10,15 @@ namespace TravelAdvisor.ViewModels
 {
     public class DetailsPageViewModel : BaseViewModel
     {
-        private Image dislikeThumb;
-        public Image DisLikeThumb { get { return dislikeThumb; } }
+        
+        public Image DislikeThumb { get { return new Image { Source = "dislikelike.png" }; } }
         public bool ToggleDisLikeThumb { get; set; }
-        public Image LikeThumb { get; set; }
+        public Image LikeThumb { get { return new Image { Source = "like.png" }; } }
         public bool ToggleLikeThumb { get; set; }
-        public string likeimage
-        {
-            get { return string.Format("like.png"); }
-        }
+        //public string LikeImage
+        //{
+        //    get { return string.Format("like.png"); }
+        //}
         public Command GoBack => new Command(async () => await NavigationService.GoBack());
         public Command <object> ChangeDislike
         {
@@ -32,7 +32,7 @@ namespace TravelAdvisor.ViewModels
         public DetailsPageViewModel(INavService naviService, AttractionDto attraction) : base(naviService)
         {
             //Code for creating the ViewModel
-            LikeThumb = new Image { Source = "like.png" };
+            //LikeThumb = new Image { Source = "like.png" };
             //DisLikeThumb = "C:/Users/Niclas/Google Drive/Newton/Programmering/GitHub/TravelAdvisor/TravelAdvisor/TravelAdvisor/TravelAdvisor.UWP/dislike.png";
             ToggleDisLikeThumb = false;
             //LikeThumb = "C:/Users/Niclas/Google Drive/Newton/Programmering/GitHub/TravelAdvisor/TravelAdvisor/TravelAdvisor/TravelAdvisor.UWP/like.png";

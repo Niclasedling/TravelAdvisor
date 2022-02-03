@@ -17,7 +17,7 @@ namespace TravelAdvisor.Views
         DetailsPageViewModel ViewModel => BindingContext as DetailsPageViewModel;
         public DetailsPage()
         {
-
+            
             InitializeComponent();
             BindingContext = new DetailsPageViewModel(DependencyService.Get<INavService>(), App.globalAttraction);
         }
@@ -26,7 +26,10 @@ namespace TravelAdvisor.Views
         {
             base.OnAppearing();
             // Initialize ViewModel
+            
             ViewModel?.Init();
         }
+
+        
     }
 }

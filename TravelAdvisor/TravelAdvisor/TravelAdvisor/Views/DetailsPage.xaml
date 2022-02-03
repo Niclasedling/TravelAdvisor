@@ -91,7 +91,7 @@
                                     </Image>
                                     <Label Grid.Row="1" Grid.Column="10" Text="20" Margin="5,0,0,0"></Label>
                                     <!--DISLIKE-->
-                                    <Image x:Name="_hollowThumb" Grid.Row="0" Grid.Column="11" Source="{Binding DisLikeThumb}" Margin="0,0,0,0" HeightRequest="70">
+                                    <Image Grid.Row="0" Grid.Column="11" Source="{Binding DislikeThumb}" Margin="0,0,0,0" HeightRequest="70">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Command ="{Binding ChangeDislike}" />
                                         </Image.GestureRecognizers>
