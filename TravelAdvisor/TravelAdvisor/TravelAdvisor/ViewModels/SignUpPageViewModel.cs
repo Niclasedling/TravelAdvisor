@@ -60,7 +60,7 @@ namespace TravelAdvisor.ViewModels
             UserCreateDto userCreateDto = new UserCreateDto
             {
                 Email = Email,
-                Password = Password,
+                Password = Cryptography.EncryptData(Password),
                 FirstName = Firstname,
                 LastName = Lastname,
             };
