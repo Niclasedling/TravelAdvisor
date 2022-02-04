@@ -18,7 +18,7 @@ namespace TravelAdvisor
 
             //---------------------------------------------------------Lägg till service
             DependencyService.Register<INavService, NavService>();
-            DependencyService.Register<ILoginService, LoginService>();
+            //DependencyService.Register<ILoginService, LoginService>();
 
 
 
