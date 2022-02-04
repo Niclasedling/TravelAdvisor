@@ -28,22 +28,28 @@
         <!--ATTRACTION NAME-->
         <StackLayout Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="3" Margin="0,15,0,0">
 
-            <Label>ATTRACTION</Label></StackLayout>
+            <Label Text="{Binding NameOfAttraction}"></Label></StackLayout>
         <!--IMAGE-->
-        <StackLayout Grid.Row="1" Grid.ColumnSpan="12" BackgroundColor="Red" Grid.RowSpan="2">
+        <Frame Grid.Row="1" Grid.ColumnSpan="12" Grid.RowSpan="4" CornerRadius="50" BackgroundColor="Red" Padding="0">
+            <Image Source="{Binding AttractionImgSrc}" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></Image>
             <!--<Image Source="apt1.jpg" HeightRequest="600" WidthRequest="1200" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></Image>-->
-            </StackLayout>
+            </Frame>
         <!--INFO ABOUT ATTRACTION-->
-        <StackLayout Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="5" x:Name="stack">
-            <Label Text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, 
-                               Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, 
-                               Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, 
-                               
-                               "/>
-        </StackLayout>
+        <Frame Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="5" x:Name="stack" Padding="20" BackgroundColor="#C1C1C1">
+            <StackLayout>
+                <Label Text="Information:" TextTransform="Uppercase" FontAttributes="Bold"></Label>
+            <ScrollView Margin="5,0,0,0">
+                    <StackLayout>
+                        <Label Text="{Binding InfoAboutAttraction}"/>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+            
+            
+        </Frame>
         <!--LISTVIEW-->
         <StackLayout Grid.Row="4" Grid.ColumnSpan="12" Grid.RowSpan="2">
-            <ListView Grid.Row="2" Margin="0,10" VerticalScrollBarVisibility="Never" ItemsSource="{Binding ReviewList}" x:Name="thelistview">
+            <ListView Grid.Row="2" Margin="0,10" VerticalScrollBarVisibility="Never" ItemsSource="{Binding Reviews}" x:Name="thelistview">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

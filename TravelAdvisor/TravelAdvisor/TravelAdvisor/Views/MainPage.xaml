@@ -11,7 +11,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-
+    
     <ScrollView>
     <Grid BackgroundColor="#F9F9F9" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20">
         <Grid.RowDefinitions>
@@ -35,7 +35,7 @@
             <!--11--><ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Image Source="phone.png" Grid.Column="0" ></Image>
-
+<SearchBar />
         <!--SearchBox-->
         <Entry  Placeholder="Search" 
                 TextColor="Black"  

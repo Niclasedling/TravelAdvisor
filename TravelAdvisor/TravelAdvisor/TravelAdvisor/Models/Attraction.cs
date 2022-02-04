@@ -20,9 +20,9 @@ namespace TravelAdvisor.Models
 
         public string Price { get; set; } // Ska vara int
 
-        public string Details { get; set; }
+        public string Description { get; set; }
 
-        //public List<ReviewDto> Reviews { get; set; }
+        public List<ReviewDto> Reviews { get; set; }
 
     }
     

@@ -55,7 +55,7 @@ namespace TravelAdvisor.ViewModels
                     Adress = "2167 Anthony Way, LA",
                     Location = "California",
                     Price = "$1500/month",
-                    Details = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
+                    Description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
@@ -70,7 +70,7 @@ namespace TravelAdvisor.ViewModels
                     Adress = "2167 Anthony Way, LA",
                     Location = "California",
                     Price = "$1500/month",
-                    Details = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
+                    Description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
@@ -85,7 +85,7 @@ namespace TravelAdvisor.ViewModels
                     Adress = "2167 Anthony Way, LA",
                     Location = "California",
                     Price = "$1500/month",
-                    Details = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
+                    Description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
@@ -100,7 +100,7 @@ namespace TravelAdvisor.ViewModels
                     Adress = "2167 Anthony Way, LA",
                     Location = "California",
                     Price = "$1500/month",
-                    Details = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
+                    Description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +

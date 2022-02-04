@@ -11,7 +11,7 @@ namespace TravelAdvisor
 {
     public partial class App : Application
     {
-        public static AttractionDto globalAttraction;
+        public static AttractionDto globalCurrentAttraction;
         public App()
         {
             InitializeComponent();
