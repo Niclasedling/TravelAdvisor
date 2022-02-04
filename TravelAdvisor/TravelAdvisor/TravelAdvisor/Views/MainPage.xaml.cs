@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TravelAdvisor.Interfaces;
 using TravelAdvisor.Models;
 using TravelAdvisor.Services;
 using TravelAdvisor.ViewModels;
@@ -19,6 +20,7 @@ namespace TravelAdvisor.Views
         public AttractionDto Attraction { get; set; }
         MainPageViewModel ViewModel => BindingContext as MainPageViewModel;
         private readonly IUserService _userService;
+        private readonly IForecastService _forcastService;
 
         public MainPage()
         {
@@ -27,6 +29,7 @@ namespace TravelAdvisor.Views
             InitializeComponent();
             BindingContext = new MainPageViewModel(DependencyService.Get<INavService>());
             _userService = DependencyService.Get<IUserService>();
+            _forcastService = DependencyService.Get<IForecastService>();
         }
         
         
@@ -92,19 +95,17 @@ namespace TravelAdvisor.Views
                 addresses.FirstOrDefault()?.ToString(), "Ok");
 
             
-            
-
-
         }
-        
 
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+         var item=  await _forcastService.GetForcast("Stockholm");
 
-
-
-
-
-
-      
+            foreach (var items in item)
+            {
+                var hej = items.DateofForecast;
+            }
+        }
     }
 
     

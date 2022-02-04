@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using TravelAdvisor.Models;
 
 namespace TravelAdvisor.Interfaces
 {
-    internal interface IForecastService
+    public interface IForecastService
     {
+        Task<List<Weather>> GetForcast(string cityName);
     }
 }

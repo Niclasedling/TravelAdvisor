@@ -89,10 +89,11 @@ namespace TravelAdvisor.ApiClient
 
             var responseString = await response.Content.ReadAsStringAsync();
 
-            
+
             return JsonConvert.DeserializeObject<List<T>>(responseString);
         }
-        
+     
+
 
     }
 
