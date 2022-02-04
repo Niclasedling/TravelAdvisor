@@ -34,7 +34,9 @@ namespace TravelAdvisor.Views
             base.OnAppearing();
             // Initialize ViewModel
             ViewModel?.Init();
+            
             registerButton.IsEnabled = false;
+            
         }
 
         private void entrytextChanged(object sender, TextChangedEventArgs e)

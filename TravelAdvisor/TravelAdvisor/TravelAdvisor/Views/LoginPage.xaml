@@ -11,39 +11,50 @@
     <StackLayout Padding="0">
        
             <Grid>
-                <StackLayout Padding="0" Margin="0">
-                <Frame BackgroundColor="DarkGreen" HeightRequest="130" HorizontalOptions="FillAndExpand" CornerRadius="0" Padding="0">
-                    <Image Source="aruba.jpg" Aspect="AspectFill" Margin="0" />
+            <StackLayout Padding="0" Margin="0">
+                <Frame BackgroundColor="#203fba" HeightRequest="130" HorizontalOptions="FillAndExpand" CornerRadius="0" Padding="0">
+                    <Image Source="ArubaBackround.png" Aspect="AspectFill" Margin="0" />
+
                 </Frame>
+                    <Image Source="ArubaBackround.png" Aspect="AspectFill" Margin="0" />
                 </StackLayout>
 
                 <StackLayout Margin="15,110,15,0">
 
-                <Frame BackgroundColor="White" HasShadow="True" HeightRequest="300" HorizontalOptions="FillAndExpand" BorderColor="LightGray">
+                <Frame BackgroundColor="White" HasShadow="True" HeightRequest="320" HorizontalOptions="FillAndExpand" BorderColor="LightGray">
                     <StackLayout>
-                        <StackLayout HorizontalOptions="CenterAndExpand">
-                            <Label Text="Sign In" TextColor="Black" FontSize="Medium" FontAttributes="Bold" />
-                        </StackLayout>
-                        
+
                         <StackLayout Margin="0,25,0,0">
                             <!--EmailBox-->
-                            <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" Margin="0" CornerRadius="20" HorizontalOptions="FillAndExpand">
+                            <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" Margin="0" CornerRadius="0" HorizontalOptions="FillAndExpand">
                                 <StackLayout Orientation="Horizontal">
-                                    <Frame BackgroundColor="AliceBlue" CornerRadius="20" HeightRequest="35" WidthRequest="35" Padding="0" HorizontalOptions="Start" Margin="7">
-                                        
+
+                                   
+                                    <Frame   CornerRadius="0" HeightRequest="35" WidthRequest="35" Padding="0" HorizontalOptions="Start" Margin="7">
+                                        <ContentView AbsoluteLayout.LayoutBounds="1, 0, -1, -1" 
+                                            AbsoluteLayout.LayoutFlags="PositionProportional">
+
+                                            <Image Source="email.png" />
+                                        </ContentView>
+
                                     </Frame>
-                                    <Entry x:Name="Email" Placeholder="Email" TextColor="DarkOliveGreen" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" 
+                                    <Entry x:Name="Email" Placeholder="Email" TextColor="#203fba" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" 
                                            Text="{Binding Email}"
                                            Keyboard="Email"/>
                                 </StackLayout>
                             </Frame>
                             <!--PasswordBox-->
-                            <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" Margin="0,20,0,0" CornerRadius="20" HorizontalOptions="FillAndExpand">
+                            <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" Margin="0,20,0,0" CornerRadius="0" HorizontalOptions="FillAndExpand" >
                                 <StackLayout Orientation="Horizontal">
-                                    <Frame BackgroundColor="AliceBlue" CornerRadius="20" HeightRequest="35" WidthRequest="35" Padding="0" HorizontalOptions="Start" Margin="7">
+                                    <Frame CornerRadius="0" HeightRequest="35" WidthRequest="35" Padding="0" HorizontalOptions="Start" Margin="7">
+                                        <ContentView AbsoluteLayout.LayoutBounds="1, 0, -1, -1" 
+                                                     AbsoluteLayout.LayoutFlags="PositionProportional">
+
+                                            <Image Source="password.png" />
+                                        </ContentView>
 
                                     </Frame>
-                                    <Entry x:Name="Password" Text="{Binding Password}" Placeholder="Password" IsPassword="True" TextColor="DarkOliveGreen" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" />
+                                    <Entry x:Name="Password" Text="{Binding Password}" Placeholder="Password" IsPassword="True" TextColor="#203fba" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" />
                                 </StackLayout>
                             </Frame>
                             
@@ -51,24 +62,24 @@
 
                         <StackLayout Orientation="Horizontal">
                             <!--Remebmer Me Checkbox-->
-                            <CheckBox IsChecked="False" Color="DarkOliveGreen" Margin="10,0,0,0"/>
+                            <CheckBox IsChecked="False" Color="Black" Margin="10,0,0,0"/>
                             <Label Text="Remember me" HorizontalOptions="Start" VerticalTextAlignment="Center"/>
 
-                            <Label Text="Forgot Password" HorizontalTextAlignment="End" TextColor="DarkOliveGreen" HorizontalOptions="EndAndExpand" FontAttributes="Bold" VerticalTextAlignment="Center" />
+                            <Label Text="Forgot Password" HorizontalTextAlignment="End" TextColor="#203fba" HorizontalOptions="EndAndExpand" FontAttributes="Bold" VerticalTextAlignment="Center" />
 
                         </StackLayout>
-<!--<<<<<<< HEAD-->
-                        <!--SignInButton
-                        <Button Text="Sign in" BackgroundColor="DarkOliveGreen" TextColor="White" FontAttributes="Bold" CornerRadius="20" HeightRequest="45" Clicked="Login_Button_Clicked"/>
-=======
+                             <!--<<<<<<< HEAD-->
+                            <!--SignInButton
+                            <Button Text="Sign in" BackgroundColor="DarkOliveGreen" TextColor="White" FontAttributes="Bold" CornerRadius="20" HeightRequest="45" Clicked="Login_Button_Clicked"/>
+                
                         
                         --><!--SignInButton-->
                         <Button x:Name="loginbtn"
                                 Text="Sign in"
-                                BackgroundColor="DarkOliveGreen" 
+                                BackgroundColor="#203fba" 
                                 TextColor="White" 
                                 FontAttributes="Bold" 
-                                CornerRadius="20" 
+                                CornerRadius="0" 
                                 HeightRequest="45"
                                 Command="{Binding LoginCommand}"
                                 >
@@ -86,7 +97,7 @@
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                             <Label Text="Still not connected?" HorizontalOptions="Start" VerticalTextAlignment="Center" />
                             <!--SignUpText-->
-                            <Label Text="Sign Up" HorizontalTextAlignment="End" TextColor="DarkOliveGreen" FontAttributes="Bold" VerticalTextAlignment="Center">
+                            <Label Text="Sign Up" HorizontalTextAlignment="End" TextColor="#203fba" FontAttributes="Bold" VerticalTextAlignment="Center" >
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding SignUpPage}"/>
                                 </Label.GestureRecognizers>

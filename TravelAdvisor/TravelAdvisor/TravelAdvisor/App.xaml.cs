@@ -18,14 +18,16 @@ namespace TravelAdvisor
 
             //---------------------------------------------------------Lägg till service
             DependencyService.Register<INavService, NavService>();
-            DependencyService.Register<ILoginService, LoginService>();
+            //DependencyService.Register<ILoginService, LoginService>();
 
 
 
             //-------------------------------------------------------Lägg till ApiService
             var Client = new HttpClient();
             var userService = new UserService(Client);
+            var forcastService = new ForecastService(Client);
             DependencyService.RegisterSingleton<IUserService>(userService);
+            DependencyService.RegisterSingleton<IForecastService>(forcastService);
 
 
 

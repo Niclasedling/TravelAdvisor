@@ -15,7 +15,7 @@ namespace TravelAdvisor.ViewModels
     public class LoginPageViewModel : BaseViewModel
     {
 
-        private readonly ILoginService _loginService;
+        //private readonly ILoginService _loginService;
         private readonly IUserService _userService;
         private readonly INavService _navService;
         public Command<object> LoginCommand
@@ -30,7 +30,7 @@ namespace TravelAdvisor.ViewModels
 
         public LoginPageViewModel(INavService naviService) : base(naviService)
         {
-            _loginService = DependencyService.Get<ILoginService>();
+            //_loginService = DependencyService.Get<ILoginService>();
             _userService = DependencyService.Get<IUserService>();
             _navService = DependencyService.Get<INavService>();
             //if (LoginCommand != null)

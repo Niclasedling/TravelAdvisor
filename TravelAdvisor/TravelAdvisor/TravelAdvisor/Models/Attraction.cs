@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
+using TravelAdvisor.ViewModels;
 
 namespace TravelAdvisor.Models
 {
     public abstract class AttractionBase
-    {
+    {     
         public Guid Id { get; set; }
 
         public string Name { get; set; }
@@ -23,10 +25,10 @@ namespace TravelAdvisor.Models
         //public List<ReviewDto> Reviews { get; set; }
 
     }
-
+    
     public class AttractionDto : AttractionBase
     {
-
+       
     }
 
     public class AttractionUpdateDto : AttractionBase

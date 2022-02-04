@@ -6,9 +6,13 @@
 
         <Grid>
             <StackLayout Padding="0" Margin="0">
-                <Frame BackgroundColor="DarkGreen" HeightRequest="130" HorizontalOptions="FillAndExpand" CornerRadius="0">
+                <Frame BackgroundColor="#203fba" HeightRequest="130" HorizontalOptions="FillAndExpand" CornerRadius="0" Padding="0">
+                    <Image Source="MadeiraBackround.jpg"  Aspect="AspectFill" Margin="0" />
+
 
                 </Frame>
+                <Image Source="MadeiraBackround.jpg"  Aspect="Fill" Margin="0" />
+
             </StackLayout>
 
             <StackLayout Margin="15,110,15,0">
@@ -22,13 +26,13 @@
                         <StackLayout Margin="0,25,0,0">
                             <StackLayout Orientation="Horizontal">
                                 <Label>Firstname</Label>
-                                <Label Margin="150,0,0,0">Lastname</Label>
+                                <Label Margin="414,0,0,0">Lastname</Label>
                             </StackLayout>
                             <!--FirstNameBox and LastNameBox-->
                             <Frame BackgroundColor="Transparent" BorderColor="Transparent" Padding="0" Margin="0" CornerRadius="0" HorizontalOptions="FillAndExpand">
                                 <StackLayout Orientation="Horizontal">
-                                    <Entry x:Name="entryFirstname" Text="{Binding Firstname}" Placeholder="Firstname" TextColor="Green" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" TextChanged="entrytextChanged"/>
-                                    <Entry x:Name="entryLastName" Text="{Binding Lastname}" Placeholder="Lastname" TextColor="Green" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" TextChanged="entrytextChanged" />
+                                    <Entry x:Name="entryFirstname" Text="{Binding Firstname}" Placeholder="Firstname" TextColor="#203fba" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" TextChanged="entrytextChanged"/>
+                                    <Entry x:Name="entryLastName" Text="{Binding Lastname}" Placeholder="Lastname" TextColor="#203fba" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" TextChanged="entrytextChanged" />
                                 </StackLayout>
                             </Frame>
                             
@@ -37,16 +41,16 @@
                             <Frame BackgroundColor="Transparent" BorderColor="Transparent" Padding="0" CornerRadius="0" HorizontalOptions="FillAndExpand">
                                 <StackLayout Orientation="Horizontal">
 
-                                    <Entry x:Name="entryEmail" Text="{Binding Email}" Placeholder="Email" TextColor="Green" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" TextChanged="entrytextChanged" />
+                                    <Entry x:Name="entryEmail" Text="{Binding Email}" Placeholder="Email" TextColor="#203fba" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" TextChanged="entrytextChanged" />
                                 </StackLayout>
                             </Frame>
                             
                             <!--PasswordBox-->
-                            <Label Margin="0,10,0,0">Password</Label>
+                            <Label Margin="0,10,0,0" x:Name="thelabel">Password</Label>
                             <Frame BackgroundColor="Transparent" BorderColor="Transparent" Padding="0" CornerRadius="0" HorizontalOptions="FillAndExpand">
                                 <StackLayout Orientation="Horizontal">
 
-                                    <Entry x:Name="entryPassword" Text="{Binding Password}" Placeholder="Password" IsPassword="True" TextColor="Green" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" TextChanged="entrytextChanged" />
+                                    <Entry x:Name="entryPassword" Text="{Binding Password}" Placeholder="Password" IsPassword="True" TextColor="#203fba" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" TextChanged="entrytextChanged" />
                                 </StackLayout>
                             </Frame>
 
@@ -55,7 +59,7 @@
                         <!--Register-->
                         <Button x:Name="registerButton"
                                 Text="Register" 
-                                BackgroundColor="DarkGreen" 
+                                BackgroundColor="#203fba" 
                                 TextColor="White" 
                                 FontAttributes="Bold" 
                                 CornerRadius="15" 
