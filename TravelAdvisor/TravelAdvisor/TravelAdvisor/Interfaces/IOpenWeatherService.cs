@@ -6,8 +6,8 @@ using TravelAdvisor.Models;
 
 namespace TravelAdvisor.Interfaces
 {
-    public interface IForecastService
+    public interface IOpenWeatherService
     {
-        Task<List<Weather>> GetForcast(string cityName);
+        Task<Forecast> GetForcast(string cityName);
     }
 }
