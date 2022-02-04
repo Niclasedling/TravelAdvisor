@@ -72,6 +72,7 @@ namespace TravelAdvisor.Views
             //e.HideInfoWindow = true;
             string pinName = ((Pin)sender).Label;
             await DisplayAlert("Pin Clicked", $"{pinName} was clicked.", "Ok");
+            
         }
 
         private readonly Geocoder _geocoder = new Geocoder();
