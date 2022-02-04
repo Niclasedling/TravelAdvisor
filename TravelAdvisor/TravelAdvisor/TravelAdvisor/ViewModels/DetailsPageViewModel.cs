@@ -10,32 +10,18 @@ namespace TravelAdvisor.ViewModels
 {
     public class DetailsPageViewModel : BaseViewModel
     {
+
         
-        
-        public bool ToggleLikeThumb { get; set; }
-        public bool ToggleDisLikeThumb { get; set; }
-        //public string LikeImage
-        //{
-        //    get { return string.Format("like.png"); }
-        //}
+
         public Command GoBack => new Command(async () => await NavigationService.GoBack());
-        public Command <object> ChangeDislike
-        {
-            get { return new Command<object>(ToggleDislike);}
-        }
-        public Command<object> ChangeLike
-        {
-            get { return new Command<object>(ToggleLike); }
-        }
+        
+
 
         public DetailsPageViewModel(INavService naviService, AttractionDto attraction) : base(naviService)
         {
             //Code for creating the ViewModel
-            //LikeThumb = new Image { Source = "like.png" };
-            //DisLikeThumb = "C:/Users/Niclas/Google Drive/Newton/Programmering/GitHub/TravelAdvisor/TravelAdvisor/TravelAdvisor/TravelAdvisor.UWP/dislike.png";
-            ToggleDisLikeThumb = false;
-            //LikeThumb = "C:/Users/Niclas/Google Drive/Newton/Programmering/GitHub/TravelAdvisor/TravelAdvisor/TravelAdvisor/TravelAdvisor.UWP/like.png";
-            ToggleLikeThumb = false;
+            
+           
 
         }
 
@@ -43,16 +29,6 @@ namespace TravelAdvisor.ViewModels
         {
             //Code for initialize the ViewModel
             
-        }
-        async void ToggleDislike(object sender)
-        {
-            //if (!ToggleDisLikeThumb) DisLikeThumb = "dislike.png"; // Ifylld Dislike
-            //else DisLikeThumb = "dislike.png";
-        }
-        async void ToggleLike(object sender)
-        {
-            //if (!ToggleLikeThumb) LikeThumb = "dislike.png"; // Ifylld Dislike
-            //else LikeThumb = "dislike.png";
         }
 
         public List<Filter> PropertyTypeList => GetFilters();
@@ -73,52 +49,46 @@ namespace TravelAdvisor.ViewModels
             {
                 new AttractionDto
                 {
+                    Id = Guid.NewGuid(),
                     Image = "apt1.jpg",
                     Adress = "2162 Patricia Ave, LA",
                     Location = "California",
                     Price = "$1500/month",
+                    Details = "First picture"
+
 
                 },
                 new AttractionDto
                 {
+                    Id = Guid.NewGuid(),
                     Image = "apt2.jpg",
                     Adress = "2112 Cushions Dr, LA",
                     Location = "California",
                     Price = "$1500/month",
+                    Details = "Second picture"
 
                 },
                 new AttractionDto
                 {
+                    Id = Guid.NewGuid(),
                     Image = "apt3.jpg",
                     Adress = "2167 Anthony Way, LA",
                     Location = "California",
                     Price = "$1500/month",
-                    Details = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,"
+                    Details = "Third picture"
                 },
                  new AttractionDto
                 {
+                    Id = Guid.NewGuid(),
                     Image = "apt3.jpg",
                     Adress = "2167 Anthony Way, LA",
                     Location = "California",
                     Price = "$1500/month",
-                    Details = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,"
+                    Details = "Fourth picture"
                 },
                   new AttractionDto
                 {
+                    Id = Guid.NewGuid(),
                     Image = "apt3.jpg",
                     Adress = "2167 Anthony Way, LA",
                     Location = "California",
@@ -134,6 +104,7 @@ namespace TravelAdvisor.ViewModels
                 },
                    new AttractionDto
                 {
+                    Id = Guid.NewGuid(),
                     Image = "apt3.jpg",
                     Adress = "2167 Anthony Way, LA",
                     Location = "California",

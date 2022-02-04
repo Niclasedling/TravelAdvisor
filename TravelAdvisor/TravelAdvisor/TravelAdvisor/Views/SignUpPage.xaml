@@ -42,7 +42,7 @@
                             </Frame>
                             
                             <!--PasswordBox-->
-                            <Label Margin="0,10,0,0">Password</Label>
+                            <Label Margin="0,10,0,0" x:Name="thelabel">Password</Label>
                             <Frame BackgroundColor="Transparent" BorderColor="Transparent" Padding="0" CornerRadius="0" HorizontalOptions="FillAndExpand">
                                 <StackLayout Orientation="Horizontal">
 
