@@ -10,24 +10,24 @@ using Xamarin.Forms;
 
 namespace TravelAdvisor.Services
 {
-    public class ForecastService : IForecastService
+    public class OpenWeatherService : IOpenWeatherService
     {
-        private readonly ApiClient<Weather> _forecastServiceClient;
+        private readonly ApiClient<Forecast> _forecastServiceClient;
         private readonly INavService _navService;
 
 
-        public ForecastService(HttpClient httpClient)
+        public OpenWeatherService(HttpClient httpClient)
         {
-            _forecastServiceClient = new ApiClient<Weather>(httpClient, "Forecast");
+            _forecastServiceClient = new ApiClient<Forecast>(httpClient, "Forecast");
             _navService = DependencyService.Get<INavService>();
 
         }
 
-        public async Task<List<Weather>> GetForcast(string cityName)
+        public async Task<Forecast> GetForcast(string cityName)
         {
             string path = $"GetAll?cityName={cityName}";
 
-            var item = await _forecastServiceClient.GetListAsync( path);
+            var item = await _forecastServiceClient.GetListAsync(path,"data");
 
             
             return item;

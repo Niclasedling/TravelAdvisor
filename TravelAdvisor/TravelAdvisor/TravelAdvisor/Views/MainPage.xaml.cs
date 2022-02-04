@@ -20,7 +20,7 @@ namespace TravelAdvisor.Views
         public AttractionDto Attraction { get; set; }
         MainPageViewModel ViewModel => BindingContext as MainPageViewModel;
         private readonly IUserService _userService;
-        private readonly IForecastService _forcastService;
+        private readonly IOpenWeatherService _forcastService;
 
         public MainPage()
         {
@@ -29,7 +29,7 @@ namespace TravelAdvisor.Views
             InitializeComponent();
             BindingContext = new MainPageViewModel(DependencyService.Get<INavService>());
             _userService = DependencyService.Get<IUserService>();
-            _forcastService = DependencyService.Get<IForecastService>();
+            _forcastService = DependencyService.Get<IOpenWeatherService>();
         }
         
         
@@ -101,9 +101,9 @@ namespace TravelAdvisor.Views
         {
          var item=  await _forcastService.GetForcast("Stockholm");
 
-            foreach (var items in item)
+            foreach (var items in item.Items)
             {
-                var hej = items.DateofForecast;
+                var hej = items.Description as string;
             }
         }
     }

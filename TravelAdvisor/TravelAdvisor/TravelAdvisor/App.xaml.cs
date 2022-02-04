@@ -25,9 +25,9 @@ namespace TravelAdvisor
             //-------------------------------------------------------Lägg till ApiService
             var Client = new HttpClient();
             var userService = new UserService(Client);
-            var forcastService = new ForecastService(Client);
+            var forcastService = new OpenWeatherService(Client);
             DependencyService.RegisterSingleton<IUserService>(userService);
-            DependencyService.RegisterSingleton<IForecastService>(forcastService);
+            DependencyService.RegisterSingleton<IOpenWeatherService>(forcastService);
 
 
 
