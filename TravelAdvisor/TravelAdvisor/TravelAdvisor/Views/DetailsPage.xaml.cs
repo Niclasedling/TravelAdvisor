@@ -36,26 +36,26 @@ namespace TravelAdvisor.Views
         private void LikeThumb_Clicked(object sender, EventArgs e)
         {
             var likeButton = sender as ImageButton;
-            var attraction = likeButton.BindingContext as AttractionDto;
+            var review = likeButton.BindingContext as ReviewDto;
 
-            attraction.LikeButton = likeButton;
-            if (attraction.LikeButton == null) return;
+            review.LikeButton = likeButton;
+            if (review.LikeButton == null) return;
 
-            if(!attraction.ThumbIsGreen || attraction.ThumbStringToCompare == null)
+            if(!review.ThumbIsGreen || review.ThumbStringToCompare == null)
             {
-                attraction.LikeButton.Source = attraction.LikeThumbGreenImgSrc;
-                attraction.DislikeButton.Source = attraction.DislikeThumbImgSrc;
-                attraction.ThumbIsGreen = true;
-                attraction.ThumbIsRed = false;
+                review.LikeButton.Source = review.LikeThumbGreenImgSrc;
+                review.DislikeButton.Source = review.DislikeThumbImgSrc;
+                review.ThumbIsGreen = true;
+                review.ThumbIsRed = false;
 
-                attraction.ThumbStringToCompare = attraction.LikeThumbGreenString;
+                review.ThumbStringToCompare = review.LikeThumbGreenString;
             }
             else
             {
 
-                attraction.LikeButton.Source = attraction.LikeThumbImgSrc;
-                attraction.ThumbIsGreen = false;
-                attraction.ThumbStringToCompare = attraction.LikeThumbString;
+                review.LikeButton.Source = review.LikeThumbImgSrc;
+                review.ThumbIsGreen = false;
+                review.ThumbStringToCompare = review.LikeThumbString;
                 
                 
             }
@@ -64,27 +64,27 @@ namespace TravelAdvisor.Views
         private void DislikeThumb_Clicked(object sender, EventArgs e)
         {
             var dislikeButton = sender as ImageButton;
-            var attraction = dislikeButton.BindingContext as AttractionDto;
+            var review = dislikeButton.BindingContext as ReviewDto;
 
-            attraction.DislikeButton = dislikeButton;
+            review.DislikeButton = dislikeButton;
 
-            if (attraction.DislikeButton == null) return;
+            if (review.DislikeButton == null) return;
 
-            if (!attraction.ThumbIsRed || attraction.ThumbStringToCompare == null)
+            if (!review.ThumbIsRed || review.ThumbStringToCompare == null)
             {
-                attraction.DislikeButton.Source = attraction.DislikeThumbRedImgSrc;
-                attraction.LikeButton.Source = attraction.LikeThumbImgSrc;
-                attraction.ThumbIsRed = true;
-                attraction.ThumbIsGreen = false;
+                review.DislikeButton.Source = review.DislikeThumbRedImgSrc;
+                review.LikeButton.Source = review.LikeThumbImgSrc;
+                review.ThumbIsRed = true;
+                review.ThumbIsGreen = false;
 
-                attraction.ThumbStringToCompare = attraction.DislikeThumbRedString;
+                review.ThumbStringToCompare = review.DislikeThumbRedString;
             }
             else
             {
-                attraction.DislikeButton.Source = attraction.DislikeThumbImgSrc;
-                attraction.ThumbIsRed = false;
+                review.DislikeButton.Source = review.DislikeThumbImgSrc;
+                review.ThumbIsRed = false;
 
-                attraction.ThumbStringToCompare = attraction.DislikeThumbString;
+                review.ThumbStringToCompare = review.DislikeThumbString;
             }
         }
     }

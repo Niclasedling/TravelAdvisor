@@ -43,7 +43,7 @@
         </StackLayout>
         <!--LISTVIEW-->
         <StackLayout Grid.Row="4" Grid.ColumnSpan="12" Grid.RowSpan="2">
-            <ListView Grid.Row="2" Margin="0,10" VerticalScrollBarVisibility="Never" ItemsSource="{Binding AttractionList}" x:Name="thelistview">
+            <ListView Grid.Row="2" Margin="0,10" VerticalScrollBarVisibility="Never" ItemsSource="{Binding ReviewList}" x:Name="thelistview">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -79,10 +79,10 @@
                                             HeightRequest="70"
                                             WidthRequest="70"
                                             Grid.Row="0" Grid.RowSpan="2" Grid.Column="0">
-                                        <Image Source="apt2.jpg" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></Image>
+                                        <Image Source="{Binding Image}" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></Image>
                                         </Frame>
-                                    <Label Grid.Row="2" Grid.Column="0" Margin="10,0,0,0" Text="{Binding Location}" FontSize="12" TextColor="Black" FontFamily="ThemeFontRegular" VerticalOptions="Center" Opacity="1"></Label>
-                                    <Label Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="6" Text="{Binding Details}"></Label>
+                                    <Label Grid.Row="2" Grid.Column="0" Margin="10,0,0,0" Text="{Binding User.FirstName}" FontSize="12" TextColor="Black" FontFamily="ThemeFontRegular" VerticalOptions="Center" Opacity="1"></Label>
+                                    <Label Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="6" Text="{Binding Comment}"></Label>
                                     <!--LIKE-->
                                     <ImageButton                                        
                                         Clicked="LikeThumb_Clicked" 
@@ -103,11 +103,11 @@
 
                                     <Label Text="2" Grid.Row="1" Grid.Column="11" Margin="7,0,0,0"></Label>
                                     <!--STARS-->
-                                    <Image Grid.Row="2" Grid.Column="7" Source="star.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
-                                    <Image Grid.Row="2" Grid.Column="8" Source="star.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
-                                    <Image Grid.Row="2" Grid.Column="9" Source="star.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
-                                    <Image Grid.Row="2" Grid.Column="10" Source="star.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
-                                    <Image Grid.Row="2" Grid.Column="11" Source="star.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
+                                    <Image Grid.Row="2" Grid.Column="7" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
+                                    <Image Grid.Row="2" Grid.Column="8" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
+                                    <Image Grid.Row="2" Grid.Column="9" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
+                                    <Image Grid.Row="2" Grid.Column="10" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
+                                    <Image Grid.Row="2" Grid.Column="11" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
                                     <!--RATING TEXT-->
                                     <Label Text="5/5" Grid.Row="3" Grid.Column="9" Margin="20,0,0,0" Grid.ColumnSpan="2"></Label>
                                    
