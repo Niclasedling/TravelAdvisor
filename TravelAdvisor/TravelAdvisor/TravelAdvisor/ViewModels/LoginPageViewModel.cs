@@ -79,7 +79,7 @@ namespace TravelAdvisor.ViewModels
             UserLoginDto user = new UserLoginDto
             {
                 Email = Email,
-                Password = Password
+                Password = Cryptography.EncryptData(Password)
             };
            
             if (await _userService.Login(user))
