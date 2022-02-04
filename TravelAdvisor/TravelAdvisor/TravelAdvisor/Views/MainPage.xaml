@@ -55,12 +55,12 @@
                 TextColor="White" 
                 CornerRadius="15" 
                 FontAttributes="Bold"
-                Command="{Binding LoginPage}">
+                Clicked="Button_Clicked">
         </Button>
 
 
         <!--VÄDER INFO-->
-        <StackLayout Grid.Row="1" Grid.ColumnSpan="12" Orientation="Horizontal">
+        <StackLayout Grid.Row="1" Grid.ColumnSpan="12" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid>
                 <Grid.RowDefinitions>
                     <!--0--><RowDefinition Height="20" />
@@ -100,7 +100,7 @@
                 <StackLayout Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="3">
                     <Label Text="Forecast" FontSize="20" FontAttributes="Bold" /> 
                 </StackLayout>
-                <ListView Grid.Row="3" Margin="20,0,0,0" VerticalScrollBarVisibility="Never" ItemsSource="{Binding AttractionList}" Grid.ColumnSpan="12">
+                <ListView Grid.Row="3" VerticalScrollBarVisibility="Never" ItemsSource="{Binding AttractionList}" Grid.ColumnSpan="12" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
