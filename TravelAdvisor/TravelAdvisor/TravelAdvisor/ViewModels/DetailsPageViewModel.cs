@@ -40,7 +40,7 @@ namespace TravelAdvisor.ViewModels
                 new ReviewDto
                 {
                     Id = Guid.NewGuid(),
-                    Image = "apt1.jpg",                 
+                    Image = "user.png",                 
                     Comment = "First picture",
                     User = new UserDto{FirstName = "Mario", LastName = "Wade"}
 
@@ -49,7 +49,7 @@ namespace TravelAdvisor.ViewModels
                 new ReviewDto
                 {
                     Id = Guid.NewGuid(),
-                    Image = "apt2.jpg",
+                    Image = "user.png",
                     Comment = "Second picture",
                     User = new UserDto{FirstName = "Sannah", LastName = "Carter"}
 
@@ -57,28 +57,28 @@ namespace TravelAdvisor.ViewModels
                 new ReviewDto
                 {
                     Id = Guid.NewGuid(),
-                    Image = "apt3.jpg",
+                    Image = "user.png",
                     Comment = "Third picture",
                     User = new UserDto{FirstName = "Daniel", LastName = "Morton"}
                 },
                  new ReviewDto
                 {
                     Id = Guid.NewGuid(),
-                    Image = "apt3.jpg",
+                    Image = "user.png",
                     Comment = "Fourth picture",
                     User = new UserDto{FirstName = "Haaris", LastName = "Spears"}
                 },
                   new ReviewDto
                 {
                     Id = Guid.NewGuid(),
-                    Image = "apt3.jpg",
+                    Image = "user.png",
                     Comment = "Fifth picture",
                     User = new UserDto{FirstName = "Johanna", LastName = "Krause"}
                 },
                    new ReviewDto
                 {
                     Id = Guid.NewGuid(),
-                    Image = "apt3.jpg",
+                    Image = "user.png",
                     Comment = "Sixth picture",
                     User = new UserDto{FirstName = "Anita", LastName = "Hartley"}
                 }

@@ -151,6 +151,7 @@
     <Content Include="password.png" />
     <Content Include="phone.png" />
     <Content Include="Properties\Default.rd.xml" />
+    <Content Include="user.png" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
