@@ -89,7 +89,7 @@
                                        
                                     <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="1" Padding="0" Margin="-10,0,10,0" Text="{Binding User.FirstName}" FontSize="12" TextColor="Black" FontFamily="ThemeFontRegular" VerticalOptions="Center" Opacity="1"></Label>
                                     <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Padding="0"  Margin="0,0,0,0" Text="{Binding User.LastName}" FontSize="12" TextColor="Black" FontFamily="ThemeFontRegular" VerticalOptions="Center" Opacity="1"></Label>
-                                    <Label Grid.Row="0" Grid.RowSpan="3" Grid.Column="2" Grid.ColumnSpan="6" Text="{Binding Comment}"></Label>
+                                    <Label Grid.Row="0" Grid.RowSpan="3" Grid.Column="2" Grid.ColumnSpan="6" Text="{Binding User.Comment}"></Label>
                                     <!--LIKE-->
                                     <ImageButton                                        
                                         Clicked="LikeThumb_Clicked" 
@@ -119,6 +119,9 @@
                                     <Image Grid.Row="2" Grid.Column="9" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
                                     <Image Grid.Row="2" Grid.Column="10" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
                                     <Image Grid.Row="2" Grid.Column="11" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
+                                    <!--COMMENTS-->
+                                    <Label Text="{Binding TotalComments, Mode=TwoWay}" Grid.Row="3" Grid.Column="9" Margin="20,0,0,0" Grid.ColumnSpan="2"></Label>
+                                    <Label Text="Click to see comments" Grid.Row="3" Grid.Column="9" Margin="20,0,0,0" Grid.ColumnSpan="2"></Label>
                                     <!--RATING TEXT-->
                                     <Label Text="5/5" Grid.Row="3" Grid.Column="9" Margin="20,0,0,0" Grid.ColumnSpan="2"></Label>
                                    

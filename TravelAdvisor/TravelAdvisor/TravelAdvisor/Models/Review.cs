@@ -23,8 +23,6 @@ namespace TravelAdvisor.Models
 
         public string Image { get; set; }
 
-        public string Comment { get; set; }
-
         public string ThumbStringToCompare { get; set; }
 
         public ImageSource DislikeThumbImgSrc { get { return "dislike.png"; } }
@@ -84,7 +82,16 @@ namespace TravelAdvisor.Models
                 OnPropertyChanged("TotalDislikes");
             }
         }
-
+        private int totalComments { get; set; }
+        public int TotalComments 
+        { 
+            get { return totalComments; }
+            set 
+            {
+                totalComments = value;
+                OnPropertyChanged("TotalComments");
+            }
+        }
     }
 
     public class ReviewDto : ReviewBase

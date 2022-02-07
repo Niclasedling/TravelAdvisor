@@ -28,6 +28,13 @@ namespace TravelAdvisor.Models
         public DateTime Created { get; set; } = DateTime.Now;
 
         public DateTime Modify { get; set; }
+        public string Review { get; set; }
+        public string Comment { get; set; }
+        private bool hasLiked { get; set; }
+        public bool HasLiked { get { return hasLiked; } set { hasLiked = value; } }
+        private bool hasDisliked { get; set; }
+        public bool HasDisliked { get { return hasDisliked; } set { hasDisliked = value; } }
+
 
     }
 

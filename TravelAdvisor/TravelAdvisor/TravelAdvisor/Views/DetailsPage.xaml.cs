@@ -44,12 +44,18 @@ namespace TravelAdvisor.Views
 
             if(!review.ThumbIsGreen || review.ThumbStringToCompare == null)
             {
-                review.TotalLikes++;
-                if(review.TotalDislikes == 1)
+                review.User.HasLiked = true;
+                if (!review.User.HasLiked)
+                {
+                    review.TotalLikes++;
+                }
+
+                if (review.User.HasDisliked)
                 {
                     review.TotalDislikes--;
                 }
-                
+
+
                 review.LikeButton.Source = review.LikeThumbGreenImgSrc;
                 review.DislikeButton.Source = review.DislikeThumbImgSrc;
                 review.ThumbIsGreen = true;
@@ -59,6 +65,7 @@ namespace TravelAdvisor.Views
             }
             else
             {
+                review.User.HasLiked = false;
                 review.TotalLikes--;
                 review.LikeButton.Source = review.LikeThumbImgSrc;
                 review.ThumbIsGreen = false;
@@ -79,8 +86,13 @@ namespace TravelAdvisor.Views
 
             if (!review.ThumbIsRed || review.ThumbStringToCompare == null)
             {
-                review.TotalDislikes++;
-                if (review.TotalLikes == 1)
+                review.User.HasDisliked = true;
+                if (!review.User.HasDisliked)
+                {
+                    review.TotalDislikes++;
+                }
+                
+                if (review.User.HasLiked)
                 {
                     review.TotalLikes--;
                 }
@@ -94,6 +106,7 @@ namespace TravelAdvisor.Views
             }
             else
             {
+                review.User.HasDisliked = false;
                 review.TotalDislikes--;
                 review.DislikeButton.Source = review.DislikeThumbImgSrc;
                 review.ThumbIsRed = false;

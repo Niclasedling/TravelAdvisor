@@ -47,7 +47,7 @@ namespace TravelAdvisor.ViewModels
             var attraction = sender as AttractionDto;
             if (attraction == null) return;
 
-
+            App.globalCurrentAttraction = attraction;
             await NavigationService.NavigateTo<DetailsPageViewModel>();
 
         }
@@ -100,6 +100,7 @@ namespace TravelAdvisor.ViewModels
             {
                 new AttractionDto
                 {
+                    Name = "First attraction",
                     Image = "apt1.jpg",
                     Adress = "2162 Patricia Ave, LA",
                     Location = "California",
@@ -108,6 +109,7 @@ namespace TravelAdvisor.ViewModels
                 },
                 new AttractionDto
                 {
+                    Name = "Second attraction",
                     Image = "apt2.jpg",
                     Adress = "2112 Cushions Dr, LA",
                     Location = "California",
@@ -116,6 +118,7 @@ namespace TravelAdvisor.ViewModels
                 },
                 new AttractionDto
                 {
+                    Name = "Third attraction",
                     Image = "apt3.jpg",
                     Adress = "2167 Anthony Way, LA",
                     Location = "California",
@@ -124,6 +127,7 @@ namespace TravelAdvisor.ViewModels
                 },
                  new AttractionDto
                 {
+                    Name = "Fourth attraction",
                     Image = "apt3.jpg",
                     Adress = "2167 Anthony Way, LA",
                     Location = "California",
@@ -132,6 +136,7 @@ namespace TravelAdvisor.ViewModels
                 },
                   new AttractionDto
                 {
+                    Name = "Fifth attraction",
                     Image = "apt3.jpg",
                     Adress = "2167 Anthony Way, LA",
                     Location = "California",
@@ -140,6 +145,7 @@ namespace TravelAdvisor.ViewModels
                 },
                    new AttractionDto
                 {
+                    Name = "Sixth attraction",
                     Image = "apt3.jpg",
                     Adress = "2167 Anthony Way, LA",
                     Location = "California",
