@@ -57,7 +57,8 @@
                 BackgroundColor="Black" 
                 TextColor="White" 
                 CornerRadius="15" 
-                FontAttributes="Bold">
+                FontAttributes="Bold"
+                Command="{Binding LoginPage}">
         </Button>
 
 
