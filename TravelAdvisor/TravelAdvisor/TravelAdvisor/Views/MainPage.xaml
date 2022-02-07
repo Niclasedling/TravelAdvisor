@@ -147,7 +147,7 @@
                                             <Label Grid.Row="2" Grid.Column="1" Text="{Binding WindSpeed, StringFormat='Wind: {0} m/s'}" TextColor="#5b5f66" Grid.ColumnSpan="5" Margin="0,-30,0,0"/>
                                         <!--DESTINATION-->
                                         <Label Text="{Binding cityName}" Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="5" FontSize="20"/>
-                                        <Label Grid.Row="2" Grid.Column="8" Text="{Binding DateTime}" TextColor="#5b5f66" Grid.ColumnSpan="5" Margin="0,-45,0,0"/>
+                                            <Label Grid.Row="2" Grid.Column="8" Text="{Binding DateTime, StringFormat='{0:ddd, dd MMM yyyy HH : mm}'}" TextColor="#5b5f66" Grid.ColumnSpan="5" Margin="0,-45,0,0"/>
 
                                     </Grid>
 
