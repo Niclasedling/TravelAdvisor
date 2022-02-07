@@ -121,14 +121,12 @@
                                     <Image Grid.Row="2" Grid.Column="11" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
                                     <!--COMMENTS-->
                                     <Label Text="{Binding TotalComments, Mode=TwoWay}" Grid.Row="3" Grid.Column="2" Margin="20,0,0,0" Grid.ColumnSpan="1"></Label>
-                                    <ImageButton Source="{Binding CommentImgSrc}" Grid.Row="3" Grid.Column="3" Margin="0,0,0,0" Grid.ColumnSpan="2">
+                                    <ImageButton Source="{Binding CommentImgSrc}" Grid.Row="3" Grid.Column="3" Margin="0,0,0,0" Grid.ColumnSpan="2" Clicked="CommentButton_Clicked">
                                         
                                     </ImageButton>
                                     <!--RATING TEXT-->
                                     <Label Text="5/5" Grid.Row="3" Grid.Column="9" Margin="20,0,0,0" Grid.ColumnSpan="2"></Label>
-                                   
-                                    
-                                   
+                                                               
 
                                 </Grid>
 
@@ -138,6 +136,27 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <!--COMMENT LISTVIEW-->
+            <Frame HeightRequest="120" Margin="5,5" BackgroundColor="#C1C1C1" CornerRadius="40" x:Name="commentFrame" IsVisible="false">
+                <StackLayout>
+                    <Label Text="{Binding UserToComment}"></Label>
+                    <ImageButton WidthRequest="20" HeightRequest="20" Source="remove.png" Clicked="CloseCommentButton_Clicked" HorizontalOptions="End"></ImageButton>
+                    <ListView ItemsSource="{Binding UserComments}" Grid.Row="3">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+
+                                    <Label Text="{Binding Comment}"></Label>
+
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+                
+            
+            </Frame>
+                            
         </StackLayout>
         <StackLayout Grid.Row="4"></StackLayout>
         <StackLayout Grid.Row="5"></StackLayout>

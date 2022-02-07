@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using TravelAdvisor.Models;
@@ -117,6 +118,32 @@ namespace TravelAdvisor.Views
 
                 review.ThumbStringToCompare = review.DislikeThumbString;
             }
+        }
+
+        private void CommentButton_Clicked(object sender, EventArgs e)
+        {
+            var commentButton = sender as ImageButton;
+            var user = commentButton.BindingContext as ReviewDto;
+            
+            DetailsPageViewModel detailsPageViewModel = new DetailsPageViewModel(DependencyService.Get<INavService>(), user);
+            detailsPageViewModel.UserToComment = user.User.FirstName + " " + user.User.LastName;
+
+            if (!commentFrame.IsVisible)
+            {
+                commentFrame.IsVisible = true;
+            }
+            else
+            {
+                commentFrame.IsVisible = false;
+            }
+           
+           
+
+        }
+
+        private void CloseCommentButton_Clicked(object sender, EventArgs e)
+        {
+            commentFrame.IsVisible = false;
         }
     }
 }

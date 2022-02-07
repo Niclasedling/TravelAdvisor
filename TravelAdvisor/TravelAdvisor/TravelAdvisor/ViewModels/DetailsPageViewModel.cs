@@ -14,6 +14,17 @@ namespace TravelAdvisor.ViewModels
         public string NameOfAttraction { get { return App.globalCurrentAttraction.Name; } }
         public string InfoAboutAttraction { get { return App.globalCurrentAttraction.Description; } }
         public ImageSource AttractionImgSrc { get { return App.globalCurrentAttraction.Image; } }
+        private string userToComment { get; set; }
+        public string UserToComment 
+        { 
+            get { return userToComment; }
+            set 
+            {
+                userToComment = value;
+                OnPropertyChanged("UserToComment");
+            } 
+        }
+        
         public Command GoBack => new Command(async () => await NavigationService.GoBack());
         
 
@@ -22,6 +33,14 @@ namespace TravelAdvisor.ViewModels
             //Code for creating the ViewModel
             
           
+
+        }
+
+        public DetailsPageViewModel(INavService naviService, ReviewDto reviewDto) : base(naviService)
+        {
+            //Code for creating the ViewModel
+
+
 
         }
 
@@ -40,8 +59,41 @@ namespace TravelAdvisor.ViewModels
         //{
         //    OnPropertyChanged(nameof(ButtonClicked));   
         //}
+
+        public List<UserCommentDto> UserComments => GetUserComments();
         
-       
+        private List<UserCommentDto> GetUserComments()
+        {
+            return new List<UserCommentDto>
+            {
+                new UserCommentDto
+                {
+                    Comment = "En kommentar",
+                },
+                new UserCommentDto
+            {
+                Comment = "En kommentar",
+            },
+            new UserCommentDto
+            {
+                Comment = "En kommentar",
+            },
+            new UserCommentDto
+            {
+                Comment = "En kommentar",
+            },
+            new UserCommentDto
+            {
+                Comment = "En kommentar",
+            },
+            new UserCommentDto
+            {
+                Comment = "En kommentar",
+            }
+            };
+        }
+
+
         private List<ReviewDto> GetReviews()
         {
             

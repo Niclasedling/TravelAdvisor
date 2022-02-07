@@ -152,6 +152,7 @@
     <Content Include="password.png" />
     <Content Include="phone.png" />
     <Content Include="Properties\Default.rd.xml" />
+    <Content Include="remove.png" />
     <Content Include="user.png" />
   </ItemGroup>
   <ItemGroup>

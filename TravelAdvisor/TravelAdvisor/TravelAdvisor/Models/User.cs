@@ -23,13 +23,13 @@ namespace TravelAdvisor.Models
 
 
         public string Password { get; set; }
-
+        public string Fullname { get; set; }
 
         public DateTime Created { get; set; } = DateTime.Now;
 
         public DateTime Modify { get; set; }
         public string Review { get; set; }
-        public string Comment { get; set; }
+        public UserCommentDto UserComment { get; set; }
         private bool hasLiked { get; set; }
         public bool HasLiked { get { return hasLiked; } set { hasLiked = value; } }
         private bool hasDisliked { get; set; }
@@ -78,6 +78,10 @@ namespace TravelAdvisor.Models
 
         public string Password { get; set; }
 
+    }
+    public class UserCommentDto
+    {
+        public string Comment { get; set; }
     }
 
 }
