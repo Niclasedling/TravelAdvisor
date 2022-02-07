@@ -30,8 +30,8 @@ namespace TravelAdvisor.ViewModels
             }
             set
             {
-                _cityName = value;
-                OnPropertyChanged("cityName");
+                _cityName = cityName;
+                OnPropertyChanged($"{fetchedForecast}");
             }
         }
         //public AsyncCommand<object> ViewDetails { get; }
@@ -114,9 +114,12 @@ namespace TravelAdvisor.ViewModels
                 Items = forecastAPI.Items.Select(y => new ForecastItem
                 {
                     Description = y.Description,
-                    Icon = y.Icon,
-                    Temperature = y.Temperature,
+                    Icon = $"http://openweathermap.org/img/wn/{y.Icon}@2x.png",
+                    Temperature = Math.Round(y.Temperature),
                     WindSpeed = y.WindSpeed,
+                    DateTime = y.DateTime,
+                    Humidity = y.Humidity,
+
                 }).ToList()
 
             };
