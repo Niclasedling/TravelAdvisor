@@ -17,7 +17,6 @@ namespace TravelAdvisor.ViewModels
         public Command GoBack => new Command(async () => await NavigationService.GoBack());
         
 
-
         public DetailsPageViewModel(INavService naviService, AttractionDto attraction) : base(naviService)
         {
             //Code for creating the ViewModel

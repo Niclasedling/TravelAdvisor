@@ -40,6 +40,8 @@ namespace TravelAdvisor.Models
         public ImageSource LikeThumbGreenImgSrc { get { return "likegreen.png"; } }
         public string LikeThumbGreenString { get { return "likegreen.png"; } }
 
+        public ImageSource CommentImgSrc { get { return "comment.png"; } }
+
 
 
         public ImageButton LikeButton = new ImageButton();
