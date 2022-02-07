@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TravelAdvisor.Interfaces;
 using TravelAdvisor.Models;
 using TravelAdvisor.Services;
 using TravelAdvisor.ViewModels;
@@ -16,9 +17,11 @@ namespace TravelAdvisor.Views
     //[XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
+        public string fetchedForecast;
         public AttractionDto Attraction { get; set; }
         MainPageViewModel ViewModel => BindingContext as MainPageViewModel;
         private readonly IUserService _userService;
+        private readonly IOpenWeatherService _forcastService;
 
         public MainPage()
         {
@@ -27,6 +30,7 @@ namespace TravelAdvisor.Views
             InitializeComponent();
             BindingContext = new MainPageViewModel(DependencyService.Get<INavService>());
             _userService = DependencyService.Get<IUserService>();
+            _forcastService = DependencyService.Get<IOpenWeatherService>();
         }
         
         
@@ -72,6 +76,7 @@ namespace TravelAdvisor.Views
             //e.HideInfoWindow = true;
             string pinName = ((Pin)sender).Label;
             await DisplayAlert("Pin Clicked", $"{pinName} was clicked.", "Ok");
+            
         }
 
         private readonly Geocoder _geocoder = new Geocoder();
@@ -91,19 +96,18 @@ namespace TravelAdvisor.Views
                 addresses.FirstOrDefault()?.ToString(), "Ok");
 
             
-            
-
-
         }
-        
 
+       
 
+        private async void searchDestination_SearchButtonPressed(object sender, EventArgs e)
+        {
+            var searchbar = sender as SearchBar;
+            var mainViewModel = searchbar.BindingContext as MainPageViewModel;
+            mainViewModel.fechedForecast = searchDestination.Text;
 
-
-
-
-
-      
+            
+        }
     }
 
     

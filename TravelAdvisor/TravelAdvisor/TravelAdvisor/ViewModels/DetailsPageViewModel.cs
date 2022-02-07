@@ -10,142 +10,80 @@ namespace TravelAdvisor.ViewModels
 {
     public class DetailsPageViewModel : BaseViewModel
     {
-        
-        
-        public bool ToggleLikeThumb { get; set; }
-        public bool ToggleDisLikeThumb { get; set; }
-        //public string LikeImage
-        //{
-        //    get { return string.Format("like.png"); }
-        //}
+
+        public string NameOfAttraction { get { return App.globalCurrentAttraction.Name; } }
+        public string InfoAboutAttraction { get { return App.globalCurrentAttraction.Description; } }
+        public ImageSource AttractionImgSrc { get { return App.globalCurrentAttraction.Image; } }
         public Command GoBack => new Command(async () => await NavigationService.GoBack());
-        public Command <object> ChangeDislike
-        {
-            get { return new Command<object>(ToggleDislike);}
-        }
-        public Command<object> ChangeLike
-        {
-            get { return new Command<object>(ToggleLike); }
-        }
+        
+
 
         public DetailsPageViewModel(INavService naviService, AttractionDto attraction) : base(naviService)
         {
             //Code for creating the ViewModel
-            //LikeThumb = new Image { Source = "like.png" };
-            //DisLikeThumb = "C:/Users/Niclas/Google Drive/Newton/Programmering/GitHub/TravelAdvisor/TravelAdvisor/TravelAdvisor/TravelAdvisor.UWP/dislike.png";
-            ToggleDisLikeThumb = false;
-            //LikeThumb = "C:/Users/Niclas/Google Drive/Newton/Programmering/GitHub/TravelAdvisor/TravelAdvisor/TravelAdvisor/TravelAdvisor.UWP/like.png";
-            ToggleLikeThumb = false;
+            
+          
 
         }
 
         public override void Init()
         {
             //Code for initialize the ViewModel
+             
+        }
+        public List<ReviewDto> Reviews { get { return App.globalCurrentAttraction.Reviews = GetReviews(); } }
+        //public List<ReviewDto> ReviewList => GetReviews();
+        
+       
+        private List<ReviewDto> GetReviews()
+        {
             
-        }
-        async void ToggleDislike(object sender)
-        {
-            //if (!ToggleDisLikeThumb) DisLikeThumb = "dislike.png"; // Ifylld Dislike
-            //else DisLikeThumb = "dislike.png";
-        }
-        async void ToggleLike(object sender)
-        {
-            //if (!ToggleLikeThumb) LikeThumb = "dislike.png"; // Ifylld Dislike
-            //else LikeThumb = "dislike.png";
-        }
-
-        public List<Filter> PropertyTypeList => GetFilters();
-        public List<AttractionDto> AttractionList => GetAttractions();
-
-        private List<Filter> GetFilters()
-        {
-            return new List<Filter>
+            return new List<ReviewDto>
             {
-                new Filter { Name = "All"},
-                new Filter { Name = "Popular"},
-            };
-        }
-
-        private List<AttractionDto> GetAttractions()
-        {
-            return new List<AttractionDto>
-            {
-                new AttractionDto
+                new ReviewDto
                 {
-                    Image = "apt1.jpg",
-                    Adress = "2162 Patricia Ave, LA",
-                    Location = "California",
-                    Price = "$1500/month",
+                    Id = Guid.NewGuid(),
+                    Image = "user.png",                 
+                    Comment = "First picture",
+                    User = new UserDto{FirstName = "Mario", LastName = "Wade"}
+
 
                 },
-                new AttractionDto
+                new ReviewDto
                 {
-                    Image = "apt2.jpg",
-                    Adress = "2112 Cushions Dr, LA",
-                    Location = "California",
-                    Price = "$1500/month",
+                    Id = Guid.NewGuid(),
+                    Image = "user.png",
+                    Comment = "Second picture",
+                    User = new UserDto{FirstName = "Sannah", LastName = "Carter"}
 
                 },
-                new AttractionDto
+                new ReviewDto
                 {
-                    Image = "apt3.jpg",
-                    Adress = "2167 Anthony Way, LA",
-                    Location = "California",
-                    Price = "$1500/month",
-                    Details = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,"
+                    Id = Guid.NewGuid(),
+                    Image = "user.png",
+                    Comment = "Third picture",
+                    User = new UserDto{FirstName = "Daniel", LastName = "Morton"}
                 },
-                 new AttractionDto
+                 new ReviewDto
                 {
-                    Image = "apt3.jpg",
-                    Adress = "2167 Anthony Way, LA",
-                    Location = "California",
-                    Price = "$1500/month",
-                    Details = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,"
+                    Id = Guid.NewGuid(),
+                    Image = "user.png",
+                    Comment = "Fourth picture",
+                    User = new UserDto{FirstName = "Haaris", LastName = "Spears"}
                 },
-                  new AttractionDto
+                  new ReviewDto
                 {
-                    Image = "apt3.jpg",
-                    Adress = "2167 Anthony Way, LA",
-                    Location = "California",
-                    Price = "$1500/month",
-                    Details = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,"
+                    Id = Guid.NewGuid(),
+                    Image = "user.png",
+                    Comment = "Fifth picture",
+                    User = new UserDto{FirstName = "Johanna", LastName = "Krause"}
                 },
-                   new AttractionDto
+                   new ReviewDto
                 {
-                    Image = "apt3.jpg",
-                    Adress = "2167 Anthony Way, LA",
-                    Location = "California",
-                    Price = "$1500/month",
-                    Details = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,"
+                    Id = Guid.NewGuid(),
+                    Image = "user.png",
+                    Comment = "Sixth picture",
+                    User = new UserDto{FirstName = "Anita", LastName = "Hartley"}
                 }
             };
         }

@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
+using TravelAdvisor.ViewModels;
 
 namespace TravelAdvisor.Models
 {
     public abstract class AttractionBase
-    {
+    {     
         public Guid Id { get; set; }
 
         public string Name { get; set; }
@@ -19,16 +20,12 @@ namespace TravelAdvisor.Models
 
         public string Price { get; set; } // Ska vara int
 
-        public string Details { get; set; }
+        public string Description { get; set; }
 
-        public ImageSource DislikeThumb { get { return "dislike.png"; } }
-
-        public ImageSource LikeThumb { get { return "like.png"; } } 
-
-        //public List<ReviewDto> Reviews { get; set; }
+        public List<ReviewDto> Reviews { get; set; }
 
     }
-
+    
     public class AttractionDto : AttractionBase
     {
        

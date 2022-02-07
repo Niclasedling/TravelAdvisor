@@ -11,21 +11,23 @@ namespace TravelAdvisor
 {
     public partial class App : Application
     {
-        public static AttractionDto globalAttraction;
+        public static AttractionDto globalCurrentAttraction;
         public App()
         {
             InitializeComponent();
 
             //---------------------------------------------------------Lägg till service
             DependencyService.Register<INavService, NavService>();
-            DependencyService.Register<ILoginService, LoginService>();
+            //DependencyService.Register<ILoginService, LoginService>();
 
 
 
             //-------------------------------------------------------Lägg till ApiService
             var Client = new HttpClient();
             var userService = new UserService(Client);
+            var forcastService = new OpenWeatherService(Client);
             DependencyService.RegisterSingleton<IUserService>(userService);
+            DependencyService.RegisterSingleton<IOpenWeatherService>(forcastService);
 
 
 

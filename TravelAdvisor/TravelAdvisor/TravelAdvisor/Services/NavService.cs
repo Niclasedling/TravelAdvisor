@@ -55,7 +55,7 @@ namespace TravelAdvisor.Services
 
         public async Task NavigateTo<TVM>(AttractionDto attraction) where TVM : BaseViewModel
         {
-            await NavigateToView(typeof(TVM));
+            await NavigateToView(typeof(TVM), attraction);
 
             if (Navigation.NavigationStack.Last().BindingContext is BaseViewModel)
             {
@@ -112,6 +112,31 @@ namespace TravelAdvisor.Services
         {
            
 
+            if (!_map.TryGetValue(viewModelType, out Type viewType))
+            {
+                throw new ArgumentException("No view found in view mapping for " + viewModelType.FullName + ".");
+            }
+
+            //Page page;
+            //if (attraction == null)
+
+            //    page = (Page)Activator.CreateInstance(viewType);
+            //else
+            //    page = (Page)Activator.CreateInstance(viewType, attraction);
+
+            //Use reflection to get the View's constructor and create an instance of the View
+            var constructor = viewType.GetTypeInfo()
+                                      .DeclaredConstructors
+                                      .FirstOrDefault(dc => !dc.GetParameters().Any());
+            var view = constructor.Invoke(null) as Page;
+
+            await Navigation.PushAsync(view, true);
+        }
+
+        public async Task NavigateToView(Type viewModelType, AttractionDto attraction)
+        {
+
+            App.globalCurrentAttraction = attraction;
             if (!_map.TryGetValue(viewModelType, out Type viewType))
             {
                 throw new ArgumentException("No view found in view mapping for " + viewModelType.FullName + ".");

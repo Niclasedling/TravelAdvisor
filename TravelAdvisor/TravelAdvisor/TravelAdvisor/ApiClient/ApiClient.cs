@@ -89,10 +89,24 @@ namespace TravelAdvisor.ApiClient
 
             var responseString = await response.Content.ReadAsStringAsync();
 
-            
+
             return JsonConvert.DeserializeObject<List<T>>(responseString);
         }
-        
+        public async Task<T> GetListAsync(string path, string data)
+        {
+            var response = await httpClient.GetAsync(path);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception($"Api '{this.httpClient.BaseAddress}{path}' responded with {response.StatusCode}");
+            }
+
+            var responseString = await response.Content.ReadAsStringAsync();
+
+
+            return JsonConvert.DeserializeObject<T>(responseString);
+        }
+
 
     }
 

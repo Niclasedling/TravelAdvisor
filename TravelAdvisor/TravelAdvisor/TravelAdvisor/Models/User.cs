@@ -36,19 +36,10 @@ namespace TravelAdvisor.Models
 
 
 
-
-
     }
 
     public class UserUpdateDto : UserBase
     {
-
-
-
-
-
-
-
 
 
     }
@@ -58,17 +49,10 @@ namespace TravelAdvisor.Models
 
         public Guid Id { get; set; }
 
-
-
     }
 
     public class UserBasicDto
     {
-
-
-
-
-
 
 
     }
