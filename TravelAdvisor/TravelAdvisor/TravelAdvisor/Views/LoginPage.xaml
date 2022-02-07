@@ -11,6 +11,7 @@
     <StackLayout Padding="0">
        
             <Grid>
+                
             <StackLayout Padding="0" Margin="0">
                 <Frame BackgroundColor="#203fba" HeightRequest="130" HorizontalOptions="FillAndExpand" CornerRadius="0" Padding="0">
                     <Image Source="ArubaBackround.png" Aspect="AspectFill" Margin="0" />
@@ -22,7 +23,9 @@
                 <StackLayout Margin="15,110,15,0">
 
                 <Frame BackgroundColor="White" HasShadow="True" HeightRequest="320" HorizontalOptions="FillAndExpand" BorderColor="LightGray">
+                    
                     <StackLayout>
+                        
 
                         <StackLayout Margin="0,25,0,0">
                             <!--EmailBox-->

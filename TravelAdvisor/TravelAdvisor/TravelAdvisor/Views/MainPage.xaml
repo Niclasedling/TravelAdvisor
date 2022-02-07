@@ -37,16 +37,19 @@
         <Image Source="phone.png" Grid.Column="0" ></Image>
 <SearchBar />
         <!--SearchBox-->
-        <Entry  Placeholder="Search" 
+            <SearchBar  x:Name="searchDestination"
+                Placeholder="Search" 
                 TextColor="Black"  
                 FontSize="15" 
                 FontFamily="ThemeFontRegular"  
                 Grid.Column="1"
-                Grid.ColumnSpan="9"
+                Grid.ColumnSpan="8"
                 HorizontalOptions="FillAndExpand" 
-                VerticalOptions="FillAndExpand">
+                VerticalOptions="FillAndExpand"
+                SearchButtonPressed="searchDestination_SearchButtonPressed">
 
-        </Entry>
+            </SearchBar>
+        <!--Search Button-->
         <!--Login Button-->
         <Button Grid.Column="10"
                 Grid.ColumnSpan="2"
@@ -100,7 +103,8 @@
                 <StackLayout Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="3">
                     <Label Text="Forecast" FontSize="20" FontAttributes="Bold" /> 
                 </StackLayout>
-                <ListView Grid.Row="3" VerticalScrollBarVisibility="Never" ItemsSource="{Binding AttractionList}" Grid.ColumnSpan="12" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <!--LISTVIEW MED FORECAST-->
+                <ListView Grid.Row="3" VerticalScrollBarVisibility="Never" BackgroundColor="Red" ItemsSource="{Binding Forecast.Items}" Grid.ColumnSpan="12" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -138,12 +142,12 @@
                                             <Image Source="apt2.jpg" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></Image>
                                         </Frame>
                                         <!--TEMPERATURE-->
-                                        <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" FontSize="40" Grid.ColumnSpan="6" Text="20°C" Margin="0,-10,0,0"></Label>
+                                        <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" FontSize="40" Grid.ColumnSpan="6" Text="{Binding Temperature}" Margin="0,-10,0,0"></Label>
                                         <Label Grid.Row="2" Grid.Column="1" Text="Humidity 79%" TextColor="#5b5f66" Grid.ColumnSpan="5" Margin="0,-45,0,0"/>
                                         <!--WIND-->
-                                        <Label Grid.Row="2" Grid.Column="1" Text="Wind: 2m/s" TextColor="#5b5f66" Grid.ColumnSpan="5" Margin="0,-30,0,0"/>
+                                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding WindSpeed}" TextColor="#5b5f66" Grid.ColumnSpan="5" Margin="0,-30,0,0"/>
                                         <!--DESTINATION-->
-                                        <Label Text="Stockholm" Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="5" FontSize="20"/>
+                                        <Label Text="{Binding cityName}" Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="5" FontSize="20"/>
                                         <Label Grid.Row="2" Grid.Column="8" Text="2/3/2002" TextColor="#5b5f66" Grid.ColumnSpan="5" Margin="0,-45,0,0"/>
 
                                     </Grid>
