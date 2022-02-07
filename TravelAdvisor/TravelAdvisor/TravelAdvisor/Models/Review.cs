@@ -1,11 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using Xamarin.Forms;
 
 namespace TravelAdvisor.Models
 {
-    public class ReviewBase
+    public enum Rating
+    {
+        Unspecified,
+        VeryBad,
+        Bad,
+        Average,
+        VeryGood,
+        Excellent,
+    }
+    public class ReviewBase : INotifyPropertyChanged
     {
         public Guid Id { get; set; }
 
@@ -41,9 +51,39 @@ namespace TravelAdvisor.Models
         public bool _thumbIsGreen = false;
         public bool ThumbIsGreen { get { return _thumbIsGreen; } set { _thumbIsGreen = value; } }
         public bool _thumbIsRed = false;
+
+        
+
         public bool ThumbIsRed { get { return _thumbIsRed; } set { _thumbIsRed = value; } }
 
         public UserDto User { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        private int totalLikes { get; set; }
+        public int TotalLikes 
+        { 
+            get { return totalLikes; }
+            set
+            {
+                totalLikes = value;
+                OnPropertyChanged("TotalLikes");
+            }
+        }
+        private int totalDislikes { get; set; } 
+        public int TotalDislikes 
+        { 
+            get { return totalDislikes; }
+            set 
+            {
+                totalDislikes = value;
+                OnPropertyChanged("TotalDislikes");
+            }
+        }
 
     }
 
@@ -68,6 +108,21 @@ namespace TravelAdvisor.Models
 
     public class ReviewCreateDto
     {
-        
+        public string Title { get; set; }
+
+        public string Description { get; set; }
+
+        public DateTime Date { get; set; }
+
+        public Rating Rating { get; set; } = Rating.Unspecified;
+
+        public Guid UserId { get; set; } // Id
+
+        public Guid AttractionId { get; set; }
+    }
+
+    public class ReviewUpdateDto
+    {
+
     }
 }

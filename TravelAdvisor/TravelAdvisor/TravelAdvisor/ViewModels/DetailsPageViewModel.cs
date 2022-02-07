@@ -32,7 +32,15 @@ namespace TravelAdvisor.ViewModels
              
         }
         public List<ReviewDto> Reviews { get { return App.globalCurrentAttraction.Reviews = GetReviews(); } }
+
+
+        //public List<ReviewDto> RealReviews { get { return } }
         //public List<ReviewDto> ReviewList => GetReviews();
+
+        public void ButtonClicked()
+        {
+            OnPropertyChanged(nameof(ButtonClicked));   
+        }
         
        
         private List<ReviewDto> GetReviews()
