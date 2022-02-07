@@ -2,55 +2,102 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TravelAdvisor.Views.SignUpPage">
-    <StackLayout Padding="0">
+    
+    
+
+    
+
+        <StackLayout Padding="0">
 
         <Grid>
-            <StackLayout Padding="0" Margin="0">
+                <Grid.RowDefinitions>
+                    <!--0-->
+                    <RowDefinition Height="100"></RowDefinition>
+                    <!--1-->
+                    <RowDefinition Height="*"></RowDefinition>
+                    <!--2-->
+                    <RowDefinition Height="*"></RowDefinition>
+                    <!--3-->
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <!--0-->
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <!--1-->
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <!--2-->
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <!--3-->
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <!--4-->
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <!--5-->
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <!--6-->
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <!--7-->
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <!--8-->
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <!--9-->
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <!--10-->
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <!--11-->
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Padding="0" Grid.ColumnSpan="12" >
                 <Frame BackgroundColor="#203fba" HeightRequest="130" HorizontalOptions="FillAndExpand" CornerRadius="0" Padding="0">
-                    <Image Source="MadeiraBackround.jpg"  Aspect="AspectFill" Margin="0" />
+                    <Image Source="MadeiraBackround.jpg"  Aspect="AspectFill"  HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0"/>
 
 
                 </Frame>
-                <Image Source="MadeiraBackround.jpg"  Aspect="Fill" Margin="0" />
+                    <Image Source="MadeiraBackround.jpg"  Aspect="Fill" Grid.Row="1" Grid.Column="2"/>
 
             </StackLayout>
 
-            <StackLayout Margin="15,110,15,0">
+                <StackLayout Grid.ColumnSpan="12" Grid.Row="1">
+                    
 
-                <Frame BackgroundColor="White" HasShadow="True" HeightRequest="320" HorizontalOptions="FillAndExpand" BorderColor="Gray">
+                    <Frame BackgroundColor="White" HasShadow="True" HeightRequest="320" HorizontalOptions="FillAndExpand" BorderColor="Gray">
                     <StackLayout>
                         <StackLayout HorizontalOptions="CenterAndExpand">
                             <Label Text="Register" TextColor="Black" FontSize="Medium" FontAttributes="Bold" />
                         </StackLayout>
 
-                        <StackLayout Margin="0,25,0,0">
+                        <StackLayout >
                             <StackLayout Orientation="Horizontal">
                                 <Label>Firstname</Label>
-                                <Label Margin="414,0,0,0">Lastname</Label>
                             </StackLayout>
+                            <StackLayout Grid.Column="7" >
+                                <Label>Lastname</Label>
+                            </StackLayout>
+                            
                             <!--FirstNameBox and LastNameBox-->
-                            <Frame BackgroundColor="Transparent" BorderColor="Transparent" Padding="0" Margin="0" CornerRadius="0" HorizontalOptions="FillAndExpand">
+                                <Frame BackgroundColor="Transparent" BorderColor="Transparent" Padding="0"  CornerRadius="0" HorizontalOptions="FillAndExpand"  
+                                       Grid.Column="10" Grid.ColumnSpan="2">
                                 <StackLayout Orientation="Horizontal">
-                                    <Entry x:Name="entryFirstname" Text="{Binding Firstname}" Placeholder="Firstname" TextColor="#203fba" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" TextChanged="entrytextChanged"/>
-                                    <Entry x:Name="entryLastName" Text="{Binding Lastname}" Placeholder="Lastname" TextColor="#203fba" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" TextChanged="entrytextChanged" />
+                                    <Entry x:Name="entryFirstname" Text="{Binding Firstname}" Placeholder="Firstname" TextColor="#203fba" HorizontalOptions="FillAndExpand" TextChanged="entrytextChanged"/>
+                                    <Entry x:Name="entryLastName" Text="{Binding Lastname}" Placeholder="Lastname" TextColor="#203fba" HorizontalOptions="FillAndExpand" TextChanged="entrytextChanged" />
                                 </StackLayout>
                             </Frame>
                             
                             <!--EmailwordBox-->
-                            <Label Margin="0,10,0,0">Email</Label>
+                            <Label >Email</Label>
                             <Frame BackgroundColor="Transparent" BorderColor="Transparent" Padding="0" CornerRadius="0" HorizontalOptions="FillAndExpand">
                                 <StackLayout Orientation="Horizontal">
 
-                                    <Entry x:Name="entryEmail" Text="{Binding Email}" Placeholder="Email" TextColor="#203fba" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" TextChanged="entrytextChanged" />
+                                    <Entry x:Name="entryEmail" Text="{Binding Email}" Placeholder="Email" TextColor="#203fba" HorizontalOptions="FillAndExpand" TextChanged="entrytextChanged" />
                                 </StackLayout>
                             </Frame>
                             
                             <!--PasswordBox-->
-                            <Label Margin="0,10,0,0">Password</Label>
+                            <Label>Password</Label>
                             <Frame BackgroundColor="Transparent" BorderColor="Transparent" Padding="0" CornerRadius="0" HorizontalOptions="FillAndExpand">
                                 <StackLayout Orientation="Horizontal">
 
-                                    <Entry x:Name="entryPassword" Text="{Binding Password}" Placeholder="Password" IsPassword="True" TextColor="#203fba" HorizontalOptions="FillAndExpand" Margin="0,0,0,0" TextChanged="entrytextChanged" />
+                                    <Entry x:Name="entryPassword" Text="{Binding Password}" Placeholder="Password" IsPassword="True" TextColor="#203fba" HorizontalOptions="FillAndExpand"  TextChanged="entrytextChanged" />
                                 </StackLayout>
                             </Frame>
 
@@ -64,10 +111,10 @@
                                 FontAttributes="Bold" 
                                 CornerRadius="15" 
                                 HeightRequest="40" 
-                                Margin="70,0,70,0" 
+                                
                                 Command="{Binding RegisterCommand}"
                                 IsEnabled="false"
-                                />
+                         />
                         
 
                     </StackLayout>
@@ -75,7 +122,12 @@
                 </Frame>
 
             </StackLayout>
+            
+    
+        
+    
         </Grid>
 
-    </StackLayout>
+        </StackLayout>
+    
 </ContentPage>
