@@ -131,7 +131,7 @@
                                         <Frame 
                                             CornerRadius="35"
                                             Padding="0"
-                                            BackgroundColor="#aac6f2"
+                                            BackgroundColor="Orange"
                                             Opacity="0.8"
                                             HorizontalOptions="Start"
                                             VerticalOptions="Start"
