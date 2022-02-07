@@ -18,7 +18,7 @@ namespace TravelAdvisor.ViewModels
         private readonly IOpenWeatherService _forcastService;
        
         public MainPage MainPageProperty { get; set; }
-        public string fechedForecast;
+        public string fechedForecast = "Stockholm";
         //public AsyncCommand<object> ViewDetails { get; }
         public Command<object> ViewDetails
         {
@@ -30,7 +30,7 @@ namespace TravelAdvisor.ViewModels
 
         public MainPageViewModel(INavService naviService) : base(naviService)
         {
-
+            _forcastService = DependencyService.Get<IOpenWeatherService>();
             //Code for creating the ViewModel
 
         }
