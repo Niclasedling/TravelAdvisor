@@ -4,7 +4,7 @@
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="TravelAdvisor.Views.MainPage">
-
+    
     <ContentPage.Resources>
         <ResourceDictionary>
             <xct:ItemSelectedEventArgsConverter x:Key="ItemSelectedEventArgsConverter"/>
@@ -57,7 +57,8 @@
                 BackgroundColor="Black" 
                 TextColor="White" 
                 CornerRadius="15" 
-                FontAttributes="Bold">
+                FontAttributes="Bold"
+                Command="{Binding LoginPage}">
         </Button>
 
 
@@ -103,7 +104,7 @@
                     <Label Text="Forecast" FontSize="20" FontAttributes="Bold" /> 
                 </StackLayout>
                 <!--LISTVIEW MED FORECAST-->
-                <ListView Grid.Row="3" VerticalScrollBarVisibility="Never" BackgroundColor="Red" ItemsSource="{Binding Forecast.Items}" Grid.ColumnSpan="12" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <ListView Grid.Row="3" VerticalScrollBarVisibility="Never" BackgroundColor="Red" ItemsSource="{Binding Forecast.Items}" Grid.ColumnSpan="12" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -144,9 +145,9 @@
                                         <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" FontSize="40" Grid.ColumnSpan="6" Text="{Binding Temperature}" Margin="0,-10,0,0"></Label>
                                         <Label Grid.Row="2" Grid.Column="1" Text="Humidity 79%" TextColor="#5b5f66" Grid.ColumnSpan="5" Margin="0,-45,0,0"/>
                                         <!--WIND-->
-                                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding WindSpeed}" TextColor="#5b5f66" Grid.ColumnSpan="5" Margin="0,-30,0,0"/>
+                                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding WindSpeed}" TextColor="#5b5f66" Grid.ColumnSpan="5" Margin="0,-30,0,0"/>
                                         <!--DESTINATION-->
-                                        <Label Text="{Binding cityName}" Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="5" FontSize="20"/>
+                                        <Label Text="{Binding City}" Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="5" FontSize="20"/>
                                         <Label Grid.Row="2" Grid.Column="8" Text="2/3/2002" TextColor="#5b5f66" Grid.ColumnSpan="5" Margin="0,-45,0,0"/>
 
                                     </Grid>

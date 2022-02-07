@@ -7,18 +7,16 @@
 
     
 
-        <StackLayout Padding="0">
+        
 
         <Grid>
                 <Grid.RowDefinitions>
-                    <!--0-->
-                    <RowDefinition Height="100"></RowDefinition>
-                    <!--1-->
-                    <RowDefinition Height="*"></RowDefinition>
-                    <!--2-->
-                    <RowDefinition Height="*"></RowDefinition>
-                    <!--3-->
-                    <RowDefinition Height="*"></RowDefinition>
+                    <!--0--><RowDefinition Height="100"></RowDefinition>
+                    <!--1--><RowDefinition Height="*"></RowDefinition>
+                    <!--2--><RowDefinition Height="*"></RowDefinition>
+                    <!--3--><RowDefinition Height="*"></RowDefinition>
+                    <!--4--><RowDefinition Height="*"></RowDefinition>
+                    
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <!--0-->
@@ -47,87 +45,109 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <StackLayout Padding="0" Grid.ColumnSpan="12" >
+            <StackLayout Padding="0" Grid.ColumnSpan="12" >
+
                 <Frame BackgroundColor="#203fba" HeightRequest="130" HorizontalOptions="FillAndExpand" CornerRadius="0" Padding="0">
                     <Image Source="MadeiraBackround.jpg"  Aspect="AspectFill"  HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0"/>
-
-
                 </Frame>
-                    <Image Source="MadeiraBackround.jpg"  Aspect="Fill" Grid.Row="1" Grid.Column="2"/>
+
+                <Image Source="MadeiraBackround.jpg"  Aspect="Fill" Grid.Row="1" Grid.Column="2"/>
 
             </StackLayout>
 
-                <StackLayout Grid.ColumnSpan="12" Grid.Row="1">
-                    
 
-                    <Frame BackgroundColor="White" HasShadow="True" HeightRequest="320" HorizontalOptions="FillAndExpand" BorderColor="Gray">
-                    <StackLayout>
-                        <StackLayout HorizontalOptions="CenterAndExpand">
-                            <Label Text="Register" TextColor="Black" FontSize="Medium" FontAttributes="Bold" />
-                        </StackLayout>
 
-                        <StackLayout >
-                            <StackLayout Orientation="Horizontal">
-                                <Label>Firstname</Label>
-                            </StackLayout>
-                            <StackLayout Grid.Column="7" >
-                                <Label>Lastname</Label>
-                            </StackLayout>
-                            
-                            <!--FirstNameBox and LastNameBox-->
-                                <Frame BackgroundColor="Transparent" BorderColor="Transparent" Padding="0"  CornerRadius="0" HorizontalOptions="FillAndExpand"  
-                                       Grid.Column="10" Grid.ColumnSpan="2">
-                                <StackLayout Orientation="Horizontal">
-                                    <Entry x:Name="entryFirstname" Text="{Binding Firstname}" Placeholder="Firstname" TextColor="#203fba" HorizontalOptions="FillAndExpand" TextChanged="entrytextChanged"/>
-                                    <Entry x:Name="entryLastName" Text="{Binding Lastname}" Placeholder="Lastname" TextColor="#203fba" HorizontalOptions="FillAndExpand" TextChanged="entrytextChanged" />
-                                </StackLayout>
-                            </Frame>
-                            
-                            <!--EmailwordBox-->
-                            <Label >Email</Label>
-                            <Frame BackgroundColor="Transparent" BorderColor="Transparent" Padding="0" CornerRadius="0" HorizontalOptions="FillAndExpand">
-                                <StackLayout Orientation="Horizontal">
+        <Frame BackgroundColor="White" HasShadow="True"  HorizontalOptions="FillAndExpand" BorderColor="Gray" Grid.ColumnSpan="12"
+                           Grid.RowSpan="2" Grid.Row="1" Margin="10,0,10,0">
 
-                                    <Entry x:Name="entryEmail" Text="{Binding Email}" Placeholder="Email" TextColor="#203fba" HorizontalOptions="FillAndExpand" TextChanged="entrytextChanged" />
-                                </StackLayout>
-                            </Frame>
-                            
-                            <!--PasswordBox-->
-                            <Label>Password</Label>
-                            <Frame BackgroundColor="Transparent" BorderColor="Transparent" Padding="0" CornerRadius="0" HorizontalOptions="FillAndExpand">
-                                <StackLayout Orientation="Horizontal">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <!--0--><RowDefinition Height="20"></RowDefinition>
+                    <!--1--><RowDefinition Height="50"></RowDefinition>
+                    <!--2--><RowDefinition Height="50"></RowDefinition>
+                    <!--3--><RowDefinition Height="40"></RowDefinition>
+                    <!--4--><RowDefinition Height="40"></RowDefinition>
+                    <!--5--><RowDefinition Height="40"></RowDefinition>
+                    <!--6--><RowDefinition Height="40"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <!--0-->
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <!--1-->
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <!--2-->
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <!--3-->
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <!--4-->
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <!--5-->
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <!--6-->
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <!--7-->
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <!--8-->
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <!--9-->
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <!--10-->
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <!--11-->
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-                                    <Entry x:Name="entryPassword" Text="{Binding Password}" Placeholder="Password" IsPassword="True" TextColor="#203fba" HorizontalOptions="FillAndExpand"  TextChanged="entrytextChanged" />
-                                </StackLayout>
-                            </Frame>
+                
+                    <!--REGISTER LABLE-->
+                <StackLayout Grid.Column="5" Grid.ColumnSpan="3">
+                    <Label Text="Register" TextColor="Black" FontSize="Medium" FontAttributes="Bold" />
+                </StackLayout>
+                
+                <!--FirstNameBox-->
+                <StackLayout Orientation="Vertical" Grid.Row="1" Grid.ColumnSpan="5" Margin="0,5,0,0">
+                    <Label>Firstname</Label>
+                    <Entry x:Name="entryFirstname" Text="{Binding Firstname}" Placeholder="Firstname" TextColor="#203fba" HorizontalOptions="FillAndExpand" TextChanged="entrytextChanged"/>
+                </StackLayout>
 
-                        </StackLayout>
+                <!--LastNameBox-->
 
-                        <!--Register-->
-                        <Button x:Name="registerButton"
+                <StackLayout Orientation="Vertical" Grid.Row="1" Grid.Column="7" Grid.ColumnSpan="5" Margin="0,5,0,0">
+                    <Label>Lastname</Label>
+                    <Entry x:Name="entryLastName" Text="{Binding Lastname}" Placeholder="Lastname" TextColor="#203fba" HorizontalOptions="FillAndExpand" TextChanged="entrytextChanged" />
+                </StackLayout>
+
+                <!--EmailBox-->
+
+                <StackLayout Orientation="Vertical" Grid.Row="2" Grid.ColumnSpan="5" Margin="0,10,0,0">
+                    <Label>Email</Label>
+                    <Entry x:Name="entryEmail" Text="{Binding Email}" Placeholder="Email" TextColor="#203fba" HorizontalOptions="FillAndExpand" TextChanged="entrytextChanged"/>
+                </StackLayout>
+
+                <!--Password-->
+
+                <StackLayout Orientation="Vertical" Grid.Row="3" Grid.ColumnSpan="5" Margin="0,10,0,0">
+                    <Label>Password</Label>
+                    <Entry x:Name="entryPassword" Text="{Binding Password}" Placeholder="Firstname" TextColor="#203fba" HorizontalOptions="FillAndExpand" TextChanged="entrytextChanged"/>
+                </StackLayout>
+
+                <!--Register-->
+                <Button x:Name="registerButton"
                                 Text="Register" 
                                 BackgroundColor="#203fba" 
                                 TextColor="White" 
                                 FontAttributes="Bold" 
                                 CornerRadius="15" 
-                                HeightRequest="40" 
-                                
+                                Grid.Row="6"
+                                Grid.Column="3"
+                                Grid.ColumnSpan="7"
                                 Command="{Binding RegisterCommand}"
                                 IsEnabled="false"
                          />
-                        
 
-                    </StackLayout>
 
-                </Frame>
+            </Grid>
+        </Frame>
+    </Grid>
 
-            </StackLayout>
-            
-    
-        
-    
-        </Grid>
-
-        </StackLayout>
     
 </ContentPage>

@@ -28,7 +28,6 @@ namespace TravelAdvisor.Services
             string path = $"GetAll?cityName={cityName}";
 
             var item = await _forecastServiceClient.GetListAsync(path,"data");
-
             
             return item;
         }

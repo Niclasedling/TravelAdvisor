@@ -62,7 +62,7 @@
                                         <RowDefinition Height="*"></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="100"></ColumnDefinition>
+                                        <ColumnDefinition Width="50"></ColumnDefinition>
                                         <ColumnDefinition Width="*"></ColumnDefinition>
                                         <ColumnDefinition Width="*"></ColumnDefinition>
                                         <ColumnDefinition Width="*"></ColumnDefinition>
@@ -84,12 +84,12 @@
                                         VerticalOptions="Start"
                                         HeightRequest="70"
                                         WidthRequest="70"
-                                        Grid.Row="0" Grid.RowSpan="2" Grid.Column="0">
+                                        Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2">
                                     </Image>
                                        
-                                    <Label Grid.Row="2" Grid.Column="0" Padding="0" Margin="10,0,0,0" Text="{Binding User.FirstName}" FontSize="12" TextColor="Black" FontFamily="ThemeFontRegular" VerticalOptions="Center" Opacity="1"></Label>
-                                    <Label Grid.Row="3" Grid.Column="0" Padding="0"  Margin="10,0,0,0" Text="{Binding User.LastName}" FontSize="12" TextColor="Black" FontFamily="ThemeFontRegular" VerticalOptions="Center" Opacity="1"></Label>
-                                    <Label Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="6" Text="{Binding Comment}"></Label>
+                                    <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="1" Padding="0" Margin="-10,0,10,0" Text="{Binding User.FirstName}" FontSize="12" TextColor="Black" FontFamily="ThemeFontRegular" VerticalOptions="Center" Opacity="1"></Label>
+                                    <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Padding="0"  Margin="0,0,0,0" Text="{Binding User.LastName}" FontSize="12" TextColor="Black" FontFamily="ThemeFontRegular" VerticalOptions="Center" Opacity="1"></Label>
+                                    <Label Grid.Row="0" Grid.RowSpan="3" Grid.Column="2" Grid.ColumnSpan="6" Text="{Binding User.Comment}"></Label>
                                     <!--LIKE-->
                                     <ImageButton                                        
                                         Clicked="LikeThumb_Clicked" 
@@ -100,7 +100,7 @@
                                         HeightRequest="70" 
                                         >
                                     </ImageButton>
-                                    <Label Grid.Row="1" Grid.Column="10" Text="20" Margin="5,0,0,0"></Label>
+                                    <Label Grid.Row="1" Grid.Column="10" Text="{Binding TotalLikes, Mode=TwoWay}" Margin="5,0,0,0"></Label>
                                     <!--DISLIKE-->
                                     <ImageButton 
                                         Grid.Row="0" 
@@ -112,13 +112,18 @@
                                        
                                     </ImageButton>
 
-                                    <Label Text="2" Grid.Row="1" Grid.Column="11" Margin="7,0,0,0"></Label>
+                                    <Label Text="{Binding TotalDislikes, Mode=TwoWay}" Grid.Row="1" Grid.Column="11" Margin="7,0,0,0"></Label>
                                     <!--STARS-->
                                     <Image Grid.Row="2" Grid.Column="7" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
                                     <Image Grid.Row="2" Grid.Column="8" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
                                     <Image Grid.Row="2" Grid.Column="9" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
                                     <Image Grid.Row="2" Grid.Column="10" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
                                     <Image Grid.Row="2" Grid.Column="11" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
+                                    <!--COMMENTS-->
+                                    <Label Text="{Binding TotalComments, Mode=TwoWay}" Grid.Row="3" Grid.Column="2" Margin="20,0,0,0" Grid.ColumnSpan="1"></Label>
+                                    <ImageButton Source="{Binding CommentImgSrc}" Grid.Row="3" Grid.Column="3" Margin="0,0,0,0" Grid.ColumnSpan="2">
+                                        
+                                    </ImageButton>
                                     <!--RATING TEXT-->
                                     <Label Text="5/5" Grid.Row="3" Grid.Column="9" Margin="20,0,0,0" Grid.ColumnSpan="2"></Label>
                                    
