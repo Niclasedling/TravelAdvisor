@@ -44,6 +44,20 @@ namespace TravelAdvisor.Views
 
             if(!review.ThumbIsGreen || review.ThumbStringToCompare == null)
             {
+                
+                if (!review.User.HasLiked)
+                {
+                    review.TotalLikes++;
+                    review.User.HasLiked = true;
+                }
+
+                if (review.User.HasDisliked)
+                {
+                    review.TotalDislikes--;
+                    review.User.HasDisliked = false;
+                }
+
+
                 review.LikeButton.Source = review.LikeThumbGreenImgSrc;
                 review.DislikeButton.Source = review.DislikeThumbImgSrc;
                 review.ThumbIsGreen = true;
@@ -53,7 +67,8 @@ namespace TravelAdvisor.Views
             }
             else
             {
-
+                review.User.HasLiked = false;
+                review.TotalLikes--;
                 review.LikeButton.Source = review.LikeThumbImgSrc;
                 review.ThumbIsGreen = false;
                 review.ThumbStringToCompare = review.LikeThumbString;
@@ -73,6 +88,19 @@ namespace TravelAdvisor.Views
 
             if (!review.ThumbIsRed || review.ThumbStringToCompare == null)
             {
+                
+                if (!review.User.HasDisliked)
+                {
+                    review.TotalDislikes++;
+                    review.User.HasDisliked = true;
+                }
+                
+                if (review.User.HasLiked)
+                {
+                    review.TotalLikes--;
+                    review.User.HasLiked = false;
+                }
+                
                 review.DislikeButton.Source = review.DislikeThumbRedImgSrc;
                 review.LikeButton.Source = review.LikeThumbImgSrc;
                 review.ThumbIsRed = true;
@@ -82,6 +110,8 @@ namespace TravelAdvisor.Views
             }
             else
             {
+                review.User.HasDisliked = false;
+                review.TotalDislikes--;
                 review.DislikeButton.Source = review.DislikeThumbImgSrc;
                 review.ThumbIsRed = false;
 

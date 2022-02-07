@@ -17,7 +17,6 @@ namespace TravelAdvisor.ViewModels
         public Command GoBack => new Command(async () => await NavigationService.GoBack());
         
 
-
         public DetailsPageViewModel(INavService naviService, AttractionDto attraction) : base(naviService)
         {
             //Code for creating the ViewModel
@@ -32,7 +31,15 @@ namespace TravelAdvisor.ViewModels
              
         }
         public List<ReviewDto> Reviews { get { return App.globalCurrentAttraction.Reviews = GetReviews(); } }
+
+
+        //public List<ReviewDto> RealReviews { get { return } }
         //public List<ReviewDto> ReviewList => GetReviews();
+
+        //public void ButtonClicked()
+        //{
+        //    OnPropertyChanged(nameof(ButtonClicked));   
+        //}
         
        
         private List<ReviewDto> GetReviews()
@@ -43,9 +50,27 @@ namespace TravelAdvisor.ViewModels
                 new ReviewDto
                 {
                     Id = Guid.NewGuid(),
-                    Image = "user.png",                 
-                    Comment = "First picture",
-                    User = new UserDto{FirstName = "Mario", LastName = "Wade"}
+                    Image = "user.png",                                  
+                    User = new UserDto
+                    {
+                        FirstName = "Mario", 
+                        LastName = "Wade",
+                        Review = "First picture",
+                       
+                    }
+
+
+                },
+                new ReviewDto
+                {
+                    Id = Guid.NewGuid(),
+                    Image = "user.png",                   
+                    User = new UserDto
+                    {
+                        FirstName = "Sannah", 
+                        LastName = "Carter",
+                        Review = "Second picture",
+                    }
 
 
                 },
@@ -53,37 +78,47 @@ namespace TravelAdvisor.ViewModels
                 {
                     Id = Guid.NewGuid(),
                     Image = "user.png",
-                    Comment = "Second picture",
-                    User = new UserDto{FirstName = "Sannah", LastName = "Carter"}
-
-                },
-                new ReviewDto
-                {
-                    Id = Guid.NewGuid(),
-                    Image = "user.png",
-                    Comment = "Third picture",
-                    User = new UserDto{FirstName = "Daniel", LastName = "Morton"}
+                   
+                    User = new UserDto
+                    {
+                        FirstName = "Daniel", 
+                        LastName = "Morton", 
+                        Review = "Third picture",
+                    }
                 },
                  new ReviewDto
                 {
                     Id = Guid.NewGuid(),
                     Image = "user.png",
-                    Comment = "Fourth picture",
-                    User = new UserDto{FirstName = "Haaris", LastName = "Spears"}
+                   
+                    User = new UserDto
+                    {
+                        FirstName = "Haaris", 
+                        LastName = "Spears", 
+                        Review = "Fourth picture",
+                    }
                 },
                   new ReviewDto
                 {
                     Id = Guid.NewGuid(),
                     Image = "user.png",
-                    Comment = "Fifth picture",
-                    User = new UserDto{FirstName = "Johanna", LastName = "Krause"}
+                    User = new UserDto
+                    {
+                        FirstName = "Johanna", 
+                        LastName = "Krause",
+                        Review = "Fifth picture",
+                    }
                 },
                    new ReviewDto
                 {
                     Id = Guid.NewGuid(),
-                    Image = "user.png",
-                    Comment = "Sixth picture",
-                    User = new UserDto{FirstName = "Anita", LastName = "Hartley"}
+                    Image = "user.png",                
+                    User = new UserDto
+                    {
+                        FirstName = "Anita", 
+                        LastName = "Hartley",
+                        Review = "¨Sixth picture",
+                    }
                 }
             };
         }
