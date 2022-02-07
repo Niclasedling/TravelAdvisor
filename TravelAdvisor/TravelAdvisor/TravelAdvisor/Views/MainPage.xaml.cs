@@ -17,6 +17,7 @@ namespace TravelAdvisor.Views
     //[XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
+        public string fetchedForecast;
         public AttractionDto Attraction { get; set; }
         MainPageViewModel ViewModel => BindingContext as MainPageViewModel;
         private readonly IUserService _userService;
@@ -97,14 +98,15 @@ namespace TravelAdvisor.Views
             
         }
 
-        private async void Button_Clicked(object sender, EventArgs e)
-        {
-         var item=  await _forcastService.GetForcast("Stockholm");
+       
 
-            foreach (var items in item.Items)
-            {
-                var hej = items.Description as string;
-            }
+        private async void searchDestination_SearchButtonPressed(object sender, EventArgs e)
+        {
+            var searchbar = sender as SearchBar;
+            var mainViewModel = searchbar.BindingContext as MainPageViewModel;
+            mainViewModel.fechedForecast = searchDestination.Text;
+
+            
         }
     }
 
