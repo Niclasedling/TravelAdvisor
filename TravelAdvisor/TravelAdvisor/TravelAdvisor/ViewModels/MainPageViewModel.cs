@@ -104,7 +104,7 @@ namespace TravelAdvisor.ViewModels
                     Image = "apt1.jpg",
                     Adress = "2162 Patricia Ave, LA",
                     Location = "California",
-                    Price = "$1500/month",
+                    Description = "Some description"
                     
                 },
                 new AttractionDto
@@ -113,8 +113,8 @@ namespace TravelAdvisor.ViewModels
                     Image = "apt2.jpg",
                     Adress = "2112 Cushions Dr, LA",
                     Location = "California",
-                    Price = "$1500/month",
-                  
+                    Description = "Some description"
+
                 },
                 new AttractionDto
                 {
@@ -122,8 +122,8 @@ namespace TravelAdvisor.ViewModels
                     Image = "apt3.jpg",
                     Adress = "2167 Anthony Way, LA",
                     Location = "California",
-                    Price = "$1500/month",
-                    
+                    Description = "Some description"
+
                 },
                  new AttractionDto
                 {
@@ -131,8 +131,8 @@ namespace TravelAdvisor.ViewModels
                     Image = "apt3.jpg",
                     Adress = "2167 Anthony Way, LA",
                     Location = "California",
-                    Price = "$1500/month",
-                   
+                    Description = "Some description"
+
                 },
                   new AttractionDto
                 {
@@ -140,8 +140,8 @@ namespace TravelAdvisor.ViewModels
                     Image = "apt3.jpg",
                     Adress = "2167 Anthony Way, LA",
                     Location = "California",
-                    Price = "$1500/month",
-                    
+                    Description = "Some description"
+
                 },
                    new AttractionDto
                 {
@@ -149,8 +149,8 @@ namespace TravelAdvisor.ViewModels
                     Image = "apt3.jpg",
                     Adress = "2167 Anthony Way, LA",
                     Location = "California",
-                    Price = "$1500/month",
-                    
+                    Description = "Some description"
+
                 }
             };
         }
