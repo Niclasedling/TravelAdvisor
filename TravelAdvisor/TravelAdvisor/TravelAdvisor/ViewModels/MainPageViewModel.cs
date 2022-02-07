@@ -62,28 +62,28 @@ namespace TravelAdvisor.ViewModels
             };
         }
 
-        public Forecast Forecast => FillForecastList();
+        //public Forecast Forecast => FillForecastList();
 
-        private Forecast FillForecastList()
-        {
-            var forecastAPI = GetForecastAPI();
+        //private Forecast FillForecastList()
+        //{
+        //    var forecastAPI = GetForecastAPI();
 
 
 
-            Forecast forecast = new Forecast()
-            {
-                City = forecastAPI.City,
-                Items = forecastAPI.Items.Select(y => new ForecastItem
-                {
-                    Description = y.Description,
-                    Icon = y.Icon,
-                    Temperature = y.Temperature,
-                    WindSpeed = y.WindSpeed,
-                }).ToList()
+        //    Forecast forecast = new Forecast()
+        //    {
+        //        City = forecastAPI.City,
+        //        Items = forecastAPI.Items.Select(y => new ForecastItem
+        //        {
+        //            Description = y.Description,
+        //            Icon = y.Icon,
+        //            Temperature = y.Temperature,
+        //            WindSpeed = y.WindSpeed,
+        //        }).ToList()
 
-            };
-            return forecast;
-        }
+        //    };
+        //    return forecast;
+        //}
         private Forecast GetForecastAPI()
         {
             if (fechedForecast != null)
@@ -120,7 +120,7 @@ namespace TravelAdvisor.ViewModels
                     Adress = "2167 Anthony Way, LA",
                     Location = "California",
                     Price = "$1500/month",
-                    Details = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
+                    Description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
@@ -135,7 +135,7 @@ namespace TravelAdvisor.ViewModels
                     Adress = "2167 Anthony Way, LA",
                     Location = "California",
                     Price = "$1500/month",
-                    Details = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
+                    Description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
@@ -150,7 +150,7 @@ namespace TravelAdvisor.ViewModels
                     Adress = "2167 Anthony Way, LA",
                     Location = "California",
                     Price = "$1500/month",
-                    Details = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
+                    Description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
@@ -165,7 +165,7 @@ namespace TravelAdvisor.ViewModels
                     Adress = "2167 Anthony Way, LA",
                     Location = "California",
                     Price = "$1500/month",
-                    Details = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
+                    Description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
