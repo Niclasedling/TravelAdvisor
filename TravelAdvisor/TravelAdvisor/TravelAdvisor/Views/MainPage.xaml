@@ -4,7 +4,7 @@
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="TravelAdvisor.Views.MainPage">
-
+    
     <ContentPage.Resources>
         <ResourceDictionary>
             <xct:ItemSelectedEventArgsConverter x:Key="ItemSelectedEventArgsConverter"/>
@@ -34,9 +34,8 @@
             <!--10--><ColumnDefinition Width="*"></ColumnDefinition>
             <!--11--><ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Image Source="phone.png" Grid.Column="0" ></Image>
-<SearchBar />
-        <!--SearchBox-->
+            <Image Source="phone.png" Grid.Column="0" ></Image>
+            <!--SearchBox-->
             <SearchBar  x:Name="searchDestination"
                 Placeholder="Search" 
                 TextColor="Black"  
@@ -101,10 +100,10 @@
                 </StackLayout>
                 <!--ForeCast Lable-->
                 <StackLayout Grid.Row="2" Grid.Column="5" Grid.ColumnSpan="3">
-                    <Label Text="Forecast" FontSize="20" FontAttributes="Bold" /> 
+                    <Label Text="{Binding cityName}" FontSize="20" FontAttributes="Bold" /> 
                 </StackLayout>
                 <!--LISTVIEW MED FORECAST-->
-                <ListView Grid.Row="3" VerticalScrollBarVisibility="Never" BackgroundColor="Red" ItemsSource="{Binding Forecast.Items}" Grid.ColumnSpan="12" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <ListView Grid.Row="3" VerticalScrollBarVisibility="Never" BackgroundColor="Transparent" ItemsSource="{Binding Forecast.Items}" Grid.ColumnSpan="12" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -132,23 +131,23 @@
                                         <Frame 
                                             CornerRadius="35"
                                             Padding="0"
-                                            BackgroundColor="Black"
+                                            BackgroundColor="#aac6f2"
                                             Opacity="0.8"
                                             HorizontalOptions="Start"
                                             VerticalOptions="Start"
                                             HeightRequest="70"
                                             WidthRequest="70"
                                             Grid.Row="0" Grid.RowSpan="3" Grid.Column="0">
-                                            <Image Source="apt2.jpg" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></Image>
+                                            <Image Source="{Binding Icon}" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></Image>
                                         </Frame>
                                         <!--TEMPERATURE-->
-                                        <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" FontSize="40" Grid.ColumnSpan="6" Text="{Binding Temperature}" Margin="0,-10,0,0"></Label>
-                                        <Label Grid.Row="2" Grid.Column="1" Text="Humidity 79%" TextColor="#5b5f66" Grid.ColumnSpan="5" Margin="0,-45,0,0"/>
+                                            <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" FontSize="40" Grid.ColumnSpan="6" Text="{Binding Temperature, StringFormat='{0} °C'}" Margin="0,-10,0,0"></Label>
+                                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding Humidity, StringFormat='Humidity: {0}%'}"  TextColor="#5b5f66" Grid.ColumnSpan="5" Margin="0,-45,0,0"/>
                                         <!--WIND-->
-                                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding WindSpeed}" TextColor="#5b5f66" Grid.ColumnSpan="5" Margin="0,-30,0,0"/>
+                                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding WindSpeed, StringFormat='Wind: {0} m/s'}" TextColor="#5b5f66" Grid.ColumnSpan="5" Margin="0,-30,0,0"/>
                                         <!--DESTINATION-->
                                         <Label Text="{Binding cityName}" Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="5" FontSize="20"/>
-                                        <Label Grid.Row="2" Grid.Column="8" Text="2/3/2002" TextColor="#5b5f66" Grid.ColumnSpan="5" Margin="0,-45,0,0"/>
+                                        <Label Grid.Row="2" Grid.Column="8" Text="{Binding DateTime}" TextColor="#5b5f66" Grid.ColumnSpan="5" Margin="0,-45,0,0"/>
 
                                     </Grid>
 

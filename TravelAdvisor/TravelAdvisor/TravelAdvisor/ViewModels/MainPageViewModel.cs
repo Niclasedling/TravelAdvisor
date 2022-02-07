@@ -15,10 +15,25 @@ namespace TravelAdvisor.ViewModels
 {
     public class MainPageViewModel : BaseViewModel
     {
-        private readonly IOpenWeatherService _forcastService;
+        private readonly IOpenWeatherService _forecastService;
        
         public MainPage MainPageProperty { get; set; }
-        public string fechedForecast = "Stockholm";
+
+        public string fetchedForecast;
+
+        private string _cityName;
+        public string cityName 
+        { 
+            get
+            {
+                return _cityName;
+            }
+            set
+            {
+                _cityName = cityName;
+                OnPropertyChanged($"{fetchedForecast}");
+            }
+        }
         //public AsyncCommand<object> ViewDetails { get; }
         public Command<object> ViewDetails
         {
@@ -26,20 +41,57 @@ namespace TravelAdvisor.ViewModels
         }
         public Command LoginPage => new Command(async () => await NavigationService.NavigateTo<LoginPageViewModel>());
         public Command BackPage => new Command(async () => await NavigationService.GoBack());
-        public string cityName { get; set; }
+
+        public List<Filter> PropertyTypeList => GetFilters();
+        public List<AttractionDto> AttractionList => GetAttractions();
+        private List<Filter> GetFilters()
+        {
+            return new List<Filter>
+            {
+                new Filter { Name = "All"},
+                new Filter { Name = "Popular"},
+            };
+        }
+        private List<ForecastItem> forecastItems { get; set; }
+
+        public List<ForecastItem> ForecastItems
+        {
+            get
+            {
+                return forecastItems;
+            }
+            set
+            {
+                forecastItems = value;
+                OnPropertyChanged("ForecastItems");
+            }
+        }
+        private Forecast forecast { get; set; }
+        public Forecast Forecast
+        {
+            get
+            {
+                return forecast;
+            }
+            set
+            {
+                forecast = value;
+                OnPropertyChanged("Forecast");
+            }
+        }
 
         public MainPageViewModel(INavService naviService) : base(naviService)
         {
-            _forcastService = DependencyService.Get<IOpenWeatherService>();
-            //Code for creating the ViewModel
-
+            _forecastService = DependencyService.Get<IOpenWeatherService>();
         }
 
 
-
-        public override void Init()
+        public async override void Init()
         {
             //Code for initialize the ViewModel
+            var result = await GetForecast();
+            Forecast = result;
+            ForecastItems = result.Items;
         }
 
         async void AttractionSelected(object sender)
@@ -51,46 +103,36 @@ namespace TravelAdvisor.ViewModels
             await NavigationService.NavigateTo<DetailsPageViewModel>();
 
         }
-        public List<Filter> PropertyTypeList => GetFilters();
-        public List<AttractionDto> AttractionList => GetAttractions();
-        private List<Filter> GetFilters()
+
+        private async Task<Forecast> GetForecast()
         {
-            return new List<Filter>
+            var forecastAPI = await GetForecastAPI();
+
+            Forecast forecast = new Forecast()
             {
-                new Filter { Name = "All"},
-                new Filter { Name = "Popular"},
+                City = forecastAPI.City,
+                Items = forecastAPI.Items.Select(y => new ForecastItem
+                {
+                    Description = y.Description,
+                    Icon = $"http://openweathermap.org/img/wn/{y.Icon}@2x.png",
+                    Temperature = Math.Round(y.Temperature),
+                    WindSpeed = y.WindSpeed,
+                    DateTime = y.DateTime,
+                    Humidity = y.Humidity,
+
+                }).ToList()
+
             };
+
+            return forecast;
         }
-
-        //public Forecast Forecast => FillForecastList();
-
-        //private Forecast FillForecastList()
-        //{
-        //    var forecastAPI = GetForecastAPI();
-
-
-
-        //    Forecast forecast = new Forecast()
-        //    {
-        //        City = forecastAPI.City,
-        //        Items = forecastAPI.Items.Select(y => new ForecastItem
-        //        {
-        //            Description = y.Description,
-        //            Icon = y.Icon,
-        //            Temperature = y.Temperature,
-        //            WindSpeed = y.WindSpeed,
-        //        }).ToList()
-
-        //    };
-        //    return forecast;
-        //}
-        private Forecast GetForecastAPI()
+        private async Task<Forecast> GetForecastAPI()
         {
-            if (fechedForecast != null)
+            fetchedForecast = "Stockholm";
+            if (fetchedForecast != null)
             {
-                var forecastAPI = _forcastService.GetForcast(fechedForecast);
-                var result = forecastAPI.Result;
-                return result;
+                return await _forecastService.GetForcast(fetchedForecast);
+
             }
             else return null;
         }

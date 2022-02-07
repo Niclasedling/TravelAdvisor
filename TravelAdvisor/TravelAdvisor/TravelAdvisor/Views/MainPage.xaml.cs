@@ -19,17 +19,14 @@ namespace TravelAdvisor.Views
     {
         public string fetchedForecast;
         public AttractionDto Attraction { get; set; }
+
         MainPageViewModel ViewModel => BindingContext as MainPageViewModel;
-        private readonly IUserService _userService;
-        private readonly IOpenWeatherService _forcastService;
 
         public MainPage()
         {
-            
-
             InitializeComponent();
             BindingContext = new MainPageViewModel(DependencyService.Get<INavService>());
-            _userService = DependencyService.Get<IUserService>();
+            //_userService = DependencyService.Get<IUserService>();
             //_forcastService = DependencyService.Get<IOpenWeatherService>();
         }
         
@@ -88,14 +85,25 @@ namespace TravelAdvisor.Views
             //{
             Position position = new Position(e.Position.Latitude, e.Position.Longitude);
             //};
-            await DisplayAlert("Coordinate", $" Lat : {e.Position.Latitude}\n Long : {e.Position.Longitude}", "Ok");
+            Pin newPin = new Pin
+            {
+                Position = position,
+                Label = "Current Address",
+                Address = " ",
+                Type = PinType.Place
+            };
+            //newPin.MarkerClicked += OnMarkerClickedAsync;
             var addresses = await _geocoder.GetAddressesForPositionAsync(e.Position);
+            map.Pins.Add(newPin);
+            await DisplayActionSheet(newPin.Label, "Cancel", "Info", $" Lat : {e.Position.Latitude}\n Long : {e.Position.Longitude}", addresses.FirstOrDefault()?.ToString());
+            //await DisplayAlert("Coordinate", $" Lat : {e.Position.Latitude}\n Long : {e.Position.Longitude}", "Ok");
+            //var addresses = await _geocoder.GetAddressesForPositionAsync(e.Position);
 
-           
-            await DisplayAlert("Address",
-                addresses.FirstOrDefault()?.ToString(), "Ok");
 
-            
+            //await DisplayAlert("Address",
+            //    addresses.FirstOrDefault()?.ToString(), "Ok");
+
+
         }
 
        
@@ -104,7 +112,7 @@ namespace TravelAdvisor.Views
         {
             var searchbar = sender as SearchBar;
             var mainViewModel = searchbar.BindingContext as MainPageViewModel;
-            mainViewModel.fechedForecast = searchDestination.Text;
+            mainViewModel.fetchedForecast = searchDestination.Text;
 
             
         }
