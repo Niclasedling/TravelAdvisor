@@ -14,13 +14,14 @@ namespace TravelAdvisor.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailsPage : ContentPage
     {
+        AttractionDto attraction = new AttractionDto();
         DetailsPageViewModel ViewModel => BindingContext as DetailsPageViewModel;
         public DetailsPage()
         {
             
             InitializeComponent();
             
-            BindingContext = new DetailsPageViewModel(DependencyService.Get<INavService>(), App.globalAttraction);
+            BindingContext = new DetailsPageViewModel(DependencyService.Get<INavService>(), attraction);
         }
 
         protected override void OnAppearing()

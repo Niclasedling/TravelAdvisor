@@ -11,8 +11,9 @@ namespace TravelAdvisor.ViewModels
     public class DetailsPageViewModel : BaseViewModel
     {
 
-        
-
+        public string NameOfAttraction { get { return App.globalCurrentAttraction.Name; } }
+        public string InfoAboutAttraction { get { return App.globalCurrentAttraction.Description; } }
+        public ImageSource AttractionImgSrc { get { return App.globalCurrentAttraction.Image; } }
         public Command GoBack => new Command(async () => await NavigationService.GoBack());
         
 
@@ -21,20 +22,22 @@ namespace TravelAdvisor.ViewModels
         {
             //Code for creating the ViewModel
             
-           
+          
 
         }
 
         public override void Init()
         {
             //Code for initialize the ViewModel
-            
+             
         }
-
-        public List<ReviewDto> ReviewList => GetReviews();
-
+        public List<ReviewDto> Reviews { get { return App.globalCurrentAttraction.Reviews = GetReviews(); } }
+        //public List<ReviewDto> ReviewList => GetReviews();
+        
+       
         private List<ReviewDto> GetReviews()
         {
+            
             return new List<ReviewDto>
             {
                 new ReviewDto
