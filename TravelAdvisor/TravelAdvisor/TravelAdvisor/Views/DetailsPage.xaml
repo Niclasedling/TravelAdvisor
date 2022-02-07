@@ -120,8 +120,8 @@
                                     <Image Grid.Row="2" Grid.Column="10" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
                                     <Image Grid.Row="2" Grid.Column="11" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
                                     <!--COMMENTS-->
-                                    <Label Text="{Binding TotalComments, Mode=TwoWay}" Grid.Row="3" Grid.Column="9" Margin="20,0,0,0" Grid.ColumnSpan="2"></Label>
-                                    <Label Text="Click to see comments" Grid.Row="3" Grid.Column="9" Margin="20,0,0,0" Grid.ColumnSpan="2"></Label>
+                                    <Label Text="{Binding TotalComments, Mode=TwoWay}" Grid.Row="3" Grid.Column="2" Margin="20,0,0,0" Grid.ColumnSpan="2"></Label>
+                                    <Label Text="Click to see comments" Grid.Row="3" Grid.Column="2" Margin="20,0,0,0" Grid.ColumnSpan="2"></Label>
                                     <!--RATING TEXT-->
                                     <Label Text="5/5" Grid.Row="3" Grid.Column="9" Margin="20,0,0,0" Grid.ColumnSpan="2"></Label>
                                    
