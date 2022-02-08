@@ -108,13 +108,12 @@ namespace TravelAdvisor.Views
 
        
 
-        private void searchDestination_SearchButtonPressed(object sender, EventArgs e)
+        private async void searchDestination_SearchButtonPressed(object sender, EventArgs e)
         {
             var searchbar = sender as SearchBar;
             var mainViewModel = searchbar.BindingContext as MainPageViewModel;
             mainViewModel.fetchedForecast = searchDestination.Text;
-
-            
+            await mainViewModel.GetForecast();
         }
     }
 
