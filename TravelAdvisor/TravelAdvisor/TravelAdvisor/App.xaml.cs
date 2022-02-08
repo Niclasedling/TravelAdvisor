@@ -3,6 +3,7 @@ using System.Net.Http;
 using TravelAdvisor.Interfaces;
 using TravelAdvisor.Models;
 using TravelAdvisor.Services;
+using TravelAdvisor.ViewModels;
 using TravelAdvisor.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,6 +14,7 @@ namespace TravelAdvisor
     {
         public static AttractionDto globalCurrentAttraction;
         public static UserDto globalUserToComment;
+        public static DetailsPageViewModel globalDetailsPageViewModel;
         public App()
         {
             InitializeComponent();

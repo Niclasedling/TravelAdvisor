@@ -137,11 +137,50 @@
                 </ListView.ItemTemplate>
             </ListView>
             <!--COMMENT LISTVIEW-->
-            <Frame HeightRequest="120" Margin="5,5" BackgroundColor="#C1C1C1" CornerRadius="40" x:Name="commentFrame" IsVisible="false">
+            <Frame HeightRequest="1000" Margin="5,5" BackgroundColor="#C1C1C1" CornerRadius="40" x:Name="commentFrame" IsVisible="false" BorderColor="Black" Grid.Row="3">
                 <StackLayout>
-                    <Label Text="{Binding UserToComment}"></Label>
-                    <ImageButton WidthRequest="20" HeightRequest="20" Source="remove.png" Clicked="CloseCommentButton_Clicked" HorizontalOptions="End"></ImageButton>
-                    <ListView ItemsSource="{Binding UserComments}" Grid.Row="3">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"></RowDefinition>
+                            </Grid.RowDefinitions>
+                        <Label 
+                            Text="Comments" 
+                            TextTransform="Uppercase" 
+                            FontAttributes="Bold" 
+                            HorizontalOptions="Center" 
+                            VerticalOptions="Center" 
+                            Grid.Column="4" 
+                            Grid.ColumnSpan="7"
+                            Grid.Row="0">
+                            
+                        </Label>
+                            <ImageButton 
+                            Grid.Row="0"
+                            WidthRequest="20" 
+                            HeightRequest="20" 
+                            Source="remove.png" 
+                            Clicked="CloseCommentButton_Clicked"  
+                            Grid.Column="15">
+                            </ImageButton>
+                        </Grid>
+                    </StackLayout>
+                    
+                    <ListView ItemsSource="{Binding UserComments}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>

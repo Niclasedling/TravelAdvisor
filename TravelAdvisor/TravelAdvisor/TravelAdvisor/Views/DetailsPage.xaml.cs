@@ -15,14 +15,14 @@ namespace TravelAdvisor.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailsPage : ContentPage
     {
-        AttractionDto attraction = new AttractionDto();
+        //AttractionDto attraction = new AttractionDto();
         DetailsPageViewModel ViewModel => BindingContext as DetailsPageViewModel;
         public DetailsPage()
         {
             
             InitializeComponent();
             
-            BindingContext = new DetailsPageViewModel(DependencyService.Get<INavService>(), attraction);
+            BindingContext = new DetailsPageViewModel(DependencyService.Get<INavService>());
         }
 
         protected override void OnAppearing()
@@ -123,10 +123,9 @@ namespace TravelAdvisor.Views
         private void CommentButton_Clicked(object sender, EventArgs e)
         {
             var commentButton = sender as ImageButton;
-            var user = commentButton.BindingContext as ReviewDto;
-            
-            DetailsPageViewModel detailsPageViewModel = new DetailsPageViewModel(DependencyService.Get<INavService>(), user);
-            detailsPageViewModel.UserToComment = user.User.FirstName + " " + user.User.LastName;
+            var review = commentButton.BindingContext as ReviewDto;
+
+            App.globalDetailsPageViewModel.UserToComment = review.User.FirstName + " " + review.User.LastName;
 
             if (!commentFrame.IsVisible)
             {

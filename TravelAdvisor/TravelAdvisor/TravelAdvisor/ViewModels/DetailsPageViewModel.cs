@@ -28,21 +28,16 @@ namespace TravelAdvisor.ViewModels
         public Command GoBack => new Command(async () => await NavigationService.GoBack());
         
 
-        public DetailsPageViewModel(INavService naviService, AttractionDto attraction) : base(naviService)
+        public DetailsPageViewModel(INavService naviService) : base(naviService)
         {
             //Code for creating the ViewModel
-            
+            DetailsPageViewModel detailsPageView = new DetailsPageViewModel(naviService);
+            App.globalDetailsPageViewModel = detailsPageView;
           
 
         }
 
-        public DetailsPageViewModel(INavService naviService, ReviewDto reviewDto) : base(naviService)
-        {
-            //Code for creating the ViewModel
-
-
-
-        }
+        
 
         public override void Init()
         {
@@ -68,27 +63,27 @@ namespace TravelAdvisor.ViewModels
             {
                 new UserCommentDto
                 {
-                    Comment = "En kommentar",
+                    Comment = "A really cool place! I recommend strongly!",
                 },
                 new UserCommentDto
             {
-                Comment = "En kommentar",
+                Comment = "Nice beverages and nice food for an afforable price! Recommend!",
             },
             new UserCommentDto
             {
-                Comment = "En kommentar",
+                Comment = "Superior service!",
             },
             new UserCommentDto
             {
-                Comment = "En kommentar",
+                Comment = "Amazing food and an amazing view!",
             },
             new UserCommentDto
             {
-                Comment = "En kommentar",
+                Comment = "Good food and nice service!",
             },
             new UserCommentDto
             {
-                Comment = "En kommentar",
+                Comment = "Fun activities for everyone! Really recommend!",
             }
             };
         }
