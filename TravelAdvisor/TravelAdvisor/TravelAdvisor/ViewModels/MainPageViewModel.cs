@@ -16,11 +16,12 @@ namespace TravelAdvisor.ViewModels
     public class MainPageViewModel : BaseViewModel
     {
         private readonly IOpenWeatherService _forecastService;
-       
+        public MainPageViewModel _mainPageViewModel;
+        public MainPage mainPage;
         public MainPage MainPageProperty { get; set; }
 
         public string fetchedForecast;
-
+        
         private string _cityName;
         public string cityName 
         { 
@@ -30,8 +31,9 @@ namespace TravelAdvisor.ViewModels
             }
             set
             {
-                _cityName = cityName;
-                OnPropertyChanged($"{fetchedForecast}");
+                _cityName = value;
+                
+                OnPropertyChanged("cityName");
             }
         }
         //public AsyncCommand<object> ViewDetails { get; }
@@ -83,15 +85,22 @@ namespace TravelAdvisor.ViewModels
         public MainPageViewModel(INavService naviService) : base(naviService)
         {
             _forecastService = DependencyService.Get<IOpenWeatherService>();
+
+        }
+        public void InitializePosition()
+        {
+            
         }
 
-
         public async override void Init()
-        {
+        {   
+
             //Code for initialize the ViewModel
             var result = await GetForecast();
             Forecast = result;
             ForecastItems = result.Items;
+            cityName = result.City;
+            
         }
 
         async void AttractionSelected(object sender)
@@ -104,9 +113,12 @@ namespace TravelAdvisor.ViewModels
 
         }
 
-        private async Task<Forecast> GetForecast()
+        public async Task<Forecast> GetForecast()
         {
+
             var forecastAPI = await GetForecastAPI();
+
+            cityName = fetchedForecast;
 
             Forecast forecast = new Forecast()
             {
@@ -119,6 +131,10 @@ namespace TravelAdvisor.ViewModels
                     WindSpeed = y.WindSpeed,
                     DateTime = y.DateTime,
                     Humidity = y.Humidity,
+                    Position = new Xamarin.Forms.Maps.Position(y.Latitude, y.Longitude),
+                    Latitude = y.Latitude,
+                    Longitude = y.Longitude,
+                    
 
                 }).ToList()
 
@@ -127,8 +143,9 @@ namespace TravelAdvisor.ViewModels
             return forecast;
         }
         private async Task<Forecast> GetForecastAPI()
-        {
-            fetchedForecast = "Stockholm";
+        {   
+            if(fetchedForecast == null) fetchedForecast = "Stockholm";
+
             if (fetchedForecast != null)
             {
                 return await _forecastService.GetForcast(fetchedForecast);
@@ -147,7 +164,7 @@ namespace TravelAdvisor.ViewModels
                     Adress = "2162 Patricia Ave, LA",
                     Location = "California",
                     Description = "Some description"
-                    
+
                 },
                 new AttractionDto
                 {
