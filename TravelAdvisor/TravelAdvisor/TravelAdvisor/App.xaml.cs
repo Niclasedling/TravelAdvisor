@@ -15,6 +15,7 @@ namespace TravelAdvisor
         public static AttractionDto globalCurrentAttraction;
         public static UserDto globalUserToComment;
         public static DetailsPageViewModel globalDetailsPageViewModel;
+        public static ReviewDto globalCurrentReview;
         public App()
         {
             InitializeComponent();

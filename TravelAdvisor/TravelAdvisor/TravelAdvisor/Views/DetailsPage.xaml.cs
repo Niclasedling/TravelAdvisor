@@ -125,7 +125,8 @@ namespace TravelAdvisor.Views
             var commentButton = sender as ImageButton;
             var review = commentButton.BindingContext as ReviewDto;
 
-            App.globalDetailsPageViewModel.UserToComment = review.User.FirstName + " " + review.User.LastName;
+            App.globalCurrentReview = review;
+            //App.globalDetailsPageViewModel.UserToComment = review.User.FirstName + " " + review.User.LastName;
           
 
             if (!commentFrame.IsVisible)
@@ -148,7 +149,34 @@ namespace TravelAdvisor.Views
 
         private void Comment_Completed(object sender, EventArgs e)
         {
+            var entry = sender as Entry;
+            var parent = entry.Parent as StackLayout;
+            var children = parent.Children;
 
+            List<View> views = new List<View>();
+            foreach (var item in children)
+            {
+                var type = (item.GetType());
+                if(type.Name == "ListView")
+                {
+                    views.Add(item);
+                }
+
+            }
+            var listView = views.ElementAt(0);
+            var theRealListView = listView as ListView;
+            var review = App.globalCurrentReview;
+           
+            UserCommentDto userComment = new UserCommentDto();
+            userComment.Comment = entry.Text;
+            review.User.UserComments.Add(userComment);
+
+
+            ListView newListView = new ListView();
+            newListView = theRealListView;
+
+            newListView.ItemsSource = review.User.UserComments;
+            entry.Text = "";
         }
     }
 }

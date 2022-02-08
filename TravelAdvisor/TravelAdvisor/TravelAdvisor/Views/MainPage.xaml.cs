@@ -36,7 +36,7 @@ namespace TravelAdvisor.Views
             base.OnAppearing();
             
             
-            map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(59.3194903, 18.075060000000007), Distance.FromMeters(10000)));
+            map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(59.3194903, 18.075060000000007), Distance.FromMeters(15000)));
             // Initialize ViewModel
             ViewModel?.Init();
         }

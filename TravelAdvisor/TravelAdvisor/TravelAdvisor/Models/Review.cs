@@ -95,7 +95,8 @@ namespace TravelAdvisor.Models
             }
         }
 
-        
+      
+
     }
 
     public class ReviewDto : ReviewBase

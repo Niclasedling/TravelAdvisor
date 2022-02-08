@@ -180,12 +180,16 @@
                         </Grid>
                     </StackLayout>
                     
-                    <ListView ItemsSource="{Binding UserComments}">
+                    <ListView x:Name="commentListView">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-
-                                    <Label Text="{Binding Comment}"></Label>
+                                    <StackLayout>
+                                        <Label Text="{Binding Comment}"></Label>
+                                        
+                                    </StackLayout>
+                                    
+                                    
 
                                 </ViewCell>
                             </DataTemplate>
