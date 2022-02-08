@@ -125,6 +125,8 @@ namespace TravelAdvisor.ViewModels
                     WindSpeed = y.WindSpeed,
                     DateTime = y.DateTime,
                     Humidity = y.Humidity,
+                    Longitude = y.Longitude,
+                    Latitude = y.Latitude,
 
                 }).ToList()
 

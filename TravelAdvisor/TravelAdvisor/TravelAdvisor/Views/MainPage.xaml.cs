@@ -113,7 +113,10 @@ namespace TravelAdvisor.Views
             var searchbar = sender as SearchBar;
             var mainViewModel = searchbar.BindingContext as MainPageViewModel;
             mainViewModel.fetchedForecast = searchDestination.Text;
-            await mainViewModel.GetForecast();
+
+            mainViewModel.Forecast =  await mainViewModel.GetForecast();
+            mainViewModel.cityName = mainViewModel.Forecast.City;
+            
         }
     }
 
