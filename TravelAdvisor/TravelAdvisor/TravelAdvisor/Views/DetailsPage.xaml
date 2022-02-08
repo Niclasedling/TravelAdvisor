@@ -191,6 +191,7 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
+                    <Entry x:Name="commentEntry" Completed="Comment_Completed"  Placeholder="Enter your comment here..." ></Entry>
                 </StackLayout>
                 
             

@@ -126,6 +126,7 @@ namespace TravelAdvisor.Views
             var review = commentButton.BindingContext as ReviewDto;
 
             App.globalDetailsPageViewModel.UserToComment = review.User.FirstName + " " + review.User.LastName;
+          
 
             if (!commentFrame.IsVisible)
             {
@@ -143,6 +144,11 @@ namespace TravelAdvisor.Views
         private void CloseCommentButton_Clicked(object sender, EventArgs e)
         {
             commentFrame.IsVisible = false;
+        }
+
+        private void Comment_Completed(object sender, EventArgs e)
+        {
+
         }
     }
 }

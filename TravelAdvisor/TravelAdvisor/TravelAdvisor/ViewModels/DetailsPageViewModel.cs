@@ -10,7 +10,8 @@ namespace TravelAdvisor.ViewModels
 {
     public class DetailsPageViewModel : BaseViewModel
     {
-
+        DetailsPageViewModel _detailsPageView { get { return new DetailsPageViewModel(DependencyService.Get<INavService>());} }
+       
         public string NameOfAttraction { get { return App.globalCurrentAttraction.Name; } }
         public string InfoAboutAttraction { get { return App.globalCurrentAttraction.Description; } }
         public ImageSource AttractionImgSrc { get { return App.globalCurrentAttraction.Image; } }
@@ -31,8 +32,8 @@ namespace TravelAdvisor.ViewModels
         public DetailsPageViewModel(INavService naviService) : base(naviService)
         {
             //Code for creating the ViewModel
-            DetailsPageViewModel detailsPageView = new DetailsPageViewModel(naviService);
-            App.globalDetailsPageViewModel = detailsPageView;
+            
+            
           
 
         }
@@ -42,7 +43,12 @@ namespace TravelAdvisor.ViewModels
         public override void Init()
         {
             //Code for initialize the ViewModel
-             
+            
+            App.globalDetailsPageViewModel = _detailsPageView;
+            App.globalUserToComment = new UserDto();
+            App.globalUserToComment.FirstName = "";
+            App.globalUserToComment.LastName = "";
+
         }
         public List<ReviewDto> Reviews { get { return App.globalCurrentAttraction.Reviews = GetReviews(); } }
 
