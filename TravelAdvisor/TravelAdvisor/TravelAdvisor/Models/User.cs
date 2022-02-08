@@ -116,6 +116,7 @@ namespace TravelAdvisor.Models
                 OnPropertyChanged("Comment");
             }
         }
+        public DateTime CommentCreated { get; set; } = DateTime.Now;
     }
 
 }
