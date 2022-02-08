@@ -184,13 +184,7 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <StackLayout>
-                                        <Label Text="{Binding Comment}"></Label>
-                                        
-                                    </StackLayout>
-                                    
-                                    
-
+                                    <Label Text="{Binding Comment}"></Label>
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
