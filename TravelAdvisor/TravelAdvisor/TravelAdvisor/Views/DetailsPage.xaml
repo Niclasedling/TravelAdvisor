@@ -12,9 +12,9 @@
             <!--5--><ColumnDefinition Width="*" />
             <!--6--><ColumnDefinition Width="*" />
             <!--7--><ColumnDefinition Width="*" />
-            <!--8--><ColumnDefinition Width="*" />
-            <!--9--><ColumnDefinition Width="*" />
-            <!--10--><ColumnDefinition Width="*" />
+            <!--8--><ColumnDefinition Width="100" />
+            <!--9--><ColumnDefinition Width="100" />
+            <!--10--><ColumnDefinition Width="100" />
             <!--11--><ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -26,9 +26,11 @@
         </Grid.RowDefinitions>
 
         <!--ATTRACTION NAME-->
-        <StackLayout Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="3" Margin="0,15,0,0">
+        
 
-            <Label Text="{Binding NameOfAttraction}"></Label></StackLayout>
+            <Label Text="{Binding NameOfAttraction}" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="6"></Label>
+        <Button Text="Add review"  Grid.Row="0" Grid.Column="10" Margin="0,0,0,0" Padding="0" CornerRadius="15" VerticalOptions="Start"></Button>
+        
         <!--IMAGE-->
         <Frame Grid.Row="1" Grid.ColumnSpan="12" Grid.RowSpan="4" CornerRadius="50" Padding="0">
             <Image Source="{Binding AttractionImgSrc}" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Opacity="0.7"></Image>
