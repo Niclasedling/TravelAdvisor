@@ -13,6 +13,7 @@ namespace TravelAdvisor.Interfaces
         //Task<AttractionDto> GetAllAttractions();
 
         Task<List<AttractionDto>> GetAllAttractions();
+        Task<List<AttractionDto>> GetAllAttractionsByCity(string city);
 
         Task<bool> DeleteAttraction(Guid id);
 

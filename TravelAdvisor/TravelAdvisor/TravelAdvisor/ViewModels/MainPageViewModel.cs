@@ -15,7 +15,11 @@ namespace TravelAdvisor.ViewModels
 {
     public class MainPageViewModel : BaseViewModel
     {
+        private readonly IAttractionService _attractionService;
         private readonly IOpenWeatherService _forecastService;
+
+
+
         public MainPageViewModel _mainPageViewModel;
         public MainPage mainPage;
         public MainPage MainPageProperty { get; set; }
@@ -45,7 +49,9 @@ namespace TravelAdvisor.ViewModels
         public Command BackPage => new Command(async () => await NavigationService.GoBack());
 
         public List<Filter> PropertyTypeList => GetFilters();
-        public List<AttractionDto> AttractionList => GetAttractions();
+        public List<AttractionDto> attractionList { get; set; }
+        public List<AttractionDto> AttractionList { get { return attractionList; } set { attractionList = value; OnPropertyChanged("AttractionList"); } }
+       
         private List<Filter> GetFilters()
         {
             return new List<Filter>
@@ -85,7 +91,7 @@ namespace TravelAdvisor.ViewModels
         public MainPageViewModel(INavService naviService) : base(naviService)
         {
             _forecastService = DependencyService.Get<IOpenWeatherService>();
-
+            _attractionService = DependencyService.Get<IAttractionService>();
         }
         public void InitializePosition()
         {
@@ -153,65 +159,15 @@ namespace TravelAdvisor.ViewModels
             }
             else return null;
         }
-        private List<AttractionDto> GetAttractions()
+        public async Task<List<AttractionDto>> GetAttractions()
         {
-            return new List<AttractionDto>
+
+            var attractions = await _attractionService.GetAllAttractionsByCity(fetchedForecast);
+            if (attractions != null)
             {
-                new AttractionDto
-                {
-                    Name = "First attraction",
-                    Image = "apt1.jpg",
-                    Adress = "2162 Patricia Ave, LA",
-                    Location = "California",
-                    Description = "Some description"
-
-                },
-                new AttractionDto
-                {
-                    Name = "Second attraction",
-                    Image = "apt2.jpg",
-                    Adress = "2112 Cushions Dr, LA",
-                    Location = "California",
-                    Description = "Some description"
-
-                },
-                new AttractionDto
-                {
-                    Name = "Third attraction",
-                    Image = "apt3.jpg",
-                    Adress = "2167 Anthony Way, LA",
-                    Location = "California",
-                    Description = "Some description"
-
-                },
-                 new AttractionDto
-                {
-                    Name = "Fourth attraction",
-                    Image = "apt3.jpg",
-                    Adress = "2167 Anthony Way, LA",
-                    Location = "California",
-                    Description = "Some description"
-
-                },
-                  new AttractionDto
-                {
-                    Name = "Fifth attraction",
-                    Image = "apt3.jpg",
-                    Adress = "2167 Anthony Way, LA",
-                    Location = "California",
-                    Description = "Some description"
-
-                },
-                   new AttractionDto
-                {
-                    Name = "Sixth attraction",
-                    Image = "apt3.jpg",
-                    Adress = "2167 Anthony Way, LA",
-                    Location = "California",
-                    Description = "Some description"
-
-                }
-            };
+                return attractions;
+            }
+            return null;
         }
     }
 }

@@ -122,7 +122,8 @@ namespace TravelAdvisor.Views
             var searchbar = sender as SearchBar;
             var mainViewModel = searchbar.BindingContext as MainPageViewModel;
             mainViewModel.fetchedForecast = searchDestination.Text;
-
+            
+            mainViewModel.AttractionList = await mainViewModel.GetAttractions();
             mainViewModel.Forecast =  await mainViewModel.GetForecast();
             mainViewModel.cityName = mainViewModel.Forecast.City;
             map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(mainViewModel.Forecast.Items[0].Latitude, mainViewModel.Forecast.Items[0].Longitude), Distance.FromMeters(15000)));
