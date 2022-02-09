@@ -17,6 +17,7 @@ namespace TravelAdvisor.ViewModels
                 return new Command<object>(Register);
             }
         }
+        public Command LogOut => new Command(async () => await NavigationService.NavigateTo<MainPageViewModel>());
         public SignUpPageViewModel(INavService naviService) : base(naviService)
         {
             _userService = DependencyService.Get<IUserService>();

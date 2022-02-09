@@ -26,7 +26,7 @@ namespace TravelAdvisor.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
+            map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(59.3194903, 18.075060000000007), Distance.FromMeters(15000)));
             // Initialize ViewModel
             ViewModel?.Init();
         }
@@ -84,5 +84,7 @@ namespace TravelAdvisor.Views
             userViewModel.cityName = userViewModel.Forecast.City;
             map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(userViewModel.Forecast.Items[0].Latitude, userViewModel.Forecast.Items[0].Longitude), Distance.FromMeters(15000)));
         }
+
+        
     }
 }

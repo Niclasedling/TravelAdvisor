@@ -17,7 +17,7 @@ namespace TravelAdvisor.ViewModels
     {
         private readonly IUserService _userService;
         private readonly IOpenWeatherService _forecastService;
-
+        
         public UserPageViewModel(INavService naviService) : base(naviService)
         {
             _userService = DependencyService.Get<IUserService>();
@@ -138,6 +138,18 @@ namespace TravelAdvisor.ViewModels
             App.globalCurrentAttraction = attraction;
             await NavigationService.NavigateTo<DetailsPageViewModel>();
 
+        }
+        public Command<object> LogOutCommand
+        {
+            get
+            {
+                return new Command<object>(LogOut);
+            }
+        }
+        async void LogOut(object ojb)
+        {
+            await App.Current.MainPage.DisplayAlert("Logging out", "User logging out", "Ok");
+            await NavigationService.NavigateTo<MainPageViewModel>();
         }
         private List<AttractionDto> GetAttractions()
         {
