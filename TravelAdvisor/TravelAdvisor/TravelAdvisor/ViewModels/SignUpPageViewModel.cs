@@ -54,6 +54,13 @@ namespace TravelAdvisor.ViewModels
             get { return lastname; }
             set { lastname = value; }
         }
+
+        private string username;
+        public string Username
+        {
+            get { return username; }
+            set { username = value; }
+        }
         async void Register(object sender)
         {
             
@@ -63,6 +70,7 @@ namespace TravelAdvisor.ViewModels
                 Password = Cryptography.EncryptData(Password),
                 FirstName = Firstname,
                 LastName = Lastname,
+                UserName = Username,
             };
            var guid = await _userService.CreateUser(userCreateDto);
 

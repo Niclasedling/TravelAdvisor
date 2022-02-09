@@ -44,6 +44,7 @@ namespace TravelAdvisor.Views
             if (string.IsNullOrEmpty(entryFirstname.Text) ||
                 string.IsNullOrEmpty(entryLastName.Text) ||
                 string.IsNullOrEmpty(entryEmail.Text) ||
+                string.IsNullOrEmpty(entryUser.Text)||
                 string.IsNullOrEmpty(entryPassword.Text)) registerButton.IsEnabled = false;
             else registerButton.IsEnabled = true;
         }
