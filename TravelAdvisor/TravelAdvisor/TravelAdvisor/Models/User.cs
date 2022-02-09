@@ -64,7 +64,7 @@ namespace TravelAdvisor.Models
 
     public class UserDto : UserBase
     {
-
+        public Dictionary<Guid, bool> HasLikedReview { get; set; }
 
 
     }

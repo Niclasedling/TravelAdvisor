@@ -21,7 +21,7 @@ namespace TravelAdvisor.ApiClient
             this.httpClient.BaseAddress = new Uri($"http://localhost:41418/{controller}/");
         }
 
-        public async Task<bool> Login(UserLoginDto user)
+        public async Task<Guid> Login(UserLoginDto user)
         {
             
          
@@ -35,7 +35,7 @@ namespace TravelAdvisor.ApiClient
 
                 var responseString = await response.Content.ReadAsStringAsync();
 
-                return JsonConvert.DeserializeObject<bool>(responseString);
+                return JsonConvert.DeserializeObject<Guid>(responseString);
             
         }
     }

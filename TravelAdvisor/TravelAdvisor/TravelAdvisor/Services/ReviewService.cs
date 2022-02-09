@@ -31,9 +31,9 @@ namespace TravelAdvisor.Services
             throw new NotImplementedException();
         }
 
-        public async Task<List<ReviewDto>> GetList()
+        public async Task<List<ReviewDto>> GetListById(Guid Id)
         {
-            return await _reviewClient.GetListAsync("GetList");
+            return await _reviewClient.GetListAsync("GetListById");
         }
 
         public Task<bool> Update(ReviewUpdateDto updateReview)

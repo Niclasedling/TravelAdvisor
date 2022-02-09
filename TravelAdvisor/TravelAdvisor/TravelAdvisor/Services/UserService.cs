@@ -63,7 +63,7 @@ namespace TravelAdvisor.Services
            var item = await _userClient.GetListAsync("GetAll");
             return item;
         }
-        public async Task<bool> Login(UserLoginDto user)
+        public async Task<Guid> Login(UserLoginDto user)
         {
             return await _authClient.Login(user);
         }

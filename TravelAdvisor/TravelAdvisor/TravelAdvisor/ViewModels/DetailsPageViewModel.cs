@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using TravelAdvisor.Interfaces;
 using TravelAdvisor.Models;
 using TravelAdvisor.Services;
 using Xamarin.Forms;
@@ -9,9 +11,14 @@ using Xamarin.Forms;
 namespace TravelAdvisor.ViewModels
 {
     public class DetailsPageViewModel : BaseViewModel
-    {
+    {   
+        
+        private readonly IReviewService _reviewService;
+
+
+
         DetailsPageViewModel _detailsPageView { get { return new DetailsPageViewModel(DependencyService.Get<INavService>());} }
-       
+        
         public ReviewDto ReviewToAdd { get; set; }
         public string NameOfAttraction { get { return App.globalCurrentAttraction.Name; } }
         public string InfoAboutAttraction { get { return App.globalCurrentAttraction.Description; } }
@@ -32,9 +39,10 @@ namespace TravelAdvisor.ViewModels
         public DetailsPageViewModel(INavService naviService) : base(naviService)
         {
             //Code for creating the ViewModel
+            _reviewService = DependencyService.Get<IReviewService>();
         }
 
-        public override void Init()
+        public override async void Init()
         {
             //Code for initialize the ViewModel
             
@@ -42,123 +50,19 @@ namespace TravelAdvisor.ViewModels
             App.globalUserToComment = new UserDto();
             App.globalUserToComment.FirstName = "";
             App.globalUserToComment.LastName = "";
-
+            App.globalCurrentAttraction.Reviews = await GetReviews();
         }
-        public List<ReviewDto> Reviews { get { return App.globalCurrentAttraction.Reviews = GetReviews(); } }
+        public List<ReviewDto> Reviews { get; set; }
 
-        public List<UserCommentDto> UserComments => GetUserComments();
-        
-        private List<UserCommentDto> GetUserComments()
+        private async Task<List<ReviewDto>> GetReviews()
         {
-            return new List<UserCommentDto>
+
+            var reviews = await _reviewService.GetListById(App.globalCurrentAttraction.Id);
+            if(reviews != null)
             {
-                new UserCommentDto
-                {
-                    Comment = "A really cool place! I recommend strongly!",
-                },
-                new UserCommentDto
-            {
-                Comment = "Nice beverages and nice food for an afforable price! Recommend!",
-            },
-            new UserCommentDto
-            {
-                Comment = "Superior service!",
-            },
-            new UserCommentDto
-            {
-                Comment = "Amazing food and an amazing view!",
-            },
-            new UserCommentDto
-            {
-                Comment = "Good food and nice service!",
-            },
-            new UserCommentDto
-            {
-                Comment = "Fun activities for everyone! Really recommend!",
+                return reviews;
             }
-            };
-        }
-
-
-        private List<ReviewDto> GetReviews()
-        {
-            
-            return new List<ReviewDto>
-            {
-                new ReviewDto
-                {
-                    Id = Guid.NewGuid(),
-                    Image = "user.png",                                  
-                    User = new UserDto
-                    {
-                        FirstName = "Mario", 
-                        LastName = "Wade",
-                        Review = "First picture",
-                       
-                    }
-
-
-                },
-                new ReviewDto
-                {
-                    Id = Guid.NewGuid(),
-                    Image = "user.png",                   
-                    User = new UserDto
-                    {
-                        FirstName = "Sannah", 
-                        LastName = "Carter",
-                        Review = "Second picture",
-                    }
-
-
-                },
-                new ReviewDto
-                {
-                    Id = Guid.NewGuid(),
-                    Image = "user.png",
-                   
-                    User = new UserDto
-                    {
-                        FirstName = "Daniel", 
-                        LastName = "Morton", 
-                        Review = "Third picture",
-                    }
-                },
-                 new ReviewDto
-                {
-                    Id = Guid.NewGuid(),
-                    Image = "user.png",
-                   
-                    User = new UserDto
-                    {
-                        FirstName = "Haaris", 
-                        LastName = "Spears", 
-                        Review = "Fourth picture",
-                    }
-                },
-                  new ReviewDto
-                {
-                    Id = Guid.NewGuid(),
-                    Image = "user.png",
-                    User = new UserDto
-                    {
-                        FirstName = "Johanna", 
-                        LastName = "Krause",
-                        Review = "Fifth picture",
-                    }
-                },
-                   new ReviewDto
-                {
-                    Id = Guid.NewGuid(),
-                    Image = "user.png",                
-                    User = new UserDto
-                    {
-                        FirstName = "Anita", 
-                        LastName = "Hartley",
-                        Review = "¨Sixth picture",
-                    }
-                }
-            };
+            return null;
         }
     }
 }

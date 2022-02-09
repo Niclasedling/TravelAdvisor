@@ -35,6 +35,57 @@ namespace TravelAdvisor.Views
             
         }
 
+        //private void SetThumbValues()
+        //{
+        //    if()
+        //}
+
+        private void LikeThumb_Clicked2(object sender, EventArgs e)
+        {
+            var likeButton = sender as ImageButton;
+            var review = likeButton.BindingContext as ReviewDto;
+
+            review.LikeButton = likeButton;
+            if (review.LikeButton == null) return;
+
+            if (App.globalCurrentUser.HasLikedReview.ContainsKey(review.Id))
+            {
+                //App.globalCurrentUser.HasLiked
+                if (App.globalCurrentUser.HasLikedReview.ContainsKey(review.Id) && App.globalCurrentUser.HasLikedReview.ContainsValue(false)
+                    || !App.globalCurrentUser.HasLikedReview.ContainsKey(review.Id))
+                {
+                    review.TotalLikes++;
+                    App.globalCurrentUser.HasLikedReview.Add(review.Id, true);
+                }
+
+                if (App.globalCurrentUser.HasLikedReview.ContainsKey(review.Id) && App.globalCurrentUser.HasLikedReview.ContainsValue(true)
+                    || !App.globalCurrentUser.HasLikedReview.ContainsKey(review.Id))
+                {
+                    review.TotalDislikes--;
+                    App.globalCurrentUser.HasLikedReview.Add(review.Id, false);
+                }
+
+
+                review.LikeButton.Source = review.LikeThumbGreenImgSrc;
+                review.DislikeButton.Source = review.DislikeThumbImgSrc;
+                review.ThumbIsGreen = true;
+                review.ThumbIsRed = false;
+
+                review.ThumbStringToCompare = review.LikeThumbGreenString;
+            }
+            else
+            {
+                review.User.HasLiked = false;
+                review.TotalLikes--;
+                review.LikeButton.Source = review.LikeThumbImgSrc;
+                review.ThumbIsGreen = false;
+                review.ThumbStringToCompare = review.LikeThumbString;
+
+
+            }
+        }
+
+
         private void LikeThumb_Clicked(object sender, EventArgs e)
         {
             var likeButton = sender as ImageButton;

@@ -81,10 +81,13 @@ namespace TravelAdvisor.ViewModels
                 Email = Email,
                 Password = Cryptography.EncryptData(Password)
             };
-           
-            if (await _userService.Login(user))
-            {
 
+            var userGuid = await _userService.Login(user);
+
+            if (userGuid != Guid.Empty)
+            {
+                var currentUser = await _userService.GetUser(userGuid);
+                App.globalCurrentUser = currentUser;
                 await App.Current.MainPage.DisplayAlert("Login Success", $"Welcome {user.Email}", "Ok");
                 await _navService.NavigateTo<UserPageViewModel>();
             }

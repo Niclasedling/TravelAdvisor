@@ -20,7 +20,7 @@ namespace TravelAdvisor.Services
 
         Task<List<UserDto>> GetAllUsers();
 
-        Task<bool> Login(UserLoginDto userLogin);
+        Task<Guid> Login(UserLoginDto userLogin);
         
 
     }
