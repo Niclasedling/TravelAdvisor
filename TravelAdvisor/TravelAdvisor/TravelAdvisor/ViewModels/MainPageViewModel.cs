@@ -152,7 +152,7 @@ namespace TravelAdvisor.ViewModels
                 {
                     Name = "First attraction",
                     Image = "apt1.jpg",
-                    Adress = "2162 Patricia Ave, LA",
+                    Address = "2162 Patricia Ave, LA",
                     Location = "California",
                     Details = "Some description"
 
@@ -161,7 +161,7 @@ namespace TravelAdvisor.ViewModels
                 {
                     Name = "Second attraction",
                     Image = "apt2.jpg",
-                    Adress = "2112 Cushions Dr, LA",
+                    Address = "2112 Cushions Dr, LA",
                     Location = "California",
                     Details = "Some description"
 
@@ -170,7 +170,7 @@ namespace TravelAdvisor.ViewModels
                 {
                     Name = "Third attraction",
                     Image = "apt3.jpg",
-                    Adress = "2167 Anthony Way, LA",
+                    Address = "2167 Anthony Way, LA",
                     Location = "California",
                     Details = "Some description"
 
@@ -179,7 +179,7 @@ namespace TravelAdvisor.ViewModels
                 {
                     Name = "Fourth attraction",
                     Image = "apt3.jpg",
-                    Adress = "2167 Anthony Way, LA",
+                    Address = "2167 Anthony Way, LA",
                     Location = "California",
                     Details = "Some description"
 
@@ -188,7 +188,7 @@ namespace TravelAdvisor.ViewModels
                 {
                     Name = "Fifth attraction",
                     Image = "apt3.jpg",
-                    Adress = "2167 Anthony Way, LA",
+                    Address = "2167 Anthony Way, LA",
                     Location = "California",
                     Details = "Some description"
 
@@ -197,7 +197,7 @@ namespace TravelAdvisor.ViewModels
                 {
                     Name = "Sixth attraction",
                     Image = "apt3.jpg",
-                    Adress = "2167 Anthony Way, LA",
+                    Address = "2167 Anthony Way, LA",
                     Location = "California",
                     Details = "Some description"
 

@@ -14,7 +14,7 @@ namespace TravelAdvisor.Models
 
         public string Image { get; set; }
 
-        public string Adress { get; set; }
+        public string Address { get; set; }
 
         public string Location { get; set; }
 
