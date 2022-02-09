@@ -123,11 +123,11 @@
                     <Entry x:Name="entryEmail" Text="{Binding Email}" Placeholder="Email" TextColor="#203fba" HorizontalOptions="FillAndExpand" TextChanged="entrytextChanged"/> 
                 </StackLayout>
 
-                <!--Användare-->
+                <!--User-->
 
                 <StackLayout Orientation="Vertical" Grid.Row="2" Grid.Column="7"  Grid.ColumnSpan="5" Margin="0,10,0,0">
                     <Label>Username</Label>
-                    <Entry x:Name="entryUser" Text="{Binding User}" Placeholder="Username" TextColor="#203fba" HorizontalOptions="FillAndExpand" TextChanged="entrytextChanged"/>
+                    <Entry x:Name="entryUser" Text="{Binding Username}" Placeholder="Username" TextColor="#203fba" HorizontalOptions="FillAndExpand" TextChanged="entrytextChanged"/>
                 </StackLayout>
 
                 <!--Password-->
