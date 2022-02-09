@@ -52,7 +52,7 @@ namespace TravelAdvisor.ViewModels
             App.globalUserToComment.LastName = "";
             App.globalCurrentAttraction.Reviews = await GetReviews();
         }
-        public List<ReviewDto> Reviews { get; set; }
+        public List<ReviewDto> Reviews { get { return App.globalCurrentAttraction.Reviews; } }
 
         private async Task<List<ReviewDto>> GetReviews()
         {
