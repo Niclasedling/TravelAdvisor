@@ -37,7 +37,6 @@
             Padding="0" 
             CornerRadius="15" 
             VerticalOptions="Start" 
-            Clicked="AddReview_Clicked"
             >
             
         </Button>
