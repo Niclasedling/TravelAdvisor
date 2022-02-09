@@ -162,5 +162,19 @@ namespace TravelAdvisor.Views
             review.TotalComments = review.User.UserComments.Count;
             entry.Text = "";
         }
+
+        private async void AddReview_Clicked(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            //var review = button.BindingContext as ReviewDto;
+
+            var reviewAnswer = await DisplayPromptAsync("New Review", "Review", "Ok", "Cancel");
+            var ratingAnswer = await DisplayPromptAsync("Attraction rating", "Rating", "Ok", "Cancel");
+            //ReviewDto review = new ReviewDto()
+            //{
+            //    User
+            //}
+            //App.globalCurrentAttraction.Reviews.Add()
+        }
     }
 }
