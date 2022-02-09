@@ -186,7 +186,7 @@
 
             <!--KARTA-->
             <StackLayout Grid.Row="2" Grid.ColumnSpan="12" Margin="0,0,0,10" >
-                <maps:Map x:Name="map" ItemsSource="{Binding Forecast}" >
+                <maps:Map x:Name="map" MapClicked="map_MapClicked" ItemsSource="{Binding Forecast}" >
                     <maps:Map.ItemTemplate >
                         <DataTemplate>
                             <maps:Pin Position="{Binding Items.Position}" />

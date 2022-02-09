@@ -94,11 +94,20 @@ namespace TravelAdvisor.Views
             };
             //newPin.MarkerClicked += OnMarkerClickedAsync;
             var addresses = await _geocoder.GetAddressesForPositionAsync(e.Position);
-            map.Pins.Add(newPin);
-            await DisplayActionSheet(newPin.Label, "Cancel", "Info", $" Lat : {e.Position.Latitude}\n Long : {e.Position.Longitude}", addresses.FirstOrDefault()?.ToString());
+            
+            var firstanswer = await DisplayActionSheet(newPin.Label, "Cancel", "Comment", $" Lat : {e.Position.Latitude}\n Long : {e.Position.Longitude}", addresses.FirstOrDefault()?.ToString());
             //await DisplayAlert("Coordinate", $" Lat : {e.Position.Latitude}\n Long : {e.Position.Longitude}", "Ok");
             //var addresses = await _geocoder.GetAddressesForPositionAsync(e.Position);
+            if (firstanswer != "Cancel")
+            {
 
+            }
+            else if (firstanswer == "Comment")
+            {
+                var secondanswer = await DisplayActionSheet(newPin.Label, "", "", "OK");
+                if (secondanswer != "OK")
+                map.Pins.Add(newPin); 
+            }
 
             //await DisplayAlert("Address",
             //    addresses.FirstOrDefault()?.ToString(), "Ok");
