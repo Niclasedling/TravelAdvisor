@@ -12,6 +12,7 @@ namespace TravelAdvisor.ViewModels
     {
         DetailsPageViewModel _detailsPageView { get { return new DetailsPageViewModel(DependencyService.Get<INavService>());} }
        
+        public ReviewDto ReviewToAdd { get; set; }
         public string NameOfAttraction { get { return App.globalCurrentAttraction.Name; } }
         public string InfoAboutAttraction { get { return App.globalCurrentAttraction.Description; } }
         public ImageSource AttractionImgSrc { get { return App.globalCurrentAttraction.Image; } }
@@ -27,18 +28,11 @@ namespace TravelAdvisor.ViewModels
         }
         
         public Command GoBack => new Command(async () => await NavigationService.GoBack());
-        
 
         public DetailsPageViewModel(INavService naviService) : base(naviService)
         {
             //Code for creating the ViewModel
-            
-            
-          
-
         }
-
-        
 
         public override void Init()
         {
@@ -51,15 +45,6 @@ namespace TravelAdvisor.ViewModels
 
         }
         public List<ReviewDto> Reviews { get { return App.globalCurrentAttraction.Reviews = GetReviews(); } }
-
-
-        //public List<ReviewDto> RealReviews { get { return } }
-        //public List<ReviewDto> ReviewList => GetReviews();
-
-        //public void ButtonClicked()
-        //{
-        //    OnPropertyChanged(nameof(ButtonClicked));   
-        //}
 
         public List<UserCommentDto> UserComments => GetUserComments();
         

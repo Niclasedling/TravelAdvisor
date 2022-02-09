@@ -28,8 +28,19 @@
         <!--ATTRACTION NAME-->
         
 
-            <Label Text="{Binding NameOfAttraction}" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="6"></Label>
-        <Button Text="Add review"  Grid.Row="0" Grid.Column="10" Margin="0,0,0,0" Padding="0" CornerRadius="15" VerticalOptions="Start"></Button>
+        <Label Text="{Binding NameOfAttraction}" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="6"></Label>
+        <Button 
+            Text="Add review" 
+            Grid.Row="0" 
+            Grid.Column="10" 
+            Margin="0,0,0,0" 
+            Padding="0" 
+            CornerRadius="15" 
+            VerticalOptions="Start" 
+            Clicked="AddReview_Clicked"
+            >
+            
+        </Button>
         
         <!--IMAGE-->
         <Frame Grid.Row="1" Grid.ColumnSpan="12" Grid.RowSpan="4" CornerRadius="50" Padding="0">
