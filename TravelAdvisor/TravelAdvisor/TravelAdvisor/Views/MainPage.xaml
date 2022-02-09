@@ -11,29 +11,29 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    
+
     <ScrollView>
-    <Grid BackgroundColor="#F9F9F9" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20">
-        <Grid.RowDefinitions>
-            <!--0--><RowDefinition Height="35"></RowDefinition>
-            <!--1--><RowDefinition Height="220"></RowDefinition>
-            <!--2--><RowDefinition Height="350"></RowDefinition>
-            <!--3--><RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <!--0--><ColumnDefinition Width="*"></ColumnDefinition>
-            <!--1--><ColumnDefinition Width="*"></ColumnDefinition>
-            <!--2--><ColumnDefinition Width="*"></ColumnDefinition>
-            <!--3--><ColumnDefinition Width="*"></ColumnDefinition>
-            <!--4--><ColumnDefinition Width="*"></ColumnDefinition>
-            <!--5--><ColumnDefinition Width="*"></ColumnDefinition>
-            <!--6--><ColumnDefinition Width="*"></ColumnDefinition>
-            <!--7--><ColumnDefinition Width="*"></ColumnDefinition>
-            <!--8--><ColumnDefinition Width="*"></ColumnDefinition>
-            <!--9--><ColumnDefinition Width="*"></ColumnDefinition>
-            <!--10--><ColumnDefinition Width="*"></ColumnDefinition>
-            <!--11--><ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+        <Grid BackgroundColor="#F9F9F9" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20">
+            <Grid.RowDefinitions>
+                <!--0--><RowDefinition Height="35"></RowDefinition>
+                <!--1--><RowDefinition Height="220"></RowDefinition>
+                <!--2--><RowDefinition Height="350"></RowDefinition>
+                <!--3--><RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <!--0--><ColumnDefinition Width="*"></ColumnDefinition>
+                <!--1--><ColumnDefinition Width="*"></ColumnDefinition>
+                <!--2--><ColumnDefinition Width="*"></ColumnDefinition>
+                <!--3--><ColumnDefinition Width="*"></ColumnDefinition>
+                <!--4--><ColumnDefinition Width="*"></ColumnDefinition>
+                <!--5--><ColumnDefinition Width="*"></ColumnDefinition>
+                <!--6--><ColumnDefinition Width="*"></ColumnDefinition>
+                <!--7--><ColumnDefinition Width="*"></ColumnDefinition>
+                <!--8--><ColumnDefinition Width="*"></ColumnDefinition>
+                <!--9--><ColumnDefinition Width="*"></ColumnDefinition>
+                <!--10--><ColumnDefinition Width="*"></ColumnDefinition>
+                <!--11--><ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
             <Image Source="phone.png" Grid.Column="0" ></Image>
             <!--SearchBox-->
             <SearchBar  x:Name="searchDestination"
@@ -48,9 +48,9 @@
                 SearchButtonPressed="searchDestination_SearchButtonPressed">
 
             </SearchBar>
-        <!--Search Button-->
-        <!--Login Button-->
-        <Button Grid.Column="10"
+            <!--Search Button-->
+            <!--Login Button-->
+            <Button Grid.Column="10"
                 Grid.ColumnSpan="2"
                 Text="Login" 
                 BackgroundColor="Black" 
@@ -58,74 +58,62 @@
                 CornerRadius="15" 
                 FontAttributes="Bold"
                 Command="{Binding LoginPage}">
-        </Button>
+            </Button>
 
 
-        <!--VÄDER INFO-->
-        <StackLayout Grid.Row="1" Grid.ColumnSpan="12" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <!--0--><RowDefinition Height="20" />
-                    <!--1--><RowDefinition Height="10" />
-                    <!--2--><RowDefinition Height="20" />
-                    <!--3--><RowDefinition Height="*" />
-                </Grid.RowDefinitions>
+            <!--VÄDER INFO-->
+            <StackLayout Grid.Row="1" Grid.ColumnSpan="12" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <!--0--><RowDefinition Height="20" />
+                        <!--1--><RowDefinition Height="10" />
+                        <!--2--><RowDefinition Height="20" />
+                        <!--3--><RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <!--0-->
-                        <ColumnDefinition Width="*"/>
-                        <!--1-->
-                        <ColumnDefinition Width="*"/>
-                        <!--2-->
-                        <ColumnDefinition Width="*"/>
-                        <!--3-->
-                        <ColumnDefinition Width="*"/>
-                        <!--4-->
-                        <ColumnDefinition Width="*"/>
-                        <!--5-->
-                        <ColumnDefinition Width="*"/>
-                        <!--6-->
-                        <ColumnDefinition Width="*"/>
-                        <!--7-->
-                        <ColumnDefinition Width="*"/>
-                        <!--8-->
-                        <ColumnDefinition Width="*"/>
-                        <!--9-->
-                        <ColumnDefinition Width="*"/>
-                        <!--10-->
-                        <ColumnDefinition Width="*"/>
-                        <!--11-->
-                        <ColumnDefinition Width="*"/>
+                        <!--0--><ColumnDefinition Width="*"/>
+                        <!--1--><ColumnDefinition Width="*"/>
+                        <!--2--><ColumnDefinition Width="*"/>
+                        <!--3--><ColumnDefinition Width="*"/>
+                        <!--4--><ColumnDefinition Width="*"/>
+                        <!--5--><ColumnDefinition Width="*"/>
+                        <!--6--><ColumnDefinition Width="*"/>
+                        <!--7--><ColumnDefinition Width="*"/>
+                        <!--8--><ColumnDefinition Width="*"/>
+                        <!--9--><ColumnDefinition Width="*"/>
+                        <!--10--><ColumnDefinition Width="*"/>
+                        <!--11--><ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Margin="5,0,0,0">
-                    <Label Text="{Binding cityName}" FontSize="30" FontAttributes="Bold" /> 
-                </StackLayout>
-                <!--LISTVIEW MED FORECAST-->
+                    <StackLayout Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="8" Margin="5,0,0,0" HorizontalOptions="Center">
+                        <Label Text="{Binding cityName}" FontSize="25" FontAttributes="Bold" FontFamily="font-family: 'Trip Sans VF'"/>
+                    </StackLayout>
+                    <!--LISTVIEW MED FORECAST-->
                     <ListView Grid.Row="3" VerticalScrollBarVisibility="Never" BackgroundColor="Transparent" ItemsSource="{Binding Forecast.Items}" Grid.ColumnSpan="12" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Frame HeightRequest="75" Margin="5,5" BackgroundColor="#aac6f2">
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="50"></RowDefinition>
-                                            <RowDefinition Height="20"></RowDefinition>
-                                            <RowDefinition Height="20"></RowDefinition>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="100"></ColumnDefinition>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
-                                        <Frame 
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Frame HeightRequest="75" Margin="5,5" BackgroundColor="#aac6f2">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="50"></RowDefinition>
+                                                <RowDefinition Height="20"></RowDefinition>
+                                                <RowDefinition Height="20"></RowDefinition>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Frame 
                                             CornerRadius="35"
                                             Padding="0"
                                             BackgroundColor="#f5e684"
@@ -135,38 +123,76 @@
                                             HeightRequest="70"
                                             WidthRequest="70"
                                             Grid.Row="0" Grid.RowSpan="3" Grid.Column="0">
-                                            <Image Source="{Binding Icon}" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></Image>
-                                        </Frame>
-                                        <!--TEMPERATURE-->
-                                            <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" FontSize="40" Grid.ColumnSpan="6" Text="{Binding Temperature, StringFormat='{0}°C'}" Margin="0,-10,0,0"></Label>
-                                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding Humidity, StringFormat='Humidity: {0}%'}"  TextColor="#5b5f66" Grid.ColumnSpan="5" Margin="0,-45,0,0"/>
-                                        <!--WIND-->
-                                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding WindSpeed, StringFormat='Wind: {0} m/s'}" TextColor="#5b5f66" Grid.ColumnSpan="5" Margin="0,-30,0,0"/>
-                                        <!--DATE-->
-                                            <Label Grid.Row="0"  Grid.Column="8" Text="{Binding DateTime, StringFormat='{0:ddd,dd MMM HH:mm}'}" TextColor="#5b5f66" Grid.ColumnSpan="5" Margin="0,5,0,0"/>
-                                        <!--DESCRIPTION-->
-                                            <Label Text="{Binding Description}" Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="5" TextColor="#5b5f66" Margin="0,-30,0,0" />
+                                                <Image Source="{Binding Icon}" 
+                                                   Aspect="AspectFill" 
+                                                   VerticalOptions="FillAndExpand" 
+                                                   HorizontalOptions="FillAndExpand" />
+                                            </Frame>
+                                            <!--TEMPERATURE LABEL-->
+                                            <Label Text="{Binding Temperature, StringFormat='{0}°C'}" 
+                                                   Grid.Row="0" 
+                                                   Grid.Column="1" 
+                                                   Grid.ColumnSpan="6" 
+                                                   Grid.RowSpan="2" 
+                                                   FontSize="40" 
+                                                   Margin="0,-10,0,0"></Label>
 
-                                    </Grid>
+                                            <!--HUMIDITY LABLE-->
+                                            <Label Text="{Binding Humidity, StringFormat='Humidity: {0}%'}" 
+                                                   Grid.Row="2" 
+                                                   Grid.Column="1" 
+                                                   Grid.ColumnSpan="5" 
+                                                   TextColor="#5b5f66" 
+                                                   Margin="0,-45,0,0"/>
 
-                                </Frame>
-                            </ViewCell>
+                                            <!--WIND LABEL-->
+                                            <Label Text="{Binding WindSpeed, StringFormat='Wind: {0} m/s'}" 
+                                                   Grid.Row="2" 
+                                                   Grid.Column="1" 
+                                                   Grid.ColumnSpan="5" 
+                                                   TextColor="#5b5f66" 
+                                                   Margin="0,-30,0,0"/>
 
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Grid>
-        </StackLayout>
-        
-        <!--KARTA-->
-        <StackLayout Grid.Row="2" Grid.ColumnSpan="12" Margin="0,0,0,10" >
-            <maps:Map x:Name="map" ItemsSource="{Binding Forecast}" >
+                                            <!--DATE LABEL-->
+                                            <Label Text="{Binding DateTime, StringFormat='{0:ddd,dd MMM}'}" 
+                                                   Grid.Row="1"  
+                                                   Grid.Column="8" 
+                                                   Grid.ColumnSpan="5" 
+                                                   TextColor="Black" 
+                                                   Margin="0,-45,0,0"
+                                                   FontSize="20"/>
+                                            <Label Text="{Binding DateTime, StringFormat='Kl:{0:HH:mm}'}" 
+                                                   Grid.Row="2"  
+                                                   Grid.Column="8" 
+                                                   Grid.ColumnSpan="5" 
+                                                   TextColor="#5b5f66" 
+                                                   Margin="0,-45,0,0"/>
+
+                                            <!--DESCRIPTION-->
+                                            <Label Text="{Binding Description}" 
+                                                   Grid.Row="2" 
+                                                   Grid.Column="8" 
+                                                   Grid.ColumnSpan="5" 
+                                                   TextColor="#5b5f66" 
+                                                   Margin="0,-30,0,0" />
+                                        </Grid>
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </StackLayout>
+
+            <!--KARTA-->
+            <StackLayout Grid.Row="2" Grid.ColumnSpan="12" Margin="0,0,0,10" >
+                <maps:Map x:Name="map" MapClicked="map_MapClicked" ItemsSource="{Binding Forecast}" >
                     <maps:Map.ItemTemplate >
                         <DataTemplate>
                             <maps:Pin Position="{Binding Items.Position}" />
                         </DataTemplate>
                     </maps:Map.ItemTemplate>
-                <!--<x:Arguments>
+                    <!--<x:Arguments>
                     <maps:MapSpan >
                         <x:Arguments>
                             <maps:Position>
@@ -180,88 +206,73 @@
                         </x:Arguments>
                     </maps:MapSpan>
                 </x:Arguments>-->
-            </maps:Map>
-            <!--<Button Text="Add more pins"
+                </maps:Map>
+                <!--<Button Text="Add more pins"
                 Clicked="OnButtonClicked"/>-->
-        </StackLayout>
-
-
-        <!--LISTVIEW-->
-        <ListView 
+            </StackLayout>
+            
+            <!--LISTVIEW-->
+            <ListView 
                 Grid.Row="3" Margin="0,10" Grid.ColumnSpan="12" VerticalScrollBarVisibility="Never"
                 ItemsSource="{Binding AttractionList}">
-
-            <ListView.Behaviors>
-                <xct:EventToCommandBehavior
+                <ListView.Behaviors>
+                    <xct:EventToCommandBehavior
                                             EventName="ItemSelected"
                                             Command="{Binding ViewDetails}"
                                             EventArgsConverter="{StaticResource ItemSelectedEventArgsConverter}"
                                             >
-                </xct:EventToCommandBehavior>
-            </ListView.Behaviors>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Frame HeightRequest="190" Margin="5,5" CornerRadius="15" BackgroundColor="#C1C1C1">
-
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"></RowDefinition>
-                                    <RowDefinition Height="*"></RowDefinition>
-                                </Grid.RowDefinitions>
-
-
-                                <Image HeightRequest="115" Aspect="AspectFill" Source="{Binding Image}"></Image>
-
-                                <Frame CornerRadius="30" BackgroundColor="White" WidthRequest="5" HeightRequest="5" HorizontalOptions="End" VerticalOptions="Start" Margin="5">
-                                    <Image Source="noun-favourite-1077408.png" HeightRequest="50" WidthRequest="50" VerticalOptions="Center" HorizontalOptions="Center" Margin="-10,-10"></Image>
-                                </Frame>
-
-                                <Grid VerticalOptions="End" Margin="15">
-                                    <Frame 
+                    </xct:EventToCommandBehavior>
+                </ListView.Behaviors>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame HeightRequest="190" Margin="5,5" CornerRadius="15" BackgroundColor="#C1C1C1">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Image HeightRequest="115" Aspect="AspectFill" Source="{Binding Image}"></Image>
+                                    <Frame CornerRadius="30" BackgroundColor="White" WidthRequest="5" HeightRequest="5" HorizontalOptions="End" VerticalOptions="Start" Margin="5">
+                                        <Image Source="noun-favourite-1077408.png" HeightRequest="50" WidthRequest="50" VerticalOptions="Center" HorizontalOptions="Center" Margin="-10,-10"></Image>
+                                    </Frame>
+                                    <Grid VerticalOptions="End" Margin="15">
+                                        <Frame 
                                         CornerRadius="13"
                                         Padding="15,5"
                                         BackgroundColor="Black"
                                         Opacity="0.8"
                                         HorizontalOptions="Start"
                                         VerticalOptions="Start">
-                                        <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Start">
-                                            <Image HeightRequest="12" WidthRequest="12" Source="phone.png" VerticalOptions="Center" HorizontalOptions="Start"></Image>
-                                            <Label Text="{Binding Location}" FontSize="12" TextColor="White" FontFamily="ThemeFontRegular" VerticalOptions="Center" Opacity="1"></Label>
-                                        </StackLayout>
-                                    </Frame>
-                                </Grid>
-                                <StackLayout Grid.Row="1" Spacing="5" Margin="20,5">
-                                    <Label Text="{Binding Price}" FontSize="15" FontFamily="ThemeFontBold" TextColor="#515151"></Label>
-                                    <StackLayout Orientation="Horizontal" Spacing="15">
-                                        <StackLayout Orientation="Horizontal" Spacing="10">
-                                            <Image WidthRequest="16" Source="bed.png"></Image>
-                                            <Label Text="{Binding Location}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
-                                        </StackLayout>
-                                        <StackLayout Orientation="Horizontal" Spacing="10">
-                                            <Image WidthRequest="16" Source="bed.png"></Image>
-                                            <Label Text="{Binding Location}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
-                                        </StackLayout>
-                                        <StackLayout Orientation="Horizontal" Spacing="10">
-                                            <Image WidthRequest="16" Source="bed.png"></Image>
-                                            <Label Text="{Binding Location}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
+                                            <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Start">
+                                                <Image HeightRequest="12" WidthRequest="12" Source="phone.png" VerticalOptions="Center" HorizontalOptions="Start"></Image>
+                                                <Label Text="{Binding Location}" FontSize="12" TextColor="White" FontFamily="ThemeFontRegular" VerticalOptions="Center" Opacity="1"></Label>
+                                            </StackLayout>
+                                        </Frame>
+                                    </Grid>
+                                    <StackLayout Grid.Row="1" Spacing="5" Margin="20,5">
+                                        <Label Text="{Binding Price}" FontSize="15" FontFamily="ThemeFontBold" TextColor="#515151"></Label>
+                                        <StackLayout Orientation="Horizontal" Spacing="15">
+                                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                                <Image WidthRequest="16" Source="bed.png"></Image>
+                                                <Label Text="{Binding Location}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                                <Image WidthRequest="16" Source="bed.png"></Image>
+                                                <Label Text="{Binding Location}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
+                                            </StackLayout>
+                                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                                <Image WidthRequest="16" Source="bed.png"></Image>
+                                                <Label Text="{Binding Location}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
+                                            </StackLayout>
                                         </StackLayout>
                                     </StackLayout>
-
-                                </StackLayout>
-
-                            </Grid>
-
-                        </Frame>
-                    </ViewCell>
-
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-
-
-
-    </Grid>
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
     </ScrollView>
-
 </ContentPage>

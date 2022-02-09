@@ -41,31 +41,31 @@ namespace TravelAdvisor.Views
             ViewModel?.Init();
         }
 
-        //void OnButtonClicked(object sender, EventArgs e)
-        //{
-        //    Pin boardwalkPin = new Pin
-        //     {
-        //         Position = new Position(36.9641949, -122.0177232),
-        //         Label = "Boardwalk",
-        //         Address = "Santa Cruz",
-        //         Type = PinType.Place
-        //     };
-        //     boardwalkPin.MarkerClicked += OnMarkerClickedAsync;
+        void OnButtonClicked(object sender, EventArgs e)
+        {
+            Pin boardwalkPin = new Pin
+            {
+                Position = new Position(36.9641949, -122.0177232),
+                Label = "Boardwalk",
+                Address = "Santa Cruz",
+                Type = PinType.Place
+            };
+            boardwalkPin.MarkerClicked += OnMarkerClickedAsync;
 
-        //     Pin wharfPin = new Pin
-        //     {
-        //         Position = new Position(36.9571571, -122.0173544),
-        //         Label = "Wharf",
-        //         Address = "Santa Cruz",
-        //         Type = PinType.Place
-        //     };
-        //     wharfPin.MarkerClicked += OnMarkerClickedAsync;
+            Pin wharfPin = new Pin
+            {
+                Position = new Position(36.9571571, -122.0173544),
+                Label = "Wharf",
+                Address = "Santa Cruz",
+                Type = PinType.Place
+            };
+            wharfPin.MarkerClicked += OnMarkerClickedAsync;
 
-        //     map.Pins.Add(boardwalkPin);
-        //     map.Pins.Add(wharfPin);
-            
+            map.Pins.Add(boardwalkPin);
+            map.Pins.Add(wharfPin);
 
-        //}
+
+        }
 
 
         async void OnMarkerClickedAsync(object sender, PinClickedEventArgs e)
@@ -77,36 +77,45 @@ namespace TravelAdvisor.Views
         }
 
         private readonly Geocoder _geocoder = new Geocoder();
-        
-
-        //async void map_MapClicked(object sender, MapClickedEventArgs e)
-        //{
-        //    //Pin newPIn = new Pin
-        //    //{
-        //    Position position = new Position(e.Position.Latitude, e.Position.Longitude);
-        //    //};
-        //    Pin newPin = new Pin
-        //    {
-        //        Position = position,
-        //        Label = "Current Address",
-        //        Address = " ",
-        //        Type = PinType.Place
-        //    };
-        //    //newPin.MarkerClicked += OnMarkerClickedAsync;
-        //    var addresses = await _geocoder.GetAddressesForPositionAsync(e.Position);
-        //    map.Pins.Add(newPin);
-        //    await DisplayActionSheet(newPin.Label, "Cancel", "Info", $" Lat : {e.Position.Latitude}\n Long : {e.Position.Longitude}", addresses.FirstOrDefault()?.ToString());
-        //    //await DisplayAlert("Coordinate", $" Lat : {e.Position.Latitude}\n Long : {e.Position.Longitude}", "Ok");
-        //    //var addresses = await _geocoder.GetAddressesForPositionAsync(e.Position);
 
 
-        //    //await DisplayAlert("Address",
-        //    //    addresses.FirstOrDefault()?.ToString(), "Ok");
+        async void map_MapClicked(object sender, MapClickedEventArgs e)
+        {
+            //Pin newPIn = new Pin
+            //{
+            Position position = new Position(e.Position.Latitude, e.Position.Longitude);
+            //};
+            Pin newPin = new Pin
+            {
+                Position = position,
+                Label = "Current Address",
+                Address = " ",
+                Type = PinType.Place
+            };
+            //newPin.MarkerClicked += OnMarkerClickedAsync;
+            var addresses = await _geocoder.GetAddressesForPositionAsync(e.Position);
+            
+            var firstanswer = await DisplayActionSheet(newPin.Label, "Cancel", "Comment", $" Lat : {e.Position.Latitude}\n Long : {e.Position.Longitude}", addresses.FirstOrDefault()?.ToString());
+            //await DisplayAlert("Coordinate", $" Lat : {e.Position.Latitude}\n Long : {e.Position.Longitude}", "Ok");
+            //var addresses = await _geocoder.GetAddressesForPositionAsync(e.Position);
+            if (firstanswer != "Cancel")
+            {
+
+            }
+            else if (firstanswer == "Comment")
+            {
+                var secondanswer = await DisplayActionSheet(newPin.Label, "", "", "OK");
+                if (secondanswer != "OK")
+                map.Pins.Add(newPin); 
+            }
+
+            //await DisplayAlert("Address",
+            //    addresses.FirstOrDefault()?.ToString(), "Ok");
 
 
-        //}
+        }
 
-       
+
 
         private async void searchDestination_SearchButtonPressed(object sender, EventArgs e)
         {
@@ -116,7 +125,7 @@ namespace TravelAdvisor.Views
 
             mainViewModel.Forecast =  await mainViewModel.GetForecast();
             mainViewModel.cityName = mainViewModel.Forecast.City;
-            map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(mainViewModel.Forecast.Items[0].Latitude, mainViewModel.Forecast.Items[0].Longitude), Distance.FromMeters(10000)));
+            map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(mainViewModel.Forecast.Items[0].Latitude, mainViewModel.Forecast.Items[0].Longitude), Distance.FromMeters(15000)));
         }
     }
 
