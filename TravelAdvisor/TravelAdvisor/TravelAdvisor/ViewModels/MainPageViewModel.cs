@@ -17,7 +17,6 @@ namespace TravelAdvisor.ViewModels
     {
         private readonly IOpenWeatherService _forecastService;
         public MainPageViewModel _mainPageViewModel;
-        public MainPage mainPage;
         public MainPage MainPageProperty { get; set; }
 
         public string fetchedForecast;
@@ -25,18 +24,13 @@ namespace TravelAdvisor.ViewModels
         private string _cityName;
         public string cityName 
         { 
-            get
-            {
-                return _cityName;
-            }
+            get { return _cityName; }
             set
             {
                 _cityName = value;
-                
                 OnPropertyChanged("cityName");
             }
         }
-        //public AsyncCommand<object> ViewDetails { get; }
         public Command<object> ViewDetails
         {
             get { return new Command<object>(AttractionSelected); }
@@ -57,15 +51,12 @@ namespace TravelAdvisor.ViewModels
         private List<ForecastItem> forecastItems { get; set; }
 
         public List<ForecastItem> ForecastItems
-        {
-            get
-            {
-                return forecastItems;
-            }
-            set
-            {
-                forecastItems = value;
-                OnPropertyChanged("ForecastItems");
+{
+            get { return forecastItems; }
+            set 
+            { 
+                forecastItems = value; 
+                OnPropertyChanged("ForecastItems"); 
             }
         }
         private Forecast forecast { get; set; }
@@ -163,7 +154,7 @@ namespace TravelAdvisor.ViewModels
                     Image = "apt1.jpg",
                     Adress = "2162 Patricia Ave, LA",
                     Location = "California",
-                    Description = "Some description"
+                    Details = "Some description"
 
                 },
                 new AttractionDto
@@ -172,7 +163,7 @@ namespace TravelAdvisor.ViewModels
                     Image = "apt2.jpg",
                     Adress = "2112 Cushions Dr, LA",
                     Location = "California",
-                    Description = "Some description"
+                    Details = "Some description"
 
                 },
                 new AttractionDto
@@ -181,7 +172,7 @@ namespace TravelAdvisor.ViewModels
                     Image = "apt3.jpg",
                     Adress = "2167 Anthony Way, LA",
                     Location = "California",
-                    Description = "Some description"
+                    Details = "Some description"
 
                 },
                  new AttractionDto
@@ -190,7 +181,7 @@ namespace TravelAdvisor.ViewModels
                     Image = "apt3.jpg",
                     Adress = "2167 Anthony Way, LA",
                     Location = "California",
-                    Description = "Some description"
+                    Details = "Some description"
 
                 },
                   new AttractionDto
@@ -199,7 +190,7 @@ namespace TravelAdvisor.ViewModels
                     Image = "apt3.jpg",
                     Adress = "2167 Anthony Way, LA",
                     Location = "California",
-                    Description = "Some description"
+                    Details = "Some description"
 
                 },
                    new AttractionDto
@@ -208,7 +199,7 @@ namespace TravelAdvisor.ViewModels
                     Image = "apt3.jpg",
                     Adress = "2167 Anthony Way, LA",
                     Location = "California",
-                    Description = "Some description"
+                    Details = "Some description"
 
                 }
             };

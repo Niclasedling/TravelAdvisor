@@ -9,5 +9,6 @@ namespace TravelAdvisor.Interfaces
     public interface IGeoLocationService
     {
         Task<GeoLocation> GetGeoLocationAsync();
+        Task<GeoLocation> PinLocation();
     }
 }

@@ -18,5 +18,9 @@ namespace TravelAdvisor.Services
             var geo = await Geolocation.GetLocationAsync();
             return new GeoLocation { Latitude = geo.Latitude, Longitude = geo.Longitude };
         }
+        public async Task<GeoLocation> PinLocation()
+        {
+            return null;
+        }
     }
 }

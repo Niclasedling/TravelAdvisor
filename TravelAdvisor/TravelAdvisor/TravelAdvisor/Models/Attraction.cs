@@ -20,7 +20,7 @@ namespace TravelAdvisor.Models
 
         public string Price { get; set; } // Ska vara int
 
-        public string Description { get; set; }
+        public string Details { get; set; }
 
         public List<ReviewDto> Reviews { get; set; }
 
@@ -54,14 +54,15 @@ namespace TravelAdvisor.Models
 
         public string Image { get; set; }
 
-        public string Adress { get; set; }
-
-        public string Location { get; set; }
+        public string Address { get; set; }
 
         public int? Price { get; set; }
 
         public string Details { get; set; }
 
-        //public List<ReviewDto> Reviews { get; set; }
+        public double Longitude { get; set; }
+
+        public double Latitude { get; set; }
+
     }
 }
