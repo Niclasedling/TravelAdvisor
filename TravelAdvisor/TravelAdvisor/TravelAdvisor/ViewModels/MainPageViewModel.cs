@@ -21,7 +21,6 @@ namespace TravelAdvisor.ViewModels
 
 
         public MainPageViewModel _mainPageViewModel;
-        public MainPage mainPage;
         public MainPage MainPageProperty { get; set; }
 
         public string fetchedForecast;
@@ -29,18 +28,13 @@ namespace TravelAdvisor.ViewModels
         private string _cityName;
         public string cityName 
         { 
-            get
-            {
-                return _cityName;
-            }
+            get { return _cityName; }
             set
             {
                 _cityName = value;
-                
                 OnPropertyChanged("cityName");
             }
         }
-        //public AsyncCommand<object> ViewDetails { get; }
         public Command<object> ViewDetails
         {
             get { return new Command<object>(AttractionSelected); }
@@ -63,15 +57,12 @@ namespace TravelAdvisor.ViewModels
         private List<ForecastItem> forecastItems { get; set; }
 
         public List<ForecastItem> ForecastItems
-        {
-            get
-            {
-                return forecastItems;
-            }
-            set
-            {
-                forecastItems = value;
-                OnPropertyChanged("ForecastItems");
+{
+            get { return forecastItems; }
+            set 
+            { 
+                forecastItems = value; 
+                OnPropertyChanged("ForecastItems"); 
             }
         }
         private Forecast forecast { get; set; }

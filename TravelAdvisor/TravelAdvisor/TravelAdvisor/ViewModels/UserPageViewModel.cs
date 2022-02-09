@@ -158,7 +158,7 @@ namespace TravelAdvisor.ViewModels
                 new AttractionDto
                 {
                     Image = "apt1.jpg",
-                    Adress = "2162 Patricia Ave, LA",
+                    Address = "2162 Patricia Ave, LA",
                     Location = "California",
                     Price = "$1500/month",
 
@@ -166,7 +166,7 @@ namespace TravelAdvisor.ViewModels
                 new AttractionDto
                 {
                     Image = "apt2.jpg",
-                    Adress = "2112 Cushions Dr, LA",
+                    Address = "2112 Cushions Dr, LA",
                     Location = "California",
                     Price = "$1500/month",
 
@@ -174,10 +174,10 @@ namespace TravelAdvisor.ViewModels
                 new AttractionDto
                 {
                     Image = "apt3.jpg",
-                    Adress = "2167 Anthony Way, LA",
+                    Address = "2167 Anthony Way, LA",
                     Location = "California",
                     Price = "$1500/month",
-                    Description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
+                    Details = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
@@ -189,10 +189,10 @@ namespace TravelAdvisor.ViewModels
                  new AttractionDto
                 {
                     Image = "apt3.jpg",
-                    Adress = "2167 Anthony Way, LA",
+                    Address = "2167 Anthony Way, LA",
                     Location = "California",
                     Price = "$1500/month",
-                    Description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
+                    Details = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
@@ -204,10 +204,10 @@ namespace TravelAdvisor.ViewModels
                   new AttractionDto
                 {
                     Image = "apt3.jpg",
-                    Adress = "2167 Anthony Way, LA",
+                    Address = "2167 Anthony Way, LA",
                     Location = "California",
                     Price = "$1500/month",
-                    Description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
+                    Details = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
@@ -219,10 +219,10 @@ namespace TravelAdvisor.ViewModels
                    new AttractionDto
                 {
                     Image = "apt3.jpg",
-                    Adress = "2167 Anthony Way, LA",
+                    Address = "2167 Anthony Way, LA",
                     Location = "California",
                     Price = "$1500/month",
-                    Description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
+                    Details = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
