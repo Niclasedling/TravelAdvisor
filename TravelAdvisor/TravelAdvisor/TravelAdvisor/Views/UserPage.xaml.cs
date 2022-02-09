@@ -73,5 +73,16 @@ namespace TravelAdvisor.Views
 
             await DisplayAlert("Adress", addresses.FirstOrDefault()?.ToString(), "Ok");
         }
+
+        private async void searchDestination_SearchButtonPressed(object sender, EventArgs e)
+        {
+            var searchbar = sender as SearchBar;
+            var userViewModel = searchbar.BindingContext as UserPageViewModel;
+            userViewModel.fetchedForecast = searchDestination.Text;
+
+            userViewModel.Forecast = await userViewModel.GetForecast();
+            userViewModel.cityName = userViewModel.Forecast.City;
+            map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(userViewModel.Forecast.Items[0].Latitude, userViewModel.Forecast.Items[0].Longitude), Distance.FromMeters(15000)));
+        }
     }
 }
