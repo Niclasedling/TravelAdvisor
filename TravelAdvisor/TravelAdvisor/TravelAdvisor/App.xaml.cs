@@ -41,8 +41,6 @@ namespace TravelAdvisor
 
 
 
-
-
             //-------------------------------------------------------MainPage är av typen NavigationPage
 
             MainPage = new NavigationPage(new MainPage());
@@ -52,8 +50,6 @@ namespace TravelAdvisor
             //-----------------------------------------------------------------Sätter navigation
             var navService = DependencyService.Get<INavService>();
             navService.SetNavigation(MainPage.Navigation);
-
-
 
 
         }
