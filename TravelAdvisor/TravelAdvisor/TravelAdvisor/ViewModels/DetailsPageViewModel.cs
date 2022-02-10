@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -45,7 +46,26 @@ namespace TravelAdvisor.ViewModels
             App.globalUserToComment = new UserDto();
             App.globalUserToComment.FirstName = "";
             App.globalUserToComment.LastName = "";
-            App.globalCurrentAttraction.Reviews = await GetReviews();
+            ReviewList = await GetReviews();
+            //var allLikesForCurrentUser = ReviewList
+            //    .Select(x => x)
+            //    .Where(x => x.User == App.globalCurrentUser)
+            //    .Where(x => x.User.HasLikedReview
+            //    .ContainsKey(x.Id) && x.User.HasLikedReview
+            //    .ContainsValue(true))
+            //    .ToList();                                                          //Ska visa hela listan
+
+            //ReviewList.Select(x => x)
+                
+            //var allDislikesForCurrentUser = ReviewList
+            //    .Select(x => x)
+            //    .Where(x => x.User == App.globalCurrentUser)
+            //    .Where(x => x.User.HasLikedReview
+            //    .ContainsKey(x.Id) && x.User.HasLikedReview
+            //    .ContainsValue(false))
+            //    .ToList();
+
+         
         }
 
         public List<ReviewDto> reviewList { get; set; }
