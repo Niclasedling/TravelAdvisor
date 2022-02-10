@@ -75,7 +75,7 @@ namespace TravelAdvisor.Views
 
             }
         }
-
+        
 
         private void LikeThumb_Clicked(object sender, EventArgs e)
         {
