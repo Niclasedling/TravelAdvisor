@@ -213,6 +213,11 @@ namespace TravelAdvisor.Views
             entry.Text = "";
         }
 
-        
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            listwithForecast.IsVisible = false;
+            map.IsVisible = false;
+            thelistview.IsVisible = true;
+        }
     }
 }

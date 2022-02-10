@@ -18,8 +18,8 @@ namespace TravelAdvisor.ViewModels
         private readonly IUserService _userService;
         private readonly IOpenWeatherService _forecastService;
         private readonly IReviewService _reviewService;
-        private List<ReviewDto>  _listofreviewDtos;
-        UserPageViewModel  _userPageViewModel { get { return new UserPageViewModel(DependencyService.Get<INavService>()); } }
+
+        
         public UserPageViewModel(INavService naviService) : base(naviService)
         {
             _userService = DependencyService.Get<IUserService>();
@@ -34,12 +34,12 @@ namespace TravelAdvisor.ViewModels
             Forecast = result;
             ForecastItems = result.Items;
             cityName = result.City;
-            App.globalUserPageViewModel = _userPageViewModel;
+            
             App.globalUserToComment = App.globalCurrentUser;
             App.globalUserToComment.FirstName = App.globalCurrentUser.FirstName;
             App.globalUserToComment.LastName = App.globalCurrentUser.LastName;
             UserName = App.globalCurrentUser.UserName;
-            //App.globalCurrentAttraction.Reviews = await GetReviewsList();
+            
         }
         public ReviewDto ReviewToAdd { get; set; }
         public string NameOfAttraction { get { return App.globalCurrentAttraction.Name; } }
@@ -69,8 +69,8 @@ namespace TravelAdvisor.ViewModels
             get { return new Command<object>(GetListOfReviews); }
         }
         async void GetListOfReviews(object sender)
-        {
-            
+        {   
+
             var user = App.globalCurrentUser;
             if (user == null) return;
 
@@ -79,6 +79,7 @@ namespace TravelAdvisor.ViewModels
             else
             {
                  _listofreviewDtos = item.Select(reviews => reviews).Where(database => database.User.Id == user.Id).ToList();
+                 Reviews = _listofreviewDtos;
             }
             
         }
@@ -86,17 +87,9 @@ namespace TravelAdvisor.ViewModels
         {
 
         }
-        public List<ReviewDto> Reviews { get { return _listofreviewDtos; } }
-        //private async Task<List<ReviewDto>> GetReviewsList()
-        //{
-
-        //    var reviews = await _reviewService.GetListById(App.globalCurrentAttraction.Id);
-        //    if (reviews != null)
-        //    {
-        //        return reviews;
-        //    }
-        //    return null;
-        //}
+        private List<ReviewDto> _listofreviewDtos { get; set; }
+        public List<ReviewDto> Reviews { get { return _listofreviewDtos; } set { _listofreviewDtos = value; OnPropertyChanged("Reviews"); } }
+        
         private string _cityName;
         public string cityName
         {
@@ -199,10 +192,10 @@ namespace TravelAdvisor.ViewModels
         private string _userName;
         public string UserName
         {
-            get { return _cityName; }
+            get { return _userName; }
             set
             {
-                _cityName = value;
+                _userName = value;
                 OnPropertyChanged("UserName");
             }
         }
