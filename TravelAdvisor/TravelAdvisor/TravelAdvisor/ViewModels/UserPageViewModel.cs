@@ -148,8 +148,14 @@ namespace TravelAdvisor.ViewModels
         }
         async void LogOut(object ojb)
         {
-            await App.Current.MainPage.DisplayAlert("Logging out", "User logging out", "Ok");
-            await NavigationService.NavigateTo<MainPageViewModel>();
+            var answer = await App.Current.MainPage.DisplayActionSheet($"Do you want to logout?", "No", "Yes");
+            //var answer = await App.Current.MainPage.DisplayPromptAsync("Loggin out",$"{App.globalCurrentUser.UserName} Do you want to log out?","Yes","No");
+            if (answer == "Yes")
+            {
+                await App.Current.MainPage.DisplayAlert($"Logging out {App.globalCurrentUser.UserName}"," Welcome back", "Ok");
+                await NavigationService.NavigateTo<MainPageViewModel>();
+
+            }
         }
         private List<AttractionDto> GetAttractions()
         {
