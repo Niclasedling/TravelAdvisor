@@ -50,7 +50,6 @@ namespace TravelAdvisor.ViewModels
             App.globalUserToComment.LastName = "";
             //App.globalCurrentAttraction.Reviews = await GetReviews();
             ReviewList = await GetReviews();
-            App.globalCurrentUser.HasLikedReview.Select(x => x).Where(x => x.Key == )
         }
 
         private async Task<List<ReviewDto>> GetReviews()
