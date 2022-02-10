@@ -15,6 +15,7 @@ namespace TravelAdvisor
         public static AttractionDto globalCurrentAttraction;
         public static UserDto globalUserToComment;
         public static DetailsPageViewModel globalDetailsPageViewModel;
+        public static UserPageViewModel globalUserPageViewModel;
         public static ReviewDto globalCurrentReview;
         public static UserDto globalCurrentUser;
         public App()
@@ -32,9 +33,13 @@ namespace TravelAdvisor
             var userService = new UserService(new HttpClient());
             var forcastService = new OpenWeatherService(new HttpClient());
             var attractionService = new AttractionService(new HttpClient());
+            var reviewService = new ReviewService(new HttpClient());
             DependencyService.RegisterSingleton<IUserService>(userService);
             DependencyService.RegisterSingleton<IOpenWeatherService>(forcastService);
             DependencyService.RegisterSingleton<IAttractionService>(attractionService);
+            DependencyService.RegisterSingleton<IReviewService>(reviewService);
+
+
 
 
 

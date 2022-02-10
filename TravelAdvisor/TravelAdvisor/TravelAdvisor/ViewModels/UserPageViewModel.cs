@@ -17,11 +17,14 @@ namespace TravelAdvisor.ViewModels
     {
         private readonly IUserService _userService;
         private readonly IOpenWeatherService _forecastService;
-        
+        private readonly IReviewService _reviewService;
+        private List<ReviewDto>  _listofreviewDtos;
+        UserPageViewModel  _userPageViewModel { get { return new UserPageViewModel(DependencyService.Get<INavService>()); } }
         public UserPageViewModel(INavService naviService) : base(naviService)
         {
             _userService = DependencyService.Get<IUserService>();
             _forecastService = DependencyService.Get<IOpenWeatherService>();
+            _reviewService = DependencyService.Get<IReviewService>();
         }
         public async override void Init()
         {
@@ -31,16 +34,69 @@ namespace TravelAdvisor.ViewModels
             Forecast = result;
             ForecastItems = result.Items;
             cityName = result.City;
-
+            App.globalUserPageViewModel = _userPageViewModel;
+            App.globalUserToComment = App.globalCurrentUser;
+            App.globalUserToComment.FirstName = App.globalCurrentUser.FirstName;
+            App.globalUserToComment.LastName = App.globalCurrentUser.LastName;
+            UserName = App.globalCurrentUser.UserName;
+            //App.globalCurrentAttraction.Reviews = await GetReviewsList();
         }
+        public ReviewDto ReviewToAdd { get; set; }
+        public string NameOfAttraction { get { return App.globalCurrentAttraction.Name; } }
+        public string InfoAboutAttraction { get { return App.globalCurrentAttraction.Details; } }
+        public ImageSource AttractionImgSrc { get { return App.globalCurrentAttraction.Image; } }
+        private string userToComment { get; set; }
+        public string UserToComment
+        {
+            get { return userToComment; }
+            set
+            {
+                userToComment = value;
+                OnPropertyChanged("UserToComment");
+            }
+        }
+        
+
+        
         public List<Filter> PropertyTypeList => GetFilters();
         public List<AttractionDto> AttractionList => GetAttractions();
         public Command<object> ViewDetails
         {
             get { return new Command<object>(AttractionSelected); }
         }
-        public string fetchedForecast;
+        public Command<object> GetReviews
+        {
+            get { return new Command<object>(GetListOfReviews); }
+        }
+        async void GetListOfReviews(object sender)
+        {
+            
+            var user = App.globalCurrentUser;
+            if (user == null) return;
 
+            var item = await _reviewService.GetAllReviews();
+            if (item == null) await App.Current.MainPage.DisplayAlert("Failed", "No Reviews found", "Ok");
+            else
+            {
+                 _listofreviewDtos = item.Select(reviews => reviews).Where(database => database.User.Id == user.Id).ToList();
+            }
+            
+        }
+        public void fetchlistview(string listview)
+        {
+
+        }
+        public List<ReviewDto> Reviews { get { return _listofreviewDtos; } }
+        //private async Task<List<ReviewDto>> GetReviewsList()
+        //{
+
+        //    var reviews = await _reviewService.GetListById(App.globalCurrentAttraction.Id);
+        //    if (reviews != null)
+        //    {
+        //        return reviews;
+        //    }
+        //    return null;
+        //}
         private string _cityName;
         public string cityName
         {
@@ -55,6 +111,7 @@ namespace TravelAdvisor.ViewModels
                 OnPropertyChanged("cityName");
             }
         }
+        public string fetchedForecast;
         private Forecast forecast { get; set; }
         public Forecast Forecast
         {
@@ -138,6 +195,16 @@ namespace TravelAdvisor.ViewModels
             App.globalCurrentAttraction = attraction;
             await NavigationService.NavigateTo<DetailsPageViewModel>();
 
+        }
+        private string _userName;
+        public string UserName
+        {
+            get { return _cityName; }
+            set
+            {
+                _cityName = value;
+                OnPropertyChanged("UserName");
+            }
         }
         public Command<object> LogOutCommand
         {
