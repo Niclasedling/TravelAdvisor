@@ -15,6 +15,7 @@ namespace TravelAdvisor
         public static AttractionDto globalCurrentAttraction;
         public static UserDto globalUserToComment;
         public static DetailsPageViewModel globalDetailsPageViewModel;
+        public static UserPageViewModel globalUserPageViewModel;
         public static ReviewDto globalCurrentReview;
         public static UserDto globalCurrentUser;
         public App()
@@ -41,8 +42,6 @@ namespace TravelAdvisor
 
 
 
-
-
             //-------------------------------------------------------MainPage är av typen NavigationPage
 
             MainPage = new NavigationPage(new MainPage());
@@ -52,8 +51,6 @@ namespace TravelAdvisor
             //-----------------------------------------------------------------Sätter navigation
             var navService = DependencyService.Get<INavService>();
             navService.SetNavigation(MainPage.Navigation);
-
-
 
 
         }

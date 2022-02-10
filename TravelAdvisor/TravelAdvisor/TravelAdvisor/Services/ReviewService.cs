@@ -42,6 +42,10 @@ namespace TravelAdvisor.Services
         {
             return await _reviewClient.GetListAsyncById(id);
         }
+        public async Task<List<ReviewDto>> GetAllReviews()
+        {
+            return await _reviewClient.GetListAsync("GetAll");
+        }
 
         public Task<bool> Update(ReviewUpdateDto updateReview)
         {

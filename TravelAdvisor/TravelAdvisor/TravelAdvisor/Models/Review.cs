@@ -22,7 +22,7 @@ namespace TravelAdvisor.Models
         public string Name { get; set; }
 
         public string Image { get; set; }
-
+        public string Description { get; set; }
         public string ThumbStringToCompare { get; set; }
 
         public ImageSource DislikeThumbImgSrc { get { return "dislike.png"; } }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TravelAdvisor.Models;
 using TravelAdvisor.Services;
 using TravelAdvisor.ViewModels;
 using Xamarin.Forms;
@@ -17,6 +18,7 @@ namespace TravelAdvisor.Views
     {
         UserPageViewModel ViewModel => BindingContext as UserPageViewModel;
         Geocoder _geocoder;
+
         public UserPage()
         {
             InitializeComponent();
@@ -66,12 +68,49 @@ namespace TravelAdvisor.Views
         private async void map_MapClicked(object sender, MapClickedEventArgs e)
         {
             Position position = e.Position;
-            await DisplayAlert("Coordiantes", $"Lat: {e.Position.Latitude}, Long {e.Position.Longitude}", "Ok");
-
             var addresses = await _geocoder.GetAddressesForPositionAsync(e.Position);
+            var address = addresses.FirstOrDefault();
+
+            //var answer = await DisplayActionSheet($"Do you want to add an attraction for {address}?", "Cancel", null, "Yes", "No");
+
+            //if (answer == "Yes")
+            //{
+            //    var category = await DisplayActionSheet("")
+            //    var answerTitle = await DisplayPromptAsync("New attraction", "Name of attraction?", "Ok", "Cancel");
+            //    var answerDetails = await DisplayPromptAsync("New attraction", "Details of attraction?", "Ok", "Cancel");
+            //    var answerTitle = await DisplayPromptAsync("New attraction", "Name of attraction?", "Ok", "Cancel");
+
+            //}
+
+            //await DisplayAlert("Coordiantes", $"Lat: {e.Position.Latitude}, Long {e.Position.Longitude}", "Ok");
 
 
-            await DisplayAlert("Adress", addresses.FirstOrDefault()?.ToString(), "Ok");
+            //Position position = new Position(e.Position.Latitude, e.Position.Longitude);
+
+            //Pin newPin = new Pin
+            //{
+            //    Position = position,
+            //    Label = "Current Address",
+            //    Address = " ",
+            //    Type = PinType.Place
+            //};
+
+            //var addresses = await _geocoder.GetAddressesForPositionAsync(e.Position);
+            //var address = addresses.FirstOrDefault();
+
+            //var firstanswer = await DisplayActionSheet(address, "Cancel", "Add attraction");
+
+
+            //if (firstanswer == "Cancel")
+            //{
+
+            //}
+            //else if (firstanswer == "Add attraction")
+            //{
+            //    string nameResult = await DisplayPromptAsync("Name of Attraction", "What's the name of the attraction?");
+            //    string detailsResult = await DisplayPromptAsync("Details of Attraction", "Write a description of the attraction.");
+
+            //}
         }
 
         private async void searchDestination_SearchButtonPressed(object sender, EventArgs e)
@@ -79,12 +118,143 @@ namespace TravelAdvisor.Views
             var searchbar = sender as SearchBar;
             var userViewModel = searchbar.BindingContext as UserPageViewModel;
             userViewModel.fetchedForecast = searchDestination.Text;
-
+            listofOldReviews.IsEnabled = false;
             userViewModel.Forecast = await userViewModel.GetForecast();
             userViewModel.cityName = userViewModel.Forecast.City;
             map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(userViewModel.Forecast.Items[0].Latitude, userViewModel.Forecast.Items[0].Longitude), Distance.FromMeters(15000)));
         }
 
-        
+        private void LikeThumb_Clicked(object sender, EventArgs e)
+        {
+            var likeButton = sender as ImageButton;
+            var review = likeButton.BindingContext as ReviewDto;
+
+            review.LikeButton = likeButton;
+            if (review.LikeButton == null) return;
+
+            if (!review.ThumbIsGreen || review.ThumbStringToCompare == null)
+            {
+
+                if (!review.User.HasLiked)
+                {
+                    review.TotalLikes++;
+                    review.User.HasLiked = true;
+                }
+
+                if (review.User.HasDisliked)
+                {
+                    review.TotalDislikes--;
+                    review.User.HasDisliked = false;
+                }
+
+
+                review.LikeButton.Source = review.LikeThumbGreenImgSrc;
+                review.DislikeButton.Source = review.DislikeThumbImgSrc;
+                review.ThumbIsGreen = true;
+                review.ThumbIsRed = false;
+
+                review.ThumbStringToCompare = review.LikeThumbGreenString;
+            }
+            else
+            {
+                review.User.HasLiked = false;
+                review.TotalLikes--;
+                review.LikeButton.Source = review.LikeThumbImgSrc;
+                review.ThumbIsGreen = false;
+                review.ThumbStringToCompare = review.LikeThumbString;
+
+
+            }
+        }
+
+        private void DislikeThumb_Clicked(object sender, EventArgs e)
+        {
+            var dislikeButton = sender as ImageButton;
+            var review = dislikeButton.BindingContext as ReviewDto;
+
+            review.DislikeButton = dislikeButton;
+
+            if (review.DislikeButton == null) return;
+
+            if (!review.ThumbIsRed || review.ThumbStringToCompare == null)
+            {
+
+                if (!review.User.HasDisliked)
+                {
+                    review.TotalDislikes++;
+                    review.User.HasDisliked = true;
+                }
+
+                if (review.User.HasLiked)
+                {
+                    review.TotalLikes--;
+                    review.User.HasLiked = false;
+                }
+
+                review.DislikeButton.Source = review.DislikeThumbRedImgSrc;
+                review.LikeButton.Source = review.LikeThumbImgSrc;
+                review.ThumbIsRed = true;
+                review.ThumbIsGreen = false;
+
+                review.ThumbStringToCompare = review.DislikeThumbRedString;
+            }
+            else
+            {
+                review.User.HasDisliked = false;
+                review.TotalDislikes--;
+                review.DislikeButton.Source = review.DislikeThumbImgSrc;
+                review.ThumbIsRed = false;
+
+                review.ThumbStringToCompare = review.DislikeThumbString;
+            }
+
+        }
+
+        private void CommentButton_Clicked(object sender, EventArgs e)
+        {
+            var commentButton = sender as ImageButton;
+            var review = commentButton.BindingContext as ReviewDto;
+
+            App.globalCurrentReview = review;
+            commentListView.ItemsSource = review.User.UserComments;
+            //App.globalDetailsPageViewModel.UserToComment = review.User.FirstName + " " + review.User.LastName;
+
+
+            if (!commentFrame.IsVisible)
+            {
+                commentFrame.IsVisible = true;
+            }
+            else
+            {
+                commentFrame.IsVisible = false;
+            }
+        }
+
+        private void CloseCommentButton_Clicked(object sender, EventArgs e)
+        {
+            commentFrame.IsVisible = false;
+        }
+
+        private void Comment_Completed(object sender, EventArgs e)
+        {
+            var entry = sender as Entry;
+            var review = App.globalCurrentReview;
+
+            UserCommentDto userComment = new UserCommentDto();
+            userComment.Comment = entry.Text;
+            review.User.UserComments.Add(userComment);
+
+            commentListView.ItemsSource = null;
+            commentListView.ItemsSource = review.User.UserComments;
+            review.TotalComments = review.User.UserComments.Count;
+            entry.Text = "";
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            listwithForecast.IsVisible = false;
+            map.IsVisible = false;
+            thelistview.IsVisible = true;
+        }
     }
 }
