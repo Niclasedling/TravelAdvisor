@@ -23,13 +23,13 @@ namespace TravelAdvisor.Views
         private readonly Geocoder _geocoder = new Geocoder();
 
         MainPageViewModel ViewModel => BindingContext as MainPageViewModel;
-        CreateAttractionViewModel CreateAttractionViewModel => BindingContext as CreateAttractionViewModel;
+        //CreateAttractionViewModel CreateAttractionViewModel => BindingContext as CreateAttractionViewModel;
 
         public MainPage()
         {
             InitializeComponent();
             BindingContext = new MainPageViewModel(DependencyService.Get<INavService>());
-            BindingContext = new CreateAttractionViewModel(DependencyService.Get<INavService>());
+            //BindingContext = new CreateAttractionViewModel(DependencyService.Get<INavService>());
         }
         
         
@@ -40,7 +40,7 @@ namespace TravelAdvisor.Views
             map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(59.3194903, 18.075060000000007), Distance.FromMeters(15000)));
 
             ViewModel?.Init();
-            CreateAttractionViewModel?.Init();
+            //CreateAttractionViewModel?.Init();
         }
 
         //void OnButtonClicked(object sender, EventArgs e)
@@ -107,20 +107,20 @@ namespace TravelAdvisor.Views
                 string nameResult = await DisplayPromptAsync("Name of Attraction", "What's the name of the attraction?");
                 string detailsResult = await DisplayPromptAsync("Details of Attraction", "Write a description of the attraction.");
 
-                if (nameResult != null && detailsResult != null)
-                {
-                    CreateAttractionViewModel.Attraction = new AttractionCreateDto
-                    {
-                        //Id = new Guid(),
-                        Name = nameResult,
-                        Details = detailsResult,
-                        Image = null,
-                        Address = address.Substring(0, 10),
-                        Latitude = position.Latitude,
-                        Longitude = position.Longitude
-                    };
-                    await CreateAttractionViewModel.CreateNewAttraction();
-                }
+                //if (nameResult != null && detailsResult != null)
+                //{
+                //    CreateAttractionViewModel.Attraction = new AttractionCreateDto
+                //    {
+                //        //Id = new Guid(),
+                //        Name = nameResult,
+                //        Details = detailsResult,
+                //        Image = null,
+                //        Address = address.Substring(0, 10),
+                //        Latitude = position.Latitude,
+                //        Longitude = position.Longitude
+                //    };
+                //    await CreateAttractionViewModel.CreateNewAttraction();
+                //}
 
             }
 

@@ -44,7 +44,7 @@ namespace TravelAdvisor.Services
 
         public async Task<List<AttractionDto>> GetAllAttractionsByCity(string city)
         {
-            return await _attractionClient.GetListAsync("GetListByCity");
+            return await _attractionClient.GetListAsyncById(city);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace TravelAdvisor.ViewModels
         
         public ReviewDto ReviewToAdd { get; set; }
         public string NameOfAttraction { get { return App.globalCurrentAttraction.Name; } }
-        public string InfoAboutAttraction { get { return App.globalCurrentAttraction.Description; } }
+        public string InfoAboutAttraction { get { return App.globalCurrentAttraction.Details; } }
         public ImageSource AttractionImgSrc { get { return App.globalCurrentAttraction.Image; } }
         private string userToComment { get; set; }
         public string UserToComment 
