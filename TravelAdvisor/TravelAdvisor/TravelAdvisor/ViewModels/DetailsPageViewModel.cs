@@ -56,12 +56,21 @@ namespace TravelAdvisor.ViewModels
 
         private async Task<List<ReviewDto>> GetReviews()
         {
-
-            var reviews = await _reviewService.GetListById(App.globalCurrentAttraction.Id);
-            if(reviews != null)
+            try
+            {
+                var reviews = await _reviewService.GetListById(App.globalCurrentAttraction.Id);
+                if(reviews != null)
             {
                 return reviews;
             }
+            }
+            catch 
+            {
+
+               
+            }
+            
+            
             return null;
         }
     }
