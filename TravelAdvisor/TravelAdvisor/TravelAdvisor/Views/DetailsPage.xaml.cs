@@ -210,12 +210,16 @@ namespace TravelAdvisor.Views
             var button = sender as Button;
             //var review = button.BindingContext as ReviewDto;
 
+            var titleAnswer = await DisplayPromptAsync("Title of attraction", "Title", "Ok");
             var reviewAnswer = await DisplayPromptAsync("New Review", "Review", "Ok", "Cancel");
             var ratingAnswer = await DisplayPromptAsync("Attraction rating", "Rating", "Ok", "Cancel");
-            //ReviewDto review = new ReviewDto()
-            //{
-            //    User
-            //}
+
+            ReviewCreateDto review = new ReviewCreateDto()
+            {
+                UserId = App.globalCurrentUser.Id,
+                AttractionId = App.globalCurrentAttraction.Id,
+                
+            };
             //App.globalCurrentAttraction.Reviews.Add()
         }
     }

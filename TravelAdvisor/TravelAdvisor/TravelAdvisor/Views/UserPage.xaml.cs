@@ -68,12 +68,49 @@ namespace TravelAdvisor.Views
         private async void map_MapClicked(object sender, MapClickedEventArgs e)
         {
             Position position = e.Position;
-            await DisplayAlert("Coordiantes", $"Lat: {e.Position.Latitude}, Long {e.Position.Longitude}", "Ok");
-
             var addresses = await _geocoder.GetAddressesForPositionAsync(e.Position);
+            var address = addresses.FirstOrDefault();
+
+            //var answer = await DisplayActionSheet($"Do you want to add an attraction for {address}?", "Cancel", null, "Yes", "No");
+
+            //if (answer == "Yes")
+            //{
+            //    var category = await DisplayActionSheet("")
+            //    var answerTitle = await DisplayPromptAsync("New attraction", "Name of attraction?", "Ok", "Cancel");
+            //    var answerDetails = await DisplayPromptAsync("New attraction", "Details of attraction?", "Ok", "Cancel");
+            //    var answerTitle = await DisplayPromptAsync("New attraction", "Name of attraction?", "Ok", "Cancel");
+
+            //}
+
+            //await DisplayAlert("Coordiantes", $"Lat: {e.Position.Latitude}, Long {e.Position.Longitude}", "Ok");
 
 
-            await DisplayAlert("Adress", addresses.FirstOrDefault()?.ToString(), "Ok");
+            //Position position = new Position(e.Position.Latitude, e.Position.Longitude);
+
+            //Pin newPin = new Pin
+            //{
+            //    Position = position,
+            //    Label = "Current Address",
+            //    Address = " ",
+            //    Type = PinType.Place
+            //};
+
+            //var addresses = await _geocoder.GetAddressesForPositionAsync(e.Position);
+            //var address = addresses.FirstOrDefault();
+
+            //var firstanswer = await DisplayActionSheet(address, "Cancel", "Add attraction");
+
+
+            //if (firstanswer == "Cancel")
+            //{
+
+            //}
+            //else if (firstanswer == "Add attraction")
+            //{
+            //    string nameResult = await DisplayPromptAsync("Name of Attraction", "What's the name of the attraction?");
+            //    string detailsResult = await DisplayPromptAsync("Details of Attraction", "Write a description of the attraction.");
+
+            //}
         }
 
         private async void searchDestination_SearchButtonPressed(object sender, EventArgs e)

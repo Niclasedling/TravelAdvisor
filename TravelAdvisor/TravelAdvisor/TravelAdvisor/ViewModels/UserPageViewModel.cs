@@ -28,8 +28,6 @@ namespace TravelAdvisor.ViewModels
         }
         public async override void Init()
         {
-
-            //Code for initialize the ViewModel
             var result = await GetForecast();
             Forecast = result;
             ForecastItems = result.Items;
