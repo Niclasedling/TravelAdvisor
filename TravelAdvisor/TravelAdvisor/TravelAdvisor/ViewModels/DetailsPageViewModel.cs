@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -31,7 +32,7 @@ namespace TravelAdvisor.ViewModels
                 OnPropertyChanged("UserToComment");
             } 
         }
-        public List<ReviewDto> reviewList { get; set; }
+        private List<ReviewDto> reviewList { get; set; }
         public List<ReviewDto> ReviewList { get { return reviewList; } set { reviewList = value; OnPropertyChanged("ReviewList"); } }
 
         public Command GoBack => new Command(async () => await NavigationService.GoBack());
@@ -49,6 +50,7 @@ namespace TravelAdvisor.ViewModels
             App.globalUserToComment.LastName = "";
             //App.globalCurrentAttraction.Reviews = await GetReviews();
             ReviewList = await GetReviews();
+            App.globalCurrentUser.HasLikedReview.Select(x => x).Where(x => x.Key == )
         }
 
         private async Task<List<ReviewDto>> GetReviews()
