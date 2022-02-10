@@ -27,18 +27,9 @@ namespace TravelAdvisor.Views
 
         protected override void OnAppearing()
         {
-            base.OnAppearing();
-            // Initialize ViewModel
-            
-            ViewModel?.Init();
-            
-            
+            base.OnAppearing();        
+            ViewModel?.Init();          
         }
-
-        //private void SetThumbValues()
-        //{
-        //    if()
-        //}
 
         private void LikeThumb_Clicked2(object sender, EventArgs e)
         {

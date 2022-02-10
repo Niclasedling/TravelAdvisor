@@ -15,8 +15,6 @@ namespace TravelAdvisor.ViewModels
         
         private readonly IReviewService _reviewService;
 
-
-
         DetailsPageViewModel _detailsPageView { get { return new DetailsPageViewModel(DependencyService.Get<INavService>());} }
         
         public ReviewDto ReviewToAdd { get; set; }
@@ -38,39 +36,31 @@ namespace TravelAdvisor.ViewModels
 
         public DetailsPageViewModel(INavService naviService) : base(naviService)
         {
-            //Code for creating the ViewModel
             _reviewService = DependencyService.Get<IReviewService>();
         }
 
         public override async void Init()
         {
-            //Code for initialize the ViewModel
-            
             App.globalDetailsPageViewModel = _detailsPageView;
             App.globalUserToComment = new UserDto();
             App.globalUserToComment.FirstName = "";
             App.globalUserToComment.LastName = "";
             App.globalCurrentAttraction.Reviews = await GetReviews();
         }
-        public List<ReviewDto> Reviews { get { return App.globalCurrentAttraction.Reviews; } }
+
+        public List<ReviewDto> reviewList { get; set; }
+        public List<ReviewDto> ReviewList { get { return reviewList; } set { reviewList = value; OnPropertyChanged("ReviewList"); } }
 
         private async Task<List<ReviewDto>> GetReviews()
         {
-            try
-            {
-                var reviews = await _reviewService.GetListById(App.globalCurrentAttraction.Id);
-                if(reviews != null)
+
+            var reviews = await _reviewService.GetListById(App.globalCurrentAttraction.Id);
+
+            if (reviews != null)
             {
                 return reviews;
             }
-            }
-            catch 
-            {
 
-               
-            }
-            
-            
             return null;
         }
     }
