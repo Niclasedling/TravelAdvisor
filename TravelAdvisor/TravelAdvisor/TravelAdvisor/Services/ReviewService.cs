@@ -13,12 +13,11 @@ namespace TravelAdvisor.Services
     {
         private readonly ApiClient<ReviewDto> _reviewClient;
 
-        
-
         public ReviewService(HttpClient httpClient)
         {
             _reviewClient = new ApiClient<ReviewDto>(httpClient, "Review");
         }
+
         public async Task<Guid> Create(ReviewCreateDto newReview)
         {
             return await _reviewClient.PostAsync(newReview);
@@ -39,9 +38,9 @@ namespace TravelAdvisor.Services
             throw new NotImplementedException();
         }
 
-        public async Task<List<ReviewDto>> GetListById(Guid Id)
+        public async Task<List<ReviewDto>> GetListById(Guid id)
         {
-            return await _reviewClient.GetListAsync("GetListById");
+            return await _reviewClient.GetListAsyncById(id);
         }
         public async Task<List<ReviewDto>> GetAllReviews()
         {
