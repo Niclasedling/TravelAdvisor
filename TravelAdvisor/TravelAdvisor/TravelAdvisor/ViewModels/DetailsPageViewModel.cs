@@ -68,6 +68,9 @@ namespace TravelAdvisor.ViewModels
          
         }
 
+        public List<ReviewDto> reviewList { get; set; }
+        public List<ReviewDto> ReviewList { get { return reviewList; } set { reviewList = value; OnPropertyChanged("ReviewList"); } }
+
         private async Task<List<ReviewDto>> GetReviews()
         {
 
