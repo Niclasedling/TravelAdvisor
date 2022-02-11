@@ -12,7 +12,7 @@
         <Grid>
                 <Grid.RowDefinitions>
                     <!--0--><RowDefinition Height="100"></RowDefinition>
-                    <!--1--><RowDefinition Height="*"></RowDefinition>
+                    <!--1--><RowDefinition Height="250"></RowDefinition>
                     <!--2--><RowDefinition Height="*"></RowDefinition>
                     <!--3--><RowDefinition Height="*"></RowDefinition>
                     <!--4--><RowDefinition Height="*"></RowDefinition>
@@ -144,7 +144,7 @@
                                 TextColor="White" 
                                 FontAttributes="Bold" 
                                 CornerRadius="15" 
-                                Grid.Row="6"
+                                Grid.Row="5"
                                 Grid.Column="3"
                                 Grid.ColumnSpan="7"
                                 Command="{Binding RegisterCommand}"
