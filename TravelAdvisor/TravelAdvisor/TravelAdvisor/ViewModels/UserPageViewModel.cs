@@ -18,8 +18,8 @@ namespace TravelAdvisor.ViewModels
         private readonly IUserService _userService;
         private readonly IOpenWeatherService _forecastService;
         private readonly IReviewService _reviewService;
+        public string fetchedForecast;
 
-        
         public UserPageViewModel(INavService naviService) : base(naviService)
         {
             _userService = DependencyService.Get<IUserService>();
@@ -39,10 +39,44 @@ namespace TravelAdvisor.ViewModels
             UserName = App.globalCurrentUser.UserName;
             
         }
-        public ReviewDto ReviewToAdd { get; set; }
+
+        private string _userName;
+        public string UserName
+        {
+            get { return _userName; }
+            set
+            {
+                _userName = value;
+                OnPropertyChanged("UserName");
+            }
+        }
+        #region ATTRACTION
         public string NameOfAttraction { get { return App.globalCurrentAttraction.Name; } }
         public string InfoAboutAttraction { get { return App.globalCurrentAttraction.Details; } }
         public ImageSource AttractionImgSrc { get { return App.globalCurrentAttraction.Image; } }
+        
+        public List<AttractionDto> AttractionList => GetAttractions();
+        public Command<object> ViewDetails
+        {
+            get { return new Command<object>(AttractionSelected); }
+        }
+        async void AttractionSelected(object sender)
+        {
+            var attraction = sender as AttractionDto;
+            if (attraction == null) return;
+
+            App.globalCurrentAttraction = attraction;
+            await NavigationService.NavigateTo<DetailsPageViewModel>();
+
+        }
+
+
+        #endregion
+
+
+        #region REVIEWS
+
+        public ReviewDto ReviewToAdd { get; set; }
         private string userToComment { get; set; }
         public string UserToComment
         {
@@ -52,15 +86,6 @@ namespace TravelAdvisor.ViewModels
                 userToComment = value;
                 OnPropertyChanged("UserToComment");
             }
-        }
-        
-
-        
-        public List<Filter> PropertyTypeList => GetFilters();
-        public List<AttractionDto> AttractionList => GetAttractions();
-        public Command<object> ViewDetails
-        {
-            get { return new Command<object>(AttractionSelected); }
         }
         public Command<object> GetReviews
         {
@@ -73,21 +98,24 @@ namespace TravelAdvisor.ViewModels
             if (user == null) return;
 
             var item = await _reviewService.GetAllReviews();
+
+            
             if (item == null) await App.Current.MainPage.DisplayAlert("Failed", "No Reviews found", "Ok");
             else
             {
-                 _listofreviewDtos = item.Select(reviews => reviews).Where(database => database.User.Id == user.Id).ToList();
+                 _listofreviewDtos = item.Select(reviews => reviews).Where(database => database.User.Id == user?.Id).ToList();
                  Reviews = _listofreviewDtos;
             }
             
         }
-        public void fetchlistview(string listview)
-        {
-
-        }
+        
         private List<ReviewDto> _listofreviewDtos { get; set; }
         public List<ReviewDto> Reviews { get { return _listofreviewDtos; } set { _listofreviewDtos = value; OnPropertyChanged("Reviews"); } }
-        
+        #endregion
+
+
+        #region FORECAST
+
         private string _cityName;
         public string cityName
         {
@@ -102,7 +130,6 @@ namespace TravelAdvisor.ViewModels
                 OnPropertyChanged("cityName");
             }
         }
-        public string fetchedForecast;
         private Forecast forecast { get; set; }
         public Forecast Forecast
         {
@@ -170,33 +197,10 @@ namespace TravelAdvisor.ViewModels
             }
             else return null;
         }
-        private List<Filter> GetFilters()
-        {
-            return new List<Filter>
-            {
-                new Filter { Name = "All"},
-                new Filter { Name = "Popular"},
-            };
-        }
-        async void AttractionSelected(object sender)
-        {
-            var attraction = sender as AttractionDto;
-            if (attraction == null) return;
-
-            App.globalCurrentAttraction = attraction;
-            await NavigationService.NavigateTo<DetailsPageViewModel>();
-
-        }
-        private string _userName;
-        public string UserName
-        {
-            get { return _userName; }
-            set
-            {
-                _userName = value;
-                OnPropertyChanged("UserName");
-            }
-        }
+        #endregion
+       
+       
+        #region LOGOUT
         public Command<object> LogOutCommand
         {
             get
@@ -214,6 +218,20 @@ namespace TravelAdvisor.ViewModels
                 await NavigationService.NavigateTo<MainPageViewModel>();
 
             }
+        }
+        #endregion
+
+
+        #region MOCKDATA
+
+        public List<Filter> PropertyTypeList => GetFilters();
+        private List<Filter> GetFilters()
+        {
+            return new List<Filter>
+            {
+                new Filter { Name = "All"},
+                new Filter { Name = "Popular"},
+            };
         }
         private List<AttractionDto> GetAttractions()
         {
@@ -250,7 +268,7 @@ namespace TravelAdvisor.ViewModels
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,"
                 },
-                 new AttractionDto
+                new AttractionDto
                 {
                     Image = "apt3.jpg",
                     Address = "2167 Anthony Way, LA",
@@ -265,7 +283,7 @@ namespace TravelAdvisor.ViewModels
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,"
                 },
-                  new AttractionDto
+                new AttractionDto
                 {
                     Image = "apt3.jpg",
                     Address = "2167 Anthony Way, LA",
@@ -280,7 +298,7 @@ namespace TravelAdvisor.ViewModels
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,"
                 },
-                   new AttractionDto
+                new AttractionDto
                 {
                     Image = "apt3.jpg",
                     Address = "2167 Anthony Way, LA",
@@ -297,6 +315,8 @@ namespace TravelAdvisor.ViewModels
                 }
             };
 
+
         }
+        #endregion
     }
 }

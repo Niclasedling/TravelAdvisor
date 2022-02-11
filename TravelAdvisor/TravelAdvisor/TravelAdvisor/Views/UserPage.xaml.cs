@@ -219,6 +219,7 @@ namespace TravelAdvisor.Views
             var review = commentButton.BindingContext as ReviewDto;
 
             App.globalCurrentReview = review;
+            
             commentListView.ItemsSource = review.User.UserComments;
             //App.globalDetailsPageViewModel.UserToComment = review.User.FirstName + " " + review.User.LastName;
 
@@ -252,6 +253,7 @@ namespace TravelAdvisor.Views
             UserCommentDto userComment = new UserCommentDto();
             userComment.Comment = entry.Text;
             review.User.UserComments.Add(userComment);
+            userComment.UserName = App.globalCurrentUser.UserName;
 
             commentListView.ItemsSource = null;
             commentListView.ItemsSource = review.User.UserComments;

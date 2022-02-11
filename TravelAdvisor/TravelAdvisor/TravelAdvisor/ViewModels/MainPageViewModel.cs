@@ -17,68 +17,22 @@ namespace TravelAdvisor.ViewModels
     {
         private readonly IAttractionService _attractionService;
         private readonly IOpenWeatherService _forecastService;
-
-
-
         public MainPageViewModel _mainPageViewModel;
         public MainPage MainPageProperty { get; set; }
 
         public string fetchedForecast;
-        
-        private string _cityName;
-        public string cityName 
-        { 
-            get { return _cityName; }
-            set
-            {
-                _cityName = value;
-                OnPropertyChanged("cityName");
-            }
-        }
+
+
+        public List<Filter> PropertyTypeList => GetFilters();
+        public List<AttractionDto> attractionList { get; set; }
+        public List<AttractionDto> AttractionList { get { return attractionList; } set { attractionList = value; OnPropertyChanged("AttractionList"); } }
+
         public Command<object> ViewDetails
         {
             get { return new Command<object>(AttractionSelected); }
         }
         public Command LoginPage => new Command(async () => await NavigationService.NavigateTo<LoginPageViewModel>());
         public Command BackPage => new Command(async () => await NavigationService.GoBack());
-
-        public List<Filter> PropertyTypeList => GetFilters();
-        public List<AttractionDto> attractionList { get; set; }
-        public List<AttractionDto> AttractionList { get { return attractionList; } set { attractionList = value; OnPropertyChanged("AttractionList"); } }
-       
-        private List<Filter> GetFilters()
-        {
-            return new List<Filter>
-            {
-                new Filter { Name = "All"},
-                new Filter { Name = "Popular"},
-            };
-        }
-        private List<ForecastItem> forecastItems { get; set; }
-
-        public List<ForecastItem> ForecastItems
-{
-            get { return forecastItems; }
-            set 
-            { 
-                forecastItems = value; 
-                OnPropertyChanged("ForecastItems"); 
-            }
-        }
-        private Forecast forecast { get; set; }
-        public Forecast Forecast
-        {
-            get
-            {
-                return forecast;
-            }
-            set
-            {
-                forecast = value;
-                OnPropertyChanged("Forecast");
-            }
-        }
-
         public MainPageViewModel(INavService naviService) : base(naviService)
         {
             _forecastService = DependencyService.Get<IOpenWeatherService>();
@@ -100,6 +54,28 @@ namespace TravelAdvisor.ViewModels
             
         }
 
+
+
+        #region ATTRACTION
+        private List<Filter> GetFilters()
+        {
+            return new List<Filter>
+            {
+                new Filter { Name = "All"},
+                new Filter { Name = "Popular"},
+            };
+        }
+
+        public async Task<List<AttractionDto>> GetAttractions()
+        {
+
+            var attractions = await _attractionService.GetAllAttractionsByCity(fetchedForecast);
+            if (attractions != null)
+            {
+                return attractions;
+            }
+            return null;
+        }
         async void AttractionSelected(object sender)
         {
             var attraction = sender as AttractionDto;
@@ -108,6 +84,42 @@ namespace TravelAdvisor.ViewModels
             App.globalCurrentAttraction = attraction;
             await NavigationService.NavigateTo<DetailsPageViewModel>();
 
+        }
+        #endregion
+
+        #region FORECAST
+        private List<ForecastItem> forecastItems { get; set; }
+        private string _cityName;
+        public string cityName
+        {
+            get { return _cityName; }
+            set
+            {
+                _cityName = value;
+                OnPropertyChanged("cityName");
+            }
+        }
+        public List<ForecastItem> ForecastItems
+{
+            get { return forecastItems; }
+            set 
+            { 
+                forecastItems = value; 
+                OnPropertyChanged("ForecastItems"); 
+            }
+        }
+        private Forecast forecast { get; set; }
+        public Forecast Forecast
+        {
+            get
+            {
+                return forecast;
+            }
+            set
+            {
+                forecast = value;
+                OnPropertyChanged("Forecast");
+            }
         }
 
         public async Task<Forecast> GetForecast()
@@ -150,15 +162,6 @@ namespace TravelAdvisor.ViewModels
             }
             else return null;
         }
-        public async Task<List<AttractionDto>> GetAttractions()
-        {
-
-            var attractions = await _attractionService.GetAllAttractionsByCity(fetchedForecast);
-            if (attractions != null)
-            {
-                return attractions;
-            }
-            return null;
-        }
+        #endregion
     }
 }
