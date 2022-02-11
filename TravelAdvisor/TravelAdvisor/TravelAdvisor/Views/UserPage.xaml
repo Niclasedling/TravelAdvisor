@@ -11,13 +11,13 @@
 
 
     <ScrollView>
-        <Grid BackgroundColor="#F9F9F9" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20">
+        <Grid BackgroundColor="gray" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20">
             <Grid.RowDefinitions>
                 <!--0--><RowDefinition Height="35"></RowDefinition>
-                <!--0--><RowDefinition Height="35"></RowDefinition>
-                <!--1--><RowDefinition Height="190"></RowDefinition>
-                <!--2--><RowDefinition Height="350"></RowDefinition>
-                <!--3--><RowDefinition Height="*"></RowDefinition>
+                <!--1--><RowDefinition Height="35" x:Name="_rowone"></RowDefinition>
+                <!--2--><RowDefinition Height="190" x:Name="_rowtwo"></RowDefinition>
+                <!--3--><RowDefinition Height="350"></RowDefinition>
+                <!--4--><RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <!--0-->
@@ -61,25 +61,36 @@
 
             </SearchBar>
             <!--My Reviews BUTTON-->
-            <Button Grid.Column="4"
+            <Button x:Name="_myReviewsButton" Grid.Column="4"
                 Grid.Row="1"
                 Grid.ColumnSpan="3"
                 Text="My Reviews" 
                 BackgroundColor="Black" 
                 TextColor="White" 
-                CornerRadius="15" 
+                CornerRadius="5" 
                 FontAttributes="Bold"
                 Command="{Binding GetReviews}"
-                Clicked="Button_Clicked">
+                Clicked="myReview_Button_Clicked">
+            </Button>
+            <Button x:Name="_BackButton" Grid.Column="4"
+                Grid.Row="1"
+                Grid.ColumnSpan="3"
+                Text="Back" 
+                BackgroundColor="Black" 
+                TextColor="White" 
+                CornerRadius="5" 
+                FontAttributes="Bold"
+                IsVisible="false"
+                Clicked="Button_Back_Clicked">
             </Button>
             <!--Favorites BUTTON-->
-            <Button Grid.Column="7"
+            <Button x:Name="_favoritesButton" Grid.Column="7"
                     Grid.Row="1"
                 Grid.ColumnSpan="3"
                 Text="Favorites" 
                 BackgroundColor="Black" 
                 TextColor="White" 
-                CornerRadius="15" 
+                CornerRadius="5" 
                 FontAttributes="Bold">
             </Button>
             <!--Login BUTTON-->
@@ -89,7 +100,7 @@
                 Text="LogOut" 
                 BackgroundColor="Black" 
                 TextColor="White" 
-                CornerRadius="15" 
+                CornerRadius="5" 
                 FontAttributes="Bold"
                 Command="{Binding LogOutCommand}">
             </Button>
@@ -135,10 +146,10 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <StackLayout Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="8" Margin="5,0,0,10" HorizontalOptions="Center">
-                        <Label Text="{Binding cityName}" FontSize="25" FontAttributes="Bold" FontFamily="font-family: 'Trip Sans VF'"/>
+                        <Label x:Name="_cityNameLable" Text="{Binding cityName}" FontSize="25" FontAttributes="Bold" FontFamily="font-family: 'Trip Sans VF'"/>
                     </StackLayout>
                     <!--LISTVIEW MED FORECAST-->
-                    <ListView x:Name="listwithForecast" Grid.Row="3" VerticalScrollBarVisibility="Never" BackgroundColor="Transparent" ItemsSource="{Binding Forecast.Items}" Grid.ColumnSpan="12" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <ListView x:Name="_listwithForecast" Grid.Row="3" VerticalScrollBarVisibility="Never" BackgroundColor="Transparent" ItemsSource="{Binding Forecast.Items}" Grid.ColumnSpan="12" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -164,7 +175,7 @@
                                                 <ColumnDefinition Width="*"></ColumnDefinition>
                                             </Grid.ColumnDefinitions>
                                             <Frame 
-                                            CornerRadius="35"
+                                            CornerRadius="10"
                                             Padding="0"
                                             BackgroundColor="#f5e684"
                                             Opacity="0.8"
@@ -235,8 +246,8 @@
             </StackLayout>
 
             <!--KARTA-->
-            <StackLayout Grid.Row="3" Grid.ColumnSpan="12" Margin="0,0,0,10" >
-                <maps:Map x:Name="map" MapClicked="map_MapClicked" ItemsSource="{Binding Forecast}" >
+            <StackLayout Grid.Row="3" Grid.ColumnSpan="12" Margin="5,0,10,5" xct:CornerRadiusEffect.CornerRadius="5" >
+                <maps:Map x:Name="_map" MapClicked="map_MapClicked" ItemsSource="{Binding Forecast}" >
                     <maps:Map.ItemTemplate >
                         <DataTemplate>
                             <maps:Pin Position="{Binding Items.Position}" />
@@ -247,11 +258,11 @@
                
             </StackLayout>
 
-            <!--LISTVIEW MED REVIEWS-->
-            <ListView 
+                <!--LISTVIEW MED REVIEWS--><!--
+                <ListView 
                 Grid.Row="4" Margin="0,10" Grid.ColumnSpan="12" VerticalScrollBarVisibility="Never"
                 ItemsSource="{Binding AttractionList}"
-                x:Name="listofOldReviews"
+                x:Name="_listofOldReviews"
                 IsVisible="false">
                 <ListView.Behaviors>
                     <xct:EventToCommandBehavior
@@ -310,39 +321,41 @@
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>
-            <!--LISTVIEW-->
+                </ListView>-->
+                 <!--LISTVIEW-->
+            
+            
+            <!--REVIEW LIST VIEW!-->
+            <ListView Grid.Row="2" Grid.ColumnSpan="12" Margin="0,10" VerticalScrollBarVisibility="Never" ItemsSource="{Binding Reviews}" x:Name="_theReviewlist" IsVisible="false" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame HeightRequest="120" Margin="5,5" BackgroundColor="#C1C1C1" CornerRadius="10" HasShadow="True">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
 
-            <ListView Grid.Row="3" Grid.ColumnSpan="12" Margin="0,10" VerticalScrollBarVisibility="Never" ItemsSource="{Binding Reviews}" x:Name="thelistview" IsVisible="false" >
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Frame HeightRequest="120" Margin="5,5" BackgroundColor="#C1C1C1" CornerRadius="40" HasShadow="True">
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="*"></RowDefinition>
-                                            <RowDefinition Height="*"></RowDefinition>
-                                            <RowDefinition Height="*"></RowDefinition>
-                                            <RowDefinition Height="*"></RowDefinition>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="50"></ColumnDefinition>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
+                                    <!--IMAGE-->
 
-                                        <!--IMAGE-->
-
-                                        <Image 
+                                    <Image 
                                         Source="{Binding Image}"  
                                         HorizontalOptions="Start"
                                         VerticalOptions="Start"
@@ -350,14 +363,14 @@
                                         WidthRequest="70"
                                         BackgroundColor="Black"
                                         Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2">
-                                        </Image>
+                                    </Image>
 
-                                        <Label Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="5" Padding="0" Margin="-10,0,10,0" Text="{Binding Description}" FontSize="12" TextColor="Black" FontFamily="ThemeFontRegular" VerticalOptions="Center" Opacity="1"></Label>
-                                        <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="1" Padding="0" Margin="-10,0,10,0" Text="{Binding User.FirstName}" FontSize="12" TextColor="Black" FontFamily="ThemeFontRegular" VerticalOptions="Center" Opacity="1"></Label>
-                                        <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Padding="0"  Margin="0,0,0,0" Text="{Binding User.LastName}" FontSize="12" TextColor="Black" FontFamily="ThemeFontRegular" VerticalOptions="Center" Opacity="1"></Label>
-                                        <Label Grid.Row="0" Grid.RowSpan="3" Grid.Column="2" Grid.ColumnSpan="6" Text="{Binding User.Comment}"></Label>
-                                        <!--LIKE-->
-                                        <ImageButton                                        
+                                    <Label Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="5" Padding="0" Margin="-10,0,10,0" Text="{Binding Description}" FontSize="12" TextColor="Black" FontFamily="ThemeFontRegular" VerticalOptions="Center" Opacity="1"></Label>
+                                    <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="1" Padding="0" Margin="-10,0,10,0" Text="{Binding User.FirstName}" FontSize="12" TextColor="Black" FontFamily="ThemeFontRegular" VerticalOptions="Center" Opacity="1"></Label>
+                                    <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Padding="0"  Margin="0,0,0,0" Text="{Binding User.LastName}" FontSize="12" TextColor="Black" FontFamily="ThemeFontRegular" VerticalOptions="Center" Opacity="1"></Label>
+                                    <Label Grid.Row="0" Grid.RowSpan="3" Grid.Column="2" Grid.ColumnSpan="6" Text="{Binding User.Comment}"></Label>
+                                    <!--LIKE-->
+                                    <ImageButton                                        
                                         Clicked="LikeThumb_Clicked" 
                                         Grid.Row="0" 
                                         Grid.Column="10" 
@@ -365,10 +378,10 @@
                                         Margin="0,0,0,0" 
                                         HeightRequest="70" 
                                         >
-                                        </ImageButton>
-                                        <Label Grid.Row="1" Grid.Column="10" Text="{Binding TotalLikes, Mode=TwoWay}" Margin="5,0,0,0"></Label>
-                                        <!--DISLIKE-->
-                                        <ImageButton 
+                                    </ImageButton>
+                                    <Label Grid.Row="1" Grid.Column="10" Text="{Binding TotalLikes, Mode=TwoWay}" Margin="5,0,0,0"></Label>
+                                    <!--DISLIKE-->
+                                    <ImageButton 
                                         Grid.Row="0" 
                                         Grid.Column="11" 
                                         Source="{Binding DislikeThumbImgSrc}" 
@@ -376,55 +389,55 @@
                                         Margin="0,0,0,0" 
                                         HeightRequest="70">
 
-                                        </ImageButton>
+                                    </ImageButton>
 
-                                        <Label Text="{Binding TotalDislikes, Mode=TwoWay}" Grid.Row="1" Grid.Column="11" Margin="7,0,0,0"></Label>
-                                        <!--STARS-->
-                                        <Image Grid.Row="2" Grid.Column="7" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
-                                        <Image Grid.Row="2" Grid.Column="8" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
-                                        <Image Grid.Row="2" Grid.Column="9" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
-                                        <Image Grid.Row="2" Grid.Column="10" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
-                                        <Image Grid.Row="2" Grid.Column="11" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
-                                        <!--COMMENTS-->
-                                        <Label Text="{Binding TotalComments, Mode=TwoWay}" Grid.Row="3" Grid.Column="2" Margin="20,0,0,0" Grid.ColumnSpan="1"></Label>
+                                    <Label Text="{Binding TotalDislikes, Mode=TwoWay}" Grid.Row="1" Grid.Column="11" Margin="7,0,0,0"></Label>
+                                    <!--STARS-->
+                                    <Image Grid.Row="2" Grid.Column="7" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
+                                    <Image Grid.Row="2" Grid.Column="8" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
+                                    <Image Grid.Row="2" Grid.Column="9" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
+                                    <Image Grid.Row="2" Grid.Column="10" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
+                                    <Image Grid.Row="2" Grid.Column="11" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
+                                    <!--COMMENTS-->
+                                    <Label Text="{Binding TotalComments, Mode=TwoWay}" Grid.Row="3" Grid.Column="2" Margin="20,0,0,0" Grid.ColumnSpan="1"></Label>
                                     <ImageButton Source="{Binding CommentImgSrc}" Grid.Row="3" Grid.Column="3" Margin="0,0,0,0" Grid.ColumnSpan="2" Clicked="CommentButton_Clicked">
 
-                                        </ImageButton>
-                                        <!--RATING TEXT-->
-                                        <Label Text="5/5" Grid.Row="3" Grid.Column="9" Margin="20,0,0,0" Grid.ColumnSpan="2"></Label>
+                                    </ImageButton>
+                                    <!--RATING TEXT-->
+                                    <Label Text="5/5" Grid.Row="3" Grid.Column="9" Margin="20,0,0,0" Grid.ColumnSpan="2"></Label>
 
 
-                                    </Grid>
+                                </Grid>
 
-                                </Frame>
-                            </ViewCell>
+                            </Frame>
+                        </ViewCell>
 
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                <!--COMMENT LISTVIEW-->
-                <Frame HeightRequest="1000" Margin="5,5" BackgroundColor="#C1C1C1" CornerRadius="40" x:Name="commentFrame" IsVisible="false" BorderColor="Black" Grid.Row="3">
-                    <StackLayout>
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="50"></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Label 
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!--COMMENT LISTVIEW-->
+            <Frame  Margin="5,5" BackgroundColor="#C1C1C1" CornerRadius="10" x:Name="commentFrame" IsVisible="false" BorderColor="Black" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="10">
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label 
                             Text="Comments" 
                             TextTransform="Uppercase" 
                             FontAttributes="Bold" 
@@ -434,47 +447,46 @@
                             Grid.ColumnSpan="7"
                             Grid.Row="0">
 
-                                </Label>
-                                <ImageButton 
+                            </Label>
+                            <ImageButton 
                             Grid.Row="0"
                             WidthRequest="20" 
                             HeightRequest="20" 
                             Source="remove.png" 
                             Clicked="CloseCommentButton_Clicked"  
                             Grid.Column="15">
-                                </ImageButton>
-                            </Grid>
-                        </StackLayout>
-
-                        <ListView x:Name="commentListView">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <StackLayout Orientation="Horizontal">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                                    <ColumnDefinition Width="300"></ColumnDefinition>
-                                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                                </Grid.ColumnDefinitions>
-
-                                                <Label Text="robin edin" FontAttributes="Bold" TextColor="#355C7D" Grid.Column="0"></Label>
-                                                <Label Text="{Binding Comment}" Grid.Column="1"></Label>
-                                                <Label Text="{Binding CommentCreated}" TextColor="#5b5f66" FontSize="10" VerticalOptions="End" Grid.Column="2"></Label>
-                                            </Grid>
-                                        </StackLayout>
-
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    <Entry x:Name="commentEntry" Completed="Comment_Completed"  Placeholder="Enter your comment here..." ></Entry>
+                            </ImageButton>
+                        </Grid>
                     </StackLayout>
 
+                    <ListView x:Name="commentListView" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="10">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="300"></ColumnDefinition>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
 
-                </Frame>
+                                            <Label Text="robin edin" FontAttributes="Bold" TextColor="#355C7D" Grid.Column="0"></Label>
+                                            <Label Text="{Binding Comment}" Grid.Column="1"></Label>
+                                            <Label Text="{Binding CommentCreated}" TextColor="#5b5f66" FontSize="10" VerticalOptions="End" Grid.Column="2"></Label>
+                                        </Grid>
+                                    </StackLayout>
 
-            
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Entry x:Name="commentEntry" Completed="Comment_Completed"  Placeholder="Enter your comment here..." ></Entry>
+                </StackLayout>
+
+
+            </Frame>
+
         </Grid>
     </ScrollView>
 

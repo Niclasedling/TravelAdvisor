@@ -29,7 +29,7 @@ namespace TravelAdvisor.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(59.3194903, 18.075060000000007), Distance.FromMeters(15000)));
+            _map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(59.3194903, 18.075060000000007), Distance.FromMeters(15000)));
             // Initialize ViewModel
             ViewModel?.Init();
         }
@@ -53,8 +53,8 @@ namespace TravelAdvisor.Views
             };
             wharfPin.MarkerClicked += OnMarkerClickedAsync;
 
-            map.Pins.Add(boardwalkPin);
-            map.Pins.Add(wharfPin);
+            _map.Pins.Add(boardwalkPin);
+            _map.Pins.Add(wharfPin);
 
         }
 
@@ -121,10 +121,10 @@ namespace TravelAdvisor.Views
             var searchbar = sender as SearchBar;
             var userViewModel = searchbar.BindingContext as UserPageViewModel;
             userViewModel.fetchedForecast = searchDestination.Text;
-            listofOldReviews.IsEnabled = false;
+            //listofOldReviews.IsEnabled = false;
             userViewModel.Forecast = await userViewModel.GetForecast();
             userViewModel.cityName = userViewModel.Forecast.City;
-            map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(userViewModel.Forecast.Items[0].Latitude, userViewModel.Forecast.Items[0].Longitude), Distance.FromMeters(15000)));
+            _map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(userViewModel.Forecast.Items[0].Latitude, userViewModel.Forecast.Items[0].Longitude), Distance.FromMeters(15000)));
         }
 
         private void LikeThumb_Clicked(object sender, EventArgs e)
@@ -226,16 +226,22 @@ namespace TravelAdvisor.Views
             if (!commentFrame.IsVisible)
             {
                 commentFrame.IsVisible = true;
+                _theReviewlist.IsVisible = false;
+                _rowtwo.Height = 190;
+
             }
             else
             {
                 commentFrame.IsVisible = false;
+                
             }
         }
 
         private void CloseCommentButton_Clicked(object sender, EventArgs e)
         {
             commentFrame.IsVisible = false;
+            _theReviewlist.IsVisible = true;
+            _rowtwo.Height = 800;
         }
 
         private void Comment_Completed(object sender, EventArgs e)
@@ -253,11 +259,26 @@ namespace TravelAdvisor.Views
             entry.Text = "";
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void myReview_Button_Clicked(object sender, EventArgs e)
         {
-            listwithForecast.IsVisible = false;
-            map.IsVisible = false;
-            thelistview.IsVisible = true;
+            _listwithForecast.IsVisible = false;
+            _map.IsVisible = false;
+            _theReviewlist.IsVisible = true;
+            _myReviewsButton.IsVisible = false;
+            _BackButton.IsVisible = true;
+            _cityNameLable.IsVisible = false;
+            _rowtwo.Height = 800;
+        }
+
+        private void Button_Back_Clicked(object sender, EventArgs e)
+        {
+            _listwithForecast.IsVisible = true;
+            _map.IsVisible = true;
+            _theReviewlist.IsVisible = false;
+            _myReviewsButton.IsVisible = true;
+            _BackButton.IsVisible = false;
+            _cityNameLable.IsVisible = true;
+            _rowtwo.Height = 190;
         }
     }
 }
