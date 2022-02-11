@@ -69,7 +69,7 @@
                 TextColor="White" 
                 CornerRadius="15" 
                 FontAttributes="Bold"
-                    Command="{Binding GetReviews}"
+                Command="{Binding GetReviews}"
                 Clicked="Button_Clicked">
             </Button>
             <!--Favorites BUTTON-->
