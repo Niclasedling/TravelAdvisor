@@ -20,31 +20,86 @@ namespace TravelAdvisor.Services
 
         public async Task<AttractionDto> GetAttraction(Guid id)
         {
-            return await _attractionClient.GetAsync(id);
+            try
+            {
+                return await _attractionClient.GetAsync(id);
+
+            }
+            catch (Exception mess)
+            {
+
+                throw new Exception(mess.Message);
+            }
         }
 
         public async Task<List<AttractionDto>> GetAllAttractions()
         {
-            return await _attractionClient.GetListAsync("GetList");
+            try
+            {
+                return await _attractionClient.GetListAsync("GetList");
+
+            }
+            catch (Exception mess)
+            {
+
+                throw new Exception(mess.Message);
+            }
         }
         public async Task<Guid> CreateAttraction(AttractionCreateDto newAttraction)
         {
-            return await _attractionClient.PostAsync(newAttraction);
+            try
+            {
+                return await _attractionClient.PostAsync(newAttraction);
+
+            }
+            catch (Exception mess)
+            {
+
+                throw new Exception(mess.Message);
+            }
         }
 
         public async Task<bool> DeleteAttraction(Guid id)
         {
-            return await _attractionClient.DeleteAsync(id);
+            try
+            {
+                return await _attractionClient.DeleteAsync(id);
+
+            }
+            catch (Exception mess)
+            {
+
+                throw new Exception(mess.Message);
+            }
         }
 
         public async Task<bool> UpdateAttraction(AttractionUpdateDto updateAttraction)
         {
-            return await _attractionClient.PutAsync(updateAttraction);
+
+            try
+            {
+                return await _attractionClient.PutAsync(updateAttraction);
+
+            }
+            catch (Exception mess)
+            {
+
+                throw new Exception(mess.Message);
+            }
         }
 
         public async Task<List<AttractionDto>> GetAllAttractionsByCity(string city)
         {
-            return await _attractionClient.GetListAsyncByCity(city);
+            try
+            {
+                return await _attractionClient.GetListAsyncByCity(city);
+
+            }
+            catch (Exception mess)
+            {
+
+                throw new Exception(mess.Message); 
+            }
         }
     }
 }

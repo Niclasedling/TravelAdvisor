@@ -32,9 +32,7 @@ namespace TravelAdvisor.ViewModels
                 OnPropertyChanged("UserToComment");
             } 
         }
-        private List<ReviewDto> reviewList { get; set; }
-        public List<ReviewDto> ReviewList { get { return reviewList; } set { reviewList = value; OnPropertyChanged("ReviewList"); } }
-
+        
         public Command GoBack => new Command(async () => await NavigationService.GoBack());
 
         public DetailsPageViewModel(INavService naviService) : base(naviService)
@@ -48,9 +46,30 @@ namespace TravelAdvisor.ViewModels
             App.globalUserToComment = new UserDto();
             App.globalUserToComment.FirstName = "";
             App.globalUserToComment.LastName = "";
-            //App.globalCurrentAttraction.Reviews = await GetReviews();
             ReviewList = await GetReviews();
+            //var allLikesForCurrentUser = ReviewList
+            //    .Select(x => x)
+            //    .Where(x => x.User == App.globalCurrentUser)
+            //    .Where(x => x.User.HasLikedReview
+            //    .ContainsKey(x.Id) && x.User.HasLikedReview
+            //    .ContainsValue(true))
+            //    .ToList();                                                          //Ska visa hela listan
+
+            //ReviewList.Select(x => x)
+                
+            //var allDislikesForCurrentUser = ReviewList
+            //    .Select(x => x)
+            //    .Where(x => x.User == App.globalCurrentUser)
+            //    .Where(x => x.User.HasLikedReview
+            //    .ContainsKey(x.Id) && x.User.HasLikedReview
+            //    .ContainsValue(false))
+            //    .ToList();
+
+         
         }
+
+        public List<ReviewDto> reviewList { get; set; }
+        public List<ReviewDto> ReviewList { get { return reviewList; } set { reviewList = value; OnPropertyChanged("ReviewList"); } }
 
         private async Task<List<ReviewDto>> GetReviews()
         {

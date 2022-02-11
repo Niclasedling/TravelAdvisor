@@ -9,7 +9,8 @@ using TravelAdvisor.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
-
+using TravelAdvisor.Popups;
+using Xamarin.CommunityToolkit.Extensions;
 
 namespace TravelAdvisor.Views
 {
@@ -70,6 +71,8 @@ namespace TravelAdvisor.Views
             Position position = e.Position;
             var addresses = await _geocoder.GetAddressesForPositionAsync(e.Position);
             var address = addresses.FirstOrDefault();
+
+            Navigation.ShowPopup(new PointOfInterestPopup());
 
             //var answer = await DisplayActionSheet($"Do you want to add an attraction for {address}?", "Cancel", null, "Yes", "No");
 

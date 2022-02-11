@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="TravelAdvisor.Popups.PointOfInterestPopup"
+             Size="300,300">
+
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#36454F" Padding="10">
+        <Label HorizontalOptions="CenterAndExpand" Text="Create new attraction" FontAttributes="Bold" FontSize="14" TextColor="White"></Label>
+        <Entry   Placeholder="Title of attraction" Margin="10,0,10,0"></Entry>
+        <Entry   Placeholder="Name of attraction" Margin="10,0,10,0"></Entry>
+        <Entry   Placeholder="Rating of attraction (1-5)" Margin="10,0,10,0"></Entry>
+        <StackLayout Orientation="Horizontal">
+            <RadioButton CheckedChanged="Star_CheckedChanged">
+                <RadioButton.Content>
+                    <Image Source="newstar.png" HorizontalOptions="Start"></Image>
+                </RadioButton.Content>
+            </RadioButton>
+            <RadioButton Content="2" CheckedChanged="Star_CheckedChanged" Margin="10,0,0,0"></RadioButton>
+            <RadioButton Content="3" CheckedChanged="Star_CheckedChanged" Margin="10,0,0,0"></RadioButton>
+            <RadioButton Content="4" CheckedChanged="Star_CheckedChanged" Margin="10,0,0,0"></RadioButton>
+            <RadioButton Content="5" CheckedChanged="Star_CheckedChanged" Margin="10,0,0,0"></RadioButton>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Button HorizontalOptions="StartAndExpand" Text="Create" Margin="10" TextColor="White"></Button>
+            <Button HorizontalOptions="EndAndExpand" Text="Cancel" Margin="10" TextColor="White"></Button>
+        </StackLayout>
+       
+    </StackLayout>
+    
+</xct:Popup>
