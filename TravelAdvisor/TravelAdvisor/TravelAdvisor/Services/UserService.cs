@@ -34,38 +34,93 @@ namespace TravelAdvisor.Services
 
         public async Task<UserDto> GetUser(Guid id)
         {
-            return await _userClient.GetAsync(id);
-      
+            try
+            {
+                return await _userClient.GetAsync(id);
+
+            }
+            catch (Exception mess)
+            {
+
+                throw new Exception(mess.Message);
+            }
+
         }
 
         public async Task<bool> DeleteUser(Guid id)
         {
-            return await _userClient.DeleteAsync(id);
+            try
+            {
+                return await _userClient.DeleteAsync(id);
+
+            }
+            catch (Exception mess)
+            {
+
+                throw new Exception(mess.Message);
+            }
         }
 
         public async Task<Guid> CreateUser(UserCreateDto user)
         {
-            await App.Current.MainPage.DisplayAlert("Successful", "User created", "OK");
-            await _navService.NavigateTo<LoginPageViewModel>();
-            return await _userClient.PostAsync(user);
+            
+
+            try
+            {
+                await App.Current.MainPage.DisplayAlert("Successful", "User created", "OK");
+                await _navService.NavigateTo<LoginPageViewModel>();
+                return await _userClient.PostAsync(user);
+            }
+            catch (Exception mess)
+            {
+
+                throw new Exception(mess.Message);
+            }
 
 
         }
 
         public async Task<bool> UpdateUser(UserUpdateDto user)
         {
-            return await _userClient.PutAsync(user);
+            try
+            {
+                return await _userClient.PutAsync(user);
+
+            }
+            catch (Exception mess)
+            {
+
+                throw new Exception(mess.Message);
+            }
         }
 
         public async Task<List<UserDto>> GetAllUsers()
         {
 
-           var item = await _userClient.GetListAsync("GetAll");
-            return item;
+           
+            try
+            {
+                var item = await _userClient.GetListAsync("GetAll");
+                return item;
+            }
+            catch (Exception mess)
+            {
+
+                throw new Exception(mess.Message);
+            }
         }
         public async Task<Guid> Login(UserLoginDto user)
         {
-            return await _authClient.Login(user);
+            try
+            {
+                return await _authClient.Login(user);
+            }
+            catch (Exception mess)
+            {
+
+                throw new Exception(mess.Message); 
+            }
+            
         }
         
     }

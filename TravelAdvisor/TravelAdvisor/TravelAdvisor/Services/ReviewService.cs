@@ -20,12 +20,30 @@ namespace TravelAdvisor.Services
 
         public async Task<Guid> Create(ReviewCreateDto newReview)
         {
-            return await _reviewClient.PostAsync(newReview);
+            try
+            {
+                return await _reviewClient.PostAsync(newReview);
+
+            }
+            catch (Exception mess)
+            {
+
+                throw new Exception(mess.Message);
+            }
         }
 
         public async Task<bool> Delete(Guid id)
         {
-            return await _reviewClient.DeleteAsync(id);
+            try
+            {
+                return await _reviewClient.DeleteAsync(id);
+
+            }
+            catch (Exception mess)
+            {
+
+                throw new Exception(mess.Message);
+            }
         }
 
         public Task<ReviewDto> GetAll()
@@ -40,11 +58,29 @@ namespace TravelAdvisor.Services
 
         public async Task<List<ReviewDto>> GetListById(Guid id)
         {
-            return await _reviewClient.GetListAsyncById(id);
+            try
+            {
+                return await _reviewClient.GetListAsyncById(id);
+
+            }
+            catch (Exception mess)
+            {
+
+                throw new Exception(mess.Message);
+            }
         }
         public async Task<List<ReviewDto>> GetAllReviews()
         {
-            return await _reviewClient.GetListAsync("GetAll");
+            try
+            {
+                return await _reviewClient.GetListAsync("GetAll");
+
+            }
+            catch (Exception mess)
+            {
+
+                throw new Exception(mess.Message); 
+            }
         }
 
         public Task<bool> Update(ReviewUpdateDto updateReview)

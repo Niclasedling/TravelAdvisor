@@ -25,11 +25,20 @@ namespace TravelAdvisor.Services
 
         public async Task<Forecast> GetForcast(string cityName)
         {
-            string path = $"GetAll?cityName={cityName}";
+            try
+            {
+                string path = $"GetAll?cityName={cityName}";
 
-            var item = await _forecastServiceClient.GetListAsync(path,"data");
+                var item = await _forecastServiceClient.GetListAsync(path, "data");
+
+                return item;
+            }
+            catch (Exception mess)
+            {
+
+                throw new Exception(mess.Message); 
+            }
             
-            return item;
         }
 
 
