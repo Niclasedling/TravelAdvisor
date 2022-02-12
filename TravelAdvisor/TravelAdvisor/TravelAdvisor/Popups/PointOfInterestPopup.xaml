@@ -22,7 +22,7 @@
             <RadioButton Content="5" CheckedChanged="Star_CheckedChanged" Margin="10,0,0,0"></RadioButton>
         </StackLayout>
         <StackLayout Orientation="Horizontal">
-            <Button HorizontalOptions="StartAndExpand" Text="Create" Margin="10" TextColor="White"></Button>
+            <Button HorizontalOptions="StartAndExpand" Text="Create" Margin="10" TextColor="White" Clicked="Create_Clicked"></Button>
             <Button HorizontalOptions="EndAndExpand" Text="Cancel" Margin="10" TextColor="White"></Button>
         </StackLayout>
        

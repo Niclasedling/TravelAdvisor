@@ -24,5 +24,10 @@ namespace TravelAdvisor.Popups
             var radioButton = sender as RadioButton;
             
         }
+
+        private void Create_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }
