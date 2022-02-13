@@ -72,8 +72,8 @@ namespace TravelAdvisor.Views
             var addresses = await _geocoder.GetAddressesForPositionAsync(e.Position);
             var address = addresses.FirstOrDefault();
 
-            var result = await Navigation.ShowPopupAsync(new PointOfInterestPopup());
-            await DisplayAlert("You created a new attraction!", $"{result}", "Ok");
+            var result = await Navigation.ShowPopupAsync(new PointOfInterestPopup(address, position.Longitude, position.Latitude));
+            
 
             //var answer = await DisplayActionSheet($"Do you want to add an attraction for {address}?", "Cancel", null, "Yes", "No");
 

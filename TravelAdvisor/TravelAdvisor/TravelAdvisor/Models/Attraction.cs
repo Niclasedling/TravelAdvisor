@@ -23,6 +23,7 @@ namespace TravelAdvisor.Models
         public string Details { get; set; }
 
         public List<ReviewDto> Reviews { get; set; }
+       
 
     }
     
@@ -63,6 +64,8 @@ namespace TravelAdvisor.Models
         public double Longitude { get; set; }
 
         public double Latitude { get; set; }
+
+        public string City { get; set; }
 
     }
 }
