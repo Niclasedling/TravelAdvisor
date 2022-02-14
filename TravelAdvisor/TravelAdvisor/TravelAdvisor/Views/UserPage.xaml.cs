@@ -119,7 +119,7 @@ namespace TravelAdvisor.Views
 
         private async void searchDestination_SearchButtonPressed(object sender, EventArgs e)
         {
-            if (_BackButton.IsVisible = true)
+            if (_BackButton.IsVisible)
             {
                 _BackButton.IsVisible = false;
                 _myReviewsButton.IsVisible = true;
@@ -240,7 +240,7 @@ namespace TravelAdvisor.Views
             {
                 commentFrame.IsVisible = true;
                 _theReviewlist.IsVisible = false;
-                _rowtwo.Height = 190;
+                _rowtwo.Height = 307;
 
             }
             else
@@ -292,7 +292,7 @@ namespace TravelAdvisor.Views
             _myReviewsButton.IsVisible = true;
             _BackButton.IsVisible = false;
             _cityNameLable.IsVisible = true;
-            _rowtwo.Height = 190;
+            _rowtwo.Height = 307;
         }
     }
 }

@@ -16,7 +16,7 @@
         <Grid BackgroundColor="#F9F9F9" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="20">
             <Grid.RowDefinitions>
                 <!--0--><RowDefinition Height="35"></RowDefinition>
-                <!--1--><RowDefinition Height="220"></RowDefinition>
+                <!--1--><RowDefinition Height="303"></RowDefinition>
                 <!--2--><RowDefinition Height="350"></RowDefinition>
                 <!--3--><RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
@@ -92,7 +92,7 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <Frame HeightRequest="75" Margin="5,5" BackgroundColor="#aac6f2">
+                                    <Frame HeightRequest="75" Margin="0,2,0,2" BackgroundColor="#aac6f2">
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="50"></RowDefinition>

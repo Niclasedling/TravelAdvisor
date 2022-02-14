@@ -15,7 +15,7 @@
             <Grid.RowDefinitions>
                 <!--0--><RowDefinition Height="35"></RowDefinition>
                 <!--1--><RowDefinition Height="35" x:Name="_rowone"></RowDefinition>
-                <!--2--><RowDefinition Height="190" x:Name="_rowtwo"></RowDefinition>
+                <!--2--><RowDefinition Height="307" x:Name="_rowtwo"></RowDefinition>
                 <!--3--><RowDefinition Height="350"></RowDefinition>
                 <!--4--><RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
@@ -153,7 +153,7 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <Frame HeightRequest="75" Margin="5,5" BackgroundColor="#aac6f2">
+                                    <Frame HeightRequest="75" Margin="0,2,0,2" BackgroundColor="#aac6f2">
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="50"></RowDefinition>
@@ -246,7 +246,7 @@
             </StackLayout>
 
             <!--KARTA-->
-            <StackLayout Grid.Row="3" Grid.ColumnSpan="12" Margin="5,0,10,5" xct:CornerRadiusEffect.CornerRadius="5" >
+            <StackLayout Grid.Row="3" Grid.ColumnSpan="12" Margin="0,0,0,5">
                 <maps:Map x:Name="_map" MapClicked="map_MapClicked" ItemsSource="{Binding Forecast}" >
                     <maps:Map.ItemTemplate >
                         <DataTemplate>
