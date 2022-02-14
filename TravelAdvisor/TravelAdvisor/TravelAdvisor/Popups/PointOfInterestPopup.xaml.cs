@@ -7,6 +7,7 @@ using TravelAdvisor.Models;
 using TravelAdvisor.ViewModels;
 using Xamarin.CommunityToolkit.UI.Views;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
 
 namespace TravelAdvisor.Popups
@@ -17,12 +18,14 @@ namespace TravelAdvisor.Popups
         private string _address;
         private double _longitude;
         private double _latitude;
-        public PointOfInterestPopup(string address, double longitude, double latitude)
+        private Position _position;
+        public PointOfInterestPopup(string address, double longitude, double latitude, Position position)
         {
             InitializeComponent();
             _address = address;
             _longitude = longitude;
             _latitude = latitude;
+            _position = position;
 
         }
         private async void Create_Clicked(object sender, EventArgs e)
@@ -40,6 +43,7 @@ namespace TravelAdvisor.Popups
                 City = userPageViewModel.fetchedForecast,
                 Longitude = _longitude,
                 Latitude = _latitude,
+                Position = _position,
                 Price = 100
             };
           

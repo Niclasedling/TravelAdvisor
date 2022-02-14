@@ -11,6 +11,7 @@ using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
 using TravelAdvisor.Popups;
 using Xamarin.CommunityToolkit.Extensions;
+using TravelAdvisor.Interfaces;
 
 namespace TravelAdvisor.Views
 {
@@ -18,45 +19,25 @@ namespace TravelAdvisor.Views
     public partial class UserPage : ContentPage
     {
         UserPageViewModel ViewModel => BindingContext as UserPageViewModel;
+        
         Geocoder _geocoder;
-
+        public readonly IAttractionService _attractionService;
         public UserPage()
         {
             InitializeComponent();
             _geocoder = new Geocoder();
+            _attractionService = DependencyService.Get<IAttractionService>();
             BindingContext = new UserPageViewModel(DependencyService.Get<INavService>());
         }
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
             _map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(59.3194903, 18.075060000000007), Distance.FromMeters(15000)));
+            await SetPins();
             // Initialize ViewModel
             ViewModel?.Init();
         }
-        //void OnButtonClicked(object sender, EventArgs e)
-        //{
-        //    Pin boardwalkPin = new Pin
-        //    {
-        //        Position = new Position(36.9641949, -122.0177232),
-        //        Label = "Boardwalk",
-        //        Address = "Santa Cruz",
-        //        Type = PinType.Place
-        //    };
-        //    boardwalkPin.MarkerClicked += OnMarkerClickedAsync;
-
-        //    Pin wharfPin = new Pin
-        //    {
-        //        Position = new Position(36.9571571, -122.0173544),
-        //        Label = "Wharf",
-        //        Address = "Santa Cruz",
-        //        Type = PinType.Place
-        //    };
-        //    wharfPin.MarkerClicked += OnMarkerClickedAsync;
-
-        //    _map.Pins.Add(boardwalkPin);
-        //    _map.Pins.Add(wharfPin);
-
-        //}
+        
 
 
         async void OnMarkerClickedAsync(object sender, PinClickedEventArgs e)
@@ -69,13 +50,36 @@ namespace TravelAdvisor.Views
                 ,"Ok");
         }
 
+        public async Task SetPins()
+        {
+            var allAttractions = await _attractionService.GetAllAttractions();
+
+
+            foreach (var item in allAttractions)
+            {
+
+                Position position = new Position(item.Latitude, item.Longitude);
+                
+                Pin newPin = new Pin
+                {
+                    Position = position,
+                    Label = item.Name,
+                    Address = item.Address,
+                    Type = PinType.Place
+                };
+                _map.Pins.Add(newPin);
+                newPin.MarkerClicked += OnMarkerClickedAsync;
+            }
+        }
+
         private async void map_MapClicked(object sender, MapClickedEventArgs e)
         {
             Position position = e.Position;
+            
             var addresses = await _geocoder.GetAddressesForPositionAsync(e.Position);
             var address = addresses.FirstOrDefault();
 
-            var result = await Navigation.ShowPopupAsync(new PointOfInterestPopup(address, position.Longitude, position.Latitude));
+            var result = await Navigation.ShowPopupAsync(new PointOfInterestPopup(address, position.Longitude, position.Latitude, position));
             if(result as string != "")
             {
                 Pin newPin = new Pin
@@ -90,17 +94,11 @@ namespace TravelAdvisor.Views
                 newPin.MarkerClicked += OnMarkerClickedAsync;
                 await DisplayAlert("Success", "You created an attraction!", "Ok");
             }
-
-            
-
-            
-
-           
-
-
             
            
         }
+
+       
 
         private async void searchDestination_SearchButtonPressed(object sender, EventArgs e)
         {
