@@ -50,7 +50,7 @@ namespace TravelAdvisor.Popups
             }
             else
             {
-                Dismiss("");
+                Dismiss(attraction);
             }
             
             

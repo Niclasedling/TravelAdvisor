@@ -80,6 +80,21 @@ namespace TravelAdvisor.ViewModels
 
         #endregion
 
+        #region PINS
+
+        public async void SetPins()
+        {
+            var allAttractions = await _attractionService.GetAllAttractions();
+
+            foreach (var item in allAttractions)
+            {
+
+            }
+        }
+
+
+
+        #endregion
 
         #region REVIEWS
 

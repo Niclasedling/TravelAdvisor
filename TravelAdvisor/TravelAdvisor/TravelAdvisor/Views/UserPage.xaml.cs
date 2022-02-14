@@ -33,37 +33,40 @@ namespace TravelAdvisor.Views
             // Initialize ViewModel
             ViewModel?.Init();
         }
-        void OnButtonClicked(object sender, EventArgs e)
-        {
-            Pin boardwalkPin = new Pin
-            {
-                Position = new Position(36.9641949, -122.0177232),
-                Label = "Boardwalk",
-                Address = "Santa Cruz",
-                Type = PinType.Place
-            };
-            boardwalkPin.MarkerClicked += OnMarkerClickedAsync;
+        //void OnButtonClicked(object sender, EventArgs e)
+        //{
+        //    Pin boardwalkPin = new Pin
+        //    {
+        //        Position = new Position(36.9641949, -122.0177232),
+        //        Label = "Boardwalk",
+        //        Address = "Santa Cruz",
+        //        Type = PinType.Place
+        //    };
+        //    boardwalkPin.MarkerClicked += OnMarkerClickedAsync;
 
-            Pin wharfPin = new Pin
-            {
-                Position = new Position(36.9571571, -122.0173544),
-                Label = "Wharf",
-                Address = "Santa Cruz",
-                Type = PinType.Place
-            };
-            wharfPin.MarkerClicked += OnMarkerClickedAsync;
+        //    Pin wharfPin = new Pin
+        //    {
+        //        Position = new Position(36.9571571, -122.0173544),
+        //        Label = "Wharf",
+        //        Address = "Santa Cruz",
+        //        Type = PinType.Place
+        //    };
+        //    wharfPin.MarkerClicked += OnMarkerClickedAsync;
 
-            _map.Pins.Add(boardwalkPin);
-            _map.Pins.Add(wharfPin);
+        //    _map.Pins.Add(boardwalkPin);
+        //    _map.Pins.Add(wharfPin);
 
-        }
+        //}
 
 
         async void OnMarkerClickedAsync(object sender, PinClickedEventArgs e)
         {
             //e.HideInfoWindow = true;
-            string pinName = ((Pin)sender).Label;
-            await DisplayAlert("Pin Clicked", $"{pinName} was clicked.", "Ok");
+            var pin = sender as Pin;
+            await DisplayAlert(
+                $"{pin.Label} Clicked", 
+                $"Address: {pin.Address}" 
+                ,"Ok");
         }
 
         private async void map_MapClicked(object sender, MapClickedEventArgs e)
@@ -73,48 +76,30 @@ namespace TravelAdvisor.Views
             var address = addresses.FirstOrDefault();
 
             var result = await Navigation.ShowPopupAsync(new PointOfInterestPopup(address, position.Longitude, position.Latitude));
+            if(result as string != "")
+            {
+                Pin newPin = new Pin
+                {
+                    Position = position,
+                    Label = ((AttractionCreateDto)result).Name,
+                    Address = address,
+                    Type = PinType.Place
+                };
+                _map.Pins.Add(newPin);
+
+                newPin.MarkerClicked += OnMarkerClickedAsync;
+                await DisplayAlert("Success", "You created an attraction!", "Ok");
+            }
+
             
 
-            //var answer = await DisplayActionSheet($"Do you want to add an attraction for {address}?", "Cancel", null, "Yes", "No");
+            
 
-            //if (answer == "Yes")
-            //{
-            //    var category = await DisplayActionSheet("")
-            //    var answerTitle = await DisplayPromptAsync("New attraction", "Name of attraction?", "Ok", "Cancel");
-            //    var answerDetails = await DisplayPromptAsync("New attraction", "Details of attraction?", "Ok", "Cancel");
-            //    var answerTitle = await DisplayPromptAsync("New attraction", "Name of attraction?", "Ok", "Cancel");
-
-            //}
-
-            //await DisplayAlert("Coordiantes", $"Lat: {e.Position.Latitude}, Long {e.Position.Longitude}", "Ok");
+           
 
 
-            //Position position = new Position(e.Position.Latitude, e.Position.Longitude);
-
-            //Pin newPin = new Pin
-            //{
-            //    Position = position,
-            //    Label = "Current Address",
-            //    Address = " ",
-            //    Type = PinType.Place
-            //};
-
-            //var addresses = await _geocoder.GetAddressesForPositionAsync(e.Position);
-            //var address = addresses.FirstOrDefault();
-
-            //var firstanswer = await DisplayActionSheet(address, "Cancel", "Add attraction");
-
-
-            //if (firstanswer == "Cancel")
-            //{
-
-            //}
-            //else if (firstanswer == "Add attraction")
-            //{
-            //    string nameResult = await DisplayPromptAsync("Name of Attraction", "What's the name of the attraction?");
-            //    string detailsResult = await DisplayPromptAsync("Details of Attraction", "Write a description of the attraction.");
-
-            //}
+            
+           
         }
 
         private async void searchDestination_SearchButtonPressed(object sender, EventArgs e)
