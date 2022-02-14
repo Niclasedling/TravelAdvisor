@@ -104,6 +104,16 @@ namespace TravelAdvisor.Views
 
         private async void searchDestination_SearchButtonPressed(object sender, EventArgs e)
         {
+            if (_BackButton.IsVisible)
+            {
+                _BackButton.IsVisible = false;
+                _myReviewsButton.IsVisible = true;
+                _map.IsVisible = true;
+                _theReviewlist.IsVisible = false;
+                _rowtwo.Height = 190;
+                _cityNameLable.IsVisible = true;
+                _listwithForecast.IsVisible = true;
+            }
             var searchbar = sender as SearchBar;
             var userViewModel = searchbar.BindingContext as UserPageViewModel;
             userViewModel.fetchedForecast = searchDestination.Text;
@@ -111,6 +121,7 @@ namespace TravelAdvisor.Views
             userViewModel.Forecast = await userViewModel.GetForecast();
             userViewModel.cityName = userViewModel.Forecast.City;
             _map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(userViewModel.Forecast.Items[0].Latitude, userViewModel.Forecast.Items[0].Longitude), Distance.FromMeters(15000)));
+            
         }
 
         private void LikeThumb_Clicked(object sender, EventArgs e)
@@ -214,7 +225,7 @@ namespace TravelAdvisor.Views
             {
                 commentFrame.IsVisible = true;
                 _theReviewlist.IsVisible = false;
-                _rowtwo.Height = 190;
+                _rowtwo.Height = 307;
 
             }
             else
@@ -266,7 +277,7 @@ namespace TravelAdvisor.Views
             _myReviewsButton.IsVisible = true;
             _BackButton.IsVisible = false;
             _cityNameLable.IsVisible = true;
-            _rowtwo.Height = 190;
+            _rowtwo.Height = 307;
         }
     }
 }
