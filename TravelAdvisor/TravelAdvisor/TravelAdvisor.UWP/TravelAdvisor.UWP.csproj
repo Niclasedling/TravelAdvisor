@@ -153,7 +153,7 @@
     <Content Include="phone.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="remove.png" />
-    <Content Include="Resutrant.jpg" />
+    <Content Include="restaurant.jpg" />
     <Content Include="user.png" />
   </ItemGroup>
   <ItemGroup>

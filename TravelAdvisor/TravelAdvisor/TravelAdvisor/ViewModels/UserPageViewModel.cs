@@ -18,6 +18,7 @@ namespace TravelAdvisor.ViewModels
         private readonly IUserService _userService;
         private readonly IOpenWeatherService _forecastService;
         private readonly IReviewService _reviewService;
+        public readonly IAttractionService _attractionService;
         public string fetchedForecast;
 
         public UserPageViewModel(INavService naviService) : base(naviService)
@@ -25,6 +26,7 @@ namespace TravelAdvisor.ViewModels
             _userService = DependencyService.Get<IUserService>();
             _forecastService = DependencyService.Get<IOpenWeatherService>();
             _reviewService = DependencyService.Get<IReviewService>();
+            _attractionService = DependencyService.Get<IAttractionService>();
         }
         public async override void Init()
         {
@@ -51,6 +53,11 @@ namespace TravelAdvisor.ViewModels
             }
         }
         #region ATTRACTION
+
+        public string NameOfNewAttraction { get; set; }
+        public string DetailsOfNewAttraction { get; set; }
+        
+
         public string NameOfAttraction { get { return App.globalCurrentAttraction.Name; } }
         public string InfoAboutAttraction { get { return App.globalCurrentAttraction.Details; } }
         public ImageSource AttractionImgSrc { get { return App.globalCurrentAttraction.Image; } }
