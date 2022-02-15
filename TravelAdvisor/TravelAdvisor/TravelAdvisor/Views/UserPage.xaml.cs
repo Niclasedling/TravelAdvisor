@@ -102,9 +102,9 @@ namespace TravelAdvisor.Views
 
         private async void searchDestination_SearchButtonPressed(object sender, EventArgs e)
         {
-            if (_BackButton.IsVisible)
+            if (_BackButtonReviews.IsVisible)
             {
-                _BackButton.IsVisible = false;
+                _BackButtonReviews.IsVisible = false;
                 _myReviewsButton.IsVisible = true;
                 _map.IsVisible = true;
                 _theReviewlist.IsVisible = false;
@@ -263,43 +263,69 @@ namespace TravelAdvisor.Views
             _map.IsVisible = false;
             _theReviewlist.IsVisible = true;
             _myReviewsButton.IsVisible = false;
-            _BackButton.IsVisible = true;
+            _BackButtonReviews.IsVisible = true;
             _cityNameLable.IsVisible = false;
             _rowtwo.Height = 800;
-            _BackButton2.IsVisible = false;
+            _BackButtonFavorites.IsVisible = false;
             _favoritesButton.IsVisible = true;
         }
 
-        private void Button_Back_Clicked(object sender, EventArgs e)
+        private void BackButtonReviews(object sender, EventArgs e)
         {
             _listwithForecast.IsVisible = true;
             _map.IsVisible = true;
             _theReviewlist.IsVisible = false;
             _myReviewsButton.IsVisible = true;
-            _BackButton.IsVisible = false;
+            _BackButtonReviews.IsVisible = false;
             _cityNameLable.IsVisible = true;
             _rowtwo.Height = 307;
         }
 
-        private void _BackButton_Clicked(object sender, EventArgs e)
+        private void BackButtonFavorites(object sender, EventArgs e)
         {
             _favoritesButton.IsVisible = true;
-            _BackButton2.IsVisible = false;
+            _BackButtonFavorites.IsVisible = false;
             _map.IsVisible = true;
             _listwithForecast.IsVisible = true;
             _cityNameLable.IsVisible = true;
-            
+            _rowtwo.Height = 307;
+
+
 
         }
 
         private void _favoritesButton_Clicked(object sender, EventArgs e)
         {
             _favoritesButton.IsVisible = false;
-            _BackButton2.IsVisible = true;
+            _BackButtonFavorites.IsVisible = true;
             _map.IsVisible = false;
             _listwithForecast.IsVisible = false;
             _cityNameLable.IsVisible = false;
             _theReviewlist.IsVisible = false;
+            _BackButtonReviews.IsVisible = false;
+            _myReviewsButton.IsVisible = true;
+        }
+
+        private void HeartButton_Clicked(object sender, EventArgs e)
+        {
+            var heartButton = sender as ImageButton;
+            var attraction = heartButton.BindingContext as AttractionDto;
+
+            if (!attraction.RedHart || attraction.HeartstringToCompare == null)
+            {
+                heartButton.Source = attraction.RedHeartImage;
+                attraction.HeartstringToCompare = attraction.RedHeartstringImage;
+                attraction.RedHart = true;
+                attraction.Heart = false;
+            }
+            else
+            {
+                heartButton.Source = attraction.HeartImage;
+                attraction.RedHart = false;
+                attraction.Heart = true;
+            }
+           
+            
         }
     }
 }

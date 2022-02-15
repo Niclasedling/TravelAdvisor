@@ -15,7 +15,16 @@ namespace TravelAdvisor.Models
 
         public string Image { get; set ; }
 
+        public string HeartstringToCompare { get; set; }
         public string Address { get; set; }
+        public ImageSource HeartImage { get { return "noun-favourite-1077408.png"; } }
+        public string HeartstringImage { get { return "noun-favourite-1077408.png"; } }
+        public bool _heart = false;
+        public bool Heart { get { return _heart; } set { _heart = value; } }
+        public ImageSource RedHeartImage { get { return "noun-Redfavourite-1077408.png"; } }
+        public string RedHeartstringImage { get { return "noun-Redfavourite-1077408.png"; } }
+        public bool _redheart = false;
+        public bool RedHart { get { return _redheart; } set { _redheart = value; } }
 
         public string Location { get; set; }
 
@@ -28,7 +37,9 @@ namespace TravelAdvisor.Models
         public double Latitude { get; set; }
 
         public List<ReviewDto> Reviews { get; set; }
-       
+
+        public bool IsFavorited { get; set; }
+
 
     }
     

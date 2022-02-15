@@ -73,7 +73,7 @@
                 Clicked="myReview_Button_Clicked">
             </Button>
             <!--Backbutton My Reviews-->
-            <Button x:Name="_BackButton" Grid.Column="4"
+            <Button x:Name="_BackButtonReviews" Grid.Column="4"
                 Grid.Row="1"
                 Grid.ColumnSpan="3"
                 Text="Back" 
@@ -82,7 +82,7 @@
                 CornerRadius="5" 
                 FontAttributes="Bold"
                 IsVisible="false"
-                Clicked="Button_Back_Clicked">
+                Clicked="BackButtonReviews">
             </Button>
             <!--Favorites BUTTON-->
             <Button x:Name="_favoritesButton" Grid.Column="7"
@@ -96,7 +96,7 @@
                 Clicked="_favoritesButton_Clicked">
             </Button>
             <!--Backbutton My Favorites-->
-            <Button x:Name="_BackButton2" Grid.Column="7"
+            <Button x:Name="_BackButtonFavorites" Grid.Column="7"
                 Grid.Row="1"
                 Grid.ColumnSpan="3"
                 Text="Back" 
@@ -105,7 +105,7 @@
                 CornerRadius="5" 
                 FontAttributes="Bold"
                 IsVisible="false"
-                Clicked="_BackButton_Clicked">
+                Clicked="BackButtonFavorites">
             </Button>
             <!--Login BUTTON-->
             <Button Grid.Column="10"
@@ -159,7 +159,7 @@
                         <!--11-->
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <StackLayout Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="8" Margin="5,0,5,15" HorizontalOptions="Center">
+                    <StackLayout Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="8" Margin="5,0,5,5" HorizontalOptions="Center">
                         <Label x:Name="_cityNameLable" Text="{Binding cityName}" FontSize="25" FontAttributes="Bold" FontFamily="font-family: 'Trip Sans VF'"/>
                     </StackLayout>
                     <!--LISTVIEW MED FORECAST-->
@@ -296,8 +296,14 @@
                                         <RowDefinition Height="*"></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <Image HeightRequest="115" Aspect="AspectFill" Source="{Binding Image}"></Image>
-                                    <Frame CornerRadius="30" BackgroundColor="White" WidthRequest="5" HeightRequest="5" HorizontalOptions="End" VerticalOptions="Start" Margin="5">
-                                        <Image Source="noun-favourite-1077408.png" HeightRequest="50" WidthRequest="50" VerticalOptions="Center" HorizontalOptions="Center" Margin="-10,-10"></Image>
+                                    <Frame CornerRadius="30" BackgroundColor="White" WidthRequest="0" HeightRequest="0" HorizontalOptions="End" VerticalOptions="Start" Margin="7">
+                                        <ImageButton x:Name="_heartImage" Source="{Binding HeartImage}" 
+                                                     HeightRequest="50" 
+                                                     WidthRequest="50" 
+                                                     VerticalOptions="Center" 
+                                                     HorizontalOptions="Center" 
+                                                     Margin="-10,-10,-10,-15"
+                                                     Clicked="HeartButton_Clicked"></ImageButton>
                                     </Frame>
                                     <Grid VerticalOptions="End" Margin="15">
                                         <Frame 
