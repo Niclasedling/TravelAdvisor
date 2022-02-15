@@ -92,28 +92,32 @@ namespace TravelAdvisor.ViewModels
             //Kontrollera vad ni ska hämta!?
 
             var attractions = await _attractionService.GetAllAttractionsByCity(city);
+            var allReviews = await _reviewService.GetAllReviews();
+            
+           
+            foreach (var attraction in attractions)
+            {
+                var foundReviews = allReviews.Select(x => x).Where(x => x.AttractionId == attraction.Id).ToList();
 
+                if (foundReviews != null)
+                {
+                    if (foundReviews.Count != 0)
+                    {
+                        attraction.Reviews = foundReviews;
+                        var averageRating = CalculateAverageRating(attraction.Reviews);
+                        attraction.AverageRating = averageRating;
+                        SetStars(attraction, attraction.AverageRating);
+                    }
+
+                }
+                SetStars(attraction, attraction.AverageRating);
+                
+            }
+            
+            
             if (attractions != null)
             {
-                var reviews = await _reviewService.GetAllReviews();
-                if (reviews is null)
-                {
-                    //error
-                }
-
-                var selectedReviews = reviews.Select(r => r).Where(x => x.Attraction.Id == attractions.Select(y => y.Id).FirstOrDefault()).ToList();
-                if (selectedReviews is null)
-                {
-                    //error
-                }
-
-                else
-                {
-
-                    var avrage = CalculateAverageRating(selectedReviews);
-                   
-                }
-
+                
                 return attractions;
             }
           
@@ -136,12 +140,64 @@ namespace TravelAdvisor.ViewModels
 
         }
 
+        public void SetStars(AttractionDto attraction, int averageRating)
+        {
+            
+                switch (averageRating)
+                {
+                    case 0:
+                        attraction.OneStar = attraction.WhiteStar;
+                        attraction.TwoStars = attraction.WhiteStar;
+                        attraction.ThreeStars = attraction.WhiteStar;
+                        attraction.FourStars = attraction.WhiteStar;
+                        attraction.FiveStars = attraction.WhiteStar;
+                        break;
+                    case 1:
+                        attraction.OneStar = attraction.YellowStar;
+                        attraction.TwoStars = attraction.WhiteStar;
+                        attraction.ThreeStars = attraction.WhiteStar;
+                        attraction.FourStars = attraction.WhiteStar;
+                        attraction.FiveStars = attraction.WhiteStar;
+                        break;
+                    case 2:
+                        attraction.OneStar = attraction.YellowStar;
+                        attraction.TwoStars = attraction.YellowStar;
+                        attraction.ThreeStars = attraction.WhiteStar;
+                        attraction.FourStars = attraction.WhiteStar;
+                        attraction.FiveStars = attraction.WhiteStar;
+                        break;
+                    case 3:
+                        attraction.OneStar = attraction.YellowStar;
+                        attraction.TwoStars = attraction.YellowStar;
+                        attraction.ThreeStars = attraction.YellowStar;
+                        attraction.FourStars = attraction.WhiteStar;
+                        attraction.FiveStars = attraction.WhiteStar;
+                        break;
+                    case 4:
+                        attraction.OneStar = attraction.YellowStar;
+                        attraction.TwoStars = attraction.YellowStar;
+                        attraction.ThreeStars = attraction.YellowStar;
+                        attraction.FourStars = attraction.YellowStar;
+                        attraction.FiveStars = attraction.WhiteStar;
+                        break;
+                    case 5:
+                        attraction.OneStar = attraction.YellowStar;
+                        attraction.TwoStars = attraction.YellowStar;
+                        attraction.ThreeStars = attraction.YellowStar;
+                        attraction.FourStars = attraction.YellowStar;
+                        attraction.FiveStars = attraction.YellowStar;
+                        break;
+
+                }
+            }
+        
+
 
 
 
         #endregion
 
-        #region REVIEWS
+            #region REVIEWS
 
         public ReviewDto ReviewToAdd { get; set; }
         private string userToComment { get; set; }
