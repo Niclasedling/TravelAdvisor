@@ -54,12 +54,9 @@ namespace TravelAdvisor.Popups
             }
             else
             {
+                userPageViewModel.AttractionList = await userPageViewModel._attractionService.GetAllAttractionsByCity(userPageViewModel.fetchedForecast);
                 Dismiss(attraction);
             }
-            
-            
-           
-            
         }
 
         private void Cancel_Clicked(object sender, EventArgs e)

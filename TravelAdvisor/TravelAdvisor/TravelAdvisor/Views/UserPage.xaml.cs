@@ -45,7 +45,7 @@ namespace TravelAdvisor.Views
             //e.HideInfoWindow = true;
             var pin = sender as Pin;
             await DisplayAlert(
-                $"{pin.Label} Clicked", 
+                $"{pin.Label}", 
                 $"Address: {pin.Address}" 
                 ,"Ok");
         }
