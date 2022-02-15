@@ -305,7 +305,7 @@
                                                      Margin="-10,-10,-10,-15"
                                                      Clicked="HeartButton_Clicked"></ImageButton>
                                     </Frame>
-                                    <Grid VerticalOptions="End" Margin="15">
+                                    <!--<Grid VerticalOptions="End" Margin="15">
                                         <Frame 
                                         CornerRadius="13"
                                         Padding="15,5"
@@ -318,22 +318,15 @@
                                                 <Label Text="{Binding Location}" FontSize="12" TextColor="White" FontFamily="ThemeFontRegular" VerticalOptions="Center" Opacity="1"></Label>
                                             </StackLayout>
                                         </Frame>
-                                    </Grid>
+                                    </Grid>-->
                                     <StackLayout Grid.Row="1" Spacing="5" Margin="20,5">
-                                        <Label Text="{Binding Price}" FontSize="15" FontFamily="ThemeFontBold" TextColor="#515151"></Label>
+                                        <Label Text="{Binding Name}" FontSize="15" FontAttributes="Bold" TextColor="Black"></Label>
                                         <StackLayout Orientation="Horizontal" Spacing="15">
                                             <StackLayout Orientation="Horizontal" Spacing="10">
-                                                <Image WidthRequest="16" Source="bed.png"></Image>
-                                                <Label Text="{Binding Location}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
+                                                <Label Text="{Binding Details}" FontSize="12" TextColor="Black"></Label>
                                             </StackLayout>
-                                            <StackLayout Orientation="Horizontal" Spacing="10">
-                                                <Image WidthRequest="16" Source="bed.png"></Image>
-                                                <Label Text="{Binding Location}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
-                                            </StackLayout>
-                                            <StackLayout Orientation="Horizontal" Spacing="10">
-                                                <Image WidthRequest="16" Source="bed.png"></Image>
-                                                <Label Text="{Binding Location}" FontSize="12" FontFamily="ThemeFontRegular" TextColor="#515151"></Label>
-                                            </StackLayout>
+                                            
+                                            
                                         </StackLayout>
                                     </StackLayout>
                                 </Grid>
