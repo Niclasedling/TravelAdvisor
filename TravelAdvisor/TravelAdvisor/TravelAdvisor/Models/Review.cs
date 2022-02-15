@@ -30,7 +30,12 @@ namespace TravelAdvisor.Models
         public string DislikeThumbString { get { return "dislike.png"; } }
         
         public ImageSource YellowStar { get { return "newstar.png"; } }
-        public ImageSource Whitestart { get { return "emptyStar.png"; } }
+        public ImageSource WhiteStar { get { return "emptyStar.png"; } }
+        public ImageSource OneStar { get; set; }
+        public ImageSource TwoStars { get; set; }
+        public ImageSource ThreeStars { get; set; }
+        public ImageSource FourStars { get; set; }
+        public ImageSource FiveStars { get; set; }
 
         public ImageSource LikeThumbImgSrc { get { return "like.png"; } }
         public string LikeThumbString { get { return "like.png"; } }

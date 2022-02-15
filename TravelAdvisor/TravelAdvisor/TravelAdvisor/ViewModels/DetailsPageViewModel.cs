@@ -89,47 +89,95 @@ namespace TravelAdvisor.ViewModels
 
         private async Task<List<ReviewDto>> GetReviews()
         {
-            var averageRating = 0;
-            var totalrating = 0;
+            //var averageRating = 0;
+            //var totalrating = 0;
 
             var reviews = await _reviewService.GetListById(App.globalCurrentAttraction.Id);
 
-
+            foreach (var item in reviews)
+            {
+                switch (item.Rating)
+                {
+                    case 0:
+                        item.OneStar = item.WhiteStar;
+                        item.TwoStars = item.WhiteStar;
+                        item.ThreeStars = item.WhiteStar;
+                        item.FourStars = item.WhiteStar;
+                        item.FiveStars = item.WhiteStar;
+                        break;
+                    case 1:
+                        item.OneStar = item.YellowStar;
+                        item.TwoStars = item.WhiteStar;
+                        item.ThreeStars = item.WhiteStar;
+                        item.FourStars = item.WhiteStar;
+                        item.FiveStars = item.WhiteStar;
+                        break;
+                    case 2:
+                        item.OneStar = item.YellowStar;
+                        item.TwoStars = item.YellowStar;
+                        item.ThreeStars = item.WhiteStar;
+                        item.FourStars = item.WhiteStar;
+                        item.FiveStars = item.WhiteStar;
+                        break;
+                    case 3:
+                        item.OneStar = item.YellowStar;
+                        item.TwoStars = item.YellowStar;
+                        item.ThreeStars = item.YellowStar;
+                        item.FourStars = item.WhiteStar;
+                        item.FiveStars = item.WhiteStar;
+                        break;
+                    case 4:
+                        item.OneStar = item.YellowStar;
+                        item.TwoStars = item.YellowStar;
+                        item.ThreeStars = item.YellowStar;
+                        item.FourStars = item.YellowStar;
+                        item.FiveStars = item.WhiteStar;
+                        break;
+                    case 5:
+                        item.OneStar = item.YellowStar;
+                        item.TwoStars = item.YellowStar;
+                        item.ThreeStars = item.YellowStar;
+                        item.FourStars = item.YellowStar;
+                        item.FiveStars = item.YellowStar;
+                        break;
+                   
+                }
+            }
             // Antal reviews
-            var counter = reviews.Count();
+            //var counter = reviews.Count();
 
-            // Adderad Rating
-            var rating = reviews.Select(x => x.Rating).ToList();
+            //// Adderad Rating
+            //var rating = reviews.Select(x => x.Rating).ToList();
 
-            foreach (var item in rating)
-            {
-                totalrating += item;
-            }
+            //foreach (var item in rating)
+            //{
+            //    totalrating += item;
+            //}
 
-            averageRating = totalrating / counter;
+            //averageRating = totalrating / counter;
 
-            switch (averageRating)
-            {
-                case 1:
+            //switch (averageRating)
+            //{
+            //    case 1:
                     
-                    break;
-                case 2:
+            //        break;
+            //    case 2:
 
-                    break;
-                case 3:
+            //        break;
+            //    case 3:
 
-                    break;
-                case 4:
+            //        break;
+            //    case 4:
 
-                    break;
-                case 5:
+            //        break;
+            //    case 5:
 
-                    break;
+            //        break;
 
-                default:
+            //    default:
 
-                    break;
-            }
+            //        break;
+            //}
 
             if (reviews != null)
             {
@@ -139,12 +187,11 @@ namespace TravelAdvisor.ViewModels
             return null;
         }
 
+       //public async Task CalculateAverageRating()
+       // {
 
+       // }
      
-        //private async Task ShowPopup()
-        //{
-
-        //    await _navigation.ShowPopupAsync(new NewReviewPopup());
-        //}
+       
     }
 }
