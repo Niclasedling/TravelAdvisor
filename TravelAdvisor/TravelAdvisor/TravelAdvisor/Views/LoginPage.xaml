@@ -53,7 +53,7 @@
                                     </Frame>
                                     <Entry x:Name="Email" Placeholder="Email" TextColor="#203fba" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" 
                                            Text="{Binding Email}"
-                                           Keyboard="Email"/>
+                                           Keyboard="Plain"/>
                                 </StackLayout>
                             </Frame>
                             <!--PasswordBox-->
