@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using TravelAdvisor.Interfaces;
 using TravelAdvisor.Models;
 using TravelAdvisor.Popups;
 using TravelAdvisor.Services;
@@ -18,10 +19,13 @@ namespace TravelAdvisor.Views
     public partial class DetailsPage : ContentPage
     {
         //AttractionDto attraction = new AttractionDto();
+      
         DetailsPageViewModel ViewModel => BindingContext as DetailsPageViewModel;
         public DetailsPage()
         {
-            
+
+
+
             InitializeComponent();
             
             BindingContext = new DetailsPageViewModel(DependencyService.Get<INavService>());
@@ -33,54 +37,14 @@ namespace TravelAdvisor.Views
             ViewModel?.Init();          
         }
 
-        private void LikeThumb_Clicked2(object sender, EventArgs e)
-        {
-            var likeButton = sender as ImageButton;
-            var review = likeButton.BindingContext as ReviewDto;
 
-            review.LikeButton = likeButton;
-            if (review.LikeButton == null) return;
-
-            if (App.globalCurrentUser.HasLikedReview.ContainsKey(review.Id))
-            {
-                //App.globalCurrentUser.HasLiked
-                if (App.globalCurrentUser.HasLikedReview.ContainsKey(review.Id) && App.globalCurrentUser.HasLikedReview.ContainsValue(false)
-                    || !App.globalCurrentUser.HasLikedReview.ContainsKey(review.Id))
-                {
-                    review.TotalLikes++;
-                    App.globalCurrentUser.HasLikedReview.Add(review.Id, true);
-                }
-
-                if (App.globalCurrentUser.HasLikedReview.ContainsKey(review.Id) && App.globalCurrentUser.HasLikedReview.ContainsValue(true)
-                    || !App.globalCurrentUser.HasLikedReview.ContainsKey(review.Id))
-                {
-                    review.TotalDislikes--;
-                    App.globalCurrentUser.HasLikedReview.Add(review.Id, false);
-                }
-
-
-                review.LikeButton.Source = review.LikeThumbGreenImgSrc;
-                review.DislikeButton.Source = review.DislikeThumbImgSrc;
-                review.ThumbIsGreen = true;
-                review.ThumbIsRed = false;
-
-                review.ThumbStringToCompare = review.LikeThumbGreenString;
-            }
-            else
-            {
-                review.User.HasLiked = false;
-                review.TotalLikes--;
-                review.LikeButton.Source = review.LikeThumbImgSrc;
-                review.ThumbIsGreen = false;
-                review.ThumbStringToCompare = review.LikeThumbString;
-
-
-            }
-        }
         
 
-        private void LikeThumb_Clicked(object sender, EventArgs e)
+        private async void LikeThumb_Clicked(object sender, EventArgs e)
         {
+
+            ViewModel.LikeList = await ViewModel.GetLikes();
+
             var likeButton = sender as ImageButton;
             var review = likeButton.BindingContext as ReviewDto;
 
