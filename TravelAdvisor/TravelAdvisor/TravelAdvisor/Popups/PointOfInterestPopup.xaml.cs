@@ -19,6 +19,7 @@ namespace TravelAdvisor.Popups
         private double _longitude;
         private double _latitude;
         private Position _position;
+        private string _imageSelected;
         public PointOfInterestPopup(string address, double longitude, double latitude, Position position)
         {
             InitializeComponent();
@@ -39,7 +40,7 @@ namespace TravelAdvisor.Popups
                 Details = userPageViewModel.DetailsOfNewAttraction,
                 Address = _address,
                 Id = Guid.NewGuid(),
-                Image = "newrestaurant.jpg",
+                Image = _imageSelected,
                 City = userPageViewModel.fetchedForecast,
                 Longitude = _longitude,
                 Latitude = _latitude,
@@ -67,6 +68,19 @@ namespace TravelAdvisor.Popups
         private void TypeOfAttraction_CheckedChanged(object sender, EventArgs e)
         {
             var radioButton = sender as RadioButton;
+            switch (radioButton.Content)
+            {
+                case "Restaurant":
+                    _imageSelected = "newrestaurant.jpg";
+                    break;
+                case "Store":
+                    _imageSelected = "store.jpg";
+                    break;
+                case "Nature Area":
+                    _imageSelected = "nature-area.jpg";
+                    break;
+                
+            }
         }
 
 
