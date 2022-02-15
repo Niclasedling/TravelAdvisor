@@ -265,6 +265,8 @@ namespace TravelAdvisor.Views
             _BackButton.IsVisible = true;
             _cityNameLable.IsVisible = false;
             _rowtwo.Height = 800;
+            _BackButton2.IsVisible = false;
+            _favoritesButton.IsVisible = true;
         }
 
         private void Button_Back_Clicked(object sender, EventArgs e)
@@ -276,6 +278,27 @@ namespace TravelAdvisor.Views
             _BackButton.IsVisible = false;
             _cityNameLable.IsVisible = true;
             _rowtwo.Height = 307;
+        }
+
+        private void _BackButton_Clicked(object sender, EventArgs e)
+        {
+            _favoritesButton.IsVisible = true;
+            _BackButton2.IsVisible = false;
+            _map.IsVisible = true;
+            _listwithForecast.IsVisible = true;
+            _cityNameLable.IsVisible = true;
+            
+
+        }
+
+        private void _favoritesButton_Clicked(object sender, EventArgs e)
+        {
+            _favoritesButton.IsVisible = false;
+            _BackButton2.IsVisible = true;
+            _map.IsVisible = false;
+            _listwithForecast.IsVisible = false;
+            _cityNameLable.IsVisible = false;
+            _theReviewlist.IsVisible = false;
         }
     }
 }
