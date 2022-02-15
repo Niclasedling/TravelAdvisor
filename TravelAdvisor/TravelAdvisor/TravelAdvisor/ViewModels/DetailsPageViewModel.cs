@@ -16,6 +16,7 @@ namespace TravelAdvisor.ViewModels
     public class DetailsPageViewModel : BaseViewModel
     {
         public readonly IReviewService _reviewService;
+        private readonly IThumbInteractionService _thumbInteractionService;
         //private INavigation _navigation;
 
         public string TitleOfNewReview { get; set; }
@@ -52,6 +53,7 @@ namespace TravelAdvisor.ViewModels
         public DetailsPageViewModel(INavService naviService) : base(naviService)
         {
             _reviewService = DependencyService.Get<IReviewService>();
+            _thumbInteractionService = DependencyService.Get<IThumbInteractionService>();
             //_navigation = navigation;
         }
 
@@ -62,6 +64,7 @@ namespace TravelAdvisor.ViewModels
             App.globalUserToComment.FirstName = "";
             App.globalUserToComment.LastName = "";
             ReviewList = await GetReviews();
+          
             UserName = App.globalCurrentUser.UserName;
             //var allLikesForCurrentUser = ReviewList
             //    .Select(x => x)
@@ -87,6 +90,9 @@ namespace TravelAdvisor.ViewModels
         public List<ReviewDto> reviewList { get; set; }
         public List<ReviewDto> ReviewList { get { return reviewList; } set { reviewList = value; OnPropertyChanged("ReviewList"); } }
 
+        public List<ThumbInteractionDto> likeList { get; set; }
+        public List<ThumbInteractionDto> LikeList { get { return likeList; } set { likeList = value; OnPropertyChanged("LikeList"); } }
+
         private async Task<List<ReviewDto>> GetReviews()
         {
 
@@ -95,13 +101,27 @@ namespace TravelAdvisor.ViewModels
             if (reviews != null)
             {
                 return reviews;
+
+
+            }
+
+            return null;
+        }
+     public async Task<List<ThumbInteractionDto>> GetLikes()
+        {
+
+            var likes = await _thumbInteractionService.GetById(App.globalCurrentReview.Id);
+
+            if (likes != null)
+            {
+                return likes;
             }
 
             return null;
         }
 
 
-     
+
         //private async Task ShowPopup()
         //{
 

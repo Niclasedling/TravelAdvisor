@@ -36,6 +36,20 @@ namespace TravelAdvisor.ApiClient
 
             return JsonConvert.DeserializeObject<T>(responseString);
         }
+        public async Task<List<T>> GetListAsync(Guid id)
+        {
+            string path = $"GetById?id={id}";
+            var response = await httpClient.GetAsync(path);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception($"Api '{httpClient.BaseAddress}{path}' responded with {response.StatusCode}");
+            }
+            var responseString = await response.Content.ReadAsStringAsync();
+
+            return JsonConvert.DeserializeObject<List<T>>(responseString);
+        }
+
 
         public async Task<bool> DeleteAsync(Guid id)
         {

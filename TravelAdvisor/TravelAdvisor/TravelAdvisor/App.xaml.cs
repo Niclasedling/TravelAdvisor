@@ -34,11 +34,15 @@ namespace TravelAdvisor
             var forcastService = new OpenWeatherService(new HttpClient());
             var attractionService = new AttractionService(new HttpClient());
             var reviewService = new ReviewService(new HttpClient());
+            var commentService = new CommentService(new HttpClient());
+            var thumbInteractionService = new ThumbInteractionService(new HttpClient());
 
             DependencyService.RegisterSingleton<IUserService>(userService);
             DependencyService.RegisterSingleton<IOpenWeatherService>(forcastService);
             DependencyService.RegisterSingleton<IAttractionService>(attractionService);
             DependencyService.RegisterSingleton<IReviewService>(reviewService);
+            DependencyService.RegisterSingleton<ICommentService>(commentService);
+            DependencyService.RegisterSingleton<IThumbInteractionService>(thumbInteractionService);
 
 
 
