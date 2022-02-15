@@ -89,23 +89,34 @@ namespace TravelAdvisor.ViewModels
 
         public async Task<List<AttractionDto>> GetAttractionsByCity(string city)
         {
+            //Kontrollera vad ni ska hämta!?
 
             var attractions = await _attractionService.GetAllAttractionsByCity(city);
-            
-            var reviews = attractions.Select(x => x.Reviews).ToList();
-            foreach (var item in reviews)
-            {
-                if(item.Count != 0)
-                {
-                    var averageRating = CalculateAverageRating(item);
 
-                }
-            }
-            
             if (attractions != null)
             {
+                var reviews = await _reviewService.GetAllReviews();
+                if (reviews is null)
+                {
+                    //error
+                }
+
+                var selectedReviews = reviews.Select(r => r).Where(x => x.Attraction.Id == attractions.Select(y => y.Id).FirstOrDefault()).ToList();
+                if (selectedReviews is null)
+                {
+                    //error
+                }
+
+                else
+                {
+
+                    var avrage = CalculateAverageRating(selectedReviews);
+                   
+                }
+
                 return attractions;
             }
+          
             return null;
         }
 

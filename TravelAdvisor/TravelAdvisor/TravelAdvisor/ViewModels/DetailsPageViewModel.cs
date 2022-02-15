@@ -17,6 +17,15 @@ namespace TravelAdvisor.ViewModels
     {
         public readonly IReviewService _reviewService;
         private readonly IThumbInteractionService _thumbInteractionService;
+        //public ICommand LikedButton => new Command(async (object sender) => await LikedButtonClicked(sender));
+
+        //private async Task LikedButtonClicked( object sender)
+        //{
+        //    var review = sender as ReviewDto;
+        //    if (review != null) { }
+            
+        //}
+
         //private INavigation _navigation;
 
         public string TitleOfNewReview { get; set; }

@@ -43,9 +43,9 @@ namespace TravelAdvisor.Views
         private async void LikeThumb_Clicked(object sender, EventArgs e)
         {
 
-            ViewModel.LikeList = await ViewModel.GetLikes();
 
             var likeButton = sender as ImageButton;
+          
             var review = likeButton.BindingContext as ReviewDto;
 
             review.LikeButton = likeButton;

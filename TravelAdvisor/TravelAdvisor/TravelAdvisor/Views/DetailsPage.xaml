@@ -107,6 +107,8 @@
                                     <!--LIKE-->
                                     <ImageButton                                        
                                         Clicked="LikeThumb_Clicked" 
+                                     
+                                        CommandParameter="{Binding .}"
                                         Grid.Row="0" 
                                         Grid.Column="10" 
                                         Source="{Binding LikeThumbImgSrc}" 

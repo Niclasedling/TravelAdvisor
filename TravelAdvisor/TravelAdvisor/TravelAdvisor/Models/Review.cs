@@ -17,6 +17,10 @@ namespace TravelAdvisor.Models
     //}
     public class ReviewBase : INotifyPropertyChanged
     {
+        public AttractionDto Attraction { get; set; }
+
+
+
         public Guid Id { get; set; }
         public int Rating { get; set; }
         public string Name { get; set; }
