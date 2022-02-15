@@ -95,12 +95,37 @@ namespace TravelAdvisor.ViewModels
 
         private async Task<List<ReviewDto>> GetReviews()
         {
-            //var averageRating = 0;
-            //var totalrating = 0;
 
             var reviews = await _reviewService.GetListById(App.globalCurrentAttraction.Id);
+            
+            SetStars(reviews);
+           
 
-            foreach (var item in reviews)
+            if (reviews != null)
+            {
+                return reviews;
+
+
+            }
+
+            return null;
+        }
+        public async Task<List<ThumbInteractionDto>> GetLikes()
+        {
+
+            var likes = await _thumbInteractionService.GetById(App.globalCurrentReview.Id);
+
+            if (likes != null)
+            {
+                return likes;
+            }
+
+            return null;
+        }
+
+        public void SetStars(List<ReviewDto> listOfReviews)
+        {
+            foreach (var item in listOfReviews)
             {
                 switch (item.Rating)
                 {
@@ -146,72 +171,10 @@ namespace TravelAdvisor.ViewModels
                         item.FourStars = item.YellowStar;
                         item.FiveStars = item.YellowStar;
                         break;
-                   
+
                 }
             }
-            // Antal reviews
-            //var counter = reviews.Count();
-
-            //// Adderad Rating
-            //var rating = reviews.Select(x => x.Rating).ToList();
-
-            //foreach (var item in rating)
-            //{
-            //    totalrating += item;
-            //}
-
-            //averageRating = totalrating / counter;
-
-            //switch (averageRating)
-            //{
-            //    case 1:
-                    
-            //        break;
-            //    case 2:
-
-            //        break;
-            //    case 3:
-
-            //        break;
-            //    case 4:
-
-            //        break;
-            //    case 5:
-
-            //        break;
-
-            //    default:
-
-            //        break;
-            //}
-
-            if (reviews != null)
-            {
-                return reviews;
-
-
-            }
-
-            return null;
-        }
-     public async Task<List<ThumbInteractionDto>> GetLikes()
-        {
-
-            var likes = await _thumbInteractionService.GetById(App.globalCurrentReview.Id);
-
-            if (likes != null)
-            {
-                return likes;
-            }
-
-            return null;
         }
 
-       //public async Task CalculateAverageRating()
-       // {
-
-       // }
-     
-       
     }
 }

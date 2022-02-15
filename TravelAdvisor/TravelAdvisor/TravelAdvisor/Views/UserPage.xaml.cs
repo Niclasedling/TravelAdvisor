@@ -311,17 +311,17 @@ namespace TravelAdvisor.Views
             var heartButton = sender as ImageButton;
             var attraction = heartButton.BindingContext as AttractionDto;
 
-            if (!attraction.RedHart || attraction.HeartstringToCompare == null)
+            if (!attraction.RedHeart || attraction.HeartstringToCompare == null)
             {
                 heartButton.Source = attraction.RedHeartImage;
                 attraction.HeartstringToCompare = attraction.RedHeartstringImage;
-                attraction.RedHart = true;
+                attraction.RedHeart = true;
                 attraction.Heart = false;
             }
             else
             {
                 heartButton.Source = attraction.HeartImage;
-                attraction.RedHart = false;
+                attraction.RedHeart = false;
                 attraction.Heart = true;
             }
            

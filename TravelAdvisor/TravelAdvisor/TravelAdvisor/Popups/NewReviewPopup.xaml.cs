@@ -43,55 +43,7 @@ namespace TravelAdvisor.Popups
             else
             {
                 detailsPageViewModel.ReviewList = await detailsPageViewModel._reviewService.GetListById(App.globalCurrentAttraction.Id);
-                foreach (var item in detailsPageViewModel.ReviewList)
-                {
-                    switch (item.Rating)
-                    {
-                        case 0:
-                            item.OneStar = item.WhiteStar;
-                            item.TwoStars = item.WhiteStar;
-                            item.ThreeStars = item.WhiteStar;
-                            item.FourStars = item.WhiteStar;
-                            item.FiveStars = item.WhiteStar;
-                            break;
-                        case 1:
-                            item.OneStar = item.YellowStar;
-                            item.TwoStars = item.WhiteStar;
-                            item.ThreeStars = item.WhiteStar;
-                            item.FourStars = item.WhiteStar;
-                            item.FiveStars = item.WhiteStar;
-                            break;
-                        case 2:
-                            item.OneStar = item.YellowStar;
-                            item.TwoStars = item.YellowStar;
-                            item.ThreeStars = item.WhiteStar;
-                            item.FourStars = item.WhiteStar;
-                            item.FiveStars = item.WhiteStar;
-                            break;
-                        case 3:
-                            item.OneStar = item.YellowStar;
-                            item.TwoStars = item.YellowStar;
-                            item.ThreeStars = item.YellowStar;
-                            item.FourStars = item.WhiteStar;
-                            item.FiveStars = item.WhiteStar;
-                            break;
-                        case 4:
-                            item.OneStar = item.YellowStar;
-                            item.TwoStars = item.YellowStar;
-                            item.ThreeStars = item.YellowStar;
-                            item.FourStars = item.YellowStar;
-                            item.FiveStars = item.WhiteStar;
-                            break;
-                        case 5:
-                            item.OneStar = item.YellowStar;
-                            item.TwoStars = item.YellowStar;
-                            item.ThreeStars = item.YellowStar;
-                            item.FourStars = item.YellowStar;
-                            item.FiveStars = item.YellowStar;
-                            break;
-
-                    }
-                }
+                SetStars(detailsPageViewModel.ReviewList);
                 Dismiss(review);
             }
         }
@@ -101,7 +53,58 @@ namespace TravelAdvisor.Popups
             Dismiss("");
         }
 
+        public void SetStars(List<ReviewDto> listOfReviews)
+        {
+            foreach (var item in listOfReviews)
+            {
+                switch (item.Rating)
+                {
+                    case 0:
+                        item.OneStar = item.WhiteStar;
+                        item.TwoStars = item.WhiteStar;
+                        item.ThreeStars = item.WhiteStar;
+                        item.FourStars = item.WhiteStar;
+                        item.FiveStars = item.WhiteStar;
+                        break;
+                    case 1:
+                        item.OneStar = item.YellowStar;
+                        item.TwoStars = item.WhiteStar;
+                        item.ThreeStars = item.WhiteStar;
+                        item.FourStars = item.WhiteStar;
+                        item.FiveStars = item.WhiteStar;
+                        break;
+                    case 2:
+                        item.OneStar = item.YellowStar;
+                        item.TwoStars = item.YellowStar;
+                        item.ThreeStars = item.WhiteStar;
+                        item.FourStars = item.WhiteStar;
+                        item.FiveStars = item.WhiteStar;
+                        break;
+                    case 3:
+                        item.OneStar = item.YellowStar;
+                        item.TwoStars = item.YellowStar;
+                        item.ThreeStars = item.YellowStar;
+                        item.FourStars = item.WhiteStar;
+                        item.FiveStars = item.WhiteStar;
+                        break;
+                    case 4:
+                        item.OneStar = item.YellowStar;
+                        item.TwoStars = item.YellowStar;
+                        item.ThreeStars = item.YellowStar;
+                        item.FourStars = item.YellowStar;
+                        item.FiveStars = item.WhiteStar;
+                        break;
+                    case 5:
+                        item.OneStar = item.YellowStar;
+                        item.TwoStars = item.YellowStar;
+                        item.ThreeStars = item.YellowStar;
+                        item.FourStars = item.YellowStar;
+                        item.FiveStars = item.YellowStar;
+                        break;
 
+                }
+            }
+        }
 
 
     }

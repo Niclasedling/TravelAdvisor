@@ -24,7 +24,9 @@ namespace TravelAdvisor.Models
         public ImageSource RedHeartImage { get { return "noun-Redfavourite-1077408.png"; } }
         public string RedHeartstringImage { get { return "noun-Redfavourite-1077408.png"; } }
         public bool _redheart = false;
-        public bool RedHart { get { return _redheart; } set { _redheart = value; } }
+        public bool RedHeart { get { return _redheart; } set { _redheart = value; } }
+
+        public int AverageRating { get; set; }
 
         public string Location { get; set; }
 

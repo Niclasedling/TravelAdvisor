@@ -91,6 +91,17 @@ namespace TravelAdvisor.ViewModels
         {
 
             var attractions = await _attractionService.GetAllAttractionsByCity(city);
+            
+            var reviews = attractions.Select(x => x.Reviews).ToList();
+            foreach (var item in reviews)
+            {
+                if(item.Count != 0)
+                {
+                    var averageRating = CalculateAverageRating(item);
+
+                }
+            }
+            
             if (attractions != null)
             {
                 return attractions;
@@ -98,6 +109,21 @@ namespace TravelAdvisor.ViewModels
             return null;
         }
 
+        public int CalculateAverageRating(List<ReviewDto> listOfReviews)
+        {
+            var totalRating = 0;
+            var counter = listOfReviews.Count();
+            var rating = listOfReviews.Select(x => x).ToList();
+
+            foreach (var item in rating)
+            {
+                totalRating += item.Rating;
+            }
+
+            var averageRating = totalRating / counter;
+            return averageRating;
+
+        }
 
 
 
