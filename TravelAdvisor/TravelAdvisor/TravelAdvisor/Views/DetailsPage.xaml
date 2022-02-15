@@ -128,11 +128,11 @@
 
                                     <Label Text="{Binding TotalDislikes, Mode=TwoWay}" Grid.Row="1" Grid.Column="11" Margin="7,0,0,0"></Label>
                                     <!--STARS-->
-                                    <Image Grid.Row="2" Grid.Column="7" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
-                                    <Image Grid.Row="2" Grid.Column="8" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
-                                    <Image Grid.Row="2" Grid.Column="9" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
-                                    <Image Grid.Row="2" Grid.Column="10" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
-                                    <Image Grid.Row="2" Grid.Column="11" Source="newstar.png" Margin="0,0,-30,0" HeightRequest="70"></Image>
+                                    <Image x:Name="_OneStar" Grid.Row="2" Grid.Column="7" Source="{Binding YellowStar}" Margin="0,0,-30,0" HeightRequest="70"></Image>
+                                    <Image x:Name="_SecondStar" Grid.Row="2" Grid.Column="8" Source="{Binding YellowStar}" Margin="0,0,-30,0" HeightRequest="70"></Image>
+                                    <Image x:Name="_ThirdStar" Grid.Row="2" Grid.Column="9" Source="{Binding YellowStar}" Margin="0,0,-30,0" HeightRequest="70"></Image>
+                                    <Image x:Name="_FourthStar" Grid.Row="2" Grid.Column="10" Source="{Binding YellowStar}" Margin="0,0,-30,0" HeightRequest="70"></Image>
+                                    <Image x:Name="_FifthStar" Grid.Row="2" Grid.Column="11" Source="{Binding YellowStar}" Margin="0,0,-30,0" HeightRequest="70"></Image>
                                     <!--COMMENTS-->
                                     <Label Text="{Binding TotalComments, Mode=TwoWay}" Grid.Row="3" Grid.Column="2" Margin="20,0,0,0" Grid.ColumnSpan="1"></Label>
                                     <ImageButton Source="{Binding CommentImgSrc}" Grid.Row="3" Grid.Column="3" Margin="0,0,0,0" Grid.ColumnSpan="2" Clicked="CommentButton_Clicked">

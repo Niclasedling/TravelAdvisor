@@ -18,16 +18,19 @@ namespace TravelAdvisor.Models
     public class ReviewBase : INotifyPropertyChanged
     {
         public Guid Id { get; set; }
-
+        public int Rating { get; set; }
         public string Name { get; set; }
 
         public ImageSource Image { get { return "user.png"; } }
+
         public string Description { get; set; }
         public string ThumbStringToCompare { get; set; }
 
         public ImageSource DislikeThumbImgSrc { get { return "dislike.png"; } }
         public string DislikeThumbString { get { return "dislike.png"; } }
-
+        
+        public ImageSource YellowStar { get { return "newstar.png"; } }
+        public ImageSource Whitestart { get { return "emptyStar.png"; } }
 
         public ImageSource LikeThumbImgSrc { get { return "like.png"; } }
         public string LikeThumbString { get { return "like.png"; } }
