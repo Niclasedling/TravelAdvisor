@@ -22,8 +22,6 @@ namespace TravelAdvisor.ViewModels
 
         public string fetchedForecast;
 
-
-        public List<Filter> PropertyTypeList => GetFilters();
         public List<AttractionDto> attractionList { get; set; }
         public List<AttractionDto> AttractionList { get { return attractionList; } set { attractionList = value; OnPropertyChanged("AttractionList"); } }
 
@@ -57,14 +55,7 @@ namespace TravelAdvisor.ViewModels
 
 
         #region ATTRACTION
-        private List<Filter> GetFilters()
-        {
-            return new List<Filter>
-            {
-                new Filter { Name = "All"},
-                new Filter { Name = "Popular"},
-            };
-        }
+        
 
         public async Task<List<AttractionDto>> GetAttractions()
         {

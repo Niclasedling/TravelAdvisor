@@ -37,7 +37,7 @@ namespace TravelAdvisor.ViewModels
             Forecast = result;
             ForecastItems = result.Items;
             cityName = result.City;
-            
+            AttractionList = await GetAttractionsByCity(cityName);
             App.globalUserToComment = App.globalCurrentUser;
             App.globalUserToComment.FirstName = App.globalCurrentUser.FirstName;
             App.globalUserToComment.LastName = App.globalCurrentUser.LastName;
@@ -64,8 +64,10 @@ namespace TravelAdvisor.ViewModels
         public string NameOfAttraction { get { return App.globalCurrentAttraction.Name; } }
         public string InfoAboutAttraction { get { return App.globalCurrentAttraction.Details; } }
         public ImageSource AttractionImgSrc { get { return App.globalCurrentAttraction.Image; } }
-        
-        public List<AttractionDto> AttractionList => GetAttractions();
+
+
+        public List<AttractionDto> attractionList { get; set; }
+        public List<AttractionDto> AttractionList { get { return attractionList; } set { attractionList = value; OnPropertyChanged("AttractionList"); } }
         public Command<object> ViewDetails
         {
             get { return new Command<object>(AttractionSelected); }
@@ -83,28 +85,20 @@ namespace TravelAdvisor.ViewModels
 
         #endregion
 
-        #region PINS
+        #region ATTRACTIONS
 
-        //public async void SetPins()
-        //{
-        //    var allAttractions = await _attractionService.GetAllAttractions();
+        public async Task<List<AttractionDto>> GetAttractionsByCity(string city)
+        {
+
+            var attractions = await _attractionService.GetAllAttractionsByCity(city);
+            if (attractions != null)
+            {
+                return attractions;
+            }
+            return null;
+        }
 
 
-        //    foreach (var item in allAttractions)
-        //    {
-
-
-
-        //        //Pin newPin = new Pin
-        //        //{
-        //        //    Position = item.,
-        //        //    Label = ((AttractionCreateDto)result).Name,
-        //        //    Address = address,
-        //        //    Type = PinType.Place
-        //        //};
-        //        _map.Pins.Add(newPin);
-        //    }
-        //}
 
 
 
@@ -255,104 +249,7 @@ namespace TravelAdvisor.ViewModels
 
             }
         }
-        #endregion
-
-
-        #region MOCKDATA
-
-        public List<Filter> PropertyTypeList => GetFilters();
-        private List<Filter> GetFilters()
-        {
-            return new List<Filter>
-            {
-                new Filter { Name = "All"},
-                new Filter { Name = "Popular"},
-            };
-        }
-        private List<AttractionDto> GetAttractions()
-        {
-            return new List<AttractionDto>
-            {
-                new AttractionDto
-                {
-                    Image = "apt1.jpg",
-                    Address = "2162 Patricia Ave, LA",
-                    Location = "California",
-                    Price = "$1500/month",
-
-                },
-                new AttractionDto
-                {
-                    Image = "apt2.jpg",
-                    Address = "2112 Cushions Dr, LA",
-                    Location = "California",
-                    Price = "$1500/month",
-
-                },
-                new AttractionDto
-                {
-                    Image = "apt3.jpg",
-                    Address = "2167 Anthony Way, LA",
-                    Location = "California",
-                    Price = "$1500/month",
-                    Details = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,"
-                },
-                new AttractionDto
-                {
-                    Image = "apt3.jpg",
-                    Address = "2167 Anthony Way, LA",
-                    Location = "California",
-                    Price = "$1500/month",
-                    Details = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,"
-                },
-                new AttractionDto
-                {
-                    Image = "apt3.jpg",
-                    Address = "2167 Anthony Way, LA",
-                    Location = "California",
-                    Price = "$1500/month",
-                    Details = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,"
-                },
-                new AttractionDto
-                {
-                    Image = "apt3.jpg",
-                    Address = "2167 Anthony Way, LA",
-                    Location = "California",
-                    Price = "$1500/month",
-                    Details = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia," +
-                               "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,"
-                }
-            };
-
-
-        }
-        #endregion
+        #endregion 
+      
     }
 }

@@ -272,12 +272,12 @@
                
             </StackLayout>
 
-                <!--LISTVIEW MED REVIEWS--><!--
+                <!--LISTVIEW MED ATTRACTIONS-->
                 <ListView 
                 Grid.Row="4" Margin="0,10" Grid.ColumnSpan="12" VerticalScrollBarVisibility="Never"
                 ItemsSource="{Binding AttractionList}"
                 x:Name="_listofOldReviews"
-                IsVisible="false">
+                IsVisible="true">
                 <ListView.Behaviors>
                     <xct:EventToCommandBehavior
                                             EventName="ItemSelected"
@@ -335,7 +335,7 @@
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-                </ListView>-->
+                </ListView>
                  <!--LISTVIEW-->
             
             
