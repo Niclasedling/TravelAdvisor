@@ -91,19 +91,32 @@ namespace TravelAdvisor.ViewModels
         {
 
             var attractions = await _attractionService.GetAllAttractionsByCity(city);
+            var allReviews = await _reviewService.GetAllReviews();
             
-            var reviews = attractions.Select(x => x.Reviews).ToList();
-            foreach (var item in reviews)
+           
+            foreach (var attraction in attractions)
             {
-                if(item.Count != 0)
+                var foundReviews = allReviews.Select(x => x).Where(x => x.AttractionId == attraction.Id).ToList();
+
+                if (foundReviews != null)
                 {
-                    var averageRating = CalculateAverageRating(item);
+                    if (foundReviews.Count != 0)
+                    {
+                        attraction.Reviews = foundReviews;
+                        var averageRating = CalculateAverageRating(attraction.Reviews);
+                        attraction.AverageRating = averageRating;
+                        SetStars(attraction, attraction.AverageRating);
+                    }
 
                 }
+                SetStars(attraction, attraction.AverageRating);
+                
             }
+            
             
             if (attractions != null)
             {
+                
                 return attractions;
             }
             return null;
@@ -125,12 +138,64 @@ namespace TravelAdvisor.ViewModels
 
         }
 
+        public void SetStars(AttractionDto attraction, int averageRating)
+        {
+            
+                switch (averageRating)
+                {
+                    case 0:
+                        attraction.OneStar = attraction.WhiteStar;
+                        attraction.TwoStars = attraction.WhiteStar;
+                        attraction.ThreeStars = attraction.WhiteStar;
+                        attraction.FourStars = attraction.WhiteStar;
+                        attraction.FiveStars = attraction.WhiteStar;
+                        break;
+                    case 1:
+                        attraction.OneStar = attraction.YellowStar;
+                        attraction.TwoStars = attraction.WhiteStar;
+                        attraction.ThreeStars = attraction.WhiteStar;
+                        attraction.FourStars = attraction.WhiteStar;
+                        attraction.FiveStars = attraction.WhiteStar;
+                        break;
+                    case 2:
+                        attraction.OneStar = attraction.YellowStar;
+                        attraction.TwoStars = attraction.YellowStar;
+                        attraction.ThreeStars = attraction.WhiteStar;
+                        attraction.FourStars = attraction.WhiteStar;
+                        attraction.FiveStars = attraction.WhiteStar;
+                        break;
+                    case 3:
+                        attraction.OneStar = attraction.YellowStar;
+                        attraction.TwoStars = attraction.YellowStar;
+                        attraction.ThreeStars = attraction.YellowStar;
+                        attraction.FourStars = attraction.WhiteStar;
+                        attraction.FiveStars = attraction.WhiteStar;
+                        break;
+                    case 4:
+                        attraction.OneStar = attraction.YellowStar;
+                        attraction.TwoStars = attraction.YellowStar;
+                        attraction.ThreeStars = attraction.YellowStar;
+                        attraction.FourStars = attraction.YellowStar;
+                        attraction.FiveStars = attraction.WhiteStar;
+                        break;
+                    case 5:
+                        attraction.OneStar = attraction.YellowStar;
+                        attraction.TwoStars = attraction.YellowStar;
+                        attraction.ThreeStars = attraction.YellowStar;
+                        attraction.FourStars = attraction.YellowStar;
+                        attraction.FiveStars = attraction.YellowStar;
+                        break;
+
+                }
+            }
+        
+
 
 
 
         #endregion
 
-        #region REVIEWS
+            #region REVIEWS
 
         public ReviewDto ReviewToAdd { get; set; }
         private string userToComment { get; set; }

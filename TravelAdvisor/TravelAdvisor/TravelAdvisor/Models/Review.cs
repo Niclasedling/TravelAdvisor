@@ -109,11 +109,7 @@ namespace TravelAdvisor.Models
 
     public class ReviewDto : ReviewBase
     {
-
-
-
-
-
+        public Guid AttractionId { get; set; }
     }
     public class ReviewBasicDto
     {

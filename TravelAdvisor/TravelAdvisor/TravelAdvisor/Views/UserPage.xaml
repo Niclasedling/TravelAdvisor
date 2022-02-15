@@ -294,6 +294,7 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"></RowDefinition>
                                         <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="*"></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <Image HeightRequest="115" Aspect="AspectFill" Source="{Binding Image}"></Image>
                                     <Frame CornerRadius="30" BackgroundColor="White" WidthRequest="0" HeightRequest="0" HorizontalOptions="End" VerticalOptions="Start" Margin="7">
@@ -324,6 +325,12 @@
                                         <StackLayout Orientation="Horizontal" Spacing="15">
                                             <StackLayout Orientation="Horizontal" Spacing="10">
                                                 <Label Text="{Binding Details}" FontSize="12" TextColor="Black"></Label>
+                                                <!--STARS-->
+                                                <Image Grid.Row="2"  Source="{Binding OneStar}"  HeightRequest="70"></Image>
+                                                <Image Grid.Row="2"  Source="{Binding TwoStars}"  HeightRequest="70"></Image>
+                                                <Image Grid.Row="2"  Source="{Binding ThreeStars}"  HeightRequest="70"></Image>
+                                                <Image Grid.Row="2"  Source="{Binding FourStars}" HeightRequest="70"></Image>
+                                                <Image Grid.Row="2"  Source="{Binding FiveStars}" HeightRequest="70"></Image>
                                             </StackLayout>
                                             
                                             

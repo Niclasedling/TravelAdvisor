@@ -26,6 +26,14 @@ namespace TravelAdvisor.Models
         public bool _redheart = false;
         public bool RedHeart { get { return _redheart; } set { _redheart = value; } }
 
+        public ImageSource YellowStar { get { return "newstar.png"; } }
+        public ImageSource WhiteStar { get { return "emptyStar.png"; } }
+        public ImageSource OneStar { get; set; }
+        public ImageSource TwoStars { get; set; }
+        public ImageSource ThreeStars { get; set; }
+        public ImageSource FourStars { get; set; }
+        public ImageSource FiveStars { get; set; }
+
         public int AverageRating { get; set; }
 
         public string Location { get; set; }
@@ -47,7 +55,7 @@ namespace TravelAdvisor.Models
     
     public class AttractionDto : AttractionBase
     {
-       
+      
     }
 
     public class AttractionUpdateDto : AttractionBase
