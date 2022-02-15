@@ -39,7 +39,7 @@ namespace TravelAdvisor.Popups
                 Details = userPageViewModel.DetailsOfNewAttraction,
                 Address = _address,
                 Id = Guid.NewGuid(),
-                Image = "restaurant.jpg",
+                Image = "newrestaurant.jpg",
                 City = userPageViewModel.fetchedForecast,
                 Longitude = _longitude,
                 Latitude = _latitude,
@@ -64,7 +64,10 @@ namespace TravelAdvisor.Popups
             Dismiss("");
         }
 
-
+        private void TypeOfAttraction_CheckedChanged(object sender, EventArgs e)
+        {
+            var radioButton = sender as RadioButton;
+        }
 
 
 

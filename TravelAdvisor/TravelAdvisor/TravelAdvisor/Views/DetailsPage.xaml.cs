@@ -5,8 +5,10 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using TravelAdvisor.Models;
+using TravelAdvisor.Popups;
 using TravelAdvisor.Services;
 using TravelAdvisor.ViewModels;
+using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -207,20 +209,15 @@ namespace TravelAdvisor.Views
 
         private async void AddReview_Clicked(object sender, EventArgs e)
         {
-            var button = sender as Button;
-            //var review = button.BindingContext as ReviewDto;
-
-            var titleAnswer = await DisplayPromptAsync("Title of attraction", "Title", "Ok");
-            var reviewAnswer = await DisplayPromptAsync("New Review", "Review", "Ok", "Cancel");
-            var ratingAnswer = await DisplayPromptAsync("Attraction rating", "Rating", "Ok", "Cancel");
-
-            ReviewCreateDto review = new ReviewCreateDto()
+            
+            var result = await Navigation.ShowPopupAsync(new NewReviewPopup());
+            if (result as string != "")
             {
-                UserId = App.globalCurrentUser.Id,
-                AttractionId = App.globalCurrentAttraction.Id,
-                
-            };
-            //App.globalCurrentAttraction.Reviews.Add()
+                await DisplayAlert("Success", "You created an review!", "Ok");
+            }
+            
         }
+
+        
     }
 }

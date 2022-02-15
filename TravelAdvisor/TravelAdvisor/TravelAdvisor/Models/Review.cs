@@ -6,22 +6,22 @@ using Xamarin.Forms;
 
 namespace TravelAdvisor.Models
 {
-    public enum Rating
-    {
-        Unspecified,
-        VeryBad,
-        Bad,
-        Average,
-        VeryGood,
-        Excellent,
-    }
+    //public enum Rating
+    //{
+    //    Unspecified,
+    //    VeryBad,
+    //    Bad,
+    //    Average,
+    //    VeryGood,
+    //    Excellent,
+    //}
     public class ReviewBase : INotifyPropertyChanged
     {
         public Guid Id { get; set; }
 
         public string Name { get; set; }
 
-        public string Image { get; set; }
+        public ImageSource Image { get { return "user.png"; } }
         public string Description { get; set; }
         public string ThumbStringToCompare { get; set; }
 
@@ -120,17 +120,23 @@ namespace TravelAdvisor.Models
 
     public class ReviewCreateDto
     {
+        public Guid Id { get; set; }
         public string Title { get; set; }
 
         public string Description { get; set; }
 
         public DateTime Date { get; set; }
 
-        public Rating Rating { get; set; } = Rating.Unspecified;
+        //public Rating Rating { get; set; } = Rating.Unspecified;
+
+        public int Rating { get; set; }
 
         public Guid UserId { get; set; } // Id
 
         public Guid AttractionId { get; set; }
+
+        public ImageSource Image { get; set; }
+
     }
 
     public class ReviewUpdateDto

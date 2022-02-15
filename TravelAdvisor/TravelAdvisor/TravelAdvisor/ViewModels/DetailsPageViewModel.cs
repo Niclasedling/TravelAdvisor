@@ -6,18 +6,21 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using TravelAdvisor.Interfaces;
 using TravelAdvisor.Models;
+using TravelAdvisor.Popups;
 using TravelAdvisor.Services;
 using Xamarin.Forms;
+using Xamarin.CommunityToolkit.Extensions;
 
 namespace TravelAdvisor.ViewModels
 {
     public class DetailsPageViewModel : BaseViewModel
-    {   
-        
-        private readonly IReviewService _reviewService;
+    {
+        public readonly IReviewService _reviewService;
+        //private INavigation _navigation;
 
-        DetailsPageViewModel _detailsPageView { get { return new DetailsPageViewModel(DependencyService.Get<INavService>());} }
-        
+        public string TitleOfNewReview { get; set; }
+        public string DesciptionOfNewReview { get; set; }
+        public int RatingOfNewReview { get; set; }
         public ReviewDto ReviewToAdd { get; set; }
         public string NameOfAttraction { get { return App.globalCurrentAttraction.Name; } }
         public string InfoAboutAttraction { get { return App.globalCurrentAttraction.Details; } }
@@ -32,21 +35,34 @@ namespace TravelAdvisor.ViewModels
                 OnPropertyChanged("UserToComment");
             } 
         }
-        
+
+        private string _userName;
+        public string UserName
+        {
+            get { return _userName; }
+            set
+            {
+                _userName = value;
+                OnPropertyChanged("UserName");
+            }
+        }
+        //public Command AddReview => new Command(async () => await ShowPopup());
         public Command GoBack => new Command(async () => await NavigationService.GoBack());
 
         public DetailsPageViewModel(INavService naviService) : base(naviService)
         {
             _reviewService = DependencyService.Get<IReviewService>();
+            //_navigation = navigation;
         }
 
         public override async void Init()
         {
-            App.globalDetailsPageViewModel = _detailsPageView;
+            
             App.globalUserToComment = new UserDto();
             App.globalUserToComment.FirstName = "";
             App.globalUserToComment.LastName = "";
             ReviewList = await GetReviews();
+            UserName = App.globalCurrentUser.UserName;
             //var allLikesForCurrentUser = ReviewList
             //    .Select(x => x)
             //    .Where(x => x.User == App.globalCurrentUser)
@@ -83,5 +99,13 @@ namespace TravelAdvisor.ViewModels
 
             return null;
         }
+
+
+     
+        //private async Task ShowPopup()
+        //{
+
+        //    await _navigation.ShowPopupAsync(new NewReviewPopup());
+        //}
     }
 }

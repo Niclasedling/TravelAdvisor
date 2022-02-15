@@ -26,30 +26,32 @@
         </Grid.RowDefinitions>
 
         <!--ATTRACTION NAME-->
-        
-
-        <Label Text="{Binding NameOfAttraction}" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="6"></Label>
+        <Label Text="{Binding NameOfAttraction}" Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="6" Margin="0,10,0,0" FontAttributes="Bold" FontSize="Medium"></Label>
+        <!--ADD REVIEW-->
         <Button 
             Text="Add review" 
             Grid.Row="0" 
             Grid.Column="10" 
             Margin="0,0,0,0" 
             Padding="0" 
-            CornerRadius="15" 
-            VerticalOptions="Start" 
+            CornerRadius="5"
+            BackgroundColor="Black"
+            TextColor="White"
+            Clicked="AddReview_Clicked"
+            
             >
             
         </Button>
         
         <!--IMAGE-->
-        <Frame Grid.Row="1" Grid.ColumnSpan="12" Grid.RowSpan="4" CornerRadius="50" Padding="0">
+        <Frame Grid.Row="1" Grid.ColumnSpan="12" Grid.RowSpan="5" CornerRadius="0" Padding="0">
             <Image Source="{Binding AttractionImgSrc}" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Opacity="0.7"></Image>
             <!--<Image Source="apt1.jpg" HeightRequest="600" WidthRequest="1200" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></Image>-->
             </Frame>
         <!--INFO ABOUT ATTRACTION-->
-        <Frame Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="5" x:Name="stack" Padding="20" BackgroundColor="#C1C1C1" CornerRadius="40">
+        <Frame Grid.Row="3" Grid.Column="5" Grid.ColumnSpan="5" x:Name="stack" Padding="20" BackgroundColor="#C1C1C1" CornerRadius="40">
             <StackLayout>
-                <Label Text="Information:" TextTransform="Uppercase" FontAttributes="Bold"></Label>
+                <Label Text="Information:" TextTransform="Uppercase" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
             <ScrollView Margin="5,0,0,0">
                     <StackLayout>
                         <Label Text="{Binding InfoAboutAttraction}"/>
@@ -61,7 +63,7 @@
         </Frame>
         <!--LISTVIEW-->
         <StackLayout Grid.Row="4" Grid.ColumnSpan="12" Grid.RowSpan="2">
-            <ListView Grid.Row="2" Margin="0,10" VerticalScrollBarVisibility="Never" ItemsSource="{Binding Reviews}" x:Name="thelistview" >
+            <ListView Grid.Row="2" Margin="0,10" VerticalScrollBarVisibility="Never" ItemsSource="{Binding ReviewList}" x:Name="thelistview" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -98,9 +100,9 @@
                                         WidthRequest="70"
                                         Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2">
                                     </Image>
-                                       
-                                    <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="1" Padding="0" Margin="-10,0,10,0" Text="{Binding User.FirstName}" FontSize="12" TextColor="Black" FontFamily="ThemeFontRegular" VerticalOptions="Center" Opacity="1"></Label>
-                                    <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Padding="0"  Margin="0,0,0,0" Text="{Binding User.LastName}" FontSize="12" TextColor="Black" FontFamily="ThemeFontRegular" VerticalOptions="Center" Opacity="1"></Label>
+                                    <Label Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="5" Padding="0" Margin="-10,0,10,0" Text="{Binding Description}" FontSize="12" TextColor="Black" FontFamily="ThemeFontRegular" VerticalOptions="Center" Opacity="1"></Label>
+                                    <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="1" Padding="0" Margin="-10,0,10,0" Text="{Binding User.UserName}" FontSize="12" TextColor="Black" FontFamily="ThemeFontRegular" VerticalOptions="Center" Opacity="1"></Label>
+                                   
                                     <Label Grid.Row="0" Grid.RowSpan="3" Grid.Column="2" Grid.ColumnSpan="6" Text="{Binding User.Comment}"></Label>
                                     <!--LIKE-->
                                     <ImageButton                                        
@@ -137,7 +139,7 @@
                                         
                                     </ImageButton>
                                     <!--RATING TEXT-->
-                                    <Label Text="5/5" Grid.Row="3" Grid.Column="9" Margin="20,0,0,0" Grid.ColumnSpan="2"></Label>
+                                    <Label Text="{Binding Rating}" Grid.Row="3" Grid.Column="9" Margin="20,0,0,0" Grid.ColumnSpan="2"></Label>
                                                                
 
                                 </Grid>
