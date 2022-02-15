@@ -3,36 +3,46 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TravelAdvisor.Views.LoginPage">
 
-    <!--<ContentPage.Resources>
-        <ResourceDictionary>
-            <xct:ItemSelectedEventArgsConverter x:Key="ItemSelectedEventArgsConverter"></xct:ItemSelectedEventArgsConverter>
-        </ResourceDictionary>
-    </ContentPage.Resources>-->
-    <StackLayout Padding="0">
-       
-            <Grid>
-                
-            <StackLayout Padding="0" Margin="0">
-                <Frame BackgroundColor="#203fba" HeightRequest="130" HorizontalOptions="FillAndExpand" CornerRadius="0" Padding="0">
-                    <Image Source="ArubaBackround.png" Aspect="AspectFill" Margin="0" />
+    <StackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <!--0--><RowDefinition Height="90"></RowDefinition>
+                <!--1--><RowDefinition Height="*"></RowDefinition>
+                <!--2--><RowDefinition Height="*"></RowDefinition>
+                <!--3--><RowDefinition Height="*"></RowDefinition>
+                <!--4--><RowDefinition Height="*"></RowDefinition>
 
-                </Frame>
-                    <Image Source="ArubaBackround.png" Aspect="AspectFill" Margin="0" />
-                </StackLayout>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <!--0--><ColumnDefinition Width="*"></ColumnDefinition>
+                <!--1--><ColumnDefinition Width="*"></ColumnDefinition>
+                <!--2--><ColumnDefinition Width="*"></ColumnDefinition>
+                <!--3--><ColumnDefinition Width="*"></ColumnDefinition>
+                <!--4--><ColumnDefinition Width="*"></ColumnDefinition>
+                <!--5--><ColumnDefinition Width="*"></ColumnDefinition>
+                <!--6--><ColumnDefinition Width="*"></ColumnDefinition>
+                <!--7--><ColumnDefinition Width="*"></ColumnDefinition>
+                <!--8--><ColumnDefinition Width="*"></ColumnDefinition>
+                <!--9--><ColumnDefinition Width="*"></ColumnDefinition>
+                <!--10--><ColumnDefinition Width="*"></ColumnDefinition>
+                <!--11--><ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <!--<StackLayout Grid.ColumnSpan="12" Grid.Row="0" Grid.RowSpan="2">
+                <Image Source="ArubaBackround.png" Aspect="AspectFill" Margin="0" />
+            </StackLayout>-->
+            <StackLayout Grid.Row="0" Grid.ColumnSpan="12" Grid.RowSpan="5">
+                <Image Source="ArubaBackround.png" VerticalOptions="FillAndExpand" Aspect="AspectFill" Margin="0" />
+            </StackLayout>
 
-                <StackLayout Margin="15,110,15,0">
-
+            <StackLayout Grid.Row="1" Grid.ColumnSpan="12" Margin="15,0,15,0">
                 <Frame BackgroundColor="White" HasShadow="True" HeightRequest="320" HorizontalOptions="FillAndExpand" BorderColor="LightGray">
-                    
                     <StackLayout>
-                        
-
                         <StackLayout Margin="0,25,0,0">
                             <!--EmailBox-->
                             <Frame BackgroundColor="Transparent" BorderColor="DarkGray" Padding="0" Margin="0" CornerRadius="0" HorizontalOptions="FillAndExpand">
                                 <StackLayout Orientation="Horizontal">
 
-                                   
+
                                     <Frame   CornerRadius="0" HeightRequest="35" WidthRequest="35" Padding="0" HorizontalOptions="Start" Margin="7">
                                         <ContentView AbsoluteLayout.LayoutBounds="1, 0, -1, -1" 
                                             AbsoluteLayout.LayoutFlags="PositionProportional">
@@ -60,7 +70,7 @@
                                     <Entry x:Name="Password" Text="{Binding Password}" Placeholder="Password" IsPassword="True" TextColor="#203fba" HorizontalOptions="FillAndExpand" Margin="0,0,15,0" />
                                 </StackLayout>
                             </Frame>
-                            
+
                         </StackLayout>
 
                         <StackLayout Orientation="Horizontal">
@@ -71,12 +81,7 @@
                             <Label Text="Forgot Password" HorizontalTextAlignment="End" TextColor="#203fba" HorizontalOptions="EndAndExpand" FontAttributes="Bold" VerticalTextAlignment="Center" />
 
                         </StackLayout>
-                             <!--<<<<<<< HEAD-->
-                            <!--SignInButton
-                            <Button Text="Sign in" BackgroundColor="DarkOliveGreen" TextColor="White" FontAttributes="Bold" CornerRadius="20" HeightRequest="45" Clicked="Login_Button_Clicked"/>
-                
-                        
-                        --><!--SignInButton-->
+                        <!--SignInButton-->
                         <Button x:Name="loginbtn"
                                 Text="Sign in"
                                 BackgroundColor="#203fba" 
@@ -86,14 +91,6 @@
                                 HeightRequest="45"
                                 Command="{Binding LoginCommand}"
                                 >
-                            <!--<Button.Behaviors>
-                                <xct:EventToCommandBehavior
-                                    EventName="Clicked"
-                                    Command="{Binding LoginCommand}"
-                                    EventArgsConverter="{StaticResource ItemSelectedEventArgsConverter}">
-                                    
-                                </xct:EventToCommandBehavior>
-                            </Button.Behaviors>-->
                         </Button>
 
 
@@ -109,11 +106,11 @@
                         </StackLayout>
 
                     </StackLayout>
-                     
+
                 </Frame>
-                    
-                </StackLayout>
-            </Grid>
-       
+
+            </StackLayout>
+        </Grid>
+
     </StackLayout>
 </ContentPage>
