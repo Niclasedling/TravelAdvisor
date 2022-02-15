@@ -55,7 +55,6 @@ namespace TravelAdvisor.Views
 
             _map.Pins.Add(boardwalkPin);
             _map.Pins.Add(wharfPin);
-
         }
 
 

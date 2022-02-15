@@ -145,7 +145,7 @@
                         <!--11-->
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <StackLayout Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="8" Margin="5,0,0,10" HorizontalOptions="Center">
+                    <StackLayout Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="8" Margin="5,0,5,15" HorizontalOptions="Center">
                         <Label x:Name="_cityNameLable" Text="{Binding cityName}" FontSize="25" FontAttributes="Bold" FontFamily="font-family: 'Trip Sans VF'"/>
                     </StackLayout>
                     <!--LISTVIEW MED FORECAST-->
