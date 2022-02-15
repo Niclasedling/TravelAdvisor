@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
 using TravelAdvisor.ViewModels;
+using Xamarin.Forms.Maps;
 
 namespace TravelAdvisor.Models
 {
@@ -21,6 +22,10 @@ namespace TravelAdvisor.Models
         public string Price { get; set; } // Ska vara int
 
         public string Details { get; set; }
+
+        public double Longitude { get; set; }
+
+        public double Latitude { get; set; }
 
         public List<ReviewDto> Reviews { get; set; }
        
@@ -66,6 +71,8 @@ namespace TravelAdvisor.Models
         public double Latitude { get; set; }
 
         public string City { get; set; }
+
+        public Position Position { get; set; }
 
     }
 }

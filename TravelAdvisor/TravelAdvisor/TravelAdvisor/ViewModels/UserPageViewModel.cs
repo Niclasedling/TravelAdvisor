@@ -10,6 +10,7 @@ using TravelAdvisor.Interfaces;
 using TravelAdvisor.Views;
 using Xamarin.CommunityToolkit.ObjectModel;
 using System.Linq;
+using Xamarin.Forms.Maps;
 
 namespace TravelAdvisor.ViewModels
 {
@@ -20,6 +21,7 @@ namespace TravelAdvisor.ViewModels
         private readonly IReviewService _reviewService;
         public readonly IAttractionService _attractionService;
         public string fetchedForecast;
+  
 
         public UserPageViewModel(INavService naviService) : base(naviService)
         {
@@ -27,6 +29,7 @@ namespace TravelAdvisor.ViewModels
             _forecastService = DependencyService.Get<IOpenWeatherService>();
             _reviewService = DependencyService.Get<IReviewService>();
             _attractionService = DependencyService.Get<IAttractionService>();
+        
         }
         public async override void Init()
         {
@@ -80,6 +83,32 @@ namespace TravelAdvisor.ViewModels
 
         #endregion
 
+        #region PINS
+
+        //public async void SetPins()
+        //{
+        //    var allAttractions = await _attractionService.GetAllAttractions();
+
+
+        //    foreach (var item in allAttractions)
+        //    {
+
+
+
+        //        //Pin newPin = new Pin
+        //        //{
+        //        //    Position = item.,
+        //        //    Label = ((AttractionCreateDto)result).Name,
+        //        //    Address = address,
+        //        //    Type = PinType.Place
+        //        //};
+        //        _map.Pins.Add(newPin);
+        //    }
+        //}
+
+
+
+        #endregion
 
         #region REVIEWS
 
