@@ -72,6 +72,7 @@
                 Command="{Binding GetReviews}"
                 Clicked="myReview_Button_Clicked">
             </Button>
+            <!--Backbutton My Reviews-->
             <Button x:Name="_BackButton" Grid.Column="4"
                 Grid.Row="1"
                 Grid.ColumnSpan="3"
@@ -91,7 +92,20 @@
                 BackgroundColor="Black" 
                 TextColor="White" 
                 CornerRadius="5" 
-                FontAttributes="Bold">
+                FontAttributes="Bold"
+                Clicked="_favoritesButton_Clicked">
+            </Button>
+            <!--Backbutton My Favorites-->
+            <Button x:Name="_BackButton2" Grid.Column="7"
+                Grid.Row="1"
+                Grid.ColumnSpan="3"
+                Text="Back" 
+                BackgroundColor="Black" 
+                TextColor="White" 
+                CornerRadius="5" 
+                FontAttributes="Bold"
+                IsVisible="false"
+                Clicked="_BackButton_Clicked">
             </Button>
             <!--Login BUTTON-->
             <Button Grid.Column="10"
