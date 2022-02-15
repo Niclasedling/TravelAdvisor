@@ -117,6 +117,7 @@ namespace TravelAdvisor.Views
             userViewModel.fetchedForecast = searchDestination.Text;
             //listofOldReviews.IsEnabled = false;
             userViewModel.Forecast = await userViewModel.GetForecast();
+            userViewModel.AttractionList = await userViewModel.GetAttractionsByCity(userViewModel.fetchedForecast);
             userViewModel.cityName = userViewModel.Forecast.City;
             _map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(userViewModel.Forecast.Items[0].Latitude, userViewModel.Forecast.Items[0].Longitude), Distance.FromMeters(15000)));
             
