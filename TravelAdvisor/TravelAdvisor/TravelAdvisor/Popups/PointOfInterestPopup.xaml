@@ -11,11 +11,11 @@
         <Label HorizontalOptions="CenterAndExpand" Text="Create new attraction" FontAttributes="Bold" FontSize="14" TextColor="Black"></Label>
         <Entry Placeholder="Title of attraction" Margin="10,0,10,0" Text="{Binding NameOfNewAttraction}"></Entry>
         <Entry Placeholder="Name of attraction" Margin="10,0,10,0" Text="{Binding DetailsOfNewAttraction}"></Entry>
-        
-        <StackLayout Orientation="Horizontal">
-            <RadioButton Content="1" CheckedChanged="TypeOfAttraction_CheckedChanged"></RadioButton>
-            <RadioButton Content="2" CheckedChanged="TypeOfAttraction_CheckedChanged" Margin="10,0,0,0"></RadioButton>
-            <RadioButton Content="3" CheckedChanged="TypeOfAttraction_CheckedChanged" Margin="10,0,0,0"></RadioButton>
+        <Label Text="Type of attraction:" FontAttributes="Bold" Margin="10,0,10,0"></Label>
+        <StackLayout Margin="10,0,10,0">
+            <RadioButton Content="Restaurant" CheckedChanged="TypeOfAttraction_CheckedChanged"></RadioButton>
+            <RadioButton Content="Store" CheckedChanged="TypeOfAttraction_CheckedChanged"></RadioButton>
+            <RadioButton Content="Nature Area" CheckedChanged="TypeOfAttraction_CheckedChanged"></RadioButton>
             
         </StackLayout>
         <StackLayout Orientation="Horizontal">
