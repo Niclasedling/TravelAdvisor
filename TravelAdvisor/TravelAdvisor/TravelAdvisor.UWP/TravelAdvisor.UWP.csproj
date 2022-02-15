@@ -144,7 +144,9 @@
     <Content Include="dislikered.png" />
     <Content Include="like.png" />
     <Content Include="likegreen.png" />
+    <Content Include="nature-area.jpg" />
     <Content Include="newrestaurant.jpg" />
+    <Content Include="emptyStar.png" />
     <Content Include="newstar.png" />
     <Content Include="noun-arrow-back-2352160.png" />
     <Content Include="noun-Redfavourite-1077408.png" />
@@ -156,6 +158,7 @@
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="remove.png" />
     <Content Include="restaurant.jpg" />
+    <Content Include="store.jpg" />
     <Content Include="user.png" />
   </ItemGroup>
   <ItemGroup>
