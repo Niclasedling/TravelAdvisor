@@ -54,11 +54,11 @@ namespace TravelAdvisor.Services
             return likes;
         }
 
-        public async Task<ThumbInteractionDto> GetByUserId(Guid userId)
+        public async Task<List<ThumbInteractionDto>> GetByUserId(Guid userId)
         {
             try
             {
-                return await _thumbInteractionlient.GetByUserIdAsync(userId);
+                return await _thumbInteractionlient.GetListAsyncById(userId);
             }
             catch (Exception mess)
             {

@@ -16,8 +16,8 @@ namespace TravelAdvisor.ViewModels
     public class DetailsPageViewModel : BaseViewModel
     {
         public readonly IReviewService _reviewService;
-        private readonly IThumbInteractionService _thumbInteractionService;
-        private readonly ICommentService _commentService;
+        public readonly IThumbInteractionService _thumbInteractionService;
+        public readonly ICommentService _commentService;
         
         //private INavigation _navigation;
 
@@ -66,41 +66,7 @@ namespace TravelAdvisor.ViewModels
             App.globalUserToComment = new UserDto();
             App.globalUserToComment.FirstName = "";
             App.globalUserToComment.LastName = "";
-            ReviewList = await GetReviews();
-            var comments = await GetAllComments();
-            var thumbInteractions = await GetAllThumbInteractions();
-
-            foreach (var review in ReviewList)
-            {
-                foreach (var comment in comments)
-                {
-                    if (comment.ReviewId == review.Id)
-                    {
-                        review.CommentList.Add(comment);
-                    }
-                }
-
-                foreach (var thumbInteraction in thumbInteractions)
-                {
-                    if (thumbInteraction.ReviewId == review.Id && thumbInteraction.UserId == App.globalCurrentUser.Id)
-                    {
-                        review.ThumbInteraction = thumbInteraction;
-
-                        if (thumbInteraction.HasLiked)
-                        {
-                            review.LikeThumbImgSrc = review.LikeThumbGreenImgSrc;
-                            review.DislikeThumbImgSrc = review.DislikeThumbDefault;
-                        }
-                        else
-                        {
-                            review.DislikeThumbImgSrc = review.DislikeThumbRedImgSrc;
-                            review.LikeThumbImgSrc = review.LikeThumbDefault;
-                        }
-
-                        CurrentReview = review;
-                    }
-                }
-            }
+            await RefreshValues();
             
 
             UserName = App.globalCurrentUser.UserName;       
@@ -212,7 +178,7 @@ namespace TravelAdvisor.ViewModels
 
             return null;
         }
-        public async Task<ThumbInteractionDto> GetThumbInteractionByUser()
+        public async Task<List<ThumbInteractionDto>> GetThumbInteractionByUser()
         {
             var response = await _thumbInteractionService.GetByUserId(App.globalCurrentUser.Id);
 
@@ -242,6 +208,86 @@ namespace TravelAdvisor.ViewModels
 
        // }
      
-       
+       public async Task RefreshValues()
+        {
+            ReviewList = await GetReviews();
+            var comments = await GetAllComments();
+            var thumbInteractions = await GetAllThumbInteractions();
+
+            foreach (var review in ReviewList)
+            {
+                foreach (var comment in comments)
+                {
+                    if (comment.ReviewId == review.Id)
+                    {
+                        review.CommentList.Add(comment);
+                    }
+                }
+                if(thumbInteractions.Count != 0)
+                {
+
+                
+                foreach (var thumbInteraction in thumbInteractions)
+                {
+                    if (thumbInteraction.ReviewId == review.Id && thumbInteraction.UserId == App.globalCurrentUser.Id)
+                    {
+                        //review.ThumbInteraction = thumbInteraction;
+
+                        if (thumbInteraction.HasLiked)
+                        {
+                            review.LikeThumbImgSrc = review.LikeThumbGreenImgSrc;
+                            review.DislikeThumbImgSrc = review.DislikeThumbDefault;
+                        }
+                        else if(!thumbInteraction.HasLiked)
+                        {
+                            review.DislikeThumbImgSrc = review.DislikeThumbRedImgSrc;
+                            review.LikeThumbImgSrc = review.LikeThumbDefault;
+                        }
+                        else
+                        {
+                            review.LikeThumbImgSrc = review.LikeThumbDefault;
+                            review.DislikeThumbImgSrc = review.DislikeThumbDefault;
+                        }
+
+                            CurrentReview = review;
+                    }
+                        //else if (thumbInteraction.UserId == App.globalCurrentUser.Id)
+                        //{
+                        //    if (thumbInteraction.HasLiked)
+                        //    {
+                        //        review.LikeThumbImgSrc = review.LikeThumbGreenImgSrc;
+                        //        review.DislikeThumbImgSrc = review.DislikeThumbDefault;
+                        //    }
+                        //    else if (!thumbInteraction.HasLiked)
+                        //    {
+                        //        review.DislikeThumbImgSrc = review.DislikeThumbRedImgSrc;
+                        //        review.LikeThumbImgSrc = review.LikeThumbDefault;
+                        //    }
+                        //    else
+                        //    {
+                        //        review.LikeThumbImgSrc = review.LikeThumbDefault;
+                        //        review.DislikeThumbImgSrc = review.DislikeThumbDefault;
+                        //    }
+
+                        //}
+
+                        else
+                        {
+                            
+                            review.LikeThumbImgSrc = review.LikeThumbDefault;
+                            review.DislikeThumbImgSrc = review.DislikeThumbDefault;
+                        }
+
+
+                    }
+                }
+                else
+                {
+                    review.LikeThumbImgSrc = review.LikeThumbDefault;
+                    review.DislikeThumbImgSrc = review.DislikeThumbDefault;
+                }
+
+            }
+        } 
     }
 }

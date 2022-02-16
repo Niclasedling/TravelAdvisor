@@ -34,7 +34,7 @@
                 <!--10--><ColumnDefinition Width="*"></ColumnDefinition>
                 <!--11--><ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Image Source="phone.png" Grid.Column="0" ></Image>
+            
             <!--SearchBox-->
             <SearchBar  x:Name="searchDestination"
                 Placeholder="Search" 

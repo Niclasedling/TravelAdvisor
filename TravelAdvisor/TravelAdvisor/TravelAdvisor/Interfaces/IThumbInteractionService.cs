@@ -16,7 +16,7 @@ namespace TravelAdvisor.Interfaces
 
         Task<List<ThumbInteractionDto>> GetList();
 
-        Task<ThumbInteractionDto> GetByUserId(Guid userId);
+        Task<List<ThumbInteractionDto>> GetByUserId(Guid userId);
 
         Task<bool> Update(ThumbInteractionUpdateDto thumbInteractionUpdateDto);
 

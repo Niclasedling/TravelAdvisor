@@ -34,59 +34,99 @@ namespace TravelAdvisor.Views
         private async void LikeThumb_Clicked(object sender, EventArgs e)
         {
             var likeButton = sender as ImageButton;    
-            //var review = likeButton.BindingContext as ReviewDto;
+            var review = likeButton.BindingContext as ReviewDto;
+
             
-            if (ViewModel.CurrentReview.ThumbInteraction != null)
+            
+            var thumbList = await ViewModel._thumbInteractionService.GetByUserId(App.globalCurrentUser.Id);
+            if(thumbList.Count != 0)
+            {
+                foreach (var item in thumbList)
+                {
+                    if(item.ReviewId == review.Id)
+                    {
+                        review.ThumbInteraction = item;
+                    }
+                }
+                
+            }
+
+            if (review.ThumbInteraction != null)
             {
                 await ViewModel.UpdateThumbInteraction(new ThumbInteractionUpdateDto
                 {
-                    Id = ViewModel.CurrentReview.ThumbInteraction.Id,
-                    ReviewId = ViewModel.CurrentReview.Id,
-                    UserId = App.globalCurrentUser.Id,
+                    Id = review.ThumbInteraction.Id,
+                    ReviewId = review.ThumbInteraction.ReviewId,
+                    UserId = review.ThumbInteraction.UserId,
                     HasLiked = true,
                 });
-                ViewModel.CurrentReview.LikeThumbImgSrc = ViewModel.CurrentReview.LikeThumbDefault;
-                ViewModel.CurrentReview.DislikeThumbImgSrc = ViewModel.CurrentReview.DislikeThumbDefault;
+                
+                review.LikeThumbImgSrc = review.LikeThumbDefault;
+                review.DislikeThumbImgSrc = review.DislikeThumbDefault;
             }
             else
             {
-                await ViewModel.CreateThumbInteraction(new ThumbInteractionCreateDto
+               await ViewModel.CreateThumbInteraction(new ThumbInteractionCreateDto
                 {
-                    ReviewId = ViewModel.CurrentReview.ThumbInteraction.Id,
+                    ReviewId = review.Id,
                     UserId = App.globalCurrentUser.Id,
                     HasLiked = true,
                 });
-                ViewModel.CurrentReview.LikeThumbImgSrc = ViewModel.CurrentReview.LikeThumbGreenImgSrc;
-                ViewModel.CurrentReview.DislikeThumbImgSrc = ViewModel.CurrentReview.DislikeThumbDefault;
+                
+                review.LikeThumbImgSrc = review.LikeThumbGreenImgSrc;
+                review.DislikeThumbImgSrc = review.DislikeThumbDefault;
             }
+
+            await ViewModel.RefreshValues();
         }
 
         private async void DislikeThumb_Clicked(object sender, EventArgs e)
         {
             var likeButton = sender as ImageButton;
-            //var review = likeButton.BindingContext as ReviewDto;
+            var review = likeButton.BindingContext as ReviewDto;
 
-            if (ViewModel.CurrentReview.ThumbInteraction != null)
+
+
+            var thumbList = await ViewModel._thumbInteractionService.GetByUserId(App.globalCurrentUser.Id);
+            if (thumbList.Count != 0)
+            {
+                foreach (var item in thumbList)
+                {
+                    if (item.ReviewId == review.Id)
+                    {
+                        review.ThumbInteraction = item;
+                    }
+                }
+
+            }
+
+            if (review.ThumbInteraction != null)
             {
                 await ViewModel.UpdateThumbInteraction(new ThumbInteractionUpdateDto
                 {
-                    Id = ViewModel.CurrentReview.ThumbInteraction.Id,
-                    ReviewId = ViewModel.CurrentReview.Id,
-                    UserId = App.globalCurrentUser.Id,
+                    Id = review.ThumbInteraction.Id,
+                    ReviewId = review.ThumbInteraction.ReviewId,
+                    UserId = review.ThumbInteraction.UserId,
                     HasLiked = false,
                 });
+
+                review.LikeThumbImgSrc = review.LikeThumbDefault;
+                review.DislikeThumbImgSrc = review.DislikeThumbDefault;
             }
             else
             {
                 await ViewModel.CreateThumbInteraction(new ThumbInteractionCreateDto
                 {
-                    ReviewId = ViewModel.CurrentReview.ThumbInteraction.Id,
+                    ReviewId = review.Id,
                     UserId = App.globalCurrentUser.Id,
                     HasLiked = false,
                 });
-                ViewModel.CurrentReview.LikeThumbImgSrc = ViewModel.CurrentReview.LikeThumbDefault;
-                ViewModel.CurrentReview.DislikeThumbImgSrc = ViewModel.CurrentReview.DislikeThumbRedImgSrc;
+
+                review.LikeThumbImgSrc = review.LikeThumbDefault;
+                review.DislikeThumbImgSrc = review.DislikeThumbRedImgSrc;
             }
+
+            await ViewModel.RefreshValues();
         }
 
         private void CommentButton_Clicked(object sender, EventArgs e)
