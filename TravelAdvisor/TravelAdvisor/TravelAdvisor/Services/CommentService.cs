@@ -11,11 +11,11 @@ namespace TravelAdvisor.Services
 {
     public class CommentService : ICommentService
     {
-        private readonly ApiClient<CommentService> _commentClient;
+        private readonly ApiClient<CommentDto> _commentClient;
 
         public CommentService(HttpClient httpClient)
         {
-            _commentClient = new ApiClient<CommentService>(httpClient, "Comment");
+            _commentClient = new ApiClient<CommentDto>(httpClient, "Comment");
         }
 
         public Task<Guid> Create(CommentCreateDto commentCreateDto)
@@ -28,9 +28,18 @@ namespace TravelAdvisor.Services
             throw new NotImplementedException();
         }
 
-        public Task<CommentDto> GetAll()
+        public async Task<List<CommentDto>> GetAll()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await _commentClient.GetListAsync("GetAll");
+
+            }
+            catch (Exception mess)
+            {
+
+                throw new Exception(mess.Message);
+            }
         }
 
         public Task<List<CommentDto>> GetById(Guid id)

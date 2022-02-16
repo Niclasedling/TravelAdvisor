@@ -64,7 +64,6 @@ namespace TravelAdvisor.Services
         public async Task<Guid> CreateUser(UserCreateDto user)
         {
             
-
             try
             {
                 await App.Current.MainPage.DisplayAlert("Successful", "User created", "OK");

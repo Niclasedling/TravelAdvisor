@@ -19,6 +19,7 @@ namespace TravelAdvisor.Models
     {
         public AttractionDto Attraction { get; set; }
 
+        public ThumbInteractionDto ThumbInteraction { get; set; }
 
 
         public Guid Id { get; set; }
@@ -30,7 +31,6 @@ namespace TravelAdvisor.Models
         public string Description { get; set; }
         public string ThumbStringToCompare { get; set; }
 
-        public ImageSource DislikeThumbImgSrc { get { return "dislike.png"; } }
         public string DislikeThumbString { get { return "dislike.png"; } }
         
         public ImageSource YellowStar { get { return "newstar.png"; } }
@@ -41,8 +41,13 @@ namespace TravelAdvisor.Models
         public ImageSource FourStars { get; set; }
         public ImageSource FiveStars { get; set; }
 
-        public ImageSource LikeThumbImgSrc { get { return "like.png"; } }
-        public string LikeThumbString { get { return "like.png"; } }
+        private ImageSource likeThumbImgSrc { get; set; }
+        public ImageSource LikeThumbImgSrc { get { return likeThumbImgSrc; } set { likeThumbImgSrc = value; OnPropertyChanged("LikeThumbImgSrc"); } }
+        private ImageSource dislikeThumbImgSrc { get; set; }
+        public ImageSource DislikeThumbImgSrc { get { return dislikeThumbImgSrc; } set { dislikeThumbImgSrc = value; OnPropertyChanged("DislikeThumbImgSrc"); } }
+
+        public ImageSource LikeThumbDefault { get { return "like.png"; } }
+        public ImageSource DislikeThumbDefault { get { return "dislike.png"; } }
 
 
         public ImageSource DislikeThumbRedImgSrc { get { return "dislikered.png"; } }
@@ -76,24 +81,28 @@ namespace TravelAdvisor.Models
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        private int totalLikes { get; set; }
-        public int TotalLikes 
+
+        private List<CommentDto> commentList { get; set; } = new List<CommentDto>();
+        public List<CommentDto> CommentList { get { return commentList; } set { commentList = value; OnPropertyChanged("CommentList"); } } 
+
+        private int? likes { get; set; }
+        public int? Likes 
         { 
-            get { return totalLikes; }
+            get { return likes; }
             set
             {
-                totalLikes = value;
-                OnPropertyChanged("TotalLikes");
+                likes = value;
+                OnPropertyChanged("Likes");
             }
         }
-        private int totalDislikes { get; set; } 
-        public int TotalDislikes 
+        private int? dislikes { get; set; } 
+        public int? Dislikes 
         { 
-            get { return totalDislikes; }
+            get { return dislikes; }
             set 
             {
-                totalDislikes = value;
-                OnPropertyChanged("TotalDislikes");
+                dislikes = value;
+                OnPropertyChanged("Dislikes");
             }
         }
         private int totalComments { get; set; }
@@ -106,9 +115,6 @@ namespace TravelAdvisor.Models
                 OnPropertyChanged("TotalComments");
             }
         }
-
-      
-
     }
 
     public class ReviewDto : ReviewBase

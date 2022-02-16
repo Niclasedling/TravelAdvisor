@@ -18,14 +18,29 @@ namespace TravelAdvisor.Services
             _thumbInteractionlient = new ApiClient<ThumbInteractionDto>(httpClient, "ThumbInteraction");
         }
 
-        public Task<Guid> Create(ThumbInteractionCreateDto thumbInteractionCreateDto)
+        public async Task<Guid> Create(ThumbInteractionCreateDto newThumbInteraction)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await _thumbInteractionlient.PostAsync(newThumbInteraction);
+            }
+            catch (Exception mess)
+            {
+                throw new Exception(mess.Message);
+            }
         }
 
-        public Task<bool> Delete(Guid id)
+        public async Task<bool> Delete(Guid id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await _thumbInteractionlient.DeleteAsync(id);
+            }
+            catch (Exception mess)
+            {
+
+                throw new Exception(mess.Message);
+            }
         }
 
         public Task<ThumbInteractionDto> GetAll()
@@ -35,24 +50,47 @@ namespace TravelAdvisor.Services
 
         public async Task<List<ThumbInteractionDto>> GetById(Guid id)
         {
-            var likes = await  _thumbInteractionlient.GetListAsync(id);
-           
+            var likes = await _thumbInteractionlient.GetListAsync(id);
             return likes;
         }
 
-        public Task<ThumbInteractionDto> GetByUserId(Guid userId)
+        public async Task<ThumbInteractionDto> GetByUserId(Guid userId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await _thumbInteractionlient.GetByUserIdAsync(userId);
+            }
+            catch (Exception mess)
+            {
+
+                throw new Exception(mess.Message);
+            }
         }
 
-        public Task<List<ThumbInteractionDto>> GetList()
+        public async Task<List<ThumbInteractionDto>> GetList()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await _thumbInteractionlient.GetListAsync("GetAll");
+
+            }
+            catch (Exception mess)
+            {
+
+                throw new Exception(mess.Message);
+            }
         }
 
-        public Task<bool> Update(ThumbInteractionUpdateDto thumbInteractionUpdateDto)
+        public async Task<bool> Update(ThumbInteractionUpdateDto thumbInteractionUpdateDto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await _thumbInteractionlient.PutAsync(thumbInteractionUpdateDto);
+            }
+            catch (Exception mess)
+            {
+                throw new Exception(mess.Message);
+            }
         }
     }
 }

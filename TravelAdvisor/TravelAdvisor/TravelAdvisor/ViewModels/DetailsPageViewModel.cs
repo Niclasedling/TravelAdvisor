@@ -17,21 +17,15 @@ namespace TravelAdvisor.ViewModels
     {
         public readonly IReviewService _reviewService;
         private readonly IThumbInteractionService _thumbInteractionService;
-        //public ICommand LikedButton => new Command(async (object sender) => await LikedButtonClicked(sender));
-
-        //private async Task LikedButtonClicked( object sender)
-        //{
-        //    var review = sender as ReviewDto;
-        //    if (review != null) { }
-            
-        //}
-
+        private readonly ICommentService _commentService;
+        
         //private INavigation _navigation;
 
         public string TitleOfNewReview { get; set; }
         public string DesciptionOfNewReview { get; set; }
         public int RatingOfNewReview { get; set; }
         public ReviewDto ReviewToAdd { get; set; }
+        public ReviewDto CurrentReview { get; set; }
         public string NameOfAttraction { get { return App.globalCurrentAttraction.Name; } }
         public string InfoAboutAttraction { get { return App.globalCurrentAttraction.Details; } }
         public ImageSource AttractionImgSrc { get { return App.globalCurrentAttraction.Image; } }
@@ -62,79 +56,72 @@ namespace TravelAdvisor.ViewModels
         public DetailsPageViewModel(INavService naviService) : base(naviService)
         {
             _reviewService = DependencyService.Get<IReviewService>();
+            _commentService = DependencyService.Get<ICommentService>();
             _thumbInteractionService = DependencyService.Get<IThumbInteractionService>();
             //_navigation = navigation;
         }
 
         public override async void Init()
-        {
-            
+        {       
             App.globalUserToComment = new UserDto();
             App.globalUserToComment.FirstName = "";
             App.globalUserToComment.LastName = "";
             ReviewList = await GetReviews();
-          
-            UserName = App.globalCurrentUser.UserName;
-            //var allLikesForCurrentUser = ReviewList
-            //    .Select(x => x)
-            //    .Where(x => x.User == App.globalCurrentUser)
-            //    .Where(x => x.User.HasLikedReview
-            //    .ContainsKey(x.Id) && x.User.HasLikedReview
-            //    .ContainsValue(true))
-            //    .ToList();                                                          //Ska visa hela listan
+            var comments = await GetAllComments();
+            var thumbInteractions = await GetAllThumbInteractions();
 
-            //ReviewList.Select(x => x)
-                
-            //var allDislikesForCurrentUser = ReviewList
-            //    .Select(x => x)
-            //    .Where(x => x.User == App.globalCurrentUser)
-            //    .Where(x => x.User.HasLikedReview
-            //    .ContainsKey(x.Id) && x.User.HasLikedReview
-            //    .ContainsValue(false))
-            //    .ToList();
+            foreach (var review in ReviewList)
+            {
+                foreach (var comment in comments)
+                {
+                    if (comment.ReviewId == review.Id)
+                    {
+                        review.CommentList.Add(comment);
+                    }
+                }
 
-         
+                foreach (var thumbInteraction in thumbInteractions)
+                {
+                    if (thumbInteraction.ReviewId == review.Id && thumbInteraction.UserId == App.globalCurrentUser.Id)
+                    {
+                        review.ThumbInteraction = thumbInteraction;
+
+                        if (thumbInteraction.HasLiked)
+                        {
+                            review.LikeThumbImgSrc = review.LikeThumbGreenImgSrc;
+                            review.DislikeThumbImgSrc = review.DislikeThumbDefault;
+                        }
+                        else
+                        {
+                            review.DislikeThumbImgSrc = review.DislikeThumbRedImgSrc;
+                            review.LikeThumbImgSrc = review.LikeThumbDefault;
+                        }
+
+                        CurrentReview = review;
+                    }
+                }
+            }
+            
+
+            UserName = App.globalCurrentUser.UserName;       
         }
 
         public List<ReviewDto> reviewList { get; set; }
         public List<ReviewDto> ReviewList { get { return reviewList; } set { reviewList = value; OnPropertyChanged("ReviewList"); } }
 
+        public ThumbInteractionDto userThumbInteraction { get; set; }
+        public ThumbInteractionDto UserThumbInteraction { get { return userThumbInteraction; } set { userThumbInteraction = value; OnPropertyChanged("UserThumbInteraction"); } }
         public List<ThumbInteractionDto> likeList { get; set; }
         public List<ThumbInteractionDto> LikeList { get { return likeList; } set { likeList = value; OnPropertyChanged("LikeList"); } }
 
         private async Task<List<ReviewDto>> GetReviews()
         {
+            //var averageRating = 0;
+            //var totalrating = 0;
 
             var reviews = await _reviewService.GetListById(App.globalCurrentAttraction.Id);
-            
-            SetStars(reviews);
-           
 
-            if (reviews != null)
-            {
-                return reviews;
-
-
-            }
-
-            return null;
-        }
-        public async Task<List<ThumbInteractionDto>> GetLikes()
-        {
-
-            var likes = await _thumbInteractionService.GetById(App.globalCurrentReview.Id);
-
-            if (likes != null)
-            {
-                return likes;
-            }
-
-            return null;
-        }
-
-        public void SetStars(List<ReviewDto> listOfReviews)
-        {
-            foreach (var item in listOfReviews)
+            foreach (var item in reviews)
             {
                 switch (item.Rating)
                 {
@@ -180,10 +167,118 @@ namespace TravelAdvisor.ViewModels
                         item.FourStars = item.YellowStar;
                         item.FiveStars = item.YellowStar;
                         break;
-
+                   
                 }
             }
+            // Antal reviews
+            //var counter = reviews.Count();
+
+            //// Adderad Rating
+            //var rating = reviews.Select(x => x.Rating).ToList();
+
+            //foreach (var item in rating)
+            //{
+            //    totalrating += item;
+            //}
+
+            //averageRating = totalrating / counter;
+
+            //switch (averageRating)
+            //{
+            //    case 1:
+                    
+            //        break;
+            //    case 2:
+
+            //        break;
+            //    case 3:
+
+            //        break;
+            //    case 4:
+
+            //        break;
+            //    case 5:
+
+            //        break;
+
+            //    default:
+
+            //        break;
+            //}
+
+            if (reviews != null)
+            {
+                return reviews;
+
+
+            }
+
+            return null;
+        }
+        public async Task<List<CommentDto>> GetAllComments()
+        {
+            var comments = await _commentService.GetAll();
+
+            if (comments != null)
+            {
+                return comments;
+            }
+
+            return null;
+        }
+        public async Task<List<ThumbInteractionDto>> GetAllThumbInteractions()
+        {
+            var thumbInteractions = await _thumbInteractionService.GetList();
+
+            if (thumbInteractions != null)
+            {
+                return thumbInteractions;
+            }
+
+            return null;
+        }
+        public async Task<List<ThumbInteractionDto>> GetThumbInteractionsByReview()
+        {
+
+            var likes = await _thumbInteractionService.GetById(App.globalCurrentReview.Id);
+
+            if (likes != null)
+            {
+                return likes;
+            }
+
+            return null;
+        }
+        public async Task<ThumbInteractionDto> GetThumbInteractionByUser()
+        {
+            var response = await _thumbInteractionService.GetByUserId(App.globalCurrentUser.Id);
+
+            if (response != null)
+            {
+                return response;
+            }
+
+            return null;
+        }
+        public async Task<Guid> CreateThumbInteraction(ThumbInteractionCreateDto newThumbInteraction)
+        {
+            return await _thumbInteractionService.Create(newThumbInteraction);
         }
 
+        public async Task<bool> UpdateThumbInteraction(ThumbInteractionUpdateDto thumbInteractionUpdateDto)
+        {
+            return await _thumbInteractionService.Update(thumbInteractionUpdateDto);
+        }
+        public async Task<bool> DeleteThumbInteraction(Guid id)
+        {
+            return await _thumbInteractionService.Delete(id);
+        }
+
+       //public async Task CalculateAverageRating()
+       // {
+
+       // }
+     
+       
     }
 }

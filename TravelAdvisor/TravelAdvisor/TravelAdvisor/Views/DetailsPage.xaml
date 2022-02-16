@@ -116,7 +116,7 @@
                                         HeightRequest="70" 
                                         >
                                     </ImageButton>
-                                    <Label Grid.Row="1" Grid.Column="10" Text="{Binding TotalLikes, Mode=TwoWay}" Margin="5,0,0,0"></Label>
+                                    <Label Grid.Row="1" Grid.Column="10" Text="{Binding Likes, Mode=TwoWay}" Margin="5,0,0,0"></Label>
                                     <!--DISLIKE-->
                                     <ImageButton 
                                         Grid.Row="0" 
@@ -128,7 +128,7 @@
                                        
                                     </ImageButton>
 
-                                    <Label Text="{Binding TotalDislikes, Mode=TwoWay}" Grid.Row="1" Grid.Column="11" Margin="7,0,0,0"></Label>
+                                    <Label Text="{Binding Dislikes, Mode=TwoWay}" Grid.Row="1" Grid.Column="11" Margin="7,0,0,0"></Label>
                                     <!--STARS-->
                                     <Image Grid.Row="2" Grid.Column="7" Source="{Binding OneStar}" Margin="0,0,-30,0" HeightRequest="70"></Image>
                                     <Image Grid.Row="2" Grid.Column="8" Source="{Binding TwoStars}" Margin="0,0,-30,0" HeightRequest="70"></Image>

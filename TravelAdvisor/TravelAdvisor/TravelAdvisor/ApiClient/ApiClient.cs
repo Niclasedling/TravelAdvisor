@@ -36,9 +36,9 @@ namespace TravelAdvisor.ApiClient
 
             return JsonConvert.DeserializeObject<T>(responseString);
         }
-        public async Task<List<T>> GetListAsync(Guid id)
+        public async Task<T> GetByUserIdAsync(Guid id)
         {
-            string path = $"GetById?id={id}";
+            string path = $"GetByUserId?id={id}";
             var response = await httpClient.GetAsync(path);
 
             if (!response.IsSuccessStatusCode)
@@ -47,9 +47,8 @@ namespace TravelAdvisor.ApiClient
             }
             var responseString = await response.Content.ReadAsStringAsync();
 
-            return JsonConvert.DeserializeObject<List<T>>(responseString);
+            return JsonConvert.DeserializeObject<T>(responseString);
         }
-
 
         public async Task<bool> DeleteAsync(Guid id)
         {
@@ -82,7 +81,7 @@ namespace TravelAdvisor.ApiClient
         public async Task<bool> PutAsync<T>(T Data)
         {
             string path = "Update";
-            var response = await httpClient.PostAsync(path, JsonContent.Create(Data));
+            var response = await httpClient.PutAsync(path, JsonContent.Create(Data));
 
             if (!response.IsSuccessStatusCode)
             {
@@ -119,6 +118,19 @@ namespace TravelAdvisor.ApiClient
 
 
             return JsonConvert.DeserializeObject<T>(responseString);
+        }
+        public async Task<List<T>> GetListAsync(Guid id)
+        {
+            string path = $"GetById?id={id}";
+            var response = await httpClient.GetAsync(path);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception($"Api '{httpClient.BaseAddress}{path}' responded with {response.StatusCode}");
+            }
+            var responseString = await response.Content.ReadAsStringAsync();
+
+            return JsonConvert.DeserializeObject<List<T>>(responseString);
         }
 
         public async Task<List<T>> GetListAsyncByCity(string city)

@@ -32,11 +32,11 @@ namespace TravelAdvisor.Services
             }
         }
 
-        public async Task<bool> Delete(Guid id)
+        public async Task<ReviewDto> GetById(Guid id)
         {
             try
             {
-                return await _reviewClient.DeleteAsync(id);
+                return await _reviewClient.GetAsync(id);
 
             }
             catch (Exception mess)
@@ -47,11 +47,6 @@ namespace TravelAdvisor.Services
         }
 
         public Task<ReviewDto> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<ReviewDto> GetById(Guid id)
         {
             throw new NotImplementedException();
         }
@@ -69,6 +64,7 @@ namespace TravelAdvisor.Services
                 throw new Exception(mess.Message);
             }
         }
+
         public async Task<List<ReviewDto>> GetAllReviews()
         {
             try
@@ -79,13 +75,35 @@ namespace TravelAdvisor.Services
             catch (Exception mess)
             {
 
-                throw new Exception(mess.Message); 
+                throw new Exception(mess.Message);
             }
         }
 
-        public Task<bool> Update(ReviewUpdateDto updateReview)
+        public async Task<bool> Update(ReviewUpdateDto updateReview)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await _reviewClient.PutAsync(updateReview);
+            }
+            catch (Exception mess)
+            {
+
+                throw new Exception(mess.Message);
+            }
+        }
+
+        public async Task<bool> Delete(Guid id)
+        {
+            try
+            {
+                return await _reviewClient.DeleteAsync(id);
+
+            }
+            catch (Exception mess)
+            {
+
+                throw new Exception(mess.Message);
+            }
         }
     }
 }
