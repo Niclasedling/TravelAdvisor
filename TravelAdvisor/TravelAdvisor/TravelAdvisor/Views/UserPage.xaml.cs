@@ -32,7 +32,11 @@ namespace TravelAdvisor.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            _map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(59.3194903, 18.075060000000007), Distance.FromMeters(15000)));
+            if(App.globalCurrentCity == "Stockholm")
+            {
+                _map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(59.3194903, 18.075060000000007), Distance.FromMeters(15000)));
+            }
+            
             await SetPins();
             // Initialize ViewModel
             ViewModel?.Init();
@@ -119,6 +123,7 @@ namespace TravelAdvisor.Views
             userViewModel.Forecast = await userViewModel.GetForecast();
             userViewModel.AttractionList = await userViewModel.GetAttractionsByCity(userViewModel.fetchedForecast);
             userViewModel.cityName = userViewModel.Forecast.City;
+            App.globalCurrentCity = userViewModel.cityName;
             _map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(userViewModel.Forecast.Items[0].Latitude, userViewModel.Forecast.Items[0].Longitude), Distance.FromMeters(15000)));
             
         }

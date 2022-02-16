@@ -296,7 +296,18 @@
                                         <RowDefinition Height="*"></RowDefinition>
                                         <RowDefinition Height="*"></RowDefinition>
                                     </Grid.RowDefinitions>
-                                    <Image HeightRequest="115" Aspect="AspectFill" Source="{Binding Image}"></Image>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        
+                                    </Grid.ColumnDefinitions>
+                                    <Image HeightRequest="115" Aspect="AspectFill" Source="{Binding Image}" Grid.Column="0" Grid.ColumnSpan="7"></Image>
                                     <Frame CornerRadius="30" BackgroundColor="White" WidthRequest="0" HeightRequest="0" HorizontalOptions="End" VerticalOptions="Start" Margin="7">
                                         <ImageButton x:Name="_heartImage" Source="{Binding HeartImage}" 
                                                      HeightRequest="50" 
@@ -304,7 +315,8 @@
                                                      VerticalOptions="Center" 
                                                      HorizontalOptions="Center" 
                                                      Margin="-10,-10,-10,-15"
-                                                     Clicked="HeartButton_Clicked"></ImageButton>
+                                                     Clicked="HeartButton_Clicked"
+                                                     Grid.Column="7"></ImageButton>
                                     </Frame>
                                     <!--<Grid VerticalOptions="End" Margin="15">
                                         <Frame 
@@ -320,17 +332,17 @@
                                             </StackLayout>
                                         </Frame>
                                     </Grid>-->
-                                    <StackLayout Grid.Row="1" Spacing="5" Margin="20,5">
-                                        <Label Text="{Binding Name}" FontSize="15" FontAttributes="Bold" TextColor="Black"></Label>
-                                        <StackLayout Orientation="Horizontal" Spacing="15">
-                                            <StackLayout Orientation="Horizontal" Spacing="10">
-                                                <Label Text="{Binding Details}" FontSize="12" TextColor="Black"></Label>
+                                    <StackLayout Grid.Row="1" Margin="20,5">
+                                        <Label Text="{Binding Name}" FontSize="15" FontAttributes="Bold" TextColor="Black" Grid.Column="0" Grid.ColumnSpan="7"></Label>
+                                        <StackLayout Orientation="Horizontal">
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="{Binding Details}" Grid.Column="0" FontSize="12" TextColor="Black"></Label>
                                                 <!--STARS-->
-                                                <Image Grid.Row="2"  Source="{Binding OneStar}"  HeightRequest="70"></Image>
-                                                <Image Grid.Row="2"  Source="{Binding TwoStars}"  HeightRequest="70"></Image>
-                                                <Image Grid.Row="2"  Source="{Binding ThreeStars}"  HeightRequest="70"></Image>
-                                                <Image Grid.Row="2"  Source="{Binding FourStars}" HeightRequest="70"></Image>
-                                                <Image Grid.Row="2"  Source="{Binding FiveStars}" HeightRequest="70"></Image>
+                                                <Image Grid.Row="2" Grid.Column="3" Source="{Binding OneStar}"  HeightRequest="35"></Image>
+                                                <Image Grid.Row="2" Grid.Column="4" Source="{Binding TwoStars}"  HeightRequest="35"></Image>
+                                                <Image Grid.Row="2" Grid.Column="5" Source="{Binding ThreeStars}"  HeightRequest="35"></Image>
+                                                <Image Grid.Row="2" Grid.Column="6" Source="{Binding FourStars}" HeightRequest="35"></Image>
+                                                <Image Grid.Row="2" Grid.Column="7" Source="{Binding FiveStars}" HeightRequest="35"></Image>
                                             </StackLayout>
                                             
                                             

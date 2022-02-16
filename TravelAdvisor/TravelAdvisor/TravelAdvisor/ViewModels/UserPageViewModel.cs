@@ -37,11 +37,13 @@ namespace TravelAdvisor.ViewModels
             Forecast = result;
             ForecastItems = result.Items;
             cityName = result.City;
+            App.globalCurrentCity = cityName;
             AttractionList = await GetAttractionsByCity(cityName);
             App.globalUserToComment = App.globalCurrentUser;
             App.globalUserToComment.FirstName = App.globalCurrentUser.FirstName;
             App.globalUserToComment.LastName = App.globalCurrentUser.LastName;
             UserName = App.globalCurrentUser.UserName;
+            
             
         }
 
@@ -309,7 +311,11 @@ namespace TravelAdvisor.ViewModels
 
         private async Task<Forecast> GetForecastAPI()
         {
-            if (fetchedForecast == null) fetchedForecast = "Stockholm";
+            if (fetchedForecast == null)
+            {
+                fetchedForecast = "Stockholm";
+                App.globalCurrentCity = fetchedForecast;
+            }
 
             if (fetchedForecast != null)
             {
