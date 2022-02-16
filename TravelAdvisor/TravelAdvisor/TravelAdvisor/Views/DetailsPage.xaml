@@ -135,6 +135,8 @@
                                     <Image Grid.Row="2" Grid.Column="9" Source="{Binding ThreeStars}" Margin="0,0,-30,0" HeightRequest="70"></Image>
                                     <Image Grid.Row="2" Grid.Column="10" Source="{Binding FourStars}" Margin="0,0,-30,0" HeightRequest="70"></Image>
                                     <Image Grid.Row="2" Grid.Column="11" Source="{Binding FiveStars}" Margin="0,0,-30,0" HeightRequest="70"></Image>
+                                    <!---RATING LABLE-->
+                                    <Label Text="{Binding Rating, StringFormat='{0}/5'}" Grid.Row="3" Grid.Column="9" Margin="20,0,0,0" Grid.ColumnSpan="2"/>
                                     <!--COMMENTS-->
                                     <Label Text="{Binding TotalComments, Mode=TwoWay}" Grid.Row="3" Grid.Column="2" Margin="20,0,0,0" Grid.ColumnSpan="1"></Label>
                                     <ImageButton Source="{Binding CommentImgSrc}" Grid.Row="3" Grid.Column="3" Margin="0,0,0,0" Grid.ColumnSpan="2" Clicked="CommentButton_Clicked">

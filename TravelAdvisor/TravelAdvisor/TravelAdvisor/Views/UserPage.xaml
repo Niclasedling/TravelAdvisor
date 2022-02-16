@@ -45,7 +45,7 @@
                 <!--11-->
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Label Text="{Binding UserName, StringFormat='Welcome {0}'}" FontSize="25" FontAttributes="Bold" FontFamily="font-family: 'Trip Sans VF'" Grid.Column="0" Grid.ColumnSpan="5"  Grid.Row="0"/>
+            <Label Text="{Binding UserName, StringFormat='Welcome {0}'}" FontSize="25" FontAttributes="Bold" FontFamily="font-family: 'Trip Sans VF'" Grid.Column="0" Grid.ColumnSpan="12"  Grid.Row="0"/>
             <!--SearchBox-->
             <SearchBar  x:Name="searchDestination"
                 Placeholder="Search" 
@@ -159,7 +159,7 @@
                         <!--11-->
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <StackLayout Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="8" Margin="5,0,5,5" HorizontalOptions="Center">
+                    <StackLayout Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="8" Margin="5,0,5,5" HorizontalOptions="Center">
                         <Label x:Name="_cityNameLable" Text="{Binding cityName}" FontSize="25" FontAttributes="Bold" FontFamily="font-family: 'Trip Sans VF'"/>
                     </StackLayout>
                     <!--LISTVIEW MED FORECAST-->
@@ -289,26 +289,28 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Frame HeightRequest="190" Margin="5,5" CornerRadius="15" BackgroundColor="#C1C1C1">
+                            <Frame Margin="5,5" CornerRadius="15" BackgroundColor="#C1C1C1">
                                 <Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="20"></RowDefinition>
                                         <RowDefinition Height="*"></RowDefinition>
-                                        <RowDefinition Height="*"></RowDefinition>
+                                        <RowDefinition Height="25"></RowDefinition>
+                                        <RowDefinition Height="20"></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"></ColumnDefinition>
                                         <ColumnDefinition Width="*"></ColumnDefinition>
                                         <ColumnDefinition Width="*"></ColumnDefinition>
-                                        <ColumnDefinition Width="*"></ColumnDefinition>
-                                        <ColumnDefinition Width="*"></ColumnDefinition>
-                                        <ColumnDefinition Width="*"></ColumnDefinition>
-                                        <ColumnDefinition Width="*"></ColumnDefinition>
-                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="20"></ColumnDefinition>
+                                        <ColumnDefinition Width="20"></ColumnDefinition>
+                                        <ColumnDefinition Width="20"></ColumnDefinition>
+                                        <ColumnDefinition Width="20"></ColumnDefinition>
+                                        <ColumnDefinition Width="20"></ColumnDefinition>
                                         
                                     </Grid.ColumnDefinitions>
-                                    <Image HeightRequest="115" Aspect="AspectFill" Source="{Binding Image}" Grid.Column="0" Grid.ColumnSpan="7"></Image>
-                                    <Frame CornerRadius="30" BackgroundColor="White" WidthRequest="0" HeightRequest="0" HorizontalOptions="End" VerticalOptions="Start" Margin="7">
+                                    <Image HeightRequest="115" Aspect="AspectFill" Source="{Binding Image}" Grid.Column="0" Grid.ColumnSpan="8" Grid.Row="0"></Image>
+                                    <Frame CornerRadius="30" BackgroundColor="White" WidthRequest="0" HeightRequest="0" HorizontalOptions="End" VerticalOptions="Start" Margin="7" Grid.Column="5" Grid.ColumnSpan="3">
                                         <ImageButton x:Name="_heartImage" Source="{Binding HeartImage}" 
                                                      HeightRequest="50" 
                                                      WidthRequest="50" 
@@ -316,7 +318,7 @@
                                                      HorizontalOptions="Center" 
                                                      Margin="-10,-10,-10,-15"
                                                      Clicked="HeartButton_Clicked"
-                                                     Grid.Column="7"></ImageButton>
+                                                     ></ImageButton>
                                     </Frame>
                                     <!--<Grid VerticalOptions="End" Margin="15">
                                         <Frame 
@@ -332,22 +334,22 @@
                                             </StackLayout>
                                         </Frame>
                                     </Grid>-->
-                                    <StackLayout Grid.Row="1" Margin="20,5">
-                                        <Label Text="{Binding Name}" FontSize="15" FontAttributes="Bold" TextColor="Black" Grid.Column="0" Grid.ColumnSpan="7"></Label>
-                                        <StackLayout Orientation="Horizontal">
-                                            <StackLayout Orientation="Horizontal">
-                                                <Label Text="{Binding Details}" Grid.Column="0" FontSize="12" TextColor="Black"></Label>
-                                                <!--STARS-->
-                                                <Image Grid.Row="2" Grid.Column="3" Source="{Binding OneStar}"  HeightRequest="35"></Image>
-                                                <Image Grid.Row="2" Grid.Column="4" Source="{Binding TwoStars}"  HeightRequest="35"></Image>
-                                                <Image Grid.Row="2" Grid.Column="5" Source="{Binding ThreeStars}"  HeightRequest="35"></Image>
-                                                <Image Grid.Row="2" Grid.Column="6" Source="{Binding FourStars}" HeightRequest="35"></Image>
-                                                <Image Grid.Row="2" Grid.Column="7" Source="{Binding FiveStars}" HeightRequest="35"></Image>
-                                            </StackLayout>
-                                            
-                                            
-                                        </StackLayout>
-                                    </StackLayout>
+                                    
+                                        <Label Text="{Binding Name}" Grid.Row="1" FontSize="15" FontAttributes="Bold" TextColor="Black" Grid.Column="0" Grid.ColumnSpan="7"></Label>
+                                    
+                                        <Label Text="{Binding Details}" Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" FontSize="12" TextColor="Black"></Label>
+                                    
+                                        <!--STARS-->
+                                        <Image Grid.Row="3" Grid.Column="3" Source="{Binding OneStar}"  HeightRequest="45"></Image>
+                                        <Image Grid.Row="3" Grid.Column="4" Source="{Binding TwoStars}"  HeightRequest="40"></Image>
+                                        <Image Grid.Row="3" Grid.Column="5" Source="{Binding ThreeStars}"  HeightRequest="45"></Image>
+                                        <Image Grid.Row="3" Grid.Column="6" Source="{Binding FourStars}" HeightRequest="45"></Image>
+                                        <Image Grid.Row="3" Grid.Column="7" Source="{Binding FiveStars}" HeightRequest="45"></Image>
+
+                                    <Label Text="{Binding AverageRating, StringFormat='{0}/5'}" Grid.Row="4" Grid.Column="5" Grid.ColumnSpan="2"></Label>
+                                    <Label Text="{Binding TotalReviews, StringFormat='({0})'}" Grid.Row="4" Grid.Column="6" Grid.ColumnSpan="2"></Label>
+                                   
+
                                 </Grid>
                             </Frame>
                         </ViewCell>

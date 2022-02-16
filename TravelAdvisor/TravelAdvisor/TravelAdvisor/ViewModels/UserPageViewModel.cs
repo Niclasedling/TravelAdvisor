@@ -84,11 +84,6 @@ namespace TravelAdvisor.ViewModels
 
         }
 
-
-        #endregion
-
-        #region ATTRACTIONS
-
         public async Task<List<AttractionDto>> GetAttractionsByCity(string city)
         {
             //Kontrollera vad ni ska hämta!?
@@ -107,6 +102,7 @@ namespace TravelAdvisor.ViewModels
                     {
                         attraction.Reviews = foundReviews;
                         var averageRating = CalculateAverageRating(attraction.Reviews);
+                        attraction.TotalReviews = attraction.Reviews.Count();
                         attraction.AverageRating = averageRating;
                         SetStars(attraction, attraction.AverageRating);
                     }
@@ -199,7 +195,7 @@ namespace TravelAdvisor.ViewModels
 
         #endregion
 
-            #region REVIEWS
+        #region REVIEWS
 
         public ReviewDto ReviewToAdd { get; set; }
         private string userToComment { get; set; }
@@ -237,7 +233,6 @@ namespace TravelAdvisor.ViewModels
         private List<ReviewDto> _listofreviewDtos { get; set; }
         public List<ReviewDto> Reviews { get { return _listofreviewDtos; } set { _listofreviewDtos = value; OnPropertyChanged("Reviews"); } }
         #endregion
-
 
         #region FORECAST
 
@@ -327,7 +322,6 @@ namespace TravelAdvisor.ViewModels
             else return null;
         }
         #endregion
-       
        
         #region LOGOUT
         public Command<object> LogOutCommand

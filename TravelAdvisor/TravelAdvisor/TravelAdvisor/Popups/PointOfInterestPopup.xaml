@@ -10,7 +10,7 @@
     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="#aac6f2" Padding="10">
         <Label HorizontalOptions="CenterAndExpand" Text="Create new attraction" FontAttributes="Bold" FontSize="14" TextColor="Black"></Label>
         <Entry Placeholder="Title of attraction" Margin="10,0,10,0" Text="{Binding NameOfNewAttraction}"></Entry>
-        <Entry Placeholder="Name of attraction" Margin="10,0,10,0" Text="{Binding DetailsOfNewAttraction}"></Entry>
+        <Entry Placeholder="Description of attraction" Margin="10,0,10,0" Text="{Binding DetailsOfNewAttraction}"></Entry>
         <Label Text="Type of attraction:" FontAttributes="Bold" Margin="10,0,10,0"></Label>
         <StackLayout Margin="10,0,10,0">
             <RadioButton Content="Restaurant" CheckedChanged="TypeOfAttraction_CheckedChanged"></RadioButton>

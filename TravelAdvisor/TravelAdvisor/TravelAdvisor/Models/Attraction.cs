@@ -35,6 +35,7 @@ namespace TravelAdvisor.Models
         public ImageSource FiveStars { get; set; }
 
         public int AverageRating { get; set; }
+        public int TotalReviews { get; set; }
 
         public string Location { get; set; }
 
