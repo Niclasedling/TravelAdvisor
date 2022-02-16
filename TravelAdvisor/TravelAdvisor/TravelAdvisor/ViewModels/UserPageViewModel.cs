@@ -91,6 +91,7 @@ namespace TravelAdvisor.ViewModels
 
         public async Task<List<AttractionDto>> GetAttractionsByCity(string city)
         {
+            //Kontrollera vad ni ska hämta!?
 
             var attractions = await _attractionService.GetAllAttractionsByCity(city);
             var allReviews = await _reviewService.GetAllReviews();
@@ -121,6 +122,7 @@ namespace TravelAdvisor.ViewModels
                 
                 return attractions;
             }
+          
             return null;
         }
 
