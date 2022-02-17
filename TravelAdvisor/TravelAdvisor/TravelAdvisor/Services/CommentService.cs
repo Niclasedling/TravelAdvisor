@@ -18,9 +18,18 @@ namespace TravelAdvisor.Services
             _commentClient = new ApiClient<CommentDto>(httpClient, "Comment");
         }
 
-        public Task<Guid> Create(CommentCreateDto commentCreateDto)
+        public async Task<Guid> Create(CommentCreateDto commentCreateDto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return await _commentClient.PostAsync(commentCreateDto);
+
+            }
+            catch (Exception mess)
+            {
+
+                throw new Exception(mess.Message);
+            }
         }
 
         public Task<bool> Delete(Guid id)

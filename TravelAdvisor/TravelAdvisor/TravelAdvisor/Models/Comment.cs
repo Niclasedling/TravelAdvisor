@@ -6,6 +6,7 @@ namespace TravelAdvisor.Models
 {
     public abstract class CommentBase
     {
+        public string UserName { get; set; }
         public Guid Id { get; set; }
 
         public Guid UserId { get; set; }
@@ -13,6 +14,7 @@ namespace TravelAdvisor.Models
         public Guid ReviewId { get; set; }
 
         public string UserComment { get; set; }
+        public DateTime CommentCreated { get; set; }
     }
 
     public class CommentDto : CommentBase
@@ -42,6 +44,7 @@ namespace TravelAdvisor.Models
         public Guid ReviewId { get; set; }
 
         public string UserComment { get; set; }
+        public DateTime CommentCreated { get; set; } = DateTime.Now;
 
     }
 }

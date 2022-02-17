@@ -18,6 +18,7 @@ namespace TravelAdvisor.ViewModels
         public readonly IReviewService _reviewService;
         public readonly IThumbInteractionService _thumbInteractionService;
         public readonly ICommentService _commentService;
+        public readonly IUserService _userService;
         
         //private INavigation _navigation;
 
@@ -58,6 +59,7 @@ namespace TravelAdvisor.ViewModels
             _reviewService = DependencyService.Get<IReviewService>();
             _commentService = DependencyService.Get<ICommentService>();
             _thumbInteractionService = DependencyService.Get<IThumbInteractionService>();
+            _userService = DependencyService.Get<IUserService>();
             //_navigation = navigation;
         }
 
@@ -79,6 +81,10 @@ namespace TravelAdvisor.ViewModels
         public ThumbInteractionDto UserThumbInteraction { get { return userThumbInteraction; } set { userThumbInteraction = value; OnPropertyChanged("UserThumbInteraction"); } }
         public List<ThumbInteractionDto> likeList { get; set; }
         public List<ThumbInteractionDto> LikeList { get { return likeList; } set { likeList = value; OnPropertyChanged("LikeList"); } }
+
+        private List<CommentDto> commentList { get; set; } = new List<CommentDto>();
+        public List<CommentDto> CommentList { get { return commentList; } set { commentList = value; OnPropertyChanged("CommentList"); } }
+
 
         private async Task<List<ReviewDto>> GetReviews()
         {
@@ -166,6 +172,20 @@ namespace TravelAdvisor.ViewModels
 
             return null;
         }
+
+        public async Task<List<UserDto>> GetAllUsers()
+        {
+            var users = await _userService.GetAllUsers();
+
+            if (users != null)
+            {
+                return users;
+            }
+
+            return null;
+        }
+
+
         public async Task<List<ThumbInteractionDto>> GetThumbInteractionsByReview()
         {
 
@@ -211,16 +231,25 @@ namespace TravelAdvisor.ViewModels
        public async Task RefreshValues()
         {
             ReviewList = await GetReviews();
-            var comments = await GetAllComments();
+            CommentList = await GetAllComments();
             var thumbInteractions = await GetAllThumbInteractions();
+            var users = await GetAllUsers();
 
             foreach (var review in ReviewList)
             {
-                foreach (var comment in comments)
+                foreach (var comment in CommentList)
                 {
                     if (comment.ReviewId == review.Id)
                     {
                         review.CommentList.Add(comment);
+                        review.TotalComments = review.CommentList.Count();
+                    }
+                    foreach (var user in users)
+                    {
+                        if(user.Id == comment.UserId)
+                        {
+                            comment.UserName = user.UserName;
+                        }
                     }
                 }
                 if(thumbInteractions.Count != 0)

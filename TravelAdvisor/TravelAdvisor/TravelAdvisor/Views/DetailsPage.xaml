@@ -138,7 +138,7 @@
                                     <!---RATING LABLE-->
                                     <Label Text="{Binding Rating, StringFormat='{0}/5'}" Grid.Row="3" Grid.Column="9" Margin="20,0,0,0" Grid.ColumnSpan="2"/>
                                     <!--COMMENTS-->
-                                    <Label Text="{Binding TotalComments, Mode=TwoWay}" Grid.Row="3" Grid.Column="2" Margin="20,0,0,0" Grid.ColumnSpan="1"></Label>
+                                    <Label Text="{Binding TotalComments, Mode=TwoWay}" Grid.Row="3" Grid.Column="2" Margin="0,0,0,0" Grid.ColumnSpan="1"></Label>
                                     <ImageButton Source="{Binding CommentImgSrc}" Grid.Row="3" Grid.Column="3" Margin="0,0,0,0" Grid.ColumnSpan="2" Clicked="CommentButton_Clicked">
                                         
                                     </ImageButton>
@@ -197,7 +197,7 @@
                         </Grid>
                     </StackLayout>
                     
-                    <ListView x:Name="commentListView">
+                    <ListView ItemsSource="{Binding CommentList}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -209,8 +209,8 @@
                                                 <ColumnDefinition Width="*"></ColumnDefinition>
                                             </Grid.ColumnDefinitions>
 
-                                            <Label Text="{Binding CommentUserName}" FontAttributes="Bold" TextColor="#355C7D" Grid.Column="0"></Label>
-                                        <Label Text="{Binding Comment}" Grid.Column="1"></Label>
+                                            <Label Text="{Binding UserName}" FontAttributes="Bold" TextColor="#355C7D" Grid.Column="0"></Label>
+                                        <Label Text="{Binding UserComment}" Grid.Column="1"></Label>
                                         <Label Text="{Binding CommentCreated}" TextColor="#5b5f66" FontSize="10" VerticalOptions="End" Grid.Column="2"></Label>
                                         </Grid>
                                     </StackLayout>

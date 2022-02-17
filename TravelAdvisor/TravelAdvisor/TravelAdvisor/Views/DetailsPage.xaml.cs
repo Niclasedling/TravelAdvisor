@@ -25,9 +25,10 @@ namespace TravelAdvisor.Views
             BindingContext = new DetailsPageViewModel(DependencyService.Get<INavService>());
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
-            base.OnAppearing();        
+            base.OnAppearing();  
+            await ViewModel.RefreshValues();
             ViewModel?.Init();          
         }
 
@@ -129,15 +130,16 @@ namespace TravelAdvisor.Views
             await ViewModel.RefreshValues();
         }
 
-        private void CommentButton_Clicked(object sender, EventArgs e)
+        private async void CommentButton_Clicked(object sender, EventArgs e)
         {
             var commentButton = sender as ImageButton;
             var review = commentButton.BindingContext as ReviewDto;
 
             App.globalCurrentReview = review;
-            commentListView.ItemsSource = review.User.UserComments;
+            //commentListView.ItemsSource = review.User.UserComments;
             //App.globalDetailsPageViewModel.UserToComment = review.User.FirstName + " " + review.User.LastName;
-          
+            await ViewModel.RefreshValues();
+            review.TotalComments = ViewModel.CommentList.Count;
 
             if (!commentFrame.IsVisible)
             {
@@ -157,20 +159,30 @@ namespace TravelAdvisor.Views
             commentFrame.IsVisible = false;
         }
 
-        private void Comment_Completed(object sender, EventArgs e)
+        private async void Comment_Completed(object sender, EventArgs e)
         {
             var entry = sender as Entry;
             var review = App.globalCurrentReview;
            
-            UserCommentDto userComment = new UserCommentDto();
-            userComment.Comment = entry.Text;
-            review.User.UserComments.Add(userComment);
+            //UserCommentDto userComment = new UserCommentDto();
+            //userComment.Comment = entry.Text;
+            //review.User.UserComments.Add(userComment);
             
-            commentListView.ItemsSource = null;
-            commentListView.ItemsSource = review.User.UserComments;
-            review.TotalComments = review.User.UserComments.Count;
-            userComment.CommentUserName = App.globalCurrentUser.UserName;
+            //commentListView.ItemsSource = null;
+            //commentListView.ItemsSource = review.CommentList;
+            
+            //userComment.CommentUserName = App.globalCurrentUser.UserName;
+
+
+            await ViewModel._commentService.Create(new CommentCreateDto
+            {
+                 ReviewId = review.Id,
+                 UserId = App.globalCurrentUser.Id,
+                 UserComment = entry.Text,
+                 CommentCreated = DateTime.Now,
+            });            
             entry.Text = "";
+            await ViewModel.RefreshValues();
         }
 
         private async void AddReview_Clicked(object sender, EventArgs e)
