@@ -165,10 +165,11 @@ namespace TravelAdvisor.Views
             UserCommentDto userComment = new UserCommentDto();
             userComment.Comment = entry.Text;
             review.User.UserComments.Add(userComment);
-
+            
             commentListView.ItemsSource = null;
             commentListView.ItemsSource = review.User.UserComments;
             review.TotalComments = review.User.UserComments.Count;
+            userComment.CommentUserName = App.globalCurrentUser.UserName;
             entry.Text = "";
         }
 

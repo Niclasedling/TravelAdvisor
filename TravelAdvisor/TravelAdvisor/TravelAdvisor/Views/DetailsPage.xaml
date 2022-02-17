@@ -208,8 +208,8 @@
                                                 <ColumnDefinition Width="300"></ColumnDefinition>
                                                 <ColumnDefinition Width="*"></ColumnDefinition>
                                             </Grid.ColumnDefinitions>
-                                        
-                                        <Label Text="robin edin" FontAttributes="Bold" TextColor="#355C7D" Grid.Column="0"></Label>
+
+                                            <Label Text="{Binding CommentUserName}" FontAttributes="Bold" TextColor="#355C7D" Grid.Column="0"></Label>
                                         <Label Text="{Binding Comment}" Grid.Column="1"></Label>
                                         <Label Text="{Binding CommentCreated}" TextColor="#5b5f66" FontSize="10" VerticalOptions="End" Grid.Column="2"></Label>
                                         </Grid>

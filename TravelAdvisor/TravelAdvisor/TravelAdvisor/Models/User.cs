@@ -108,6 +108,20 @@ namespace TravelAdvisor.Models
     }
     public class UserCommentDto : UserBase
     {
+        private string _userName { get; set; }
+        public string CommentUserName
+        {
+            get
+            {
+                return _userName;
+            }
+            set
+            {
+                _userName = value;
+                OnPropertyChanged("CommentUserName");
+            }
+        }
+
         private string comment { get; set; }
         public string Comment 
         { 
